@@ -9,14 +9,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --green-deep:   #1a3a2a;
-      --green-mid:    #2d6a4f;
-      --green-light:  #52b788;
-      --green-pale:   #d8f3dc;
-      --cream:        #f8f7f2;
+      --green-deep:   #1c1c1c;
+      --green-mid:    #C4202C;
+      --green-light:  #E8737A;
+      --green-pale:   #FEF2F2;
+      --cream:        #ffffff;
       --ink:          #1c1c1c;
-      --ink-muted:    #555f4e;
-      --rule:         #d0ddd0;
+      --ink-muted:    #6b7280;
+      --rule:         #e5e7eb;
       --white:        #ffffff;
       --font-display: 'DM Serif Display', Georgia, serif;
       --font-body:    'Inter', system-ui, sans-serif;
@@ -33,7 +33,7 @@
     header {
       background: var(--green-deep);
       padding: 2.5rem 2rem 2rem;
-      border-bottom: 3px solid var(--green-light);
+      border-bottom: 3px solid #C4202C;
     }
 
     .header-inner {
@@ -46,7 +46,7 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--green-light);
+      color: #E8737A;
       margin-bottom: 0.5rem;
     }
 
@@ -59,7 +59,7 @@
     }
 
     header p {
-      color: #a8c5b0;
+      color: #b0b0b0;
       font-size: 0.95rem;
       font-weight: 300;
       max-width: 560px;
@@ -105,8 +105,8 @@
       outline: none;
     }
 
-    #search:focus { border-color: var(--green-mid); }
-    #search::placeholder { color: #9aab9a; }
+    #search:focus { border-color: #C4202C; }
+    #search::placeholder { color: #9ca3af; }
 
     .filter-select {
       padding: 0.7rem 1rem;
@@ -121,7 +121,7 @@
       transition: border-color 0.2s;
     }
 
-    .filter-select:focus { border-color: var(--green-mid); }
+    .filter-select:focus { border-color: #C4202C; }
 
     .record-count {
       font-size: 0.82rem;
@@ -159,7 +159,7 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #a8c5b0;
+      color: #b0b0b0;
       white-space: nowrap;
       user-select: none;
       cursor: pointer;
@@ -200,7 +200,7 @@
 
     .company-name {
       font-weight: 600;
-      color: var(--green-deep);
+      color: #1c1c1c;
       white-space: nowrap;
     }
 
@@ -208,7 +208,7 @@
       font-size: 0.75rem;
       font-weight: 600;
       color: var(--white);
-      background: var(--green-mid);
+      background: #1c1c1c;
       padding: 0.15rem 0.45rem;
       border-radius: 4px;
       letter-spacing: 0.05em;
@@ -241,7 +241,7 @@
       border-radius: 20px;
     }
 
-    .status-active       { background: #d8f3dc; color: #1a7a3a; }
+    .status-active       { background: #e8f5e9; color: #2e7d32; }
     .status-broken       { background: #ffe5e5; color: #b02020; }
     .status-needs-review { background: #fff4d6; color: #8a6000; }
 
@@ -270,7 +270,7 @@
       width: 20px;
       height: 20px;
       border: 2px solid var(--rule);
-      border-top-color: var(--green-mid);
+      border-top-color: #C4202C;
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
       margin-right: 0.5rem;
@@ -288,7 +288,7 @@
       border-top: 1px solid var(--rule);
     }
 
-    footer a { color: var(--green-mid); text-decoration: none; }
+    footer a { color: #C4202C; text-decoration: none; }
 
     @media (max-width: 640px) {
       .controls { flex-direction: column; align-items: stretch; }
@@ -339,12 +339,12 @@
         <th data-col="Report Title">Report Title<span class="sort-icon"></span></th>
         <th data-col="Status">Status<span class="sort-icon"></span></th>
         <th>Report Link</th>
-        <th data-col="Notes">Notes<span class="sort-icon"></span></th>
+
       </tr>
     </thead>
     <tbody id="table-body">
       <tr class="state-row">
-        <td colspan="8"><span class="spinner"></span> Loading reports…</td>
+        <td colspan="7"><span class="spinner"></span> Loading reports…</td>
       </tr>
     </tbody>
   </table>
@@ -406,7 +406,7 @@
     document.getElementById('record-count').textContent = `${records.length} report${records.length !== 1 ? 's' : ''}`;
 
     if (!records.length) {
-      tbody.innerHTML = `<tr class="state-row"><td colspan="8">No reports match your search.</td></tr>`;
+      tbody.innerHTML = `<tr class="state-row"><td colspan="7">No reports match your search.</td></tr>`;
       return;
     }
 
@@ -433,7 +433,7 @@
                  </a>`
               : '<span style="color:#aaa;font-size:0.8rem">—</span>'}
           </td>
-          <td style="font-size:0.8rem;color:var(--ink-muted);max-width:200px">${esc(f['Notes'] || '')}</td>
+
         </tr>`;
     }).join('');
   }
@@ -514,7 +514,7 @@
       applyFilters();
     } catch (err) {
       document.getElementById('table-body').innerHTML =
-        `<tr class="state-row"><td colspan="8">⚠️ Could not load data. Check your Airtable token and Base ID.<br><small>${err.message}</small></td></tr>`;
+        `<tr class="state-row"><td colspan="7">⚠️ Could not load data. Check your Airtable token and Base ID.<br><small>${err.message}</small></td></tr>`;
       document.getElementById('record-count').textContent = 'Error';
     }
   })();
