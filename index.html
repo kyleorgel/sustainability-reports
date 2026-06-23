@@ -1,1 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sustainability Report Index | Orgel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --green-deep:   #1a3a2a;
+      --green-mid:    #2d6a4f;
+      --green-light:  #52b788;
+      --green-pale:   #d8f3dc;
+      --cream:        #f8f7f2;
+      --ink:          #1c1c1c;
+      --ink-muted:    #555f4e;
+      --rule:         #d0ddd0;
+      --white:        #ffffff;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--green-deep);
+      padding: 2.5rem 2rem 2rem;
+      border-bottom: 3px solid var(--green-light);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 0.5rem;
+    }
+
+    header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    header p {
+      color: #a8c5b0;
+      font-size: 0.95rem;
+      font-weight: 300;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    /* ── CONTROLS ── */
+    .controls {
+      max-width: 1200px;
+      margin: 2rem auto 1rem;
+      padding: 0 2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--ink-muted);
+      pointer-events: none;
+    }
+
+    #search {
+      width: 100%;
+      padding: 0.7rem 1rem 0.7rem 2.6rem;
+      border: 1.5px solid var(--rule);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      background: var(--white);
+      color: var(--ink);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    #search:focus { border-color: var(--green-mid); }
+    #search::placeholder { color: #9aab9a; }
+
+    .filter-select {
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--rule);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      background: var(--white);
+      color: var(--ink);
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .filter-select:focus { border-color: var(--green-mid); }
+
+    .record-count {
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      white-space: nowrap;
+    }
+
+    /* ── TABLE WRAPPER ── */
+    .table-wrap {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      padding: 0 2rem;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(26,58,42,0.08);
+    }
+
+    /* ── THEAD ── */
+    thead tr {
+      background: var(--green-deep);
+    }
+
+    th {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #a8c5b0;
+      white-space: nowrap;
+      user-select: none;
+      cursor: pointer;
+      transition: color 0.15s;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    th:last-child { border-right: none; }
+
+    th:hover { color: var(--white); }
+
+    th .sort-icon {
+      display: inline-block;
+      margin-left: 5px;
+      opacity: 0.4;
+      font-size: 0.65rem;
+      vertical-align: middle;
+    }
+
+    th.sort-asc .sort-icon::after  { content: ' ▲'; opacity: 1; }
+    th.sort-desc .sort-icon::after { content: ' ▼'; opacity: 1; }
+    th:not(.sort-asc):not(.sort-desc) .sort-icon::after { content: ' ⇅'; }
+
+    /* ── TBODY ── */
+    tbody tr {
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.12s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--green-pale); }
+
+    td {
+      padding: 0.85rem 1rem;
+      vertical-align: middle;
+      color: var(--ink);
+    }
+
+    .company-name {
+      font-weight: 600;
+      color: var(--green-deep);
+      white-space: nowrap;
+    }
+
+    .ticker {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--green-mid);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .report-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--green-mid);
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 0.82rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .report-link:hover {
+      color: var(--green-deep);
+      border-bottom-color: var(--green-mid);
+    }
+
+    .status-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+    }
+
+    .status-active       { background: #d8f3dc; color: #1a7a3a; }
+    .status-broken       { background: #ffe5e5; color: #b02020; }
+    .status-needs-review { background: #fff4d6; color: #8a6000; }
+
+    .sector-tag {
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      white-space: nowrap;
+    }
+
+    .year-chip {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+    }
+
+    /* ── LOADING / EMPTY ── */
+    .state-row td {
+      text-align: center;
+      padding: 3rem;
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--rule);
+      border-top-color: var(--green-mid);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--rule);
+    }
+
+    footer a { color: var(--green-mid); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .controls { flex-direction: column; align-items: stretch; }
+      th, td { padding: 0.7rem 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="eyebrow">Orgel.us · ESG Intelligence</div>
+    <h1>Sustainability Report Index</h1>
+    <p>A curated, regularly updated index of corporate sustainability, ESG, and climate disclosure reports across the S&amp;P 500.</p>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input id="search" type="text" placeholder="Search company, ticker, sector…" autocomplete="off"/>
+  </div>
+
+  <select id="sector-filter" class="filter-select">
+    <option value="">All Sectors</option>
+  </select>
+
+  <select id="status-filter" class="filter-select">
+    <option value="">All Statuses</option>
+    <option value="Active">Active</option>
+    <option value="Broken">Broken</option>
+    <option value="Needs Review">Needs Review</option>
+  </select>
+
+  <span class="record-count" id="record-count">Loading…</span>
+</div>
+
+<div class="table-wrap">
+  <table id="main-table">
+    <thead>
+      <tr>
+        <th data-col="Company Name">Company<span class="sort-icon"></span></th>
+        <th data-col="Ticker">Ticker<span class="sort-icon"></span></th>
+        <th data-col="Sector / Industry">Sector<span class="sort-icon"></span></th>
+        <th data-col="Report Year">Year<span class="sort-icon"></span></th>
+        <th data-col="Report Title">Report Title<span class="sort-icon"></span></th>
+        <th data-col="Status">Status<span class="sort-icon"></span></th>
+        <th>Report Link</th>
+        <th data-col="Notes">Notes<span class="sort-icon"></span></th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+      <tr class="state-row">
+        <td colspan="8"><span class="spinner"></span> Loading reports…</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  Data sourced directly from company sustainability hubs. Updated weekly. &nbsp;·&nbsp;
+  <a href="https://orgel.us">orgel.us</a>
+</footer>
+
+<script>
+  // ── CONFIG — replace these two values ──────────────────────────────────────
+  const AIRTABLE_TOKEN   = 'patEks968pKGdwBzP';
+  const AIRTABLE_BASE_ID = 'appygF2Vp13bTK8Dm/tblKUmbv4Wosf07Qk/viwvVE4h4vG3rYImU?blocks=hide';
+  const TABLE_NAME       = 'Table 1'; // change if you renamed your Airtable table
+  // ──────────────────────────────────────────────────────────────────────────
+
+  let allRecords = [];
+  let sortCol    = 'Company Name';
+  let sortDir    = 'asc';
+
+  // ── FETCH ALL RECORDS (handles Airtable pagination) ──────────────────────
+  async function fetchAll() {
+    let records = [];
+    let offset  = null;
+    const base  = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(TABLE_NAME)}`;
+
+    do {
+      const url = new URL(base);
+      url.searchParams.set('pageSize', '100');
+      if (offset) url.searchParams.set('offset', offset);
+
+      const res  = await fetch(url, { headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` } });
+      const data = await res.json();
+
+      if (data.error) throw new Error(data.error.message);
+      records = records.concat(data.records);
+      offset  = data.offset || null;
+    } while (offset);
+
+    return records;
+  }
+
+  // ── POPULATE SECTOR FILTER ────────────────────────────────────────────────
+  function buildSectorFilter(records) {
+    const sectors = [...new Set(records.map(r => r.fields['Sector / Industry']).filter(Boolean))].sort();
+    const sel = document.getElementById('sector-filter');
+    sectors.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s;
+      opt.textContent = s;
+      sel.appendChild(opt);
+    });
+  }
+
+  // ── RENDER TABLE ──────────────────────────────────────────────────────────
+  function renderTable(records) {
+    const tbody = document.getElementById('table-body');
+    document.getElementById('record-count').textContent = `${records.length} report${records.length !== 1 ? 's' : ''}`;
+
+    if (!records.length) {
+      tbody.innerHTML = `<tr class="state-row"><td colspan="8">No reports match your search.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = records.map(r => {
+      const f      = r.fields;
+      const status = (f['Status'] || 'Active').trim();
+      const slug   = status.toLowerCase().replace(/\s+/g, '-');
+
+      return `
+        <tr>
+          <td><span class="company-name">${esc(f['Company Name'] || '')}</span></td>
+          <td><span class="ticker">${esc(f['Ticker'] || '')}</span></td>
+          <td><span class="sector-tag">${esc(f['Sector / Industry'] || '')}</span></td>
+          <td><span class="year-chip">${esc(String(f['Report Year'] || ''))}</span></td>
+          <td>${esc(f['Report Title'] || '')}</td>
+          <td><span class="status-badge status-${slug}">${esc(status)}</span></td>
+          <td>
+            ${f['Report URL']
+              ? `<a class="report-link" href="${esc(f['Report URL'])}" target="_blank" rel="noopener">
+                   <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                     <polyline points="14 2 14 8 20 8"/></svg>
+                   View PDF
+                 </a>`
+              : '<span style="color:#aaa;font-size:0.8rem">—</span>'}
+          </td>
+          <td style="font-size:0.8rem;color:var(--ink-muted);max-width:200px">${esc(f['Notes'] || '')}</td>
+        </tr>`;
+    }).join('');
+  }
+
+  // ── FILTER + SORT ─────────────────────────────────────────────────────────
+  function applyFilters() {
+    const query  = document.getElementById('search').value.toLowerCase();
+    const sector = document.getElementById('sector-filter').value;
+    const status = document.getElementById('status-filter').value;
+
+    let filtered = allRecords.filter(r => {
+      const f = r.fields;
+      const haystack = [
+        f['Company Name'], f['Ticker'], f['Sector / Industry'],
+        f['Report Title'], f['Notes'], f['Status']
+      ].join(' ').toLowerCase();
+
+      const matchQuery  = !query  || haystack.includes(query);
+      const matchSector = !sector || f['Sector / Industry'] === sector;
+      const matchStatus = !status || (f['Status'] || 'Active') === status;
+      return matchQuery && matchSector && matchStatus;
+    });
+
+    // sort
+    filtered.sort((a, b) => {
+      let av = (a.fields[sortCol] || '');
+      let bv = (b.fields[sortCol] || '');
+      if (typeof av === 'number' && typeof bv === 'number') {
+        return sortDir === 'asc' ? av - bv : bv - av;
+      }
+      av = String(av).toLowerCase();
+      bv = String(bv).toLowerCase();
+      return sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+    });
+
+    renderTable(filtered);
+  }
+
+  // ── SORT HEADERS ──────────────────────────────────────────────────────────
+  document.querySelectorAll('th[data-col]').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.col;
+      if (sortCol === col) {
+        sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        sortCol = col;
+        sortDir = 'asc';
+      }
+      document.querySelectorAll('th').forEach(t => t.classList.remove('sort-asc', 'sort-desc'));
+      th.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');
+      applyFilters();
+    });
+  });
+
+  // ── LIVE SEARCH + FILTERS ─────────────────────────────────────────────────
+  document.getElementById('search').addEventListener('input', applyFilters);
+  document.getElementById('sector-filter').addEventListener('change', applyFilters);
+  document.getElementById('status-filter').addEventListener('change', applyFilters);
+
+  // ── ESCAPE HTML ───────────────────────────────────────────────────────────
+  function esc(str) {
+    return String(str)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // ── INIT ──────────────────────────────────────────────────────────────────
+  (async () => {
+    try {
+      const raw = await fetchAll();
+      allRecords = raw;
+      buildSectorFilter(raw);
+
+      // default sort by company name asc
+      const firstTh = document.querySelector('th[data-col="Company Name"]');
+      if (firstTh) firstTh.classList.add('sort-asc');
+
+      applyFilters();
+    } catch (err) {
+      document.getElementById('table-body').innerHTML =
+        `<tr class="state-row"><td colspan="8">⚠️ Could not load data. Check your Airtable token and Base ID.<br><small>${err.message}</small></td></tr>`;
+      document.getElementById('record-count').textContent = 'Error';
+    }
+  })();
+</script>
+</body>
+</html>
