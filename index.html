@@ -262,20 +262,20 @@
       color: var(--ink);
     }
 
-    /* ── STATE ROWS ── */
+    /* ── LOADING / EMPTY ── */
     .state-row td {
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 3rem;
       color: var(--ink-muted);
       font-size: 0.9rem;
     }
 
     .spinner {
       display: inline-block;
-      width: 14px;
-      height: 14px;
+      width: 20px;
+      height: 20px;
       border: 2px solid var(--rule);
-      border-top-color: var(--green-mid);
+      border-top-color: #C4202C;
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
       margin-right: 0.5rem;
@@ -286,9 +286,8 @@
 
     /* ── FOOTER ── */
     footer {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.5rem 2rem 2.5rem;
+      text-align: center;
+      padding: 2rem;
       font-size: 0.78rem;
       color: var(--ink-muted);
       border-top: 1px solid var(--rule);
@@ -375,8 +374,9 @@
   // Some rows have no real Report URL or Landing Page — Airtable stores that as
   // either an empty cell or the literal placeholder text "None Published".
   // Treat both the same way: if Report URL is unusable, fall back to Landing
-  // Page; if both are unusable, this company has nothing to link to and is
-  // excluded from the site entirely (see the filter in the init step below).
+  // Page; if both are unusable, the company still appears in the table (see
+  // renderTable below) but with no "View PDF" / "View Page" link — just a
+  // dash — instead of being hidden from the site.
   function isUnusableUrl(value) {
     if (!value) return true;
     const v = String(value).trim().toLowerCase();
@@ -388,6 +388,8 @@
     const landingUrl = f['Landing Page'];
     if (!isUnusableUrl(reportUrl))  return { url: String(reportUrl).trim(),  label: 'View PDF'  };
     if (!isUnusableUrl(landingUrl)) return { url: String(landingUrl).trim(), label: 'View Page' };
+    // Both fields are "None Published" (or blank) — no link exists.
+    // renderTable shows a dash for this row instead of a link.
     return null;
   }
 
@@ -530,7 +532,7 @@
   (async () => {
     try {
       const raw = await fetchAll();
-      allRecords = raw.filter(r => resolveReportLink(r.fields) !== null);
+      allRecords = raw;
       buildSectorFilter(allRecords);
 
       // default sort by company name asc
