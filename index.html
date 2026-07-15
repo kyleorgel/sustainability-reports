@@ -262,20 +262,20 @@
       color: var(--ink);
     }
 
-    /* ── LOADING / EMPTY ── */
+    /* ── STATE ROWS ── */
     .state-row td {
       text-align: center;
-      padding: 3rem;
+      padding: 3rem 1rem;
       color: var(--ink-muted);
       font-size: 0.9rem;
     }
 
     .spinner {
       display: inline-block;
-      width: 20px;
-      height: 20px;
+      width: 14px;
+      height: 14px;
       border: 2px solid var(--rule);
-      border-top-color: #C4202C;
+      border-top-color: var(--green-mid);
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
       margin-right: 0.5rem;
@@ -286,8 +286,9 @@
 
     /* ── FOOTER ── */
     footer {
-      text-align: center;
-      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2.5rem;
       font-size: 0.78rem;
       color: var(--ink-muted);
       border-top: 1px solid var(--rule);
