@@ -257,6 +257,11 @@
       color: var(--ink-muted);
     }
 
+    .report-name {
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+
     /* ── LOADING / EMPTY ── */
     .state-row td {
       text-align: center;
@@ -335,12 +340,10 @@
         <th data-col="Company Name">Company<span class="sort-icon"></span></th>
         <th data-col="Ticker">Ticker<span class="sort-icon"></span></th>
         <th data-col="Sector / Industry">Sector<span class="sort-icon"></span></th>
-        <th data-col="Report Year">Report Year<span class="sort-icon"></span></th>
         <th data-col="Report Name">Report Name<span class="sort-icon"></span></th>
-        <th data-col="Sector / Industry">Sector<span class="sort-icon"></span></th>
+        <th data-col="Report Year">Report Year<span class="sort-icon"></span></th>
         <th data-col="Status">Status<span class="sort-icon"></span></th>
         <th>Report Link</th>
-
       </tr>
     </thead>
     <tbody id="table-body">
@@ -449,7 +452,7 @@
       const f = r.fields;
       const haystack = [
         f['Company Name'], f['Ticker'], f['Sector / Industry'],
-        f['Report Title'], f['Notes'], f['Status']
+        f['Report Name'], f['Notes'], f['Status']
       ].join(' ').toLowerCase();
 
       const matchQuery  = !query  || haystack.includes(query);
