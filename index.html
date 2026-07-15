@@ -242,8 +242,7 @@
     }
 
     .status-active       { background: #e8f5e9; color: #2e7d32; }
-    .status-broken       { background: #ffe5e5; color: #b02020; }
-    .status-needs-review { background: #fff4d6; color: #8a6000; }
+    .status-none         { background: #ffe5e5; color: #b02020; }
 
     .sector-tag {
       font-size: 0.75rem;
@@ -326,8 +325,7 @@
   <select id="status-filter" class="filter-select">
     <option value="">All Statuses</option>
     <option value="Active">Active</option>
-    <option value="Broken">Broken</option>
-    <option value="Needs Review">Needs Review</option>
+    <option value="None">None</option>
   </select>
 
   <span class="record-count" id="record-count">Loading…</span>
@@ -439,9 +437,9 @@
 
     tbody.innerHTML = records.map(r => {
       const f      = r.fields;
-      const status = (f['Status'] || 'Active').trim();
-      const slug   = status.toLowerCase().replace(/\s+/g, '-');
       const link   = resolveReportLink(f);
+      const status = link ? 'Active' : 'None';
+      const slug   = status.toLowerCase();
 
       return `
         <tr>
@@ -474,21 +472,28 @@
 
     let filtered = allRecords.filter(r => {
       const f = r.fields;
+      const linkStatus = resolveReportLink(f) ? 'Active' : 'None';
       const haystack = [
         f['Company Name'], f['Ticker'], f['Sector / Industry'],
-        f['Report Name'], f['Notes'], f['Status']
+        f['Report Name'], f['Notes'], linkStatus
       ].join(' ').toLowerCase();
 
       const matchQuery  = !query  || haystack.includes(query);
       const matchSector = !sector || f['Sector / Industry'] === sector;
-      const matchStatus = !status || (f['Status'] || 'Active') === status;
+      const matchStatus = !status || linkStatus === status;
       return matchQuery && matchSector && matchStatus;
     });
 
     // sort
     filtered.sort((a, b) => {
-      let av = (a.fields[sortCol] || '');
-      let bv = (b.fields[sortCol] || '');
+      let av, bv;
+      if (sortCol === 'Status') {
+        av = resolveReportLink(a.fields) ? 'Active' : 'None';
+        bv = resolveReportLink(b.fields) ? 'Active' : 'None';
+      } else {
+        av = (a.fields[sortCol] || '');
+        bv = (b.fields[sortCol] || '');
+      }
       if (typeof av === 'number' && typeof bv === 'number') {
         return sortDir === 'asc' ? av - bv : bv - av;
       }
