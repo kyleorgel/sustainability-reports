@@ -370,6 +370,26 @@
   let sortCol    = 'Company Name';
   let sortDir    = 'asc';
 
+  // ── REPORT LINK RESOLUTION ─────────────────────────────────────────────────
+  // Some rows have no real Report URL or Landing Page — Airtable stores that as
+  // either an empty cell or the literal placeholder text "None Published".
+  // Treat both the same way: if Report URL is unusable, fall back to Landing
+  // Page; if both are unusable, this company has nothing to link to and is
+  // excluded from the site entirely (see the filter in the init step below).
+  function isUnusableUrl(value) {
+    if (!value) return true;
+    const v = String(value).trim().toLowerCase();
+    return v === '' || v === 'none published';
+  }
+
+  function resolveReportLink(f) {
+    const reportUrl  = f['Report URL'];
+    const landingUrl = f['Landing Page'];
+    if (!isUnusableUrl(reportUrl))  return { url: String(reportUrl).trim(),  label: 'View PDF'  };
+    if (!isUnusableUrl(landingUrl)) return { url: String(landingUrl).trim(), label: 'View Page' };
+    return null;
+  }
+
   // ── FETCH ALL RECORDS (handles Airtable pagination) ──────────────────────
   async function fetchAll() {
     let records = [];
@@ -418,6 +438,7 @@
       const f      = r.fields;
       const status = (f['Status'] || 'Active').trim();
       const slug   = status.toLowerCase().replace(/\s+/g, '-');
+      const link   = resolveReportLink(f);
 
       return `
         <tr>
@@ -428,12 +449,12 @@
           <td><span class="year-chip">${esc(String(f['Report Year'] || ''))}</span></td>
           <td><span class="status-badge status-${slug}">${esc(status)}</span></td>
           <td>
-            ${f['Report URL']
-              ? `<a class="report-link" href="${esc(f['Report URL'])}" target="_blank" rel="noopener">
+            ${link
+              ? `<a class="report-link" href="${esc(link.url)}" target="_blank" rel="noopener">
                    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                      <polyline points="14 2 14 8 20 8"/></svg>
-                   View PDF
+                   ${link.label}
                  </a>`
               : '<span style="color:#aaa;font-size:0.8rem">—</span>'}
           </td>
@@ -508,8 +529,8 @@
   (async () => {
     try {
       const raw = await fetchAll();
-      allRecords = raw;
-      buildSectorFilter(raw);
+      allRecords = raw.filter(r => resolveReportLink(r.fields) !== null);
+      buildSectorFilter(allRecords);
 
       // default sort by company name asc
       const firstTh = document.querySelector('th[data-col="Company Name"]');
