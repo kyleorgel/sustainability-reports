@@ -358,7 +358,8 @@
 </footer>
 
 <script>
-  // ── CONFIG — replace these two values ──────────────────────────────────────
+  // Data is published to data.json by n8n once the review queue is clear.
+  // No API credentials belong in this file - it is served publicly.
   const AIRTABLE_TOKEN   = 'patEks968pKGdwBzP.11a1f13141565e47fe9f0167fa3e9f78ad3c6d7e4332f9f4c5137977838a1f05';
   const AIRTABLE_BASE_ID = 'appygF2Vp13bTK8Dm';
   const TABLE_NAME       = 'Sustainability Reports'; // change if you renamed your Airtable table
@@ -393,24 +394,9 @@
 
   // ── FETCH ALL RECORDS (handles Airtable pagination) ──────────────────────
   async function fetchAll() {
-    let records = [];
-    let offset  = null;
-    const base  = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(TABLE_NAME)}`;
-
-    do {
-      const url = new URL(base);
-      url.searchParams.set('pageSize', '100');
-      if (offset) url.searchParams.set('offset', offset);
-
-      const res  = await fetch(url, { headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` } });
-      const data = await res.json();
-
-      if (data.error) throw new Error(data.error.message);
-      records = records.concat(data.records);
-      offset  = data.offset || null;
-    } while (offset);
-
-    return records;
+    const res = await fetch('data.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Could not load data.json');
+    return await res.json();
   }
 
   // ── POPULATE SECTOR FILTER ────────────────────────────────────────────────
