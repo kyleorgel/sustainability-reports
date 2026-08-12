@@ -172,11 +172,11 @@
    "Company Name": "Alexandria Real Estate Equities",
    "Ticker": "ARE",
    "Sector / Industry": "Real Estate",
-   "Report Name": "2024 Corporate Responsibility Report",
-   "Report Year": "2024",
-   "Report URL": "https://www.are.com/cr/ARECR2024.pdf",
+   "Report Name": "2025 Corporate Responsibility Report",
+   "Report Year": "2025",
+   "Report URL": "https://www.are.com/cr/ARECR2025.pdf",
    "Landing Page URL": "https://www.are.com/corporate-responsibility.html",
-   "Status": "Needs Manual Check"
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -1124,7 +1124,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.cencora.com/-/media/assets/corporate/global/corporate-responsibility/fy25-annual-corporate-responsibility-report.pdf",
    "Landing Page URL": "https://www.cencora.com/corporate-responsibility/reporting",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -1528,11 +1528,11 @@
    "Company Name": "Copart",
    "Ticker": "CPRT",
    "Sector / Industry": "Industrials",
-   "Report Name": "ESG Report 2023",
-   "Report Year": "2023",
-   "Report URL": "https://www.copart.com/content/copart-esg-report-2023.pdf",
-   "Landing Page URL": "https://www.copart.com/content/us/en/landing-page/community-environmental-responsibility",
-   "Status": "Needs Manual Check"
+   "Report Name": "ESG Report 2025",
+   "Report Year": "2025",
+   "Report URL": "https://www.copart.com/content/copart-esg-report-2025.pdf",
+   "Landing Page URL": "https://www.copart.com/content/us/en/investor-relations/investor-relations",
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -1696,11 +1696,11 @@
    "Company Name": "Darden Restaurants",
    "Ticker": "DRI",
    "Sector / Industry": "Consumer Discretionary",
-   "Report Name": "Impact Report 2025",
-   "Report Year": "2025",
-   "Report URL": "https://www.darden.com/sites/default/files/2025-08/DRI%202025%20Impact%20Report.pdf",
+   "Report Name": "Impact Report 2026",
+   "Report Year": "2026",
+   "Report URL": "https://darden.com/sites/default/files/2026-08/DRI%202026%20Impact%20Report.pdf",
    "Landing Page URL": "https://www.darden.com/our-impact/communities/sustainability",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -2012,7 +2012,7 @@
    "Report Year": "2025",
    "Report URL": "https://assets-us-01.kc-usercontent.com/6239a81e-8f0f-0040-a1df-b4932a10f6ae/26952ac8-e856-4225-8bc7-fc3c6015bd90/Edwards%202025%20Corporate%20Impact%20Report-FINAL%204.7.26.pdf",
    "Landing Page URL": "https://www.edwards.com/impact-report",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -3236,7 +3236,7 @@
    "Report Year": "2025",
    "Report URL": "https://s205.q4cdn.com/384284279/files/doc_downloads/2026/05/FY25-Sustainability-Report_Combined_FINAL.pdf",
    "Landing Page URL": "https://invest.jacobs.com/governance/sustainability/default.aspx",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -3376,9 +3376,9 @@
    "Company Name": "KLA Corporation",
    "Ticker": "KLAC",
    "Sector / Industry": "Information Technology",
-   "Report Name": "Global Impact Report 2024",
-   "Report Year": "2024",
-   "Report URL": "https://www.kla.com/wp-content/uploads/kla-global-impact-report-2024.pdf",
+   "Report Name": "Global Impact Report 2025",
+   "Report Year": "2025",
+   "Report URL": "https://kla.com/wp-content/uploads/kla-global-impact-report-2025.pdf",
    "Landing Page URL": "https://www.kla.com/company/environmental-social-governance",
    "Status": "Candidate Pending Review"
   }
@@ -3548,7 +3548,7 @@
    "Report Year": "2025",
    "Report URL": "https://loews-esg.dcatalog.com/r/Loews-Hotels-ESG?page=1",
    "Landing Page URL": "https://www.loewshotels.com/corporate-responsibility",
-   "Status": ""
+   "Status": "Landing page broken"
   }
  },
  {
@@ -5311,8 +5311,8 @@
    "Report Name": "Environment Performance Metrics",
    "Report Year": "2024",
    "Report URL": "Sustainability Data on the Landing Page",
-   "Landing Page URL": "https://www.texaspacific.com/esg/performance-data-indices",
-   "Status": ""
+   "Landing Page URL": "https://www.texaspacific.com/sustainability-reports",
+   "Status": "Landing page broken"
   }
  },
  {
@@ -5320,9 +5320,9 @@
    "Company Name": "Textron",
    "Ticker": "TXT",
    "Sector / Industry": "Industrials",
-   "Report Name": "2024 Corporate Responsibility Report",
-   "Report Year": "2024",
-   "Report URL": "https://www.textron.com/assets/CR/2024/Textron_2024_Corporate_Responsibility_Report.pdf",
+   "Report Name": "2025 Corporate Responsibility Report",
+   "Report Year": "2025",
+   "Report URL": "https://textron.com/assets/CR/2025/Textron_2025_Corporate_Responsibility_Report.pdf",
    "Landing Page URL": "https://www.textron.com/CorpResponsibility/corporate-responsibility-report",
    "Status": "Candidate Pending Review"
   }
@@ -5336,7 +5336,7 @@
    "Report Year": "2025",
    "Report URL": "https://corporate.thermofisher.com/csr/csr-report/data-summary",
    "Landing Page URL": "https://corporate.thermofisher.com/csr/csr-report/csr-reporting-hub",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -5440,11 +5440,11 @@
    "Company Name": "Truist Financial",
    "Ticker": "TFC",
    "Sector / Industry": "Financials",
-   "Report Name": "2024 Corporate Responsibility and Sustainability",
-   "Report Year": "2024",
-   "Report URL": "https://filecache.investorroom.com/mr5ir_truist/1037/Truist2024CorporateResponsibilityAndSustainability.pdf",
+   "Report Name": "2025 Corporate Responsibility and Sustainability",
+   "Report Year": "2025",
+   "Report URL": "https://ir.truist.com/image/Truist2025CorporateResponsibilityReport.pdf",
    "Landing Page URL": "https://ir.truist.com/corporate-responsibility-and-sustainability-at-truist",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -5872,11 +5872,11 @@
    "Company Name": "WEC Energy Group",
    "Ticker": "WEC",
    "Sector / Industry": "Utilities",
-   "Report Name": "Corporate Responsibility Report 2024",
-   "Report Year": "2024",
-   "Report URL": "https://www.wecenergygroup.com/csr/cr2024/wec-corporate-responsibility-report-2024.pdf",
+   "Report Name": "Corporate Responsibility Report 2025",
+   "Report Year": "2025",
+   "Report URL": "https://wecenergygroup.com/csr/cr2025/wec-corporate-responsibility-report-2025.pdf",
    "Landing Page URL": "https://www.wecenergygroup.com/csr/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -5936,7 +5936,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.weyerhaeuser.com/application/files/2917/8170/8693/2025_Weyerhaeuser_Sustainability_Highlights_Report_FINAL.pdf",
    "Landing Page URL": "https://www.weyerhaeuser.com/sustainability/",
-   "Status": ""
+   "Status": "Landing page broken"
   }
  },
  {
