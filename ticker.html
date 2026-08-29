@@ -54,6 +54,9 @@ white-space:nowrap;will-change:transform;
 animation:scroll var(--dur,40s) linear infinite;
 }
 #viewport:hover #track{animation-play-state:paused;}
+#track.static{position:static;width:100%;animation:none;justify-content:space-evenly;}
+#track.static .sep{display:none;}
+.item .asof{color:#a8a8a8;font-size:9.5px;font-weight:400;letter-spacing:.02em;}
 @keyframes scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 @media (prefers-reduced-motion:reduce){#track{animation:none;}}
 .item{display:inline-flex;align-items:baseline;gap:7px;padding:0 20px;font-size:12.5px;line-height:1;}
@@ -172,6 +175,7 @@ u.className = 'unit';
 u.textContent = q.unit;
 el.appendChild(u);
 }
+if (q.manual && q.asOf) { var dt = document.createElement('span'); dt.className = 'asof'; dt.textContent = q.asOf; el.appendChild(dt); }
 if (q.changePct !== null && q.changePct !== undefined && !isNaN(q.changePct)) {
 var c = document.createElement('span');
 var up = q.changePct >= 0;
@@ -201,12 +205,19 @@ half.style.display = 'inline-flex';
 half.style.alignItems = 'center';
 fill(half);
 track.appendChild(half);
-track.appendChild(half.cloneNode(true));
-// pace the scroll by content width so short and long lists feel the same
 requestAnimationFrame(function(){
+var vp = document.getElementById('viewport');
+var vw = vp ? vp.getBoundingClientRect().width : 0;
 var w = half.getBoundingClientRect().width;
-var secs = Math.max(18, Math.round(w / 42));
-track.style.setProperty('--dur', secs + 's');
+if (w > 0 && w <= vw - 8) { track.className = 'static'; return; }
+var reps = Math.max(1, Math.ceil(vw / Math.max(w, 1)));
+for (var i = 1; i < reps; i++) track.appendChild(half.cloneNode(true));
+var clone = document.createElement('span');
+clone.style.display = 'inline-flex';
+clone.style.alignItems = 'center';
+for (var j = 0; j < reps; j++) clone.appendChild(half.cloneNode(true));
+track.appendChild(clone);
+track.style.setProperty('--dur', Math.max(20, Math.round((w * reps) / 42)) + 's');
 });
 }
 fetch('quotes.json?cb=' + Date.now(), {cache:'no-store'})
