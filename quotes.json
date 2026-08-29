@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-08-29T23:36:18.115Z",
+  "tradingview": [
+    {
+      "proName": "NASDAQ:AMZN",
+      "title": "Amazon"
+    },
+    {
+      "proName": "NYSE:NEE",
+      "title": "NextEra Energy"
+    },
+    {
+      "proName": "OTC:SBGSY",
+      "title": "Schneider Electric"
+    },
+    {
+      "proName": "NASDAQ:FSLR",
+      "title": "First Solar"
+    },
+    {
+      "proName": "AMEX:KRBN",
+      "title": "Global Carbon ETF"
+    },
+    {
+      "proName": "AMEX:KCCA",
+      "title": "California Carbon ETF"
+    },
+    {
+      "proName": "AMEX:CPER",
+      "title": "Copper ETF"
+    },
+    {
+      "proName": "TVC:GOLD",
+      "title": "Gold"
+    }
+  ],
+  "custom": [
+    {
+      "key": "DCOILWTICO",
+      "label": "WTI Crude (Cushing)",
+      "value": 83.9,
+      "unit": "",
+      "prefix": "$",
+      "asOf": "2026-08-25",
+      "change": -2.44,
+      "changePct": -2.83,
+      "source": "EIA via FRED",
+      "manual": false
+    },
+    {
+      "key": "manual:RGGI Allowance",
+      "label": "RGGI Allowance",
+      "value": 35,
+      "unit": "$/short ton",
+      "prefix": "$",
+      "asOf": "2026-06-03",
+      "change": null,
+      "changePct": null,
+      "source": "RGGI Auction 72",
+      "manual": true
+    },
+    {
+      "key": "manual:California CCA",
+      "label": "California CCA",
+      "value": 32.48,
+      "unit": "$/tonne",
+      "prefix": "$",
+      "asOf": "2026-08-26",
+      "change": null,
+      "changePct": null,
+      "source": "CARB Aug 2026 auction",
+      "manual": true
+    }
+  ],
+  "errors": [
+    "Manual value missing for SREC (NJ SREC-II) - hidden from the ticker until filled in"
+  ]
+}
