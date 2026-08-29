@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORGEL Market Ticker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#ffffff;
+--fg:#1a1a1a;
+--muted:#767676;
+--line:#e6e6e6;
+--accent:#a93226;
+--up:#1e7a4b;
+--down:#c0392b;
+--row2-h:34px;
+--tape-h:46px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);}
+body{
+font-family:'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
+color:var(--fg);
+-webkit-font-smoothing:antialiased;
+overflow:hidden;
+}
+#band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg);}
+/* ---------- row 1: TradingView tape ---------- */
+#tape{height:var(--tape-h);overflow:hidden;position:relative;}
+#tape .tradingview-widget-copyright{font-size:10px!important;}
+#tape-fallback{
+display:none;height:var(--tape-h);align-items:center;justify-content:center;
+font-size:12px;color:var(--muted);letter-spacing:.02em;
+}
+/* ---------- row 2: custom strip ---------- */
+#strip{
+height:var(--row2-h);display:flex;align-items:stretch;
+border-top:1px solid var(--line);background:var(--bg);
+}
+#chip{
+flex:0 0 auto;display:flex;align-items:center;gap:6px;
+padding:0 14px;border-right:1px solid var(--line);
+font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+color:var(--accent);white-space:nowrap;background:var(--bg);
+}
+#chip .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:0 0 auto;}
+#viewport{position:relative;flex:1 1 auto;overflow:hidden;}
+#track{
+position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;
+white-space:nowrap;will-change:transform;
+animation:scroll var(--dur,40s) linear infinite;
+}
+#viewport:hover #track{animation-play-state:paused;}
+@keyframes scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@media (prefers-reduced-motion:reduce){#track{animation:none;}}
+.item{display:inline-flex;align-items:baseline;gap:7px;padding:0 20px;font-size:12.5px;line-height:1;}
+.item .lbl{color:var(--muted);font-weight:500;letter-spacing:.01em;}
+.item .val{color:var(--fg);font-weight:600;font-variant-numeric:tabular-nums;}
+.item .unit{color:var(--muted);font-size:10px;font-weight:400;}
+.item .chg{font-size:11px;font-weight:500;font-variant-numeric:tabular-nums;}
+.item .chg.up{color:var(--up)}
+.item .chg.down{color:var(--down)}
+.sep{color:var(--line);padding:0 2px;font-size:12px;user-select:none;}
+#credit{
+flex:0 0 auto;display:flex;align-items:center;padding:0 12px;
+border-left:1px solid var(--line);
+font-size:8.5px;color:#9a9a9a;letter-spacing:.05em;white-space:nowrap;
+}
+#credit a{color:#9a9a9a;text-decoration:none;}
+#credit a:hover{text-decoration:underline;}
+@media (max-width:640px){
+#chip{padding:0 10px;font-size:8.5px;letter-spacing:.1em;}
+#credit{display:none;}
+.item{font-size:11.5px;padding:0 14px;}
+}
+</style>
+</head>
+<body>
+<div id="band">
+<div id="tape">
+<div class="tradingview-widget-container" id="tvhost">
+<div class="tradingview-widget-container__widget"></div>
+</div>
+</div>
+<div id="tape-fallback">Market data loading…</div>
+<div id="strip">
+<div id="chip"><span class="dot"></span><span>Carbon &amp; Energy</span></div>
+<div id="viewport"><div id="track"></div></div>
+<div id="credit"><span>EIA&nbsp;via&nbsp;FRED&nbsp;·&nbsp;RGGI&nbsp;·&nbsp;CARB</span></div>
+</div>
+</div>
+<script>
+(function(){
+"use strict";
+var qs = new URLSearchParams(location.search);
+// ---- optional theming via query string -------------------------------
+var root = document.documentElement;
+if (qs.get('theme') === 'dark') {
+root.style.setProperty('--bg','#111315');
+root.style.setProperty('--fg','#f2f2f2');
+root.style.setProperty('--muted','#9aa0a6');
+root.style.setProperty('--line','#2a2e33');
+root.style.setProperty('--accent','#e06a5c');
+root.style.setProperty('--up','#4ec98a');
+root.style.setProperty('--down','#ff7a6b');
+}
+['bg','fg','muted','line','accent'].forEach(function(k){
+var v = qs.get(k);
+if (v && /^[#0-9a-zA-Z(),.% ]+$/.test(v)) root.style.setProperty('--' + k, v);
+});
+var tvTheme = (qs.get('theme') === 'dark') ? 'dark' : 'light';
+// ---- fallback symbol list if quotes.json is unreachable ---------------
+var FALLBACK_TV = [
+{proName:'NASDAQ:AMZN', title:'Amazon'},
+{proName:'NYSE:NEE',    title:'NextEra Energy'},
+{proName:'OTC:SBGSY',   title:'Schneider Electric'},
+{proName:'NASDAQ:FSLR', title:'First Solar'},
+{proName:'AMEX:KRBN',   title:'Global Carbon ETF'},
+{proName:'AMEX:KCCA',   title:'California Carbon ETF'},
+{proName:'AMEX:CPER',   title:'Copper ETF'},
+{proName:'TVC:GOLD',    title:'Gold'}
+];
+function mountTape(symbols){
+var host = document.getElementById('tvhost');
+if (!host) return;
+var s = document.createElement('script');
+s.type = 'text/javascript';
+s.async = true;
+s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+s.innerHTML = JSON.stringify({
+symbols: symbols,
+showSymbolLogo: true,
+isTransparent: true,
+displayMode: 'adaptive',
+colorTheme: tvTheme,
+locale: 'en'
+});
+host.appendChild(s);
+// if TradingView never paints, show a quiet fallback line
+setTimeout(function(){
+var iframe = host.querySelector('iframe');
+if (!iframe) {
+document.getElementById('tape').style.display = 'none';
+document.getElementById('tape-fallback').style.display = 'flex';
+}
+}, 8000);
+}
+function fmt(n){
+if (n === null || n === undefined || isNaN(n)) return '—';
+var abs = Math.abs(n);
+var d = abs >= 1000 ? 0 : (abs >= 100 ? 2 : 2);
+return n.toLocaleString('en-US',{minimumFractionDigits:d, maximumFractionDigits:d});
+}
+function itemNode(q){
+var el = document.createElement('span');
+el.className = 'item';
+if (q.asOf) el.title = q.label + ' — as of ' + q.asOf + (q.source ? ' · ' + q.source : '');
+var lbl = document.createElement('span');
+lbl.className = 'lbl';
+lbl.textContent = q.label;
+el.appendChild(lbl);
+var val = document.createElement('span');
+val.className = 'val';
+val.textContent = (q.prefix || '') + fmt(q.value);
+el.appendChild(val);
+if (q.unit) {
+var u = document.createElement('span');
+u.className = 'unit';
+u.textContent = q.unit;
+el.appendChild(u);
+}
+if (q.changePct !== null && q.changePct !== undefined && !isNaN(q.changePct)) {
+var c = document.createElement('span');
+var up = q.changePct >= 0;
+c.className = 'chg ' + (up ? 'up' : 'down');
+c.textContent = (up ? '▲' : '▼') + Math.abs(q.changePct).toFixed(2) + '%';
+el.appendChild(c);
+}
+return el;
+}
+function buildStrip(custom){
+var track = document.getElementById('track');
+var strip = document.getElementById('strip');
+if (!custom || !custom.length) { strip.style.display = 'none'; return; }
+function fill(target){
+custom.forEach(function(q, i){
+target.appendChild(itemNode(q));
+if (i < custom.length - 1) {
+var s = document.createElement('span');
+s.className = 'sep';
+s.textContent = '·';
+target.appendChild(s);
+}
+});
+}
+var half = document.createElement('span');
+half.style.display = 'inline-flex';
+half.style.alignItems = 'center';
+fill(half);
+track.appendChild(half);
+track.appendChild(half.cloneNode(true));
+// pace the scroll by content width so short and long lists feel the same
+requestAnimationFrame(function(){
+var w = half.getBoundingClientRect().width;
+var secs = Math.max(18, Math.round(w / 42));
+track.style.setProperty('--dur', secs + 's');
+});
+}
+fetch('quotes.json?cb=' + Date.now(), {cache:'no-store'})
+.then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+.then(function(data){
+var tv = (data.tradingview && data.tradingview.length) ? data.tradingview : FALLBACK_TV;
+mountTape(tv);
+buildStrip(data.custom || []);
+})
+.catch(function(){
+mountTape(FALLBACK_TV);
+document.getElementById('strip').style.display = 'none';
+});
+})();
+</script>
+</body>
+</html>
