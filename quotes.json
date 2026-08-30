@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T23:36:18.115Z",
+  "generatedAt": "2026-08-30T23:31:02.629Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -48,6 +48,18 @@
       "manual": false
     },
     {
+      "key": "DHHNGSP",
+      "label": "Henry Hub Natural Gas",
+      "value": 2.7,
+      "unit": "",
+      "prefix": "$",
+      "asOf": "2026-08-25",
+      "change": -0.13,
+      "changePct": -4.59,
+      "source": "EIA via FRED",
+      "manual": false
+    },
+    {
       "key": "manual:RGGI Allowance",
       "label": "RGGI Allowance",
       "value": 35,
@@ -72,7 +84,5 @@
       "manual": true
     }
   ],
-  "errors": [
-    "Manual value missing for SREC (NJ SREC-II) - hidden from the ticker until filled in"
-  ]
+  "errors": []
 }
