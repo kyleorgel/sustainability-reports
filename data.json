@@ -1192,10 +1192,10 @@
    "Company Name": "Charter Communications",
    "Ticker": "CHTR",
    "Sector / Industry": "Communication Services",
-   "Report Name": "2023 ESG Report",
-   "Report Year": "2023",
-   "Report URL": "https://corporate.charter.com/esg-report.pdf",
-   "Landing Page URL": "https://corporate.charter.com/esg-report",
+   "Report Name": "None Published",
+   "Report Year": "",
+   "Report URL": "None Available",
+   "Landing Page URL": "None Available",
    "Status": "Needs Manual Check"
   }
  },
@@ -2188,8 +2188,8 @@
    "Company Name": "Evergy",
    "Ticker": "EVRG",
    "Sector / Industry": "Utilities",
-   "Report Name": "Sustainability Report 2024",
-   "Report Year": "2024",
+   "Report Name": "Sustainability Report 2025",
+   "Report Year": "2025",
    "Report URL": "https://investors.evergy.com/SustainabilityReport",
    "Landing Page URL": "https://investors.evergy.com/sustainability",
    "Status": "Needs Manual Check"
@@ -2213,9 +2213,9 @@
    "Ticker": "EXC",
    "Sector / Industry": "Utilities",
    "Report Name": "Sustainability Report 2024",
-   "Report Year": "2024",
-   "Report URL": "https://www.exeloncorp.com/content/dam/exelon/sustainability/interactive-csr/Documents/2024/esr-year-2024.pdf",
-   "Landing Page URL": "https://www.exeloncorp.com/sustainability/interactive-sustainability-report?year=2024&page=1",
+   "Report Year": "2025",
+   "Report URL": "https://www.exeloncorp.com/content/dam/exelon/sustainability/interactive-csr/Documents/2025/2025%20Exelon%20Sustainability%20Report.pdf",
+   "Landing Page URL": "https://www.exeloncorp.com/sustainability/interactive-sustainability-report?year=2025&page=1",
    "Status": ""
   }
  },
@@ -2812,9 +2812,9 @@
    "Company Name": "Hewlett Packard Enterprise",
    "Ticker": "HPE",
    "Sector / Industry": "Information Technology",
-   "Report Name": "2024 Living Progress Report",
-   "Report Year": "2024",
-   "Report URL": "https://www.hpe.com/psnow/doc/a00147418enw?jumpid=in_pdfviewer-psnow",
+   "Report Name": "2025 Living Progress Report",
+   "Report Year": "2025",
+   "Report URL": "https://www.hpe.com/psnow/doc/a00159583enw?jumpid=in_pdfviewer-psnow",
    "Landing Page URL": "https://www.hpe.com/us/en/living-progress/report.html",
    "Status": "Needs Manual Check"
   }
@@ -2944,9 +2944,9 @@
    "Company Name": "Huntington Bancshares",
    "Ticker": "HBAN",
    "Sector / Industry": "Financials",
-   "Report Name": "2024 Huntington Corporate Responsibility Report",
-   "Report Year": "2024",
-   "Report URL": "https://d1io3yog0oux5.cloudfront.net/_e5aa1353b90a39705307d6244c81301b/huntington/db/2858/28682/file/2024HuntingtonCorporateResponsibilityReport_FINAL_ADA.pdf",
+   "Report Name": "2025 Huntington Corporate Responsibility Report",
+   "Report Year": "2025",
+   "Report URL": "https://d1io3yog0oux5.cloudfront.net/_ce11a7c853d059b7c1a662adb11b372b/huntington/db/2858/28682/file/Huntington+2025+Corporate+Responsibility+%26+Sustainability+Report.pdf",
    "Landing Page URL": "https://ir.huntington.com/corporate-responsibility",
    "Status": "Report file changed"
   }
@@ -3856,9 +3856,9 @@
    "Company Name": "Moderna",
    "Ticker": "MRNA",
    "Sector / Industry": "Health Care",
-   "Report Name": "2024 Impacting Human Health Report",
-   "Report Year": "2024",
-   "Report URL": "https://static.modernatx.com/pm/6cef78f8-8dad-4fc9-83d5-d2fbb7cff867/93f4ddf4-db0f-4def-af23-11d3ff0339dc/93f4ddf4-db0f-4def-af23-11d3ff0339dc_viewable_rendition__v.pdf",
+   "Report Name": "2025 Impacting Human Health Report",
+   "Report Year": "2025",
+   "Report URL": "https://static.modernatx.com/pm/6cef78f8-8dad-4fc9-83d5-d2fbb7cff867/bbdf1281-483a-4888-b4cf-2b2e8a7d131b/bbdf1281-483a-4888-b4cf-2b2e8a7d131b_viewable_rendition__v.pdf",
    "Landing Page URL": "https://www.modernatx.com/en-US/responsibility/our-commitment",
    "Status": ""
   }
@@ -4696,9 +4696,9 @@
    "Company Name": "Realty Income",
    "Ticker": "O",
    "Sector / Industry": "Real Estate",
-   "Report Name": "2024 Business Impact And Sustainability Report",
-   "Report Year": "2024",
-   "Report URL": "https://www.realtyincome.com/sites/realty-income/files/realty-income/sustainability/sustainability-report/2024-realty-income-business-impact-and-sustainability-report.pdf",
+   "Report Name": "2026 Business Impact and Sustainability Report",
+   "Report Year": "2026",
+   "Report URL": "https://www.realtyincome.com/sites/realty-income/files/realty-income/sustainability/sustainability-report/2025-2026-business-impact-and-sustainability-report-realty-income.pdf",
    "Landing Page URL": "https://realtyincome.com/sustainability/sustainability-reporting",
    "Status": "Candidate Pending Review"
   }
@@ -5476,9 +5476,9 @@
    "Company Name": "Tyson Foods",
    "Ticker": "TSN",
    "Sector / Industry": "Consumer Staples",
-   "Report Name": "Sustainability Report 2022",
-   "Report Year": "2022",
-   "Report URL": "https://illuminem.b-cdn.net/datahub/Sustainability_Reports/670_TysonFoods.pdf",
+   "Report Name": "FY2025 Global Impact Report",
+   "Report Year": "2025",
+   "Report URL": "https://www.tysonfoods.com/sites/default/files/2026-08/Tyson%20Foods%20FY25%20Sustainability%20Report%208.27.26.pdf",
    "Landing Page URL": "https://www.tysonfoods.com/sustainability",
    "Status": "Candidate Pending Review"
   }
@@ -5488,8 +5488,8 @@
    "Company Name": "U.S. Bancorp",
    "Ticker": "USB",
    "Sector / Industry": "Financials",
-   "Report Name": "2024 Corporate Responsibility Report",
-   "Report Year": "2024",
+   "Report Name": "2025 Corporate Responsibility Report",
+   "Report Year": "2025",
    "Report URL": "https://www.usbank.com/content/dam/usbank/en/documents/pdfs/about-us-bank/corporate-responsibility-report.pdf",
    "Landing Page URL": "https://www.usbank.com/about-us-bank/sustainability.html",
    "Status": "Report file changed"
@@ -5908,8 +5908,8 @@
    "Company Name": "Wells Fargo",
    "Ticker": "WFC",
    "Sector / Industry": "Financials",
-   "Report Name": "2024 Operational Sustainability Performance Data",
-   "Report Year": "2024",
+   "Report Name": "2025 Operational Sustainability Performance Data",
+   "Report Year": "2025",
    "Report URL": "https://www.wellsfargo.com/assets/pdf/about/corporate-responsibility/operational-sustainability-data.pdf",
    "Landing Page URL": "https://www.wellsfargo.com/about/responsibility-and-impact/reporting-and-resources/",
    "Status": "Report file changed"
