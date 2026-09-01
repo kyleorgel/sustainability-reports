@@ -88,9 +88,9 @@
    "Company Name": "AES Corporation",
    "Ticker": "AES",
    "Sector / Industry": "Utilities",
-   "Report Name": "2024 Sustainability Report",
-   "Report Year": "2024",
-   "Report URL": "https://www.aes.com/sites/global/files/2026-01/Improving-Lives-Report-2024_2.pdf",
+   "Report Name": "2025 Sustainability Report",
+   "Report Year": "2025",
+   "Report URL": "https://www.aes.com/sites/vault/files/2026-08/2025-Improving-Lives-Report.pdf",
    "Landing Page URL": "https://www.aes.com/sustainability-impact/accountability/sustainability-resources",
    "Status": "Candidate Pending Review"
   }
@@ -209,10 +209,10 @@
    "Ticker": "LNT",
    "Sector / Industry": "Utilities",
    "Report Name": "Climate Report",
-   "Report Year": "2024",
+   "Report Year": "2025",
    "Report URL": "https://www.alliantenergy.com/-/media/alliant/documents/ourenergy/responsibilityreport/corporateresponsibilityreport.pdf?la=en&sc_lang=en&hash=952F8624F7DE900880B799EB9D4D859E",
    "Landing Page URL": "https://www.alliantenergy.com/who-we-are/responsibility-report",
-   "Status": "Needs Manual Check"
+   "Status": "Report file changed"
   }
  },
  {
@@ -812,7 +812,7 @@
    "Report Year": "2023",
    "Report URL": "https://cdn.sanity.io/files/8m3angk4/production/33e2c14a31c6ef2553ab15bd231355ff7beabe23.pdf",
    "Landing Page URL": "https://block.xyz/csr/2023",
-   "Status": ""
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -2216,7 +2216,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.exeloncorp.com/content/dam/exelon/sustainability/interactive-csr/Documents/2025/2025%20Exelon%20Sustainability%20Report.pdf",
    "Landing Page URL": "https://www.exeloncorp.com/sustainability/interactive-sustainability-report?year=2025&page=1",
-   "Status": ""
+   "Status": "Report file changed"
   }
  },
  {
@@ -2492,7 +2492,7 @@
    "Report Year": "2026",
    "Report URL": "https://media.foxcorporation.com/wp-content/uploads/prod/2026/08/25110557/CSR_Aug-25_2026.pdf",
    "Landing Page URL": "https://www.foxcorporation.com/impact/#CSR-Report",
-   "Status": "Candidate Pending Review"
+   "Status": "Report file changed"
   }
  },
  {
@@ -2504,7 +2504,7 @@
    "Report Year": "2026",
    "Report URL": "https://media.foxcorporation.com/wp-content/uploads/prod/2026/08/25110557/CSR_Aug-25_2026.pdf",
    "Landing Page URL": "https://www.foxcorporation.com/impact/#CSR-Report",
-   "Status": "Candidate Pending Review"
+   "Status": "Report file changed"
   }
  },
  {
@@ -3148,11 +3148,11 @@
    "Company Name": "Invitation Homes",
    "Ticker": "INVH",
    "Sector / Industry": "Real Estate",
-   "Report Name": "2024 Impact Report",
-   "Report Year": "2024",
-   "Report URL": "https://invh-marketing-documents.s3.us-east-1.amazonaws.com/2024+Invitation+Homes+Impact+Report.pdf",
+   "Report Name": "2025 Impact Report",
+   "Report Year": "2025",
+   "Report URL": "https://invh-marketing-documents.s3.us-east-1.amazonaws.com/2025+Impact+Report_Invitation+Homes.pdf",
    "Landing Page URL": "https://www.invitationhomes.com/sustainability",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -3608,7 +3608,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.mtb.com/content/dam/mtb-web/pdfs/sustainability-report-2025.pdf",
    "Landing Page URL": "https://www.mtb.com/homepage/about-us/sustainability/report",
-   "Status": "Candidate Pending Review"
+   "Status": "Report file changed"
   }
  },
  {
@@ -3860,7 +3860,7 @@
    "Report Year": "2025",
    "Report URL": "https://static.modernatx.com/pm/6cef78f8-8dad-4fc9-83d5-d2fbb7cff867/bbdf1281-483a-4888-b4cf-2b2e8a7d131b/bbdf1281-483a-4888-b4cf-2b2e8a7d131b_viewable_rendition__v.pdf",
    "Landing Page URL": "https://www.modernatx.com/en-US/responsibility/our-commitment",
-   "Status": ""
+   "Status": "Report file changed"
   }
  },
  {
@@ -4208,7 +4208,7 @@
    "Report Year": "2025",
    "Report URL": "https://corporate.oreillyauto.com/wp-content/uploads/2026/08/ORO-1778-FINAL-High-Res-260813.pdf?utm_source=corpsite&utm_medium=Impact&utm_campaign=reportdownload",
    "Landing Page URL": "https://corporate.oreillyauto.com/impact-report/",
-   "Status": "Candidate Pending Review"
+   "Status": "Report file changed"
   }
  },
  {
@@ -4216,11 +4216,11 @@
    "Company Name": "Occidental Petroleum",
    "Ticker": "OXY",
    "Sector / Industry": "Energy",
-   "Report Name": "2025 Climate Report",
-   "Report Year": "2025",
-   "Report URL": "https://online.flippingbook.com/view/425918491/",
+   "Report Name": "2026 Climate Report",
+   "Report Year": "2026",
+   "Report URL": "https://online.flippingbook.com/view/851064034/",
    "Landing Page URL": "https://www.oxy.com/sustainability/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -4532,7 +4532,7 @@
    "Report Year": "2024",
    "Report URL": "https://s202.q4cdn.com/605347829/files/doc_downloads/2025/09/progressive_2024corporate-sustainability-report.pdf",
    "Landing Page URL": "https://investors.progressive.com/sustainability/sustainability-report/default.aspx",
-   "Status": ""
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -4604,7 +4604,7 @@
    "Report Year": "2024",
    "Report URL": "https://s204.q4cdn.com/680895981/files/doc_downloads/2024/2024_Sustainability_Report-FINAL.pdf",
    "Landing Page URL": "https://pultegroupinc.com/sustainability/sustainability-reports/default.aspx",
-   "Status": ""
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -4700,7 +4700,7 @@
    "Report Year": "2026",
    "Report URL": "https://www.realtyincome.com/sites/realty-income/files/realty-income/sustainability/sustainability-report/2025-2026-business-impact-and-sustainability-report-realty-income.pdf",
    "Landing Page URL": "https://realtyincome.com/sustainability/sustainability-reporting",
-   "Status": "Candidate Pending Review"
+   "Status": "Report file changed"
   }
  },
  {
@@ -5060,7 +5060,7 @@
    "Report Year": "2024",
    "Report URL": "https://www.southwest.com/swa-resources/pdfs/one-report/2024-One-Report-5-29-final.pdf",
    "Landing Page URL": "https://www.southwest.com/onereport/",
-   "Status": ""
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -5456,7 +5456,7 @@
    "Report Year": "2025",
    "Report URL": "https://ir.truist.com/image/Truist2025CorporateResponsibilityReport.pdf",
    "Landing Page URL": "https://ir.truist.com/corporate-responsibility-and-sustainability-at-truist",
-   "Status": "Report file changed"
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -5480,7 +5480,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.tysonfoods.com/sites/default/files/2026-08/Tyson%20Foods%20FY25%20Sustainability%20Report%208.27.26.pdf",
    "Landing Page URL": "https://www.tysonfoods.com/sustainability",
-   "Status": "Candidate Pending Review"
+   "Status": "Report file changed"
   }
  },
  {
