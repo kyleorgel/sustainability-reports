@@ -220,7 +220,7 @@ track.appendChild(clone);
 track.style.setProperty('--dur', Math.max(20, Math.round((w * reps) / 42)) + 's');
 });
 }
-fetch('quotes.json?cb=' + Date.now(), {cache:'no-store'})
+fetch('quotes.json')
 .then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
 .then(function(data){
 var tv = (data.tradingview && data.tradingview.length) ? data.tradingview : FALLBACK_TV;
