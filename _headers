@@ -1,0 +1,14 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# data.json is ~216 KB and was refetched on every page load. SR13 republishes it
+# at most hourly, so five minutes of browser cache costs nothing and removes the
+# repeat downloads that were eating the Netlify allowance.
+/*.json
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+# ticker.html loads inside an iframe on every orgel.us page view. SR14 changes it
+# at most every four hours.
+/ticker.html
+  Cache-Control: public, max-age=600, stale-while-revalidate=86400
