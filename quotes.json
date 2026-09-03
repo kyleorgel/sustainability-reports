@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T21:21:04.929Z",
+  "generatedAt": "2026-09-03T03:21:07.594Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -32,6 +32,10 @@
     {
       "proName": "TVC:GOLD",
       "title": "Gold"
+    },
+    {
+      "proName": "AMEX:NLR",
+      "title": "Nuclear Energy ETF"
     }
   ],
   "custom": [
@@ -81,6 +85,18 @@
       "change": null,
       "changePct": null,
       "source": "CARB Aug 2026 auction",
+      "manual": true
+    },
+    {
+      "key": "manual:Washington Carbon",
+      "label": "Washington Carbon",
+      "value": 64.56,
+      "unit": "$/tonne",
+      "prefix": "$",
+      "asOf": "2026-06-10",
+      "change": null,
+      "changePct": null,
+      "source": "WA Ecology Auction 14",
       "manual": true
     }
   ],
