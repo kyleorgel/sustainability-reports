@@ -175,7 +175,7 @@ u.className = 'unit';
 u.textContent = q.unit;
 el.appendChild(u);
 }
-if (q.manual && q.asOf) { var dt = document.createElement('span'); dt.className = 'asof'; dt.textContent = q.asOf; el.appendChild(dt); }
+// As Of intentionally not rendered - see the title tooltip above.
 if (q.changePct !== null && q.changePct !== undefined && !isNaN(q.changePct)) {
 var c = document.createElement('span');
 var up = q.changePct >= 0;
