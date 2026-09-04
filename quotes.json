@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T03:21:07.594Z",
+  "generatedAt": "2026-09-04T01:55:39.978Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -16,14 +16,6 @@
     {
       "proName": "NASDAQ:FSLR",
       "title": "First Solar"
-    },
-    {
-      "proName": "AMEX:KRBN",
-      "title": "Global Carbon ETF"
-    },
-    {
-      "proName": "AMEX:KCCA",
-      "title": "California Carbon ETF"
     },
     {
       "proName": "AMEX:CPER",
