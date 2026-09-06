@@ -151,10 +151,10 @@ document.getElementById('tape-fallback').style.display = 'flex';
 }
 }, 8000);
 }
-function fmt(n){
+function fmt(n, dec){
 if (n === null || n === undefined || isNaN(n)) return '—';
 var abs = Math.abs(n);
-var d = abs >= 1000 ? 0 : (abs >= 100 ? 2 : 2);
+var d = (typeof dec === 'number') ? dec : (abs >= 1000 ? 0 : 2);
 return n.toLocaleString('en-US',{minimumFractionDigits:d, maximumFractionDigits:d});
 }
 function itemNode(q){
@@ -167,7 +167,7 @@ lbl.textContent = q.label;
 el.appendChild(lbl);
 var val = document.createElement('span');
 val.className = 'val';
-val.textContent = (q.prefix || '') + fmt(q.value);
+val.textContent = (q.prefix || '') + fmt(q.value, q.decimals);
 el.appendChild(val);
 if (q.unit) {
 var u = document.createElement('span');
