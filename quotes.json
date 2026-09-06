@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-05T13:21:01.738Z",
+  "generatedAt": "2026-09-06T01:01:01.764Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -98,6 +98,7 @@
       "unit": "%",
       "prefix": "",
       "asOf": "2026-09-05",
+      "decimals": 0,
       "change": null,
       "changePct": null,
       "source": "EIA Hourly Electric Grid Monitor (24h average)",
