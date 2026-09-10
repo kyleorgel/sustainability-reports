@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T13:21:02.210Z",
+  "generatedAt": "2026-09-10T21:21:02.176Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -34,24 +34,24 @@
     {
       "key": "DCOILWTICO",
       "label": "WTI Crude (Cushing)",
-      "value": 91.48,
+      "value": 97.26,
       "unit": "",
       "prefix": "$",
-      "asOf": "2026-09-01",
-      "change": 4.45,
-      "changePct": 5.11,
+      "asOf": "2026-09-09",
+      "change": 3.05,
+      "changePct": 3.24,
       "source": "EIA via FRED",
       "manual": false
     },
     {
       "key": "DHHNGSP",
       "label": "Henry Hub Natural Gas",
-      "value": 2.9,
+      "value": 2.81,
       "unit": "",
       "prefix": "$",
-      "asOf": "2026-09-01",
-      "change": 0,
-      "changePct": 0,
+      "asOf": "2026-09-09",
+      "change": -0.09,
+      "changePct": -3.1,
       "source": "EIA via FRED",
       "manual": false
     },
