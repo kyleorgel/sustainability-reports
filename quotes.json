@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T13:21:01.843Z",
+  "generatedAt": "2026-09-12T02:43:03.733Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -58,13 +58,13 @@
     {
       "key": "manual:RGGI Allowance",
       "label": "RGGI Allowance",
-      "value": 35,
+      "value": 37.65,
       "unit": "$/short ton",
       "prefix": "$",
-      "asOf": "2026-06-03",
+      "asOf": "2026-09-09",
       "change": null,
       "changePct": null,
-      "source": "RGGI Auction 72",
+      "source": "RGGI Auction 73",
       "manual": true
     },
     {
@@ -82,13 +82,13 @@
     {
       "key": "manual:Washington Carbon",
       "label": "Washington Carbon",
-      "value": 64.56,
+      "value": 39.5,
       "unit": "$/tonne",
       "prefix": "$",
-      "asOf": "2026-06-10",
+      "asOf": "2026-09-02",
       "change": null,
       "changePct": null,
-      "source": "WA Ecology Auction 14",
+      "source": "WA Ecology Auction 15",
       "manual": true
     },
     {
