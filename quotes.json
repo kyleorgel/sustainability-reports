@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T17:21:02.227Z",
+  "generatedAt": "2026-09-16T21:21:03.512Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -46,12 +46,12 @@
     {
       "key": "DHHNGSP",
       "label": "Henry Hub Natural Gas",
-      "value": 2.81,
+      "value": 2.97,
       "unit": "",
       "prefix": "$",
-      "asOf": "2026-09-09",
-      "change": -0.09,
-      "changePct": -3.1,
+      "asOf": "2026-09-15",
+      "change": 0.12,
+      "changePct": 4.21,
       "source": "EIA via FRED",
       "manual": false
     },
