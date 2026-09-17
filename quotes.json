@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T21:21:03.512Z",
+  "generatedAt": "2026-09-17T01:21:02.534Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -94,7 +94,7 @@
     {
       "key": "eia:renewable-share",
       "label": "Renewables Share of US Power",
-      "value": 24,
+      "value": 23,
       "unit": "%",
       "prefix": "",
       "asOf": "2026-09-16",
