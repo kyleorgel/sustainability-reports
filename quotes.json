@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T01:21:02.785Z",
+  "generatedAt": "2026-09-18T13:21:02.281Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -97,7 +97,7 @@
       "value": 18,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-09-17",
+      "asOf": "2026-09-18",
       "decimals": 0,
       "change": null,
       "changePct": null,
