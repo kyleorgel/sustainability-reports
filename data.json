@@ -68,7 +68,7 @@
    "Report Year": "2023",
    "Report URL": "https://www.adobe.com/cc-shared/assets/pdf/corporate-responsibility/adobe-csr-report-2023.pdf",
    "Landing Page URL": "https://www.adobe.com/corporate-responsibility/sustainability.html",
-   "Status": ""
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -272,7 +272,7 @@
    "Report Year": "2025",
    "Report URL": "https://sustainability.aboutamazon.com/2025-amazon-sustainability-report.pdf",
    "Landing Page URL": "https://sustainability.aboutamazon.com/reports",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -368,7 +368,7 @@
    "Report Year": "2023",
    "Report URL": "https://www.ameriprise.com/binaries/content/assets/ampcom/2023-responsible-business-report.pdf",
    "Landing Page URL": "https://www.ameriprise.com/about/responsible-business/data-archive",
-   "Status": ""
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -788,7 +788,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.blackrock.com/gls-download/literature/continuous-disclosure-and-important-information/climate-report-blkinc.pdf",
    "Landing Page URL": "https://www.blackrock.com/corporate/corporate-sustainability/blackrock-sustainability/environmental-sustainability",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -813,6 +813,18 @@
    "Report URL": "https://s29.q4cdn.com/628966176/files/doc_downloads/2026/08/Block-2025-Business-Sustainability-Report.pdf",
    "Landing Page URL": "https://block.xyz/inside/2025-sustainability-report",
    "Status": ""
+  }
+ },
+ {
+  "fields": {
+   "Company Name": "Bloom Energy",
+   "Ticker": "BE",
+   "Sector / Industry": "",
+   "Report Name": "",
+   "Report Year": "",
+   "Report URL": "",
+   "Landing Page URL": "",
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -1040,7 +1052,7 @@
    "Report Year": "2025",
    "Report URL": "https://brandportal.carrier.com/m/69bcddca00b33908/original/sustainability-impact-full-report-2025.pdf",
    "Landing Page URL": "https://www.carrier.com/us/en/sustainability-and-social-impact/impact-report/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -1820,7 +1832,7 @@
    "Report Year": "2025",
    "Report URL": "https://go2.digitalrealty.com/rs/087-YZJ-646/images/Report_Digital_Realty_2605_Impact_Report.pdf",
    "Landing Page URL": "https://www.digitalrealty.com/resources/reports/impact-report",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -1832,7 +1844,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.dollargeneral.com/content/dam/dg/assets/landing-pages/public-relations/corporate-social-responsibility/documents/Serving-Others-Report-FY25.pdf",
    "Landing Page URL": "https://www.dollargeneral.com/about-us/corporate-social-responsibility",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -1964,7 +1976,7 @@
    "Report Year": "2025",
    "Report URL": "https://static.ebayinc.com/static/assets/Uploads/Documents/eBay-Impact-2025-Report.pdf",
    "Landing Page URL": "https://www.ebayinc.com/impact/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -2197,6 +2209,18 @@
  },
  {
   "fields": {
+   "Company Name": "Everpure",
+   "Ticker": "P",
+   "Sector / Industry": "",
+   "Report Name": "",
+   "Report Year": "",
+   "Report URL": "",
+   "Landing Page URL": "",
+   "Status": "Needs Manual Check"
+  }
+ },
+ {
+  "fields": {
    "Company Name": "Eversource Energy",
    "Ticker": "ES",
    "Sector / Industry": "Utilities",
@@ -2348,7 +2372,7 @@
    "Report Year": "2026",
    "Report URL": "https://www.fedex.com/content/dam/fedex/us-united-states/sustainability/gcrs/FedEx_2026_CR_Report.pdf",
    "Landing Page URL": "https://www.fedex.com/en-us/sustainability/reports.html",
-   "Status": ""
+   "Status": "Report file changed"
   }
  },
  {
@@ -2360,7 +2384,7 @@
    "Report Year": "2026",
    "Report URL": "https://www.fedex.com/content/dam/fedex/us-united-states/sustainability/gcrs/FedEx_2026_CR_Report.pdf",
    "Landing Page URL": "https://www.fedex.com/en-us/sustainability/reports.html",
-   "Status": ""
+   "Status": "Report file changed"
   }
  },
  {
@@ -2972,7 +2996,7 @@
    "Report Year": "2022",
    "Report URL": "https://esgdistrict.lecho.be/media/IBM-2023-ENG.pdf",
    "Landing Page URL": "None Published",
-   "Status": ""
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -3009,6 +3033,18 @@
    "Report URL": "https://www.itw.com/media/cwbkuwfa/itw_2025sustainabilityreport_final.pdf",
    "Landing Page URL": "https://www.itw.com/sustainability/reports-and-downloads/",
    "Status": ""
+  }
+ },
+ {
+  "fields": {
+   "Company Name": "Illumina, Inc.",
+   "Ticker": "ILMN",
+   "Sector / Industry": "",
+   "Report Name": "",
+   "Report Year": "",
+   "Report URL": "",
+   "Landing Page URL": "",
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -3152,7 +3188,7 @@
    "Report Year": "2025",
    "Report URL": "https://invh-marketing-documents.s3.us-east-1.amazonaws.com/2025+Impact+Report_Invitation+Homes.pdf",
    "Landing Page URL": "https://www.invitationhomes.com/sustainability",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -3572,7 +3608,7 @@
    "Report Year": "2025",
    "Report URL": "https://corporate.lululemon.com/~/media/Files/L/Lululemon/our-impact/reporting-and-disclosure/2025-impact-report.pdf",
    "Landing Page URL": "https://corporate.lululemon.com/our-impact/reporting-and-governance/reporting-and-disclosure",
-   "Status": ""
+   "Status": "Report file changed"
   }
  },
  {
@@ -4328,7 +4364,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.palantir.com/assets/xrfr7uokpv1b/1IwUVV55V1IcofKdk52d3H/745730635b14900afcfc88783fd568e0/-FINAL-_2025_Carbon_Emissions_Report.pdf",
    "Landing Page URL": "https://www.palantir.com/climate-pledge/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -4376,7 +4412,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.paychex.com/sites/default/files/2025-09/fy25-paychex-cr-report-sept-25.pdf",
    "Landing Page URL": "https://www.paychex.com/corporate/corporate-responsibility",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -4520,7 +4556,7 @@
    "Report Year": "2026",
    "Report URL": "https://assets.ctfassets.net/oggad6svuzkv/7IuctPI5F6Jb6yfz4l2CaU/a715ed337736154f2a005444229dca37/NEW_P_G_Citizenship_Report_Summary_FY2025_Accessible_FA7.pdf",
    "Landing Page URL": "https://us.pg.com/environmental-sustainability/",
-   "Status": ""
+   "Status": "Report file changed"
   }
  },
  {
@@ -4664,7 +4700,7 @@
    "Report Year": "2022",
    "Report URL": "https://www.questdiagnostics.com/content/dam/corporate/unrestricted/documents/our-company/corporate-responsibility/Quest-Diagnostics-Corporate-Responsibility-Report-2022-Final.pdf",
    "Landing Page URL": "https://www.questdiagnostics.com/our-company/corporate-responsibility/esg-index",
-   "Status": ""
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -4760,7 +4796,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.republicservices.com/sites/default/files/legacy_documents/sustainability_reports/2025-Republic-Services-Sustainability-Report.pdf",
    "Landing Page URL": "https://www.republicservices.com/sustainability",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -6020,7 +6056,7 @@
    "Report Year": "2025",
    "Report URL": "https://cdn.wynnresorts.com/image/upload/visitwynn_pdfs_files/2025_ESG_Report_Wynn_Resorts.pdf",
    "Landing Page URL": "https://wynnresorts.com/esg/reports",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -6056,7 +6092,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.yum.com/wps/wcm/connect/yumbrands/c5c68f92-ec56-4425-9b95-e345f1227e74/2025_Citizenship_Sustainability_Report.pdf?MOD=AJPERES&CVID=pXgeAVl",
    "Landing Page URL": "https://www.yum.com/wps/portal/yumbrands/Yumbrands/impact",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
