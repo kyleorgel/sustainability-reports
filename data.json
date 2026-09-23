@@ -784,9 +784,9 @@
    "Company Name": "BlackRock",
    "Ticker": "BLK",
    "Sector / Industry": "Financials",
-   "Report Name": "2025 Climate Report",
+   "Report Name": "2025 GHG Emissions Report",
    "Report Year": "2025",
-   "Report URL": "https://www.blackrock.com/gls-download/literature/continuous-disclosure-and-important-information/climate-report-blkinc.pdf",
+   "Report URL": "https://blackrock.com/gls-download/literature/continuous-disclosure-and-important-information/blackrock-ghg-emissions-report.pdf",
    "Landing Page URL": "https://www.blackrock.com/corporate/corporate-sustainability/blackrock-sustainability/environmental-sustainability",
    "Status": "Candidate Pending Review"
   }
@@ -820,10 +820,10 @@
    "Company Name": "Bloom Energy",
    "Ticker": "BE",
    "Sector / Industry": "",
-   "Report Name": "",
-   "Report Year": "",
-   "Report URL": "",
-   "Landing Page URL": "",
+   "Report Name": "2025 Impact Report",
+   "Report Year": "2025",
+   "Report URL": "https://www.bloomenergy.com/wp-content/uploads/2025-bloom-energy-impact-report.pdf",
+   "Landing Page URL": "https://www.bloomenergy.com/sustainability/",
    "Status": "Needs Manual Check"
   }
  },
@@ -1048,9 +1048,9 @@
    "Company Name": "Carrier Global",
    "Ticker": "CARR",
    "Sector / Industry": "Industrials",
-   "Report Name": "Sustainability Impact Full Report 2025",
-   "Report Year": "2025",
-   "Report URL": "https://brandportal.carrier.com/m/69bcddca00b33908/original/sustainability-impact-full-report-2025.pdf",
+   "Report Name": "Sustainability and Impact Report 2026",
+   "Report Year": "2026",
+   "Report URL": "https://brandportal.carrier.com/asset/405c78a6-2d0f-4b99-b3bf-03bb3bea408e/sustainability-impact-full-report-2026.pdf",
    "Landing Page URL": "https://www.carrier.com/us/en/sustainability-and-social-impact/impact-report/",
    "Status": "Candidate Pending Review"
   }
@@ -2212,10 +2212,10 @@
    "Company Name": "Everpure",
    "Ticker": "P",
    "Sector / Industry": "",
-   "Report Name": "",
-   "Report Year": "",
-   "Report URL": "",
-   "Landing Page URL": "",
+   "Report Name": "2026 Impact Report",
+   "Report Year": "2026",
+   "Report URL": "https://www.everpuredata.com/content/dam/pdf/en/misc/sustainability/2026-everpure-impact-report.pdf",
+   "Landing Page URL": "https://www.everpuredata.com/company/sustainability.html?",
    "Status": "Needs Manual Check"
   }
  },
@@ -3040,10 +3040,10 @@
    "Company Name": "Illumina, Inc.",
    "Ticker": "ILMN",
    "Sector / Industry": "",
-   "Report Name": "",
-   "Report Year": "",
-   "Report URL": "",
-   "Landing Page URL": "",
+   "Report Name": "2025 Corporate Responsibility Report",
+   "Report Year": "2025",
+   "Report URL": "https://www.illumina.com/content/dam/illumina-marketing/documents/company/2025-cr-report/illumina-2025-cr-report-en.pdf",
+   "Landing Page URL": "https://www.illumina.com/company/about-us/corporate-social-responsibility/environmental-sustainability.html",
    "Status": "Needs Manual Check"
   }
  },
@@ -4408,9 +4408,9 @@
    "Company Name": "Paychex",
    "Ticker": "PAYX",
    "Sector / Industry": "Information Technology",
-   "Report Name": "FY25 Corporate Responsibility Report",
-   "Report Year": "2025",
-   "Report URL": "https://www.paychex.com/sites/default/files/2025-09/fy25-paychex-cr-report-sept-25.pdf",
+   "Report Name": "2026 Corporate Responsibility Report",
+   "Report Year": "2026",
+   "Report URL": "https://www.paychex.com/sites/default/files/2026-09/paychex-corporate-responsibility-report-2026.pdf",
    "Landing Page URL": "https://www.paychex.com/corporate/corporate-responsibility",
    "Status": "Candidate Pending Review"
   }
@@ -4552,8 +4552,8 @@
    "Company Name": "Procter & Gamble",
    "Ticker": "PG",
    "Sector / Industry": "Consumer Staples",
-   "Report Name": "2026 Citizenship Summary",
-   "Report Year": "2026",
+   "Report Name": "2025 Citizenship Summary",
+   "Report Year": "2025",
    "Report URL": "https://assets.ctfassets.net/oggad6svuzkv/7IuctPI5F6Jb6yfz4l2CaU/a715ed337736154f2a005444229dca37/NEW_P_G_Citizenship_Report_Summary_FY2025_Accessible_FA7.pdf",
    "Landing Page URL": "https://us.pg.com/environmental-sustainability/",
    "Status": "Report file changed"
