@@ -168,7 +168,7 @@ s.innerHTML = JSON.stringify({
 symbols: symbols,
 showSymbolLogo: true,
 isTransparent: true,
-displayMode: 'adaptive',
+displayMode: 'regular',
 colorTheme: tvTheme,
 locale: 'en'
 });
@@ -243,10 +243,15 @@ return a;
 }
 // Band 1's NEW box: one report at a time, the next fading in every 6 seconds.
 // Fixed width on purpose - if the box resized per item, TradingView's iframe would
-// re-lay out beside it on every rotation.
+// re-lay out beside it on every rotation. Re-entrant: layout() calls it again if the
+// window crosses the 640px line, so it clears its own previous state first.
+var newsTimer = null, newsPaused = false;
 function buildNews(updates){
 var box = document.getElementById('news');
 var stage = box ? box.querySelector('.stage') : null;
+if (newsTimer) { clearInterval(newsTimer); newsTimer = null; }
+if (stage) stage.innerHTML = '';
+if (box) box.classList.remove('on');
 var list = (updates || []).filter(function(u){ return u && u.company; });
 if (!box || !stage || !list.length) return;
 var links = list.map(function(u){ var a = newLink(u, false, 'nl'); stage.appendChild(a); return a; });
@@ -254,11 +259,13 @@ var idx = 0;
 links[0].classList.add('show');
 box.classList.add('on');
 if (links.length < 2) return;
-var paused = false;
-box.addEventListener('mouseenter', function(){ paused = true; });
-box.addEventListener('mouseleave', function(){ paused = false; });
-setInterval(function(){
-if (paused) return;
+if (!box.getAttribute('data-hooked')) {
+box.setAttribute('data-hooked', '1');
+box.addEventListener('mouseenter', function(){ newsPaused = true; });
+box.addEventListener('mouseleave', function(){ newsPaused = false; });
+}
+newsTimer = setInterval(function(){
+if (newsPaused) return;
 links[idx].classList.remove('show');
 idx = (idx + 1) % links.length;
 links[idx].classList.add('show');
@@ -267,6 +274,9 @@ links[idx].classList.add('show');
 function buildStrip(custom, updates){
 var track = document.getElementById('track');
 var strip = document.getElementById('strip');
+track.innerHTML = '';
+track.className = '';
+strip.style.display = '';
 var list = (custom || []).map(function(q){ return { q: q }; }).concat((updates || []).filter(function(u){ return u && u.company; }).map(function(u){ return { u: u }; }));
 if (!list.length) { strip.style.display = 'none'; return; }
 function fill(target){
@@ -306,11 +316,18 @@ fetch('quotes.json')
 var tv = (data.tradingview && data.tradingview.length) ? data.tradingview : FALLBACK_TV;
 mountTape(tv);
 // Narrow screens have no room for the NEW box beside the tape, so the NEW items
-// join the strip instead. Everything else stays on its band.
-var narrow = window.matchMedia && window.matchMedia('(max-width:640px)').matches;
+// join the strip instead. Everything else stays on its band. A rotated tablet or a
+// resized window can cross the 640px line after load, so the two bands are laid out
+// again whenever it does - otherwise the NEW items would vanish with the box.
+var mq = window.matchMedia ? window.matchMedia('(max-width:640px)') : null;
+function layout(){
+var narrow = !!(mq && mq.matches);
 var updates = data.updates || [];
 buildNews(narrow ? [] : updates);
 buildStrip(data.custom || [], narrow ? updates : []);
+}
+layout();
+if (mq) { if (mq.addEventListener) mq.addEventListener('change', layout); else if (mq.addListener) mq.addListener(layout); }
 })
 .catch(function(){
 mountTape(FALLBACK_TV);
