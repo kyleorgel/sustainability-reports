@@ -535,6 +535,12 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
   document.getElementById('sector-filter').addEventListener('change', applyFilters);
   document.getElementById('status-filter').addEventListener('change', applyFilters);
 
+  // ── DEEP LINK ─ /?q=<text> pre-fills the search; the banner's NEW items link here (2026-09-24) ──
+  try {
+    const q0 = new URLSearchParams(location.search).get('q');
+    if (q0) document.getElementById('search').value = q0;
+  } catch (e) {}
+
   // ── ESCAPE HTML ───────────────────────────────────────────────────────────
   function esc(str) {
     return String(str)

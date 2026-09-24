@@ -40,13 +40,13 @@ font-size:12px;color:var(--muted);letter-spacing:.02em;
 height:var(--row2-h);display:flex;align-items:stretch;
 border-top:1px solid var(--line);background:var(--bg);
 }
-#chip{
-flex:0 0 auto;display:flex;align-items:center;gap:6px;
-padding:0 14px;border-right:1px solid var(--line);
-font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-color:var(--accent);white-space:nowrap;background:var(--bg);
-}
-#chip .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:0 0 auto;}
+/* NEW items: the latest reports added to the index (2026-09-24) */
+.item.new{text-decoration:none;color:var(--fg);}
+.item.new .tag{background:var(--accent);color:#fff;font-size:8.5px;font-weight:600;letter-spacing:.12em;padding:3px 5px 2px;border-radius:3px;line-height:1;align-self:center;}
+.item.new .co{font-weight:600;color:var(--fg);}
+.item.new .rep{color:var(--muted);font-weight:400;}
+.item.new:hover .co{text-decoration:underline;}
+.item .basis{color:#9a9a9a;font-size:9.5px;font-weight:400;letter-spacing:.02em;}
 #viewport{position:relative;flex:1 1 auto;overflow:hidden;}
 #track{
 position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;
@@ -76,7 +76,6 @@ font-size:8.5px;color:#9a9a9a;letter-spacing:.05em;white-space:nowrap;
 #credit a{color:#9a9a9a;text-decoration:none;}
 #credit a:hover{text-decoration:underline;}
 @media (max-width:640px){
-#chip{padding:0 10px;font-size:8.5px;letter-spacing:.1em;}
 #credit{display:none;}
 .item{font-size:11.5px;padding:0 14px;}
 }
@@ -91,9 +90,8 @@ font-size:8.5px;color:#9a9a9a;letter-spacing:.05em;white-space:nowrap;
 </div>
 <div id="tape-fallback">Market data loading…</div>
 <div id="strip">
-<div id="chip"><span class="dot"></span><span>Carbon &amp; Energy</span></div>
 <div id="viewport"><div id="track"></div></div>
-<div id="credit"><span>EIA&nbsp;via&nbsp;FRED&nbsp;·&nbsp;RGGI&nbsp;·&nbsp;CARB</span></div>
+<div id="credit"><span>EIA&nbsp;·&nbsp;FRED&nbsp;·&nbsp;RGGI&nbsp;·&nbsp;CARB&nbsp;·&nbsp;WA&nbsp;ECOLOGY</span></div>
 </div>
 </div>
 <script>
@@ -187,19 +185,34 @@ var up = delta > 0;
 c.className = 'chg ' + (flat ? 'flat' : (up ? 'up' : 'down'));
 var mag = isPt ? (Math.abs(delta).toFixed(typeof q.changeDecimals === 'number' ? q.changeDecimals : 1) + ' pt') : (Math.abs(delta).toFixed(2) + '%');
 c.textContent = (flat ? '' : (up ? '▲' : '▼')) + mag;
+if (q.changeLabel) { var bl = document.createElement('span'); bl.className = 'basis'; bl.textContent = ' ' + q.changeLabel; c.appendChild(bl); }
 if (q.changeBasis) c.title = 'Change ' + q.changeBasis;
 el.appendChild(c);
 }
 return el;
 }
-function buildStrip(custom){
+// NEW items (2026-09-24): the latest reports added to the index, from quotes.json `updates`.
+// Each links to the index with the company pre-filled in the search box.
+function newNode(u){
+var a = document.createElement('a');
+a.className = 'item new';
+a.href = 'https://reports.orgel.us/?q=' + encodeURIComponent(u.company || '');
+a.target = '_top';
+a.title = 'Added to the Report Index' + (u.date ? ' ' + u.date : '') + ' — click to open it';
+var t = document.createElement('span'); t.className = 'tag'; t.textContent = 'NEW'; a.appendChild(t);
+var c = document.createElement('span'); c.className = 'co'; c.textContent = u.company || ''; a.appendChild(c);
+var r = document.createElement('span'); r.className = 'rep'; r.textContent = u.report || ''; a.appendChild(r);
+return a;
+}
+function buildStrip(custom, updates){
 var track = document.getElementById('track');
 var strip = document.getElementById('strip');
-if (!custom || !custom.length) { strip.style.display = 'none'; return; }
+var list = (custom || []).map(function(q){ return { q: q }; }).concat((updates || []).filter(function(u){ return u && u.company; }).map(function(u){ return { u: u }; }));
+if (!list.length) { strip.style.display = 'none'; return; }
 function fill(target){
-custom.forEach(function(q, i){
-target.appendChild(itemNode(q));
-if (i < custom.length - 1) {
+list.forEach(function(entry, i){
+target.appendChild(entry.u ? newNode(entry.u) : itemNode(entry.q));
+if (i < list.length - 1) {
 var s = document.createElement('span');
 s.className = 'sep';
 s.textContent = '·';
@@ -232,7 +245,7 @@ fetch('quotes.json')
 .then(function(data){
 var tv = (data.tradingview && data.tradingview.length) ? data.tradingview : FALLBACK_TV;
 mountTape(tv);
-buildStrip(data.custom || []);
+buildStrip(data.custom || [], data.updates || []);
 })
 .catch(function(){
 mountTape(FALLBACK_TV);
