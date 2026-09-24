@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T02:08:55.943Z",
+  "generatedAt": "2026-09-24T02:33:37.191Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -40,6 +40,7 @@
       "asOf": "2026-09-22",
       "change": -10.61,
       "changePct": -9.91,
+      "changeLabel": "wk",
       "changeBasis": "vs 2026-09-15 (a week earlier, $107.02)",
       "source": "EIA via FRED",
       "manual": false
@@ -53,6 +54,7 @@
       "asOf": "2026-09-22",
       "change": -0.07,
       "changePct": -2.36,
+      "changeLabel": "wk",
       "changeBasis": "vs 2026-09-15 (a week earlier, $2.97)",
       "source": "EIA via FRED",
       "manual": false
@@ -66,6 +68,7 @@
       "asOf": "2026-09-09",
       "change": 2.65,
       "changePct": 7.57,
+      "changeLabel": "vs prior auction",
       "changeBasis": "vs RGGI Auction 72 ($35.00)",
       "source": "RGGI Auction 73",
       "manual": true
@@ -79,6 +82,7 @@
       "asOf": "2026-08-26",
       "change": 3.67,
       "changePct": 12.74,
+      "changeLabel": "vs prior auction",
       "changeBasis": "vs CARB Auction 47 ($28.81)",
       "source": "CARB Auction 48",
       "manual": true
@@ -92,25 +96,70 @@
       "asOf": "2026-09-02",
       "change": -25.06,
       "changePct": -38.82,
+      "changeLabel": "vs prior auction",
       "changeBasis": "vs WA Ecology Auction 14 ($64.56)",
       "source": "WA Ecology Auction 15",
       "manual": true
     },
     {
-      "key": "eia:renewable-share",
-      "label": "Renewables Share of US Power",
-      "value": 19,
+      "key": "eia:carbonfree-share",
+      "label": "Carbon-Free Share of US Power",
+      "value": 38,
       "unit": "%",
       "prefix": "",
       "asOf": "2026-09-23",
       "decimals": 0,
-      "change": -4,
+      "change": -2,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
-      "changeBasis": "vs the same 24 hours a week earlier (23%)",
+      "changeLabel": "wk",
+      "changeBasis": "vs the same 24 hours a week earlier (40%)",
       "source": "EIA Hourly Electric Grid Monitor (24h average)",
       "manual": false
+    },
+    {
+      "key": "eia:carbonfree-share-tx",
+      "label": "Carbon-Free Share of Texas Power",
+      "value": 32,
+      "unit": "%",
+      "prefix": "",
+      "asOf": "2026-09-23",
+      "decimals": 0,
+      "change": -18,
+      "changePct": null,
+      "changeFmt": "pt",
+      "changeDecimals": 0,
+      "changeLabel": "wk",
+      "changeBasis": "vs the same 24 hours a week earlier (50%)",
+      "source": "EIA Hourly Electric Grid Monitor (ERCOT) (24h average)",
+      "manual": false
+    }
+  ],
+  "updates": [
+    {
+      "company": "Paychex",
+      "ticker": "PAYX",
+      "report": "2026 Corporate Responsibility Report",
+      "year": "2026",
+      "date": "2026-09-23",
+      "url": "https://www.paychex.com/sites/default/files/2026-09/paychex-corporate-responsibility-report-2026.pdf"
+    },
+    {
+      "company": "Carrier Global",
+      "ticker": "CARR",
+      "report": "Sustainability and Impact Report 2026",
+      "year": "2026",
+      "date": "2026-09-23",
+      "url": "https://brandportal.carrier.com/asset/405c78a6-2d0f-4b99-b3bf-03bb3bea408e/sustainability-impact-full-report-2026.pdf"
+    },
+    {
+      "company": "W. W. Grainger",
+      "ticker": "GWW",
+      "report": "Impact Report 2026",
+      "year": "2026",
+      "date": "2026-09-20",
+      "url": "https://s1.q4cdn.com/422144722/files/doc_downloads/2026/08/24/Grainger-2026-Impact-Report-FINAL.pdf"
     }
   ],
   "errors": []
