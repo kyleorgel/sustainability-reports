@@ -18,6 +18,7 @@
 --down:#c0392b;
 --row2-h:34px;
 --tape-h:46px;
+--news-w:416px;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);}
@@ -28,19 +29,43 @@ color:var(--fg);
 overflow:hidden;
 }
 #band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg);}
-/* ---------- row 1: TradingView tape ---------- */
-#tape{height:var(--tape-h);overflow:hidden;position:relative;}
+/* ---------- band 1: NEW on the index + the TradingView tape ---------- */
+/* Two bands, by design (Kyle, 2026-09-24): companies and their reports on top,
+   everything else underneath. The NEW box is ours; the tape is TradingView's iframe,
+   which is why the two sit side by side rather than in one scroll. */
+#row1{height:var(--tape-h);display:flex;align-items:stretch;}
+#news{
+flex:0 0 var(--news-w);width:var(--news-w);display:none;align-items:center;gap:10px;
+padding:0 14px;border-right:1px solid var(--line);overflow:hidden;
+}
+#news.on{display:flex;}
+#news .tag{
+flex:0 0 auto;background:var(--accent);color:#fff;font-size:8.5px;font-weight:600;
+letter-spacing:.12em;padding:3px 5px 2px;border-radius:3px;line-height:1;
+}
+#news .stage{position:relative;flex:1 1 auto;min-width:0;height:100%;}
+#news .nl{
+position:absolute;left:0;top:0;width:100%;height:100%;
+display:flex;align-items:center;gap:7px;white-space:nowrap;overflow:hidden;
+text-decoration:none;color:var(--fg);font-size:12.5px;line-height:1;
+opacity:0;transition:opacity .45s ease;pointer-events:none;
+}
+#news .nl.show{opacity:1;pointer-events:auto;}
+#news .nl .co{flex:0 0 auto;font-weight:600;}
+#news .nl .rep{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;color:var(--muted);font-weight:400;}
+#news .nl:hover .co{text-decoration:underline;}
+#tape{flex:1 1 auto;min-width:0;height:var(--tape-h);overflow:hidden;position:relative;}
 #tape .tradingview-widget-copyright{font-size:10px!important;}
 #tape-fallback{
-display:none;height:var(--tape-h);align-items:center;justify-content:center;
+display:none;flex:1 1 auto;height:var(--tape-h);align-items:center;justify-content:center;
 font-size:12px;color:var(--muted);letter-spacing:.02em;
 }
-/* ---------- row 2: custom strip ---------- */
+/* ---------- band 2: our own strip ---------- */
 #strip{
 height:var(--row2-h);display:flex;align-items:stretch;
 border-top:1px solid var(--line);background:var(--bg);
 }
-/* NEW items: the latest reports added to the index (2026-09-24) */
+/* NEW items inside the strip - only on narrow screens, where the top box is hidden */
 .item.new{text-decoration:none;color:var(--fg);}
 .item.new .tag{background:var(--accent);color:#fff;font-size:8.5px;font-weight:600;letter-spacing:.12em;padding:3px 5px 2px;border-radius:3px;line-height:1;align-self:center;}
 .item.new .co{font-weight:600;color:var(--fg);}
@@ -58,7 +83,7 @@ animation:scroll var(--dur,40s) linear infinite;
 #track.static .sep{display:none;}
 .item .asof{color:#a8a8a8;font-size:9.5px;font-weight:400;letter-spacing:.02em;}
 @keyframes scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
-@media (prefers-reduced-motion:reduce){#track{animation:none;}}
+@media (prefers-reduced-motion:reduce){#track{animation:none;} #news .nl{transition:none;}}
 .item{display:inline-flex;align-items:baseline;gap:7px;padding:0 20px;font-size:12.5px;line-height:1;}
 .item .lbl{color:var(--muted);font-weight:500;letter-spacing:.01em;}
 .item .val{color:var(--fg);font-weight:600;font-variant-numeric:tabular-nums;}
@@ -75,7 +100,12 @@ font-size:8.5px;color:#9a9a9a;letter-spacing:.05em;white-space:nowrap;
 }
 #credit a{color:#9a9a9a;text-decoration:none;}
 #credit a:hover{text-decoration:underline;}
+@media (max-width:900px){
+:root{--news-w:330px;}
+#news .nl{font-size:12px;}
+}
 @media (max-width:640px){
+#news{display:none!important;}
 #credit{display:none;}
 .item{font-size:11.5px;padding:0 14px;}
 }
@@ -83,15 +113,18 @@ font-size:8.5px;color:#9a9a9a;letter-spacing:.05em;white-space:nowrap;
 </head>
 <body>
 <div id="band">
+<div id="row1">
+<div id="news"><span class="tag">NEW</span><div class="stage"></div></div>
 <div id="tape">
 <div class="tradingview-widget-container" id="tvhost">
 <div class="tradingview-widget-container__widget"></div>
 </div>
 </div>
 <div id="tape-fallback">Market data loading…</div>
+</div>
 <div id="strip">
 <div id="viewport"><div id="track"></div></div>
-<div id="credit"><span>EIA&nbsp;·&nbsp;FRED&nbsp;·&nbsp;RGGI&nbsp;·&nbsp;CARB&nbsp;·&nbsp;WA&nbsp;ECOLOGY</span></div>
+<div id="credit"><span>EIA&nbsp;·&nbsp;FRED&nbsp;·&nbsp;RGGI&nbsp;·&nbsp;CARB&nbsp;·&nbsp;WA&nbsp;ECOLOGY&nbsp;·&nbsp;NOAA&nbsp;·&nbsp;NASA</span></div>
 </div>
 </div>
 <script>
@@ -174,35 +207,62 @@ u.textContent = q.unit;
 el.appendChild(u);
 }
 // As Of intentionally not rendered - see the title tooltip above.
-// Direction arrow on every row (2026-09-24). Prices show percent change; shares
-// (changeFmt 'pt') show percentage points. changeBasis is what it is measured against.
-var isPt = q.changeFmt === 'pt';
-var delta = isPt ? q.change : q.changePct;
+// Direction arrow on every row (2026-09-24). changeFmt decides the form:
+//   (default) percent change    -> ▲7.57%
+//   'pt'  percentage points     -> ▲2 pt      (grid shares)
+//   'abs' absolute, with a unit -> ▲1.9 ppm   (CO2, temperature)
+// changeBasis is what it is measured against; changeLabel is the short tag after it.
+var kind = q.changeFmt === 'pt' ? 'pt' : (q.changeFmt === 'abs' ? 'abs' : 'pct');
+var delta = (kind === 'pct') ? q.changePct : q.change;
 if (delta !== null && delta !== undefined && !isNaN(delta)) {
 var c = document.createElement('span');
-var flat = Math.abs(delta) < (isPt ? 0.05 : 0.005);
+var cd = (typeof q.changeDecimals === 'number') ? q.changeDecimals : (kind === 'pt' ? 1 : 2);
+var flat = Math.abs(delta) < Math.pow(10, -cd) / 2;
 var up = delta > 0;
 c.className = 'chg ' + (flat ? 'flat' : (up ? 'up' : 'down'));
-var mag = isPt ? (Math.abs(delta).toFixed(typeof q.changeDecimals === 'number' ? q.changeDecimals : 1) + ' pt') : (Math.abs(delta).toFixed(2) + '%');
+var mag = Math.abs(delta).toFixed(cd) + (kind === 'pt' ? ' pt' : (kind === 'abs' ? (q.changeUnit ? ' ' + q.changeUnit : '') : '%'));
 c.textContent = (flat ? '' : (up ? '▲' : '▼')) + mag;
-if (q.changeLabel) { var bl = document.createElement('span'); bl.className = 'basis'; bl.textContent = ' ' + q.changeLabel; c.appendChild(bl); }
+if (q.changeLabel) { var bl = document.createElement('span'); bl.className = 'basis'; bl.textContent = ' ' + q.changeLabel; c.appendChild(bl); }
 if (q.changeBasis) c.title = 'Change ' + q.changeBasis;
 el.appendChild(c);
 }
 return el;
 }
-// NEW items (2026-09-24): the latest reports added to the index, from quotes.json `updates`.
+// NEW items: the latest reports added to the index, from quotes.json `updates`.
 // Each links to the index with the company pre-filled in the search box.
-function newNode(u){
+function newLink(u, withTag, cls){
 var a = document.createElement('a');
-a.className = 'item new';
+a.className = cls;
 a.href = 'https://reports.orgel.us/?q=' + encodeURIComponent(u.company || '');
 a.target = '_top';
-a.title = 'Added to the Report Index' + (u.date ? ' ' + u.date : '') + ' — click to open it';
-var t = document.createElement('span'); t.className = 'tag'; t.textContent = 'NEW'; a.appendChild(t);
+a.title = (u.report ? u.report + ' — ' : '') + 'added to the Report Index' + (u.date ? ' ' + u.date : '') + '. Click to open it.';
+if (withTag) { var t = document.createElement('span'); t.className = 'tag'; t.textContent = 'NEW'; a.appendChild(t); }
 var c = document.createElement('span'); c.className = 'co'; c.textContent = u.company || ''; a.appendChild(c);
 var r = document.createElement('span'); r.className = 'rep'; r.textContent = u.report || ''; a.appendChild(r);
 return a;
+}
+// Band 1's NEW box: one report at a time, the next fading in every 6 seconds.
+// Fixed width on purpose - if the box resized per item, TradingView's iframe would
+// re-lay out beside it on every rotation.
+function buildNews(updates){
+var box = document.getElementById('news');
+var stage = box ? box.querySelector('.stage') : null;
+var list = (updates || []).filter(function(u){ return u && u.company; });
+if (!box || !stage || !list.length) return;
+var links = list.map(function(u){ var a = newLink(u, false, 'nl'); stage.appendChild(a); return a; });
+var idx = 0;
+links[0].classList.add('show');
+box.classList.add('on');
+if (links.length < 2) return;
+var paused = false;
+box.addEventListener('mouseenter', function(){ paused = true; });
+box.addEventListener('mouseleave', function(){ paused = false; });
+setInterval(function(){
+if (paused) return;
+links[idx].classList.remove('show');
+idx = (idx + 1) % links.length;
+links[idx].classList.add('show');
+}, 6000);
 }
 function buildStrip(custom, updates){
 var track = document.getElementById('track');
@@ -211,7 +271,7 @@ var list = (custom || []).map(function(q){ return { q: q }; }).concat((updates |
 if (!list.length) { strip.style.display = 'none'; return; }
 function fill(target){
 list.forEach(function(entry, i){
-target.appendChild(entry.u ? newNode(entry.u) : itemNode(entry.q));
+target.appendChild(entry.u ? newLink(entry.u, true, 'item new') : itemNode(entry.q));
 if (i < list.length - 1) {
 var s = document.createElement('span');
 s.className = 'sep';
@@ -245,7 +305,12 @@ fetch('quotes.json')
 .then(function(data){
 var tv = (data.tradingview && data.tradingview.length) ? data.tradingview : FALLBACK_TV;
 mountTape(tv);
-buildStrip(data.custom || [], data.updates || []);
+// Narrow screens have no room for the NEW box beside the tape, so the NEW items
+// join the strip instead. Everything else stays on its band.
+var narrow = window.matchMedia && window.matchMedia('(max-width:640px)').matches;
+var updates = data.updates || [];
+buildNews(narrow ? [] : updates);
+buildStrip(data.custom || [], narrow ? updates : []);
 })
 .catch(function(){
 mountTape(FALLBACK_TV);
