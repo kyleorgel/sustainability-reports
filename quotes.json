@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T02:33:37.191Z",
+  "generatedAt": "2026-09-24T03:30:16.453Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -133,6 +133,42 @@
       "changeLabel": "wk",
       "changeBasis": "vs the same 24 hours a week earlier (50%)",
       "source": "EIA Hourly Electric Grid Monitor (ERCOT) (24h average)",
+      "manual": false
+    },
+    {
+      "key": "noaa:co2-mlo-weekly",
+      "label": "Atmospheric CO₂",
+      "value": 425.91,
+      "unit": "ppm",
+      "prefix": "",
+      "asOf": "2026-09-13",
+      "decimals": 1,
+      "change": 1.87,
+      "changePct": 0.44,
+      "changeFmt": "abs",
+      "changeUnit": "ppm",
+      "changeDecimals": 1,
+      "changeLabel": "y/y",
+      "changeBasis": "vs the same week a year earlier (424.04 ppm)",
+      "source": "NOAA GML Mauna Loa weekly mean (week of 2026-09-13)",
+      "manual": false
+    },
+    {
+      "key": "nasa:gistemp-global-monthly",
+      "label": "Global Temperature",
+      "value": 1.4,
+      "unit": "°C vs 1951–80",
+      "prefix": "+",
+      "asOf": "2026-08-31",
+      "decimals": 2,
+      "change": 0.22,
+      "changePct": null,
+      "changeFmt": "abs",
+      "changeUnit": "°C",
+      "changeDecimals": 2,
+      "changeLabel": "y/y",
+      "changeBasis": "vs August 2025 (+1.18 °C)",
+      "source": "NASA GISTEMP v4 global monthly anomaly, August 2026, relative to the 1951–1980 average",
       "manual": false
     }
   ],
