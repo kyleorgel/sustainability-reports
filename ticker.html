@@ -66,6 +66,7 @@ animation:scroll var(--dur,40s) linear infinite;
 .item .chg{font-size:11px;font-weight:500;font-variant-numeric:tabular-nums;}
 .item .chg.up{color:var(--up)}
 .item .chg.down{color:var(--down)}
+.item .chg.flat{color:var(--muted)}
 .sep{color:var(--line);padding:0 2px;font-size:12px;user-select:none;}
 #credit{
 flex:0 0 auto;display:flex;align-items:center;padding:0 12px;
@@ -159,7 +160,7 @@ return n.toLocaleString('en-US',{minimumFractionDigits:d, maximumFractionDigits:
 function itemNode(q){
 var el = document.createElement('span');
 el.className = 'item';
-if (q.asOf) el.title = q.label + ' — as of ' + q.asOf + (q.source ? ' · ' + q.source : '');
+if (q.asOf) el.title = q.label + ' — as of ' + q.asOf + (q.source ? ' · ' + q.source : '') + (q.changeBasis ? ' · change ' + q.changeBasis : '');
 var lbl = document.createElement('span');
 lbl.className = 'lbl';
 lbl.textContent = q.label;
@@ -175,11 +176,18 @@ u.textContent = q.unit;
 el.appendChild(u);
 }
 // As Of intentionally not rendered - see the title tooltip above.
-if (q.changePct !== null && q.changePct !== undefined && !isNaN(q.changePct)) {
+// Direction arrow on every row (2026-09-24). Prices show percent change; shares
+// (changeFmt 'pt') show percentage points. changeBasis is what it is measured against.
+var isPt = q.changeFmt === 'pt';
+var delta = isPt ? q.change : q.changePct;
+if (delta !== null && delta !== undefined && !isNaN(delta)) {
 var c = document.createElement('span');
-var up = q.changePct >= 0;
-c.className = 'chg ' + (up ? 'up' : 'down');
-c.textContent = (up ? '▲' : '▼') + Math.abs(q.changePct).toFixed(2) + '%';
+var flat = Math.abs(delta) < (isPt ? 0.05 : 0.005);
+var up = delta > 0;
+c.className = 'chg ' + (flat ? 'flat' : (up ? 'up' : 'down'));
+var mag = isPt ? (Math.abs(delta).toFixed(typeof q.changeDecimals === 'number' ? q.changeDecimals : 1) + ' pt') : (Math.abs(delta).toFixed(2) + '%');
+c.textContent = (flat ? '' : (up ? '▲' : '▼')) + mag;
+if (q.changeBasis) c.title = 'Change ' + q.changeBasis;
 el.appendChild(c);
 }
 return el;
