@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T02:06:13.610Z",
+  "generatedAt": "2026-09-24T02:08:27.565Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -95,23 +95,9 @@
       "changeBasis": "vs WA Ecology Auction 14 ($64.56)",
       "source": "WA Ecology Auction 15",
       "manual": true
-    },
-    {
-      "key": "eia:renewable-share",
-      "label": "Renewables Share of US Power",
-      "value": 19,
-      "unit": "%",
-      "prefix": "",
-      "asOf": "2026-09-23",
-      "decimals": 0,
-      "change": null,
-      "changePct": null,
-      "changeFmt": "pt",
-      "changeDecimals": 0,
-      "changeBasis": null,
-      "source": "EIA Hourly Electric Grid Monitor (24h average)",
-      "manual": false
     }
   ],
-  "errors": []
+  "errors": [
+    "EIA renewable share: no hour in the last 2200 had a complete fuel-type breakdown"
+  ]
 }
