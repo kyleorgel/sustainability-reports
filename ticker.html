@@ -93,20 +93,12 @@ animation:scroll var(--dur,40s) linear infinite;
 .item .chg.down{color:var(--down)}
 .item .chg.flat{color:var(--muted)}
 .sep{color:var(--line);padding:0 2px;font-size:12px;user-select:none;}
-#credit{
-flex:0 0 auto;display:flex;align-items:center;padding:0 12px;
-border-left:1px solid var(--line);
-font-size:8.5px;color:#9a9a9a;letter-spacing:.05em;white-space:nowrap;
-}
-#credit a{color:#9a9a9a;text-decoration:none;}
-#credit a:hover{text-decoration:underline;}
 @media (max-width:900px){
 :root{--news-w:330px;}
 #news .nl{font-size:12px;}
 }
 @media (max-width:640px){
 #news{display:none!important;}
-#credit{display:none;}
 .item{font-size:11.5px;padding:0 14px;}
 }
 </style>
@@ -124,7 +116,6 @@ font-size:8.5px;color:#9a9a9a;letter-spacing:.05em;white-space:nowrap;
 </div>
 <div id="strip">
 <div id="viewport"><div id="track"></div></div>
-<div id="credit"><span>EIA&nbsp;·&nbsp;FRED&nbsp;·&nbsp;RGGI&nbsp;·&nbsp;CARB&nbsp;·&nbsp;WA&nbsp;ECOLOGY&nbsp;·&nbsp;NOAA&nbsp;·&nbsp;NASA</span></div>
 </div>
 </div>
 <script>
