@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T13:21:04.704Z",
+  "generatedAt": "2026-09-28T01:21:05.143Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
-      "company": "Paychex",
-      "ticker": "PAYX",
-      "report": "2026 Corporate Responsibility Report",
+      "company": "News Corp (Class B)",
+      "ticker": "NWS",
+      "report": "2026 Social Impact Report",
       "year": "2026",
-      "date": "2026-09-23",
-      "url": "https://www.paychex.com/sites/default/files/2026-09/paychex-corporate-responsibility-report-2026.pdf"
+      "date": "2026-09-27",
+      "url": "https://newscorp.com/wp-content/uploads/2026/09/News-Corp-2026-Social-Impact-Report-1.pdf"
     },
     {
-      "company": "Carrier Global",
-      "ticker": "CARR",
-      "report": "Sustainability and Impact Report 2026",
+      "company": "News Corp (Class A)",
+      "ticker": "NWSA",
+      "report": "2026 Social Impact Report",
       "year": "2026",
-      "date": "2026-09-23",
-      "url": "https://brandportal.carrier.com/asset/405c78a6-2d0f-4b99-b3bf-03bb3bea408e/sustainability-impact-full-report-2026.pdf"
+      "date": "2026-09-27",
+      "url": "https://newscorp.com/wp-content/uploads/2026/09/News-Corp-2026-Social-Impact-Report-1.pdf"
     },
     {
-      "company": "W. W. Grainger",
-      "ticker": "GWW",
-      "report": "Impact Report 2026",
-      "year": "2026",
-      "date": "2026-09-20",
-      "url": "https://s1.q4cdn.com/422144722/files/doc_downloads/2026/08/24/Grainger-2026-Impact-Report-FINAL.pdf"
+      "company": "Lowe's",
+      "ticker": "LOW",
+      "report": "2025 Corproate Responsibility Report",
+      "year": "2025",
+      "date": "2026-09-27",
+      "url": "https://corporate.lowes.com/sites/lowes-corp/files/2026-09/Lowes_2025_CRR_9.21.26.pdf"
     }
   ],
   "errors": []
