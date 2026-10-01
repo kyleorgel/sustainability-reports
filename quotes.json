@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T21:21:07.449Z",
+  "generatedAt": "2026-10-01T01:21:07.612Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -104,12 +104,12 @@
     {
       "key": "eia:carbonfree-share",
       "label": "Carbon-Free Share of US Power",
-      "value": 41,
+      "value": 42,
       "unit": "%",
       "prefix": "",
       "asOf": "2026-09-30",
       "decimals": 0,
-      "change": 3,
+      "change": 4,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
+      "company": "Synchrony Financial",
+      "ticker": "SYF",
+      "report": "2026 TCFD Report",
+      "year": "2026",
+      "date": "2026-09-30",
+      "url": "https://d1io3yog0oux5.cloudfront.net/_47e8d604914ba15a6ed456fca5ee809c/synchrony/db/3715/33384/file/Synchrony+TCFD+Report+%E2%80%93+April+29%2C+2026.pdf"
+    },
+    {
+      "company": "EOG Resources",
+      "ticker": "EOG",
+      "report": "2025 Sustainability Performance Report",
+      "year": "2025",
+      "date": "2026-09-30",
+      "url": "https://eogresources.s3.us-east-2.amazonaws.com/EOG_2025_Sustainability_Performance_Report.pdf"
+    },
+    {
       "company": "News Corp (Class B)",
       "ticker": "NWS",
       "report": "2026 Social Impact Report",
       "year": "2026",
       "date": "2026-09-27",
       "url": "https://newscorp.com/wp-content/uploads/2026/09/News-Corp-2026-Social-Impact-Report-1.pdf"
-    },
-    {
-      "company": "News Corp (Class A)",
-      "ticker": "NWSA",
-      "report": "2026 Social Impact Report",
-      "year": "2026",
-      "date": "2026-09-27",
-      "url": "https://newscorp.com/wp-content/uploads/2026/09/News-Corp-2026-Social-Impact-Report-1.pdf"
-    },
-    {
-      "company": "Lowe's",
-      "ticker": "LOW",
-      "report": "2025 Corproate Responsibility Report",
-      "year": "2025",
-      "date": "2026-09-27",
-      "url": "https://corporate.lowes.com/sites/lowes-corp/files/2026-09/Lowes_2025_CRR_9.21.26.pdf"
     }
   ],
   "errors": []
