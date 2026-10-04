@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T13:21:07.292Z",
+  "generatedAt": "2026-10-04T13:21:04.071Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -107,14 +107,14 @@
       "value": 38,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-10-03",
+      "asOf": "2026-10-04",
       "decimals": 0,
-      "change": -3,
+      "change": -8,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (41%)",
+      "changeBasis": "vs the same 24 hours a week earlier (46%)",
       "source": "EIA Hourly Electric Grid Monitor (24h average)",
       "manual": false
     },
@@ -124,14 +124,14 @@
       "value": 34,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-10-03",
+      "asOf": "2026-10-04",
       "decimals": 0,
-      "change": -4,
+      "change": -7,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (38%)",
+      "changeBasis": "vs the same 24 hours a week earlier (41%)",
       "source": "EIA Hourly Electric Grid Monitor (ERCOT) (24h average)",
       "manual": false
     },
