@@ -760,9 +760,9 @@
    "Company Name": "Bio-Techne",
    "Ticker": "TECH",
    "Sector / Industry": "Health Care",
-   "Report Name": "Sustainability Report 2025",
-   "Report Year": "2025",
-   "Report URL": "https://resources.bio-techne.com/bio-techne-assets/docs/pdfs/biotechne-sustainability-report-2025.pdf",
+   "Report Name": "Sustainability Report 2026",
+   "Report Year": "2026",
+   "Report URL": "https://resources.bio-techne.com/bio-techne-assets/docs/pdfs/2026-corporate-sustainability-report.pdf",
    "Landing Page URL": "https://www.bio-techne.com/about/corporate-and-social-responsibility",
    "Status": "Candidate Pending Review"
   }
@@ -904,9 +904,9 @@
    "Company Name": "Broadridge Financial Solutions",
    "Ticker": "BR",
    "Sector / Industry": "Industrials",
-   "Report Name": "Sustainability Report 2025",
-   "Report Year": "2025",
-   "Report URL": "https://www.broadridge.com/_assets/pdf/broadridge-sustainability-report-2025.pdf",
+   "Report Name": "Sustainability Report 2026",
+   "Report Year": "2026",
+   "Report URL": "https://www.broadridge.com/_assets/pdf/broadridge-sustainability-report-2026.pdf",
    "Landing Page URL": "https://www.broadridge.com/about/sustainability/",
    "Status": "Candidate Pending Review"
   }
@@ -1096,9 +1096,9 @@
    "Company Name": "Cboe Global Markets",
    "Ticker": "CBOE",
    "Sector / Industry": "Financials",
-   "Report Name": "2025 Corporate Stewardship Report",
-   "Report Year": "2025",
-   "Report URL": "https://cdn.cboe.com/resources/aboutcboe/Cboe_CSR_Report_2025_FINAL.pdf",
+   "Report Name": "2026 Corporate Stewardship Report",
+   "Report Year": "2026",
+   "Report URL": "https://cdn.cboe.com/resources/aboutcboe/Cboe_CSR_Report_2025_2026.pdf",
    "Landing Page URL": "https://www.cboe.com/about/corporate-stewardship/",
    "Status": "Candidate Pending Review"
   }
@@ -1206,8 +1206,8 @@
    "Sector / Industry": "Communication Services",
    "Report Name": "None Published",
    "Report Year": "",
-   "Report URL": "None Available",
-   "Landing Page URL": "None Available",
+   "Report URL": "None Published",
+   "Landing Page URL": "None Published",
    "Status": ""
   }
  },
@@ -1711,7 +1711,7 @@
    "Report Name": "Impact Report 2026",
    "Report Year": "2026",
    "Report URL": "https://darden.com/sites/default/files/2026-08/DRI%202026%20Impact%20Report.pdf",
-   "Landing Page URL": "https://www.darden.com/our-impact/communities/sustainability",
+   "Landing Page URL": "https://www.darden.com/our-impact/communities/sustainability/climate-risks/",
    "Status": "Candidate Pending Review"
   }
  },
@@ -1804,9 +1804,9 @@
    "Company Name": "Dexcom",
    "Ticker": "DXCM",
    "Sector / Industry": "Health Care",
-   "Report Name": "2024 Sustainability Report Final",
-   "Report Year": "2024",
-   "Report URL": "https://s201.q4cdn.com/758408164/files/doc_downloads/2025/2024-Sustainability-Report_FINAL.pdf",
+   "Report Name": "Sustainability Report",
+   "Report Year": "2025",
+   "Report URL": "https://s201.q4cdn.com/758408164/files/doc_downloads/2026/09/Sustainability-Report-2025_FINAL.pdf",
    "Landing Page URL": "https://investors.dexcom.com/esg/default.aspx",
    "Status": "Needs Manual Check"
   }
@@ -1984,10 +1984,10 @@
    "Company Name": "EchoStar",
    "Ticker": "ECHO",
    "Sector / Industry": "Communication Services",
-   "Report Name": "2024 Impact Report",
-   "Report Year": "2024",
-   "Report URL": "https://ir.echostar.com/static-files/b8525070-30d3-447e-b992-bb87be2393f5",
-   "Landing Page URL": "https://ir.echostar.com/financial-information/annual-reports",
+   "Report Name": "None Published",
+   "Report Year": "",
+   "Report URL": "None Published",
+   "Landing Page URL": "None Published",
    "Status": "Needs Manual Check"
   }
  },
@@ -2416,9 +2416,9 @@
    "Company Name": "Fifth Third Bancorp",
    "Ticker": "FITB",
    "Sector / Industry": "Financials",
-   "Report Name": "2024 Sustainability Report",
-   "Report Year": "2024",
-   "Report URL": "https://s23.q4cdn.com/252949160/files/doc_downloads/2025/07/2024-Sustainability-Report.pdf",
+   "Report Name": "2025 Sustainability Report",
+   "Report Year": "2025",
+   "Report URL": "https://s23.q4cdn.com/252949160/files/doc_downloads/2026/08/26/2025-Sustainability-Report.pdf",
    "Landing Page URL": "https://ir.53.com/sustainability/overview/default.aspx",
    "Status": "Needs Manual Check"
   }
@@ -3112,10 +3112,10 @@
    "Company Name": "Intercontinental Exchange",
    "Ticker": "ICE",
    "Sector / Industry": "Financials",
-   "Report Name": "Sustainability Message from CEO",
-   "Report Year": "",
-   "Report URL": "https://uat2.ice.com/about/sustainability-report",
-   "Landing Page URL": "https://uat2.ice.com/about/sustainability-report",
+   "Report Name": "2025 TCFD Report",
+   "Report Year": "2025",
+   "Report URL": "https://www.ice.com/publicdocs/2025_TCFD_Report.pdf",
+   "Landing Page URL": "https://www.ice.com/about/corporate-responsibility/approach",
    "Status": "Report file changed"
   }
  },
@@ -3175,7 +3175,7 @@
    "Report Name": "2024 Global Stewardship Report",
    "Report Year": "2024",
    "Report URL": "https://www.invesco.com/content/dam/invesco/corporate/en/pdfs/reports/Global_Stewardship_Report.pdf",
-   "Landing Page URL": "None Available",
+   "Landing Page URL": "None Published",
    "Status": ""
   }
  },
@@ -4276,9 +4276,9 @@
    "Company Name": "Omnicom Group",
    "Ticker": "OMC",
    "Sector / Industry": "Communication Services",
-   "Report Name": "2024 Corporate Responsibility Report",
-   "Report Year": "2024",
-   "Report URL": "https://www.omc.com/wp-content/uploads/2025/12/OmnicomReport_2024-CSR-Report.pdf",
+   "Report Name": "2025 Environmental Overview",
+   "Report Year": "2025",
+   "Report URL": "https://www.omc.com/wp-content/uploads/2026/09/Omnicom-2025-Environmental-Overview-v2.pdf",
    "Landing Page URL": "https://www.omc.com/about/corporate-governance/",
    "Status": "Candidate Pending Review"
   }
@@ -4684,9 +4684,9 @@
    "Company Name": "Quanta Services",
    "Ticker": "PWR",
    "Sector / Industry": "Industrials",
-   "Report Name": "2024 Sustainability Report",
-   "Report Year": "2024",
-   "Report URL": "https://sustainability.quantaservices.com/wp-content/uploads/2025/09/2024-Quanta-Sustainability-Report.pdf",
+   "Report Name": "2025 Sustainability Report",
+   "Report Year": "2025",
+   "Report URL": "https://sustainability.quantaservices.com/wp-content/uploads/2026/09/Quanta-Sustainability-Report-2025.pdf",
    "Landing Page URL": "https://sustainability.quantaservices.com/",
    "Status": "Candidate Pending Review"
   }
@@ -6040,8 +6040,8 @@
    "Company Name": "Workday, Inc.",
    "Ticker": "WDAY",
    "Sector / Industry": "Information Technology",
-   "Report Name": "Workday Global Impact Report",
-   "Report Year": "2025",
+   "Report Name": "2026 Global Impact Report",
+   "Report Year": "2026",
    "Report URL": "https://www.workday.com/content/dam/web/en-us/documents/other/workday-global-impact-report.pdf",
    "Landing Page URL": "https://www.workday.com/en-us/company/corporate-responsibility/sustainability.html",
    "Status": "Report file changed"
