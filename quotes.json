@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T13:21:11.129Z",
+  "generatedAt": "2026-10-06T01:21:03.838Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
-      "company": "Synchrony Financial",
-      "ticker": "SYF",
-      "report": "2026 TCFD Report",
+      "company": "Workday, Inc.",
+      "ticker": "WDAY",
+      "report": "2026 Global Impact Report",
       "year": "2026",
-      "date": "2026-09-30",
-      "url": "https://d1io3yog0oux5.cloudfront.net/_47e8d604914ba15a6ed456fca5ee809c/synchrony/db/3715/33384/file/Synchrony+TCFD+Report+%E2%80%93+April+29%2C+2026.pdf"
+      "date": "2026-10-06",
+      "url": "https://www.workday.com/content/dam/web/en-us/documents/other/workday-global-impact-report.pdf"
     },
     {
-      "company": "EOG Resources",
-      "ticker": "EOG",
-      "report": "2025 Sustainability Performance Report",
+      "company": "Quanta Services",
+      "ticker": "PWR",
+      "report": "2025 Sustainability Report",
       "year": "2025",
-      "date": "2026-09-30",
-      "url": "https://eogresources.s3.us-east-2.amazonaws.com/EOG_2025_Sustainability_Performance_Report.pdf"
+      "date": "2026-10-06",
+      "url": "https://sustainability.quantaservices.com/wp-content/uploads/2026/09/Quanta-Sustainability-Report-2025.pdf"
     },
     {
-      "company": "News Corp (Class B)",
-      "ticker": "NWS",
-      "report": "2026 Social Impact Report",
-      "year": "2026",
-      "date": "2026-09-27",
-      "url": "https://newscorp.com/wp-content/uploads/2026/09/News-Corp-2026-Social-Impact-Report-1.pdf"
+      "company": "Omnicom Group",
+      "ticker": "OMC",
+      "report": "2025 Environmental Overview",
+      "year": "2025",
+      "date": "2026-10-06",
+      "url": "https://www.omc.com/wp-content/uploads/2026/09/Omnicom-2025-Environmental-Overview-v2.pdf"
     }
   ],
   "errors": []
