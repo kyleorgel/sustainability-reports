@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T13:21:07.522Z",
+  "generatedAt": "2026-10-07T05:21:05.740Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
-      "company": "Workday, Inc.",
-      "ticker": "WDAY",
-      "report": "2026 Global Impact Report",
+      "company": "Teledyne Technologies",
+      "ticker": "TDY",
+      "report": "Corporate Social Responsibility Report 2026",
       "year": "2026",
-      "date": "2026-10-06",
-      "url": "https://www.workday.com/content/dam/web/en-us/documents/other/workday-global-impact-report.pdf"
+      "date": "2026-10-07",
+      "url": "https://www.teledyne.com/en-us/About-Us/Documents/teledyne-technologies-incorporated-corporate-social-responsibility-2026.pdf"
     },
     {
-      "company": "Quanta Services",
-      "ticker": "PWR",
-      "report": "2025 Sustainability Report",
+      "company": "Targa Resources",
+      "ticker": "TRGP",
+      "report": "2025 Annual Sustainability Report",
       "year": "2025",
-      "date": "2026-10-06",
-      "url": "https://sustainability.quantaservices.com/wp-content/uploads/2026/09/Quanta-Sustainability-Report-2025.pdf"
+      "date": "2026-10-07",
+      "url": "https://www.targaresources.com/static-files/20982111-38d5-4ce4-a982-d44e85aa0dc5"
     },
     {
-      "company": "Omnicom Group",
-      "ticker": "OMC",
-      "report": "2025 Environmental Overview",
+      "company": "Roper Technologies",
+      "ticker": "ROP",
+      "report": "2025 Sustainability Update",
       "year": "2025",
-      "date": "2026-10-06",
-      "url": "https://www.omc.com/wp-content/uploads/2026/09/Omnicom-2025-Environmental-Overview-v2.pdf"
+      "date": "2026-10-07",
+      "url": "https://www.ropertech.com/static-files/ca0d74f5-cba2-410b-bb66-3f06d041fa79"
     }
   ],
   "errors": []
