@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T17:21:04.943Z",
+  "generatedAt": "2026-10-10T13:21:05.818Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -104,53 +104,53 @@
     {
       "key": "eia:carbonfree-share",
       "label": "Carbon-Free Share of US Power",
-      "value": 37,
+      "value": 41,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-10-09",
+      "asOf": "2026-10-10",
       "decimals": 0,
-      "change": -2,
+      "change": 3,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (39%)",
+      "changeBasis": "vs the same 24 hours a week earlier (38%)",
       "source": "EIA Hourly Electric Grid Monitor (24h average)",
       "manual": false
     },
     {
       "key": "eia:carbonfree-share-tx",
       "label": "Carbon-Free Share of Texas Power",
-      "value": 35,
+      "value": 37,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-10-09",
+      "asOf": "2026-10-10",
       "decimals": 0,
-      "change": 0,
+      "change": 3,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (35%)",
+      "changeBasis": "vs the same 24 hours a week earlier (34%)",
       "source": "EIA Hourly Electric Grid Monitor (ERCOT) (24h average)",
       "manual": false
     },
     {
       "key": "noaa:co2-mlo-weekly",
       "label": "Atmospheric CO₂",
-      "value": 425.68,
+      "value": 426.23,
       "unit": "ppm",
       "prefix": "",
-      "asOf": "2026-09-27",
+      "asOf": "2026-10-04",
       "decimals": 1,
-      "change": null,
-      "changePct": null,
+      "change": 1.54,
+      "changePct": 0.36,
       "changeFmt": "abs",
       "changeUnit": "ppm",
       "changeDecimals": 1,
-      "changeLabel": null,
-      "changeBasis": null,
-      "source": "NOAA GML Mauna Loa weekly mean (week of 2026-09-27)",
+      "changeLabel": "y/y",
+      "changeBasis": "vs the same week a year earlier (424.69 ppm)",
+      "source": "NOAA GML Mauna Loa weekly mean (week of 2026-10-04)",
       "manual": false
     },
     {
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
-      "company": "Teledyne Technologies",
-      "ticker": "TDY",
-      "report": "Corporate Social Responsibility Report 2026",
+      "company": "General Dynamics",
+      "ticker": "GD",
+      "report": "2026 Sustainability Report",
       "year": "2026",
-      "date": "2026-10-07",
-      "url": "https://www.teledyne.com/en-us/About-Us/Documents/teledyne-technologies-incorporated-corporate-social-responsibility-2026.pdf"
+      "date": "2026-10-10",
+      "url": "https://www.gd.com/-/media/gd-corporate/pdf/gd-2026-sustainability-report.ashx"
     },
     {
-      "company": "Targa Resources",
-      "ticker": "TRGP",
-      "report": "2025 Annual Sustainability Report",
-      "year": "2025",
-      "date": "2026-10-07",
-      "url": "https://www.targaresources.com/static-files/20982111-38d5-4ce4-a982-d44e85aa0dc5"
+      "company": "FirstEnergy",
+      "ticker": "FE",
+      "report": "2026 Corporate Responsibility Report",
+      "year": "2026",
+      "date": "2026-10-10",
+      "url": "https://www.firstenergycorp.com/content/dam/corporate/fecorporateresponsibility/files/reports-resources/crreport/2026-corporate-responsibility-report.pdf"
     },
     {
-      "company": "Roper Technologies",
-      "ticker": "ROP",
-      "report": "2025 Sustainability Update",
-      "year": "2025",
-      "date": "2026-10-07",
-      "url": "https://www.ropertech.com/static-files/ca0d74f5-cba2-410b-bb66-3f06d041fa79"
+      "company": "Diamondback Energy",
+      "ticker": "FANG",
+      "report": "Corporate Sustainability Report",
+      "year": "2026",
+      "date": "2026-10-10",
+      "url": "https://issuu.com/diamondback/docs/2026_corporate_sustainability_report?fr=sOTU3ZjkzMjUyMzc"
     }
   ],
   "errors": []
