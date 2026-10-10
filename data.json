@@ -92,7 +92,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.aes.com/sites/vault/files/2026-08/2025-Improving-Lives-Report.pdf",
    "Landing Page URL": "https://www.aes.com/sustainability-impact/accountability/sustainability-resources",
-   "Status": ""
+   "Status": "Report file changed"
   }
  },
  {
@@ -152,7 +152,7 @@
    "Report Year": "2025",
    "Report URL": "https://akasus-wp-objectstore.us-ord-1.linodeobjects.com/uploads/20260727172608/Akamai-Sustainability-Report-FY25-v2.pdf",
    "Landing Page URL": "https://akamaisustainability.com/governance/disclosures/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -416,7 +416,7 @@
    "Report Year": "2025",
    "Report URL": "https://analog.com/media/en/company-csr/2025-esg-report.pdf",
    "Landing Page URL": "https://www.analog.com/en/corporate-responsibility/reports-library.html",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -1820,7 +1820,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.diamondbackenergy.com/static-files/faf5ab25-5ab5-4404-8c04-c7bd387ae418",
    "Landing Page URL": "https://www.diamondbackenergy.com/about/sustainability",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -2444,7 +2444,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.firstenergycorp.com/content/dam/corporate/fecorporateresponsibility/files/reports-resources/crreport/2025-corporate-responsibility-report.pdf",
    "Landing Page URL": "https://www.firstenergycorp.com/about/corporate-responsibility.html",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -2648,7 +2648,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.gd.com/-/media/gd-corporate/pdf/gd-2025-sustainability-report.ashx",
    "Landing Page URL": "https://www.gd.com/responsibility",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -3812,7 +3812,7 @@
    "Report Year": "2025",
    "Report URL": "https://sustainabilityreport.metlife.com/content/dam/metlifecom/us/sustainability/sustainability-2026/report-cover/metlife_sustainability_report_2025.pdf",
    "Landing Page URL": "https://sustainabilityreport.metlife.com/report/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -4160,7 +4160,7 @@
    "Report Year": "2025",
    "Report URL": "https://cdn.northropgrumman.com/-/media/Project/Northrop-Grumman/ngc/who-we-are/Sustainability/2025-Sustainability-Report.pdf",
    "Landing Page URL": "https://www.northropgrumman.com/corporate-responsibility/sustainability-reports",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -4256,7 +4256,7 @@
    "Report Year": "2026",
    "Report URL": "https://online.flippingbook.com/view/851064034/",
    "Landing Page URL": "https://www.oxy.com/sustainability/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -4700,7 +4700,7 @@
    "Report Year": "2022",
    "Report URL": "https://www.questdiagnostics.com/content/dam/corporate/unrestricted/documents/our-company/corporate-responsibility/Quest-Diagnostics-Corporate-Responsibility-Report-2022-Final.pdf",
    "Landing Page URL": "https://www.questdiagnostics.com/our-company/corporate-responsibility/esg-index",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -5025,6 +5025,18 @@
    "Report URL": "https://brochures.simon.com/2025-Sustainability-Report/",
    "Landing Page URL": "https://investors.simon.com/sustainability",
    "Status": ""
+  }
+ },
+ {
+  "fields": {
+   "Company Name": "Skydance Corporation",
+   "Ticker": "SKYD",
+   "Sector / Industry": "",
+   "Report Name": "",
+   "Report Year": "",
+   "Report URL": "",
+   "Landing Page URL": "",
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -5497,6 +5509,18 @@
  },
  {
   "fields": {
+   "Company Name": "Twilio",
+   "Ticker": "TWLO",
+   "Sector / Industry": "",
+   "Report Name": "",
+   "Report Year": "",
+   "Report URL": "",
+   "Landing Page URL": "",
+   "Status": "Needs Manual Check"
+  }
+ },
+ {
+  "fields": {
    "Company Name": "Tyler Technologies",
    "Ticker": "TYL",
    "Sector / Industry": "Information Technology",
@@ -5660,7 +5684,7 @@
    "Report Year": "2026",
    "Report URL": "https://s23.q4cdn.com/587626645/files/doc_downloads/2026/08/2026-GPR-FINAL-Digital.pdf",
    "Landing Page URL": "https://investorvalero.com/GovernanceEngagement/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -5829,6 +5853,18 @@
    "Report URL": "https://assets.contentstack.io/v3/assets/bltfd7cf707acd5b8e3/blt47bc1ac83694c963/6a70ff1d7c5241abd3e72a30/2025_Vulcan_Sustainability_Report.pdf",
    "Landing Page URL": "https://www.vulcanmaterials.com/investors/corporate-governance/reports",
    "Status": ""
+  }
+ },
+ {
+  "fields": {
+   "Company Name": "Vylor",
+   "Ticker": "VYLR",
+   "Sector / Industry": "",
+   "Report Name": "",
+   "Report Year": "",
+   "Report URL": "",
+   "Landing Page URL": "",
+   "Status": "Needs Manual Check"
   }
  },
  {
@@ -6008,7 +6044,7 @@
    "Report Year": "2025",
    "Report URL": "https://williams.com/file-manager/2025-sustainability-report",
    "Landing Page URL": "https://www.williams.com/sustainability/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
