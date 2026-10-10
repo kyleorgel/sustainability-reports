@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T13:21:05.818Z",
+  "generatedAt": "2026-10-10T17:21:05.485Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
+      "company": "United Rentals",
+      "ticker": "URI",
+      "report": "Corporate Responsibility Report 2025",
+      "year": "2025",
+      "date": "2026-10-10",
+      "url": "https://www.unitedrentals.com/sites/default/files/press-releases/UnitedRentals2025CorporateResponsibilityReport.pdf"
+    },
+    {
+      "company": "Texas Pacific Land Corporation",
+      "ticker": "TPL",
+      "report": "Environment Performance Metrics",
+      "year": "2025",
+      "date": "2026-10-10",
+      "url": "https://www.texaspacific.com/esg/performance-data-indices"
+    },
+    {
       "company": "General Dynamics",
       "ticker": "GD",
       "report": "2026 Sustainability Report",
       "year": "2026",
       "date": "2026-10-10",
       "url": "https://www.gd.com/-/media/gd-corporate/pdf/gd-2026-sustainability-report.ashx"
-    },
-    {
-      "company": "FirstEnergy",
-      "ticker": "FE",
-      "report": "2026 Corporate Responsibility Report",
-      "year": "2026",
-      "date": "2026-10-10",
-      "url": "https://www.firstenergycorp.com/content/dam/corporate/fecorporateresponsibility/files/reports-resources/crreport/2026-corporate-responsibility-report.pdf"
-    },
-    {
-      "company": "Diamondback Energy",
-      "ticker": "FANG",
-      "report": "Corporate Sustainability Report",
-      "year": "2026",
-      "date": "2026-10-10",
-      "url": "https://issuu.com/diamondback/docs/2026_corporate_sustainability_report?fr=sOTU3ZjkzMjUyMzc"
     }
   ],
   "errors": []
