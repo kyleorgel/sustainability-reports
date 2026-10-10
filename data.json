@@ -4381,18 +4381,6 @@
  },
  {
   "fields": {
-   "Company Name": "Paramount Skydance Corporation",
-   "Ticker": "PSKY",
-   "Sector / Industry": "Communication Services",
-   "Report Name": "ESG Report 2023 2024",
-   "Report Year": "2024",
-   "Report URL": "https://www.paramount.com/sites/g/files/dxjhpe356/files/2024-10/Paramount_ESG_Report_2023-2024.pdf",
-   "Landing Page URL": "https://www.paramount.com/about/sustainability/reporting-archive",
-   "Status": "Needs Manual Check"
-  }
- },
- {
-  "fields": {
    "Company Name": "Parker Hannifin",
    "Ticker": "PH",
    "Sector / Industry": "Industrials",
@@ -5031,12 +5019,12 @@
   "fields": {
    "Company Name": "Skydance Corporation",
    "Ticker": "SKYD",
-   "Sector / Industry": "",
-   "Report Name": "",
-   "Report Year": "",
-   "Report URL": "",
-   "Landing Page URL": "",
-   "Status": "Needs Manual Check"
+   "Sector / Industry": "Communication Services",
+   "Report Name": "ESG Report 2023-2024",
+   "Report Year": "2024",
+   "Report URL": "https://www.skydance.com/files/documents/Paramount_ESG_Report_2023-2024.pdf",
+   "Landing Page URL": "https://www.skydance.com/about/sustainability",
+   "Status": ""
   }
  },
  {
@@ -5369,9 +5357,9 @@
    "Ticker": "TPL",
    "Sector / Industry": "Energy",
    "Report Name": "Environment Performance Metrics",
-   "Report Year": "2024",
-   "Report URL": "Sustainability Data on the Landing Page",
-   "Landing Page URL": "https://www.texaspacific.com/sustainability-reports",
+   "Report Year": "2025",
+   "Report URL": "https://www.texaspacific.com/esg/performance-data-indices",
+   "Landing Page URL": "https://www.texaspacific.com/esg/performance-data-indices",
    "Status": "Needs Manual Check"
   }
  },
@@ -5512,10 +5500,10 @@
    "Company Name": "Twilio",
    "Ticker": "TWLO",
    "Sector / Industry": "",
-   "Report Name": "",
-   "Report Year": "",
-   "Report URL": "",
-   "Landing Page URL": "",
+   "Report Name": "2025 Impact Factsheet",
+   "Report Year": "2025",
+   "Report URL": "https://www.twilio.com/content/dam/twilio-com/2025-gir/2025%20Twilio%20Impact%20Factsheet.pdf",
+   "Landing Page URL": "https://www.twilio.com/en-us/report/2025-global-impact-report",
    "Status": "Needs Manual Check"
   }
  },
@@ -5644,9 +5632,9 @@
    "Company Name": "United Rentals",
    "Ticker": "URI",
    "Sector / Industry": "Industrials",
-   "Report Name": "Corporate Responsibility Report 2024",
-   "Report Year": "2024",
-   "Report URL": "https://www.unitedrentals.com/sites/default/files/press-releases/Corporate-Responsibility-Report-2024.pdf",
+   "Report Name": "Corporate Responsibility Report 2025",
+   "Report Year": "2025",
+   "Report URL": "https://www.unitedrentals.com/sites/default/files/press-releases/UnitedRentals2025CorporateResponsibilityReport.pdf",
    "Landing Page URL": "https://www.unitedrentals.com/our-company/corporate-responsibility-report",
    "Status": "Needs Manual Check"
   }
@@ -5862,8 +5850,8 @@
    "Sector / Industry": "",
    "Report Name": "",
    "Report Year": "",
-   "Report URL": "",
-   "Landing Page URL": "",
+   "Report URL": "None Published",
+   "Landing Page URL": "https://www.vylor.com/en/our-story/our-impact/",
    "Status": "Needs Manual Check"
   }
  },
