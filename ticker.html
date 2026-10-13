@@ -262,7 +262,9 @@ idx = (idx + 1) % links.length;
 links[idx].classList.add('show');
 }, 6000);
 }
+var stripBuild = 0;
 function buildStrip(custom, updates){
+var build = ++stripBuild;
 var track = document.getElementById('track');
 var strip = document.getElementById('strip');
 track.innerHTML = '';
@@ -286,12 +288,20 @@ half.style.display = 'inline-flex';
 half.style.alignItems = 'center';
 fill(half);
 track.appendChild(half);
-requestAnimationFrame(function(){
+// Measure once laid out. A newer layout() - the frame crossing 640px, e.g. the Wix editor
+// stretching the embed after load - makes this build stale, and a stale build must not
+// touch the track. While the frame is hidden, animation frames are held back, so the old
+// callback used to run after its strip had been replaced, measure 0px and clone it
+// hundreds of times: the strip raced and showed NEW items beside the NEW box.
+var tries = 0;
+function measure(){
+if (build !== stripBuild || !half.isConnected) return;
 var vp = document.getElementById('viewport');
 var vw = vp ? vp.getBoundingClientRect().width : 0;
 var w = half.getBoundingClientRect().width;
+if ((w <= 0 || vw <= 0) && tries++ < 20) { setTimeout(measure, 250); return; }
 if (w > 0 && w <= vw - 8) { track.className = 'static'; return; }
-var reps = Math.max(1, Math.ceil(vw / Math.max(w, 1)));
+var reps = Math.min(12, Math.max(1, Math.ceil(vw / Math.max(w, 1))));
 for (var i = 1; i < reps; i++) track.appendChild(half.cloneNode(true));
 var clone = document.createElement('span');
 clone.style.display = 'inline-flex';
@@ -299,7 +309,8 @@ clone.style.alignItems = 'center';
 for (var j = 0; j < reps; j++) clone.appendChild(half.cloneNode(true));
 track.appendChild(clone);
 track.style.setProperty('--dur', Math.max(20, Math.round((w * reps) / 42)) + 's');
-});
+}
+requestAnimationFrame(measure);
 }
 fetch('quotes.json')
 .then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
