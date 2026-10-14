@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T13:21:16.797Z",
+  "generatedAt": "2026-10-14T05:21:12.590Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,6 +191,14 @@
   ],
   "updates": [
     {
+      "company": "BNY Mellon",
+      "ticker": "BNY",
+      "report": "2025 TCFD Report",
+      "year": "2025",
+      "date": "2026-10-14",
+      "url": "https://www.bny.com/assets/corporate/documents/pdf/about-us/climate-related-financial-disclosure-tcfd-2025.pdf"
+    },
+    {
       "company": "United Rentals",
       "ticker": "URI",
       "report": "Corporate Responsibility Report 2025",
@@ -205,14 +213,6 @@
       "year": "2025",
       "date": "2026-10-10",
       "url": "https://www.texaspacific.com/esg/performance-data-indices"
-    },
-    {
-      "company": "General Dynamics",
-      "ticker": "GD",
-      "report": "2026 Sustainability Report",
-      "year": "2026",
-      "date": "2026-10-10",
-      "url": "https://www.gd.com/-/media/gd-corporate/pdf/gd-2026-sustainability-report.ashx"
     }
   ],
   "errors": []
