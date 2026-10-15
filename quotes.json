@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T17:21:09.146Z",
+  "generatedAt": "2026-10-15T01:21:05.302Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -104,12 +104,12 @@
     {
       "key": "eia:carbonfree-share",
       "label": "Carbon-Free Share of US Power",
-      "value": 43,
+      "value": 41,
       "unit": "%",
       "prefix": "",
       "asOf": "2026-10-14",
       "decimals": 0,
-      "change": 2,
+      "change": 0,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
