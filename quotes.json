@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T01:21:23.475Z",
+  "generatedAt": "2026-10-17T05:22:04.722Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -102,40 +102,6 @@
       "manual": true
     },
     {
-      "key": "eia:carbonfree-share",
-      "label": "Carbon-Free Share of US Power",
-      "value": 40,
-      "unit": "%",
-      "prefix": "",
-      "asOf": "2026-10-16",
-      "decimals": 0,
-      "change": 3,
-      "changePct": null,
-      "changeFmt": "pt",
-      "changeDecimals": 0,
-      "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (37%)",
-      "source": "EIA Hourly Electric Grid Monitor (24h average)",
-      "manual": false
-    },
-    {
-      "key": "eia:carbonfree-share-tx",
-      "label": "Carbon-Free Share of Texas Power",
-      "value": 45,
-      "unit": "%",
-      "prefix": "",
-      "asOf": "2026-10-16",
-      "decimals": 0,
-      "change": 10,
-      "changePct": null,
-      "changeFmt": "pt",
-      "changeDecimals": 0,
-      "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (35%)",
-      "source": "EIA Hourly Electric Grid Monitor (ERCOT) (24h average)",
-      "manual": false
-    },
-    {
       "key": "noaa:co2-mlo-weekly",
       "label": "Atmospheric CO₂",
       "value": 426.26,
@@ -215,5 +181,9 @@
       "url": "https://www.texaspacific.com/esg/performance-data-indices"
     }
   ],
-  "errors": []
+  "errors": [
+    "EIA grid share: {\"message\":\"timeout of 30000ms exceeded\",\"name\":\"AxiosError\",\"stack\":\"AxiosError: timeout of 30000ms exceeded\\n    at createTimeoutError (/usr/local/lib/node_mo",
+    "EIA Carbon-Free Share of US Power: no EIA data this run",
+    "EIA Carbon-Free Share of Texas Power: no EIA data this run"
+  ]
 }
