@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T17:21:12.024Z",
+  "generatedAt": "2026-10-17T21:21:18.658Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
-      "company": "BNY Mellon",
-      "ticker": "BNY",
-      "report": "2025 TCFD Report",
-      "year": "2025",
-      "date": "2026-10-14",
-      "url": "https://www.bny.com/assets/corporate/documents/pdf/about-us/climate-related-financial-disclosure-tcfd-2025.pdf"
+      "company": "TJX Companies",
+      "ticker": "TJX",
+      "report": "2026 Global Corporate Responsibility Report",
+      "year": "2026",
+      "date": "2026-10-17",
+      "url": "https://www.tjx.com/docs/default-source/corporate-responsibility/tjx-2026-global-corporate-responsibility-report.pdf"
     },
     {
-      "company": "United Rentals",
-      "ticker": "URI",
-      "report": "Corporate Responsibility Report 2025",
+      "company": "JPMorgan Chase",
+      "ticker": "JPM",
+      "report": "Sustainability Report 2025",
       "year": "2025",
-      "date": "2026-10-10",
-      "url": "https://www.unitedrentals.com/sites/default/files/press-releases/UnitedRentals2025CorporateResponsibilityReport.pdf"
+      "date": "2026-10-17",
+      "url": "https://www.jpmorganchase.com/content/dam/jpmorganchase/documents/about/jpmc-sustainability-report-2025.pdf"
     },
     {
-      "company": "Texas Pacific Land Corporation",
-      "ticker": "TPL",
-      "report": "Environment Performance Metrics",
+      "company": "Hormel Foods",
+      "ticker": "HRL",
+      "report": "2025 Global Impact Report",
       "year": "2025",
-      "date": "2026-10-10",
-      "url": "https://www.texaspacific.com/esg/performance-data-indices"
+      "date": "2026-10-17",
+      "url": "https://www.hormelfoods.com/wp-content/uploads/Hormel-Foods-2025-Global-Impact-Report.pdf"
     }
   ],
   "errors": []
