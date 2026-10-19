@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T13:21:18.669Z",
+  "generatedAt": "2026-10-19T21:22:04.808Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -102,40 +102,6 @@
       "manual": true
     },
     {
-      "key": "eia:carbonfree-share",
-      "label": "Carbon-Free Share of US Power",
-      "value": 45,
-      "unit": "%",
-      "prefix": "",
-      "asOf": "2026-10-18",
-      "decimals": 0,
-      "change": -2,
-      "changePct": null,
-      "changeFmt": "pt",
-      "changeDecimals": 0,
-      "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (47%)",
-      "source": "EIA Hourly Electric Grid Monitor (24h average)",
-      "manual": false
-    },
-    {
-      "key": "eia:carbonfree-share-tx",
-      "label": "Carbon-Free Share of Texas Power",
-      "value": 53,
-      "unit": "%",
-      "prefix": "",
-      "asOf": "2026-10-18",
-      "decimals": 0,
-      "change": 0,
-      "changePct": null,
-      "changeFmt": "pt",
-      "changeDecimals": 0,
-      "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (53%)",
-      "source": "EIA Hourly Electric Grid Monitor (ERCOT) (24h average)",
-      "manual": false
-    },
-    {
       "key": "noaa:co2-mlo-weekly",
       "label": "Atmospheric CO₂",
       "value": 426.86,
@@ -215,5 +181,9 @@
       "url": "https://www.hormelfoods.com/wp-content/uploads/Hormel-Foods-2025-Global-Impact-Report.pdf"
     }
   ],
-  "errors": []
+  "errors": [
+    "EIA grid share: {\"message\":\"timeout of 30000ms exceeded\",\"name\":\"AxiosError\",\"stack\":\"AxiosError: timeout of 30000ms exceeded\\n    at createTimeoutError (/usr/local/lib/node_mo",
+    "EIA Carbon-Free Share of US Power: no EIA data this run",
+    "EIA Carbon-Free Share of Texas Power: no EIA data this run"
+  ]
 }
