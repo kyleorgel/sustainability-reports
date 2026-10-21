@@ -1900,9 +1900,9 @@
    "Company Name": "Dover Corporation",
    "Ticker": "DOV",
    "Sector / Industry": "Industrials",
-   "Report Name": "2024 Sustainability Highlights",
-   "Report Year": "2024",
-   "Report URL": "https://www.dovercorporation.com/docs/libraries/esg/dover-esg-highlights-2024.pdf?sfvrsn=363f243_2",
+   "Report Name": "2025 Sustainability Highlights",
+   "Report Year": "2025",
+   "Report URL": "https://www.dovercorporation.com/docs/libraries/esg/dover-esg-highlights-2025_v3.pdf?Status=Master&sfvrsn=d560aeae_10",
    "Landing Page URL": "https://www.dovercorporation.com/sustainability/sustainability-highlights",
    "Status": "Needs Manual Check"
   }
@@ -2260,10 +2260,10 @@
    "Company Name": "Expedia Group",
    "Ticker": "EXPE",
    "Sector / Industry": "Consumer Discretionary",
-   "Report Name": "Global Impact Report 2024",
+   "Report Name": "Climate Action Report",
    "Report Year": "2024",
-   "Report URL": "https://s202.q4cdn.com/757635260/files/doc_downloads/2025/Expedia-Group-Global-Impact-Report-2024.pdf?nvep=&hmac=&emci=a0ef0374-512c-f111-9a48-000d3a14b640&emdi=ea000000-0000-0000-0000-000000000001&ceid=",
-   "Landing Page URL": "None Published",
+   "Report URL": "https://www.expediagroup.com/content/dam/unified/partner/documents/reports/2024-reports/expedia-group-climate-action-plan.pdf",
+   "Landing Page URL": "https://www.expediagroup.com/en-us/about-us/impact-and-sustainability",
    "Status": "Needs Manual Check"
   }
  },
