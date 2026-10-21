@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T13:21:16.477Z",
+  "generatedAt": "2026-10-21T13:21:05.096Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -104,17 +104,17 @@
     {
       "key": "eia:carbonfree-share",
       "label": "Carbon-Free Share of US Power",
-      "value": 44,
+      "value": 42,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-10-20",
+      "asOf": "2026-10-21",
       "decimals": 0,
-      "change": -1,
+      "change": 1,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (45%)",
+      "changeBasis": "vs the same 24 hours a week earlier (41%)",
       "source": "EIA Hourly Electric Grid Monitor (24h average)",
       "manual": false
     },
@@ -124,14 +124,14 @@
       "value": 51,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-10-20",
+      "asOf": "2026-10-21",
       "decimals": 0,
-      "change": -2,
+      "change": 2,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (53%)",
+      "changeBasis": "vs the same 24 hours a week earlier (49%)",
       "source": "EIA Hourly Electric Grid Monitor (ERCOT) (24h average)",
       "manual": false
     },
@@ -191,6 +191,14 @@
   ],
   "updates": [
     {
+      "company": "Dover Corporation",
+      "ticker": "DOV",
+      "report": "2025 Sustainability Highlights",
+      "year": "2025",
+      "date": "2026-10-21",
+      "url": "https://www.dovercorporation.com/docs/libraries/esg/dover-esg-highlights-2025_v3.pdf?Status=Master&sfvrsn=d560aeae_10"
+    },
+    {
       "company": "TJX Companies",
       "ticker": "TJX",
       "report": "2026 Global Corporate Responsibility Report",
@@ -205,14 +213,6 @@
       "year": "2025",
       "date": "2026-10-17",
       "url": "https://www.jpmorganchase.com/content/dam/jpmorganchase/documents/about/jpmc-sustainability-report-2025.pdf"
-    },
-    {
-      "company": "Hormel Foods",
-      "ticker": "HRL",
-      "report": "2025 Global Impact Report",
-      "year": "2025",
-      "date": "2026-10-17",
-      "url": "https://www.hormelfoods.com/wp-content/uploads/Hormel-Foods-2025-Global-Impact-Report.pdf"
     }
   ],
   "errors": []
