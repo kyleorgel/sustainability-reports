@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T13:21:27.575Z",
+  "generatedAt": "2026-10-23T13:21:03.946Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -104,17 +104,17 @@
     {
       "key": "eia:carbonfree-share",
       "label": "Carbon-Free Share of US Power",
-      "value": 38,
+      "value": 39,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-10-22",
+      "asOf": "2026-10-23",
       "decimals": 0,
-      "change": 2,
+      "change": -1,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (36%)",
+      "changeBasis": "vs the same 24 hours a week earlier (40%)",
       "source": "EIA Hourly Electric Grid Monitor (24h average)",
       "manual": false
     },
@@ -124,14 +124,14 @@
       "value": 42,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-10-22",
+      "asOf": "2026-10-23",
       "decimals": 0,
-      "change": -2,
+      "change": -3,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (44%)",
+      "changeBasis": "vs the same 24 hours a week earlier (45%)",
       "source": "EIA Hourly Electric Grid Monitor (ERCOT) (24h average)",
       "manual": false
     },
