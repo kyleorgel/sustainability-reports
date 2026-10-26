@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T13:21:04.002Z",
+  "generatedAt": "2026-10-26T01:21:03.255Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
-      "company": "Dover Corporation",
-      "ticker": "DOV",
-      "report": "2025 Sustainability Highlights",
+      "company": "Mosaic Company (The)",
+      "ticker": "MOS",
+      "report": "2025 Sustainability Disclosure",
       "year": "2025",
-      "date": "2026-10-21",
-      "url": "https://www.dovercorporation.com/docs/libraries/esg/dover-esg-highlights-2025_v3.pdf?Status=Master&sfvrsn=d560aeae_10"
+      "date": "2026-10-26",
+      "url": "https://mosaicco.com/fileLibrary/publicFiles/0-Mosaic-2025-Sustainability-Disclosure-and-GRI-Report_REV-1-FINAL2.pdf"
     },
     {
-      "company": "TJX Companies",
-      "ticker": "TJX",
-      "report": "2026 Global Corporate Responsibility Report",
+      "company": "Leidos",
+      "ticker": "LDOS",
+      "report": "Advancing Environmental Sustainability",
       "year": "2026",
-      "date": "2026-10-17",
-      "url": "https://www.tjx.com/docs/default-source/corporate-responsibility/tjx-2026-global-corporate-responsibility-report.pdf"
+      "date": "2026-10-26",
+      "url": "https://leidos.widen.net/s/w2vclqtpvv/uk-sustainabity-report"
     },
     {
-      "company": "JPMorgan Chase",
-      "ticker": "JPM",
-      "report": "Sustainability Report 2025",
-      "year": "2025",
-      "date": "2026-10-17",
-      "url": "https://www.jpmorganchase.com/content/dam/jpmorganchase/documents/about/jpmc-sustainability-report-2025.pdf"
+      "company": "J.M. Smucker Company (The)",
+      "ticker": "SJM",
+      "report": "2026 Corporate Impact Report",
+      "year": "2026",
+      "date": "2026-10-26",
+      "url": "https://www.jmsmucker.com/assets/jmsmucker/news-stories/corporate-publications/2026-corporate-impact-report.pdf"
     }
   ],
   "errors": []
