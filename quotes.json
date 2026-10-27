@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T13:21:04.683Z",
+  "generatedAt": "2026-10-27T17:21:03.145Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
-      "company": "Mosaic Company (The)",
-      "ticker": "MOS",
-      "report": "2025 Sustainability Disclosure",
+      "company": "Honeywell Aerospace",
+      "ticker": "HONA",
+      "report": "2026 Impact Report",
+      "year": "2026",
+      "date": "2026-10-27",
+      "url": "https://www.honeywell.com/content/dam/honcorp/us-en/company/impact-report/documents/hon-2026-impact-report.pdf"
+    },
+    {
+      "company": "Honeywell",
+      "ticker": "HON",
+      "report": "2026 Impact Report",
+      "year": "2026",
+      "date": "2026-10-27",
+      "url": "https://www.honeywell.com/content/dam/honcorp/us-en/company/impact-report/documents/hon-2026-impact-report.pdf"
+    },
+    {
+      "company": "Old Dominion",
+      "ticker": "ODFL",
+      "report": "2025 Sustainability Data Supplement",
       "year": "2025",
-      "date": "2026-10-26",
-      "url": "https://mosaicco.com/fileLibrary/publicFiles/0-Mosaic-2025-Sustainability-Disclosure-and-GRI-Report_REV-1-FINAL2.pdf"
-    },
-    {
-      "company": "Leidos",
-      "ticker": "LDOS",
-      "report": "Advancing Environmental Sustainability",
-      "year": "2026",
-      "date": "2026-10-26",
-      "url": "https://leidos.widen.net/s/w2vclqtpvv/uk-sustainabity-report"
-    },
-    {
-      "company": "J.M. Smucker Company (The)",
-      "ticker": "SJM",
-      "report": "2026 Corporate Impact Report",
-      "year": "2026",
-      "date": "2026-10-26",
-      "url": "https://www.jmsmucker.com/assets/jmsmucker/news-stories/corporate-publications/2026-corporate-impact-report.pdf"
+      "date": "2026-10-27",
+      "url": "https://d1io3yog0oux5.cloudfront.net/_dc30681e72479d03c07ea9374463a5f2/odfl/db/515/4237/pdf/ODFL+2025+Sustainability+Data+Supplement+Report.pdf"
     }
   ],
   "errors": []
