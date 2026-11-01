@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T13:21:03.637Z",
+  "generatedAt": "2026-11-01T10:21:08.535Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
-      "company": "Honeywell Aerospace",
-      "ticker": "HONA",
-      "report": "2026 Impact Report",
-      "year": "2026",
-      "date": "2026-10-27",
-      "url": "https://www.honeywell.com/content/dam/honcorp/us-en/company/impact-report/documents/hon-2026-impact-report.pdf"
-    },
-    {
-      "company": "Honeywell",
-      "ticker": "HON",
-      "report": "2026 Impact Report",
-      "year": "2026",
-      "date": "2026-10-27",
-      "url": "https://www.honeywell.com/content/dam/honcorp/us-en/company/impact-report/documents/hon-2026-impact-report.pdf"
-    },
-    {
-      "company": "Old Dominion",
-      "ticker": "ODFL",
-      "report": "2025 Sustainability Data Supplement",
+      "company": "Southern Company",
+      "ticker": "SO",
+      "report": "2025 Statement of GHG Emissions",
       "year": "2025",
-      "date": "2026-10-27",
-      "url": "https://d1io3yog0oux5.cloudfront.net/_dc30681e72479d03c07ea9374463a5f2/odfl/db/515/4237/pdf/ODFL+2025+Sustainability+Data+Supplement+Report.pdf"
+      "date": "2026-11-01",
+      "url": "https://www.southerncompany.com/content/dam/southerncompany/sustainability/pdfs/southern-company-2025-statement-of-ghg-emissions.pdf"
+    },
+    {
+      "company": "Morgan Stanley",
+      "ticker": "MS",
+      "report": "2025 Sustainability Report",
+      "year": "2025",
+      "date": "2026-11-01",
+      "url": "https://www.morganstanley.com/content/dam/msdotcom/en/assets/pdfs/Morgan_Stanley_2025_Sustainability_Report.pdf"
+    },
+    {
+      "company": "Global Payments",
+      "ticker": "GPN",
+      "report": "2026 Global Responsibility Report",
+      "year": "2026",
+      "date": "2026-11-01",
+      "url": "https://d1io3yog0oux5.cloudfront.net/_3f7b74dcaf7d216f1ea56a0b12ac68df/globalpayments/files/pages/sustainability/2026_GPN_Responsibility_Report.pdf"
     }
   ],
   "errors": []
