@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T14:21:04.333Z",
+  "generatedAt": "2026-11-04T14:21:04.973Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -104,12 +104,12 @@
     {
       "key": "eia:carbonfree-share",
       "label": "Carbon-Free Share of US Power",
-      "value": 47,
+      "value": 44,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-11-03",
+      "asOf": "2026-11-04",
       "decimals": 0,
-      "change": 6,
+      "change": 3,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
@@ -121,17 +121,17 @@
     {
       "key": "eia:carbonfree-share-tx",
       "label": "Carbon-Free Share of Texas Power",
-      "value": 55,
+      "value": 45,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-11-03",
+      "asOf": "2026-11-04",
       "decimals": 0,
-      "change": 14,
+      "change": 2,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (41%)",
+      "changeBasis": "vs the same 24 hours a week earlier (43%)",
       "source": "EIA Hourly Electric Grid Monitor (ERCOT) (24h average)",
       "manual": false
     },
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
+      "company": "UDR, Inc.",
+      "ticker": "UDR",
+      "report": "2026 Corporate Responsbility Report",
+      "year": "2026",
+      "date": "2026-11-04",
+      "url": "https://cflb.udr.com/globalassets/corporate/corporate-responsibility/2026_cr_report.pdf"
+    },
+    {
+      "company": "Franklin Resources",
+      "ticker": "BEN",
+      "report": "FY25 Corporate Social Responsibility Report",
+      "year": "2025",
+      "date": "2026-11-04",
+      "url": "https://franklintempletonprod.widen.net/s/trdkjtbnpc/franklin-templeton-csr-report#page=1"
+    },
+    {
       "company": "Southern Company",
       "ticker": "SO",
       "report": "2025 Statement of GHG Emissions",
       "year": "2025",
       "date": "2026-11-01",
       "url": "https://www.southerncompany.com/content/dam/southerncompany/sustainability/pdfs/southern-company-2025-statement-of-ghg-emissions.pdf"
-    },
-    {
-      "company": "Morgan Stanley",
-      "ticker": "MS",
-      "report": "2025 Sustainability Report",
-      "year": "2025",
-      "date": "2026-11-01",
-      "url": "https://www.morganstanley.com/content/dam/msdotcom/en/assets/pdfs/Morgan_Stanley_2025_Sustainability_Report.pdf"
-    },
-    {
-      "company": "Global Payments",
-      "ticker": "GPN",
-      "report": "2026 Global Responsibility Report",
-      "year": "2026",
-      "date": "2026-11-01",
-      "url": "https://d1io3yog0oux5.cloudfront.net/_3f7b74dcaf7d216f1ea56a0b12ac68df/globalpayments/files/pages/sustainability/2026_GPN_Responsibility_Report.pdf"
     }
   ],
   "errors": []
