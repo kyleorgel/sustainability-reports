@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T14:21:04.973Z",
+  "generatedAt": "2026-11-04T18:21:05.781Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -34,14 +34,14 @@
     {
       "key": "DCOILWTICO",
       "label": "WTI Crude (Cushing)",
-      "value": 103.37,
+      "value": 99.64,
       "unit": "",
       "prefix": "$",
-      "asOf": "2026-10-27",
-      "change": -4.52,
-      "changePct": -4.19,
+      "asOf": "2026-11-03",
+      "change": -3.73,
+      "changePct": -3.61,
       "changeLabel": "wk",
-      "changeBasis": "vs 2026-10-20 (a week earlier, $107.89)",
+      "changeBasis": "vs 2026-10-27 (a week earlier, $103.37)",
       "source": "EIA via FRED",
       "manual": false
     },
