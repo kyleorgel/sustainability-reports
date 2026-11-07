@@ -524,7 +524,7 @@
    "Report Year": "2025",
    "Report URL": "https://adm.com/globalassets/sustainability/sustainability-reports/pdfs/archer_daniels_2025_corporate_sustainability_report.pdf",
    "Landing Page URL": "https://www.adm.com/en-us/sustainability/sustainability-reports/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -2252,7 +2252,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.expandenergy.com/download/2025-sustainability-report/?wpdmdl=18256&refresh=6a46b3b9453b71783018425",
    "Landing Page URL": "https://www.expandenergy.com/investors/company-reports/sustainability-reports/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -2708,7 +2708,7 @@
    "Report Year": "2026",
    "Report URL": "https://d1io3yog0oux5.cloudfront.net/_3f7b74dcaf7d216f1ea56a0b12ac68df/globalpayments/files/pages/sustainability/2026_GPN_Responsibility_Report.pdf",
    "Landing Page URL": "https://investors.globalpayments.com/sustainability",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -2876,7 +2876,7 @@
    "Report Year": "2026",
    "Report URL": "https://www.honeywell.com/content/dam/honcorp/us-en/company/impact-report/documents/hon-2026-impact-report.pdf",
    "Landing Page URL": "https://www.honeywell.com/us/en/company/impact-report",
-   "Status": ""
+   "Status": "Report file changed"
   }
  },
  {
@@ -2888,7 +2888,7 @@
    "Report Year": "2026",
    "Report URL": "https://www.honeywell.com/content/dam/honcorp/us-en/company/impact-report/documents/hon-2026-impact-report.pdf",
    "Landing Page URL": "https://www.honeywell.com/us/en/company/impact-report",
-   "Status": ""
+   "Status": "Report file changed"
   }
  },
  {
@@ -3020,7 +3020,7 @@
    "Report Year": "2025",
    "Report URL": "https://idexx.com/files/idexx-corporate-responsibility-report-2025.pdf",
    "Landing Page URL": "https://www.idexx.com/en/about-idexx/corporate-responsibility/",
-   "Status": ""
+   "Status": "Report file changed"
   }
  },
  {
@@ -3716,7 +3716,7 @@
    "Report Year": "2025",
    "Report URL": "https://masco.com/wp-content/uploads/2026/08/Collateral_Corporate_ESG_Report_v7.pdf",
    "Landing Page URL": "https://masco.com/sustainability/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -3752,7 +3752,7 @@
    "Report Year": "2025",
    "Report URL": "https://corporate.mcdonalds.com/content/dam/sites/corp/nfl/pdf/McDonalds_PurposeImpact_ProgressReport_2024_2025.pdf",
    "Landing Page URL": "https://corporate.mcdonalds.com/corpmcd/our-purpose-and-impact/impact-strategy-and-reporting/performance-reports.html",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -3992,7 +3992,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.motorolasolutions.com/content/dam/msi/docs/corporate-responsibility/2025-corporate-responsibility-report.pdf",
    "Landing Page URL": "https://www.motorolasolutions.com/en_us/about/environmental-social-corporate-governance-esg.html",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -4261,6 +4261,18 @@
  },
  {
   "fields": {
+   "Company Name": "Okta, Inc.",
+   "Ticker": "OKTA",
+   "Sector / Industry": "",
+   "Report Name": "",
+   "Report Year": "",
+   "Report URL": "",
+   "Landing Page URL": "",
+   "Status": "Needs Manual Check"
+  }
+ },
+ {
+  "fields": {
    "Company Name": "Old Dominion",
    "Ticker": "ODFL",
    "Sector / Industry": "Industrials",
@@ -4520,7 +4532,7 @@
    "Report Year": "2025",
    "Report URL": "https://www.pplweb.com/wp-content/uploads/2026/04/PPL-Corporation-2025-Sustainability-Report.pdf",
    "Landing Page URL": "https://www.pplweb.com/sustainability/reports-disclosures/",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -4796,7 +4808,7 @@
    "Report Year": "2025",
    "Report URL": "https://document.resmed.com/documents/global/ResMed_Sustainability_report.pdf",
    "Landing Page URL": "https://investor.resmed.com/corporate-governance",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -5216,7 +5228,7 @@
    "Report Year": "2025",
    "Report URL": "https://investors.sysco.com/~/media/Files/S/Sysco-IR/documents/sustainability-reports/Sysco%202025%20Sustainability%20Report.pdf",
    "Landing Page URL": "https://investors.sysco.com/corporate-governance/sustainability",
-   "Status": ""
+   "Status": "Candidate Pending Review"
   }
  },
  {
@@ -5960,7 +5972,7 @@
    "Report Year": "2025",
    "Report URL": "https://wecenergygroup.com/csr/cr2025/wec-corporate-responsibility-report-2025.pdf",
    "Landing Page URL": "https://www.wecenergygroup.com/csr/",
-   "Status": ""
+   "Status": "Report file changed"
   }
  },
  {
