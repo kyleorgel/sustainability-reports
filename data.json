@@ -4264,10 +4264,10 @@
    "Company Name": "Okta, Inc.",
    "Ticker": "OKTA",
    "Sector / Industry": "",
-   "Report Name": "",
-   "Report Year": "",
-   "Report URL": "",
-   "Landing Page URL": "",
+   "Report Name": "FY2026 Sustainability & Responsible Technology Fact Sheet",
+   "Report Year": "2026",
+   "Report URL": "https://www.okta.com/content/dam/okta-www/en_us/company/responsibility/sustainability-responsible-technology/FY2026-sustainability-responsible-technology-fact-sheet.pdf",
+   "Landing Page URL": "https://www.okta.com/company/responsibility/",
    "Status": "Needs Manual Check"
   }
  },
@@ -4804,9 +4804,9 @@
    "Company Name": "ResMed",
    "Ticker": "RMD",
    "Sector / Industry": "Health Care",
-   "Report Name": "Sustainability Report 2025",
-   "Report Year": "2025",
-   "Report URL": "https://document.resmed.com/documents/global/ResMed_Sustainability_report.pdf",
+   "Report Name": "Sustainability Report 202",
+   "Report Year": "2026",
+   "Report URL": "https://investor.resmed.com/_assets/_4cd4b18d36c978fea88fa67e6e83121c/resmed/files/pdfs/20261104/f29edfd3-5695-4a79-81a9-b4f800cac162.pdf",
    "Landing Page URL": "https://investor.resmed.com/corporate-governance",
    "Status": "Candidate Pending Review"
   }
