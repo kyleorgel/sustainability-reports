@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-08T14:21:05.229Z",
+  "generatedAt": "2026-11-08T18:21:05.127Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,6 +191,14 @@
   ],
   "updates": [
     {
+      "company": "ResMed",
+      "ticker": "RMD",
+      "report": "Sustainability Report 202",
+      "year": "2026",
+      "date": "2026-11-08",
+      "url": "https://investor.resmed.com/_assets/_4cd4b18d36c978fea88fa67e6e83121c/resmed/files/pdfs/20261104/f29edfd3-5695-4a79-81a9-b4f800cac162.pdf"
+    },
+    {
       "company": "UDR, Inc.",
       "ticker": "UDR",
       "report": "2026 Corporate Responsbility Report",
@@ -205,14 +213,6 @@
       "year": "2025",
       "date": "2026-11-04",
       "url": "https://franklintempletonprod.widen.net/s/trdkjtbnpc/franklin-templeton-csr-report#page=1"
-    },
-    {
-      "company": "Southern Company",
-      "ticker": "SO",
-      "report": "2025 Statement of GHG Emissions",
-      "year": "2025",
-      "date": "2026-11-01",
-      "url": "https://www.southerncompany.com/content/dam/southerncompany/sustainability/pdfs/southern-company-2025-statement-of-ghg-emissions.pdf"
     }
   ],
   "errors": []
