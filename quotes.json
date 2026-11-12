@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T14:21:04.613Z",
+  "generatedAt": "2026-11-12T18:21:07.278Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -156,19 +156,19 @@
     {
       "key": "nasa:gistemp-global-monthly",
       "label": "Global Temperature",
-      "value": 1.38,
+      "value": 1.55,
       "unit": "°C vs 1951–80",
       "prefix": "+",
-      "asOf": "2026-09-30",
+      "asOf": "2026-10-31",
       "decimals": 2,
-      "change": 0.14,
+      "change": 0.36,
       "changePct": null,
       "changeFmt": "abs",
       "changeUnit": "°C",
       "changeDecimals": 2,
       "changeLabel": "y/y",
-      "changeBasis": "vs September 2025 (+1.24 °C)",
-      "source": "NASA GISTEMP v4 global monthly anomaly, September 2026, relative to the 1951–1980 average",
+      "changeBasis": "vs October 2025 (+1.19 °C)",
+      "source": "NASA GISTEMP v4 global monthly anomaly, October 2026, relative to the 1951–1980 average",
       "manual": false
     },
     {
