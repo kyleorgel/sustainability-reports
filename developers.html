@@ -57,11 +57,12 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
     code { background: var(--code); padding: 2px 6px; border-radius: 4px; }
     pre { background: var(--code); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 8px 0 16px; line-height: 1.5; }
     pre code { background: none; padding: 0; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 18px 0 6px; }
-    .card { border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px; }
-    .card .k { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
-    .card .u { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; word-break: break-all; display: block; margin: 6px 0 8px; }
+    .cards { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 18px 0 6px; }
+    .card { border: 1px solid var(--rule); border-radius: 10px; padding: 16px 20px; display: grid; grid-template-columns: 88px minmax(0, 1fr) minmax(0, 1.25fr); gap: 6px 22px; align-items: center; }
+    .card .k { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
+    .card .u { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; word-break: break-all; display: block; margin: 0; }
     .card p { font-size: 13.5px; color: var(--ink-muted); margin: 0; }
+    @media (max-width: 760px) { .card { grid-template-columns: 1fr; gap: 6px; } }
     table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 18px; }
     th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
     th { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; }
@@ -167,12 +168,6 @@ console.log(meta.count, "reports from", meta.updatedAt);</code></pre>
 
   <h2 id="terms">Terms and attribution</h2>
   <p>The index itself - company, ticker, sector, report name, year and the links - is free for any use, commercial or not. A credit such as <em>"Source: ORGEL Sustainability Report Index, reports.orgel.us"</em> is appreciated. The reports the links point to belong to the companies that published them and stay on those companies' own websites; this index does not host or redistribute them. The data is offered as-is: it is checked carefully, but you should verify anything you rely on against the company's document.</p>
-  <p>Questions, corrections or a report we missed: <a href="https://www.orgel.us">orgel.us</a>.</p>
-
-  <h2 id="changelog">Changelog</h2>
-  <ul>
-    <li><strong>2026-11-12</strong> - v1: <code>/api/v1/reports</code> (JSON and CSV), <code>/api/v1/meta</code>, <code>changes.json</code>, <code>feed.xml</code>, and the Download Excel button on the index page.</li>
-  </ul>
 </main>
 
 <footer>ORGEL Sustainability Report Index &middot; <a href="https://reports.orgel.us/">Index</a> &middot; <a href="/developers">Data &amp; API</a> &middot; <a href="/feed.xml">Feed</a> &middot; <a href="https://www.orgel.us">orgel.us</a></footer>
