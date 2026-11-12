@@ -150,6 +150,26 @@
     .download-btn:hover { background: #C4202C; border-color: #C4202C; }
     .download-btn:disabled { opacity: 0.6; cursor: progress; }
 
+    .data-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--rule);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .data-btn:hover { border-color: #C4202C; color: #C4202C; }
+
     /* ── TABLE WRAPPER ── */
     .table-wrap {
       max-width: 1200px;
@@ -384,6 +404,16 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     <span>Download Excel</span>
   </button>
+
+  <a class="data-btn" href="/developers" title="JSON and CSV API, raw data, and how to use them">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+    <span>Data &amp; API</span>
+  </a>
+
+  <a class="data-btn" href="/feed.xml" title="Atom feed: one entry each time a company publishes a newer report">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+    <span>Feed</span>
+  </a>
 
   <span class="record-count" id="record-count">Loading…</span>
 </div>
