@@ -819,7 +819,7 @@
   "fields": {
    "Company Name": "Bloom Energy",
    "Ticker": "BE",
-   "Sector / Industry": "",
+   "Sector / Industry": "Industrials",
    "Report Name": "2025 Impact Report",
    "Report Year": "2025",
    "Report URL": "https://www.bloomenergy.com/wp-content/uploads/2025-bloom-energy-impact-report.pdf",
@@ -2211,7 +2211,7 @@
   "fields": {
    "Company Name": "Everpure",
    "Ticker": "P",
-   "Sector / Industry": "",
+   "Sector / Industry": "Information Technology",
    "Report Name": "2026 Impact Report",
    "Report Year": "2026",
    "Report URL": "https://www.everpuredata.com/content/dam/pdf/en/misc/sustainability/2026-everpure-impact-report.pdf",
@@ -2391,7 +2391,7 @@
   "fields": {
    "Company Name": "Ferguson Enterprises",
    "Ticker": "FERG",
-   "Sector / Industry": "",
+   "Sector / Industry": "Industrials",
    "Report Name": "FY2025 Sustainability Report",
    "Report Year": "2025",
    "Report URL": "https://s201.q4cdn.com/465729859/files/doc_downloads/esg/2025/Ferguson_Sustainability_Report_FY2025.pdf",
@@ -3039,7 +3039,7 @@
   "fields": {
    "Company Name": "Illumina, Inc.",
    "Ticker": "ILMN",
-   "Sector / Industry": "",
+   "Sector / Industry": "Health Care",
    "Report Name": "2025 Corporate Responsibility Report",
    "Report Year": "2025",
    "Report URL": "https://www.illumina.com/content/dam/illumina-marketing/documents/company/2025-cr-report/illumina-2025-cr-report-en.pdf",
@@ -4263,7 +4263,7 @@
   "fields": {
    "Company Name": "Okta, Inc.",
    "Ticker": "OKTA",
-   "Sector / Industry": "",
+   "Sector / Industry": "Consumer Staples",
    "Report Name": "FY2026 Sustainability & Responsible Technology Fact Sheet",
    "Report Year": "2026",
    "Report URL": "https://www.okta.com/content/dam/okta-www/en_us/company/responsibility/sustainability-responsible-technology/FY2026-sustainability-responsible-technology-fact-sheet.pdf",
@@ -4743,7 +4743,7 @@
   "fields": {
    "Company Name": "Reddit",
    "Ticker": "RDDT",
-   "Sector / Industry": "",
+   "Sector / Industry": "Communication Services",
    "Report Name": "None Published",
    "Report Year": "",
    "Report URL": "None Published",
@@ -5511,7 +5511,7 @@
   "fields": {
    "Company Name": "Twilio",
    "Ticker": "TWLO",
-   "Sector / Industry": "",
+   "Sector / Industry": "Information Technology",
    "Report Name": "2025 Impact Factsheet",
    "Report Year": "2025",
    "Report URL": "https://www.twilio.com/content/dam/twilio-com/2025-gir/2025%20Twilio%20Impact%20Factsheet.pdf",
@@ -5835,7 +5835,7 @@
   "fields": {
    "Company Name": "Vivmark Residential",
    "Ticker": "VMRK",
-   "Sector / Industry": "",
+   "Sector / Industry": "Real Estate",
    "Report Name": "Positive Energy Sustainability Report 2025",
    "Report Year": "2025",
    "Report URL": "https://www.vimar.com/en/int/article/download/file?type=attachment&id=6655&hash=abe0caa99f992af40d8875aed4ebde06",
@@ -5859,7 +5859,7 @@
   "fields": {
    "Company Name": "Vylor",
    "Ticker": "VYLR",
-   "Sector / Industry": "",
+   "Sector / Industry": "Materials",
    "Report Name": "None Published",
    "Report Year": "",
    "Report URL": "None Published",
