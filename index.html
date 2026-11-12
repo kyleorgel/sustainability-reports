@@ -129,6 +129,27 @@
       white-space: nowrap;
     }
 
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #1c1c1c;
+      border-radius: 8px;
+      background: #1c1c1c;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .download-btn:hover { background: #C4202C; border-color: #C4202C; }
+    .download-btn:disabled { opacity: 0.6; cursor: progress; }
+
     /* ── TABLE WRAPPER ── */
     .table-wrap {
       max-width: 1200px;
@@ -322,12 +343,12 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
 @media (max-width:980px){.orgel-band h1{font-size:32px;white-space:normal}.ob-nav{gap:28px}.ob-nav a,.ob-nav .ob-here{font-size:15px}}
 @media (max-width:700px){.orgel-bar .ob-inner,.orgel-band .ob-inner{padding-left:18px;padding-right:18px}.orgel-bar .ob-inner{height:auto;flex-direction:column;align-items:flex-start;gap:12px;padding-top:14px;padding-bottom:14px}.ob-brand img{height:30px}.ob-nav{gap:22px;flex-wrap:wrap}.orgel-band .ob-inner{padding-top:24px;padding-bottom:22px}.orgel-band h1{font-size:26px}.orgel-band p{font-size:15px}}
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Wix+Madefor+Text:wght@400;500&display=swap" rel="stylesheet">  <meta name="description" content="A free, continuously updated index of the latest sustainability report from every S&amp;P 500 company. Each link is traced to the issuing company&#39;s own disclosure page rather than an aggregator, and every entry is rechecked twice a week."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Wix+Madefor+Text:wght@400;500&display=swap" rel="stylesheet">  <meta name="description" content="A free, continuously updated index of the latest sustainability report from every S&amp;P 500 company. Each link is traced to the company&#39;s own disclosure page, and every entry is rechecked twice a week."/>
   <link rel="canonical" href="https://reports.orgel.us/"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://reports.orgel.us/"/>
   <meta property="og:title" content="ORGEL | Sustainability Report Index"/>
-  <meta property="og:description" content="A free, continuously updated index of the latest sustainability report from every S&amp;P 500 company. Each link is traced to the issuing company&#39;s own disclosure page rather than an aggregator, and every entry is rechecked twice a week."/>
+  <meta property="og:description" content="A free, continuously updated index of the latest sustainability report from every S&amp;P 500 company. Each link is traced to the company&#39;s own disclosure page, and every entry is rechecked twice a week."/>
   <meta name="twitter:card" content="summary"/>
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"/>
@@ -357,6 +378,11 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
     <option value="Active">Active</option>
     <option value="None">None</option>
   </select>
+
+  <button id="download-xlsx" class="download-btn" type="button" title="Download the rows shown below as an Excel workbook">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span>Download Excel</span>
+  </button>
 
   <span class="record-count" id="record-count">Loading…</span>
 </div>
@@ -389,6 +415,7 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
   // No API credentials belong in this file - it is served publicly.
 
   let allRecords = [];
+  let currentRecords = [];   // what the table is showing right now - the Excel export uses this
   let sortCol    = 'Company Name';
   let sortDir    = 'asc';
 
@@ -511,6 +538,7 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
       return sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
     });
 
+    currentRecords = filtered;
     renderTable(filtered);
   }
 
@@ -540,6 +568,158 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
     const q0 = new URLSearchParams(location.search).get('q');
     if (q0) document.getElementById('search').value = q0;
   } catch (e) {}
+
+  // ── EXCEL EXPORT (2026-11-12) ─────────────────────────────────────────────
+  // Downloads whatever the table is showing - search, sector and status filters
+  // and the current sort all apply - as a formatted .xlsx. The workbook is built
+  // in the browser from the rows already loaded, so it always matches the page.
+  // ExcelJS (MIT) is fetched from a CDN only when the button is first clicked,
+  // so visitors who never download pay nothing for it.
+  const EXCELJS_URLS = [
+    'https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js',
+    'https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js'
+  ];
+  let excelJsLoading = null;
+  function loadExcelJs() {
+    if (window.ExcelJS) return Promise.resolve(window.ExcelJS);
+    if (excelJsLoading) return excelJsLoading;
+    const tryUrl = url => new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = url;
+      s.async = true;
+      s.onload = () => window.ExcelJS ? resolve(window.ExcelJS) : reject(new Error('ExcelJS did not initialise'));
+      s.onerror = () => { s.remove(); reject(new Error('Could not load ' + url)); };
+      document.head.appendChild(s);
+    });
+    excelJsLoading = EXCELJS_URLS.reduce((chain, url) => chain.catch(() => tryUrl(url)), Promise.reject(new Error('no CDN tried yet')));
+    excelJsLoading.catch(() => { excelJsLoading = null; });
+    return excelJsLoading;
+  }
+
+  function cleanUrl(v) { return isUnusableUrl(v) ? '' : String(v).trim(); }
+
+  function buildIndexWorkbook(ExcelJS, records, info) {
+    const LINK_FONT = { name: 'Calibri', size: 11, color: { argb: 'FF0563C1' }, underline: true };
+    const wb = new ExcelJS.Workbook();
+    wb.creator = 'ORGEL';
+    wb.created = new Date();
+
+    const ws = wb.addWorksheet('Report Index', { views: [{ state: 'frozen', ySplit: 1 }] });
+    ws.columns = [
+      { header: 'Company',          key: 'company',    width: 34 },
+      { header: 'Ticker',           key: 'ticker',     width: 9  },
+      { header: 'Sector',           key: 'sector',     width: 24 },
+      { header: 'Report Name',      key: 'report',     width: 44 },
+      { header: 'Report Year',      key: 'year',       width: 12 },
+      { header: 'Status',           key: 'status',     width: 10 },
+      { header: 'Report URL',       key: 'reportUrl',  width: 60 },
+      { header: 'Landing Page URL', key: 'landingUrl', width: 52 }
+    ];
+    const header = ws.getRow(1);
+    header.height = 24;
+    header.font = { name: 'Calibri', size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
+    header.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1C1C1C' } };
+    header.alignment = { vertical: 'middle' };
+
+    records.forEach((r, i) => {
+      const f = r.fields || {};
+      const reportUrl  = cleanUrl(f['Report URL']);
+      const landingUrl = cleanUrl(f['Landing Page URL'] ?? f['Landing Page']);
+      const yearRaw = f['Report Year'];
+      const yearNum = Number(yearRaw);
+      const row = ws.addRow({
+        company:    f['Company Name'] || '',
+        ticker:     f['Ticker'] || '',
+        sector:     f['Sector / Industry'] || '',
+        report:     f['Report Name'] || '',
+        year:       (yearRaw !== '' && yearRaw != null && isFinite(yearNum)) ? yearNum : (yearRaw || ''),
+        status:     resolveReportLink(f) ? 'Active' : 'None',
+        reportUrl:  reportUrl,
+        landingUrl: landingUrl
+      });
+      row.font = { name: 'Calibri', size: 11 };
+      if (i % 2 === 1) row.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF6F6F6' } };
+      row.getCell('year').alignment   = { horizontal: 'center' };
+      row.getCell('status').alignment = { horizontal: 'center' };
+      [['reportUrl', reportUrl], ['landingUrl', landingUrl]].forEach(([key, url]) => {
+        if (!url) return;
+        const cell = row.getCell(key);
+        cell.value = { text: url, hyperlink: url };
+        cell.font = LINK_FONT;
+      });
+    });
+    ws.autoFilter = { from: { row: 1, column: 1 }, to: { row: Math.max(1, records.length + 1), column: 8 } };
+
+    const about = wb.addWorksheet('About');
+    about.getColumn(1).width = 100;
+    const lines = [
+      ['ORGEL Sustainability Report Index', { bold: true, size: 14 }],
+      ['Source: https://reports.orgel.us', { link: 'https://reports.orgel.us/' }],
+      ['Exported: ' + info.exported],
+      ['Rows: ' + records.length + ' of ' + info.total + (info.filters.length ? ' (' + info.filters.join('; ') + ')' : ' (no filters applied)')],
+      ['Status "Active" means a report link is published; "None" means the company has not published one.'],
+      ['Every entry is traced to the company’s own disclosure page and rechecked twice a week. The newest version is always at reports.orgel.us.']
+    ];
+    lines.forEach(([text, opt], i) => {
+      const o = opt || {};
+      const cell = about.getCell(i + 1, 1);
+      cell.value = o.link ? { text: text, hyperlink: o.link } : text;
+      cell.font = o.link ? LINK_FONT : { name: 'Calibri', size: o.size || 11, bold: !!o.bold };
+      cell.alignment = { wrapText: true, vertical: 'top' };
+    });
+    return wb;
+  }
+
+  function excelFileName() {
+    const d = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    return 'ORGEL-Sustainability-Report-Index-' + d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + '.xlsx';
+  }
+
+  function activeFilterLabels() {
+    const out = [];
+    const q      = document.getElementById('search').value.trim();
+    const sector = document.getElementById('sector-filter').value;
+    const status = document.getElementById('status-filter').value;
+    if (q)      out.push('Search: "' + q + '"');
+    if (sector) out.push('Sector: ' + sector);
+    if (status) out.push('Status: ' + status);
+    return out;
+  }
+
+  const downloadBtn = document.getElementById('download-xlsx');
+  if (downloadBtn) downloadBtn.addEventListener('click', async () => {
+    const label = downloadBtn.querySelector('span');
+    const original = label.textContent;
+    const say = (text, ms) => { label.textContent = text; if (ms) setTimeout(() => { label.textContent = original; }, ms); };
+    if (!allRecords.length) { say('Still loading…', 2000); return; }
+    downloadBtn.disabled = true;
+    say('Preparing…');
+    try {
+      const ExcelJS = await loadExcelJs();
+      const wb = buildIndexWorkbook(ExcelJS, currentRecords, {
+        total: allRecords.length,
+        filters: activeFilterLabels(),
+        exported: new Date().toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' })
+      });
+      const buf  = await wb.xlsx.writeBuffer();
+      const blob = new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = excelFileName();
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+      say(original);
+    } catch (err) {
+      console.error('Excel export failed', err);
+      say('Download failed – try again', 4000);
+    } finally {
+      downloadBtn.disabled = false;
+    }
+  });
+  // ── END EXCEL EXPORT ──────────────────────────────────────────────────────
 
   // ── ESCAPE HTML ───────────────────────────────────────────────────────────
   function esc(str) {
