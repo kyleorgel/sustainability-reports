@@ -12,3 +12,17 @@
 # at most every four hours.
 /ticker.html
   Cache-Control: public, max-age=600, stale-while-revalidate=86400
+
+# Public data files (2026-11-12): any website or tool may read these directly.
+# /api/* responses set their own headers inside _worker.js - _headers does not
+# apply to worker responses.
+/data.json
+  Access-Control-Allow-Origin: *
+/meta.json
+  Access-Control-Allow-Origin: *
+/changes.json
+  Access-Control-Allow-Origin: *
+/feed.xml
+  Access-Control-Allow-Origin: *
+  Content-Type: application/atom+xml; charset=utf-8
+  Cache-Control: public, max-age=600, stale-while-revalidate=86400

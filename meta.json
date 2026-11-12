@@ -1,0 +1,16 @@
+{
+ "schemaVersion": 1,
+ "source": "https://reports.orgel.us/",
+ "docs": "https://reports.orgel.us/developers",
+ "updatedAt": "2026-11-12T00:47:43.316Z",
+ "lastChange": "2026-11-08",
+ "companies": 514,
+ "withReport": 501,
+ "endpoints": {
+  "reports": "https://reports.orgel.us/api/v1/reports",
+  "reportsCsv": "https://reports.orgel.us/api/v1/reports?format=csv",
+  "raw": "https://reports.orgel.us/data.json",
+  "changes": "https://reports.orgel.us/changes.json",
+  "feed": "https://reports.orgel.us/feed.xml"
+ }
+}

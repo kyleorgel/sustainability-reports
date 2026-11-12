@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+# The API is for people and their tools, not for crawlers - every call runs code.
+Disallow: /api/
 
 Sitemap: https://reports.orgel.us/sitemap.xml

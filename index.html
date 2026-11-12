@@ -345,6 +345,7 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Wix+Madefor+Text:wght@400;500&display=swap" rel="stylesheet">  <meta name="description" content="A free, continuously updated index of the latest sustainability report from every S&amp;P 500 company. Each link is traced to the company&#39;s own disclosure page, and every entry is rechecked twice a week."/>
   <link rel="canonical" href="https://reports.orgel.us/"/>
+  <link rel="alternate" type="application/atom+xml" title="New sustainability reports (S&amp;P 500)" href="https://reports.orgel.us/feed.xml"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://reports.orgel.us/"/>
   <meta property="og:title" content="ORGEL | Sustainability Report Index"/>
@@ -408,7 +409,7 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
   </table>
 </div>
 
-
+<footer>Reuse this data: <a href="/developers">JSON &amp; CSV API</a> &middot; <a href="/feed.xml">feed of new reports</a> &middot; <a href="https://www.orgel.us">orgel.us</a></footer>
 
 <script>
   // Data is published to data.json by n8n once the review queue is clear.
@@ -575,10 +576,13 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
   // in the browser from the rows already loaded, so it always matches the page.
   // ExcelJS (MIT) is fetched from a CDN only when the button is first clicked,
   // so visitors who never download pay nothing for it.
+  // Pinned to one exact file: the integrity hash is the SHA-384 of exceljs@4.4.0's
+  // dist/exceljs.min.js, so a CDN cannot hand the page anything else.
   const EXCELJS_URLS = [
-    'https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js',
-    'https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js'
+    'https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js'
   ];
+  const EXCELJS_SRI = 'sha384-Pqp51FUN2/qzfxZxBCtF0stpc9ONI6MYZpVqmo8m20SoaQCzf+arZvACkLkirlPz';
   let excelJsLoading = null;
   function loadExcelJs() {
     if (window.ExcelJS) return Promise.resolve(window.ExcelJS);
@@ -587,6 +591,8 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
       const s = document.createElement('script');
       s.src = url;
       s.async = true;
+      s.integrity = EXCELJS_SRI;
+      s.crossOrigin = 'anonymous';
       s.onload = () => window.ExcelJS ? resolve(window.ExcelJS) : reject(new Error('ExcelJS did not initialise'));
       s.onerror = () => { s.remove(); reject(new Error('Could not load ' + url)); };
       document.head.appendChild(s);

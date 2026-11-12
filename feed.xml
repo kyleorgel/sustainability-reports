@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>New sustainability reports - S&amp;P 500 (ORGEL Report Index)</title>
+  <subtitle>One entry each time a company’s latest sustainability report changes on reports.orgel.us. Links go to the company’s own disclosure page; every entry is rechecked twice a week.</subtitle>
+  <link href="https://reports.orgel.us/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://reports.orgel.us/" rel="alternate" type="text/html"/>
+  <id>https://reports.orgel.us/feed.xml</id>
+  <updated>2026-11-08T12:00:00Z</updated>
+  <author><name>ORGEL</name><uri>https://www.orgel.us/</uri></author>
+  <generator uri="https://reports.orgel.us/developers">ORGEL Report Index</generator>
+  <entry>
+    <title>ResMed (RMD): Sustainability Report 202 (2026)</title>
+    <link href="https://investor.resmed.com/_assets/_4cd4b18d36c978fea88fa67e6e83121c/resmed/files/pdfs/20261104/f29edfd3-5695-4a79-81a9-b4f800cac162.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=ResMed" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-08:new-report:RMD:2026</id>
+    <updated>2026-11-08T12:00:00Z</updated>
+    <published>2026-11-08T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Health Care"/>
+    <summary>ResMed now lists its 2026 report (previously 2025) - &quot;Sustainability Report 202&quot;. Indexed 2026-11-08. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Franklin Resources (BEN): FY25 Corporate Social Responsibility Report (2025)</title>
+    <link href="https://franklintempletonprod.widen.net/s/trdkjtbnpc/franklin-templeton-csr-report#page=1" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Franklin%20Resources" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-04:new-report:BEN:2025</id>
+    <updated>2026-11-04T12:00:00Z</updated>
+    <published>2026-11-04T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>Franklin Resources now lists its 2025 report (previously 2024) - &quot;FY25 Corporate Social Responsibility Report&quot;. Indexed 2026-11-04. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>UDR, Inc. (UDR): 2026 Corporate Responsbility Report (2026)</title>
+    <link href="https://cflb.udr.com/globalassets/corporate/corporate-responsibility/2026_cr_report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=UDR%2C%20Inc." rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-04:new-report:UDR:2026</id>
+    <updated>2026-11-04T12:00:00Z</updated>
+    <published>2026-11-04T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Real Estate"/>
+    <summary>UDR, Inc. now lists its 2026 report (previously 2025) - &quot;2026 Corporate Responsbility Report&quot;. Indexed 2026-11-04. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Amcor (AMCR): FY26 Sustainability Report (2026)</title>
+    <link href="https://downloads.ctfassets.net/f7tuyt85vtoa/7tEyCGQeWQTsSWWaZbf97O/da7e35dee8b17d33c4693bed3fd7c74b/Amcor_Sustainability_Report_FY26.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Amcor" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-01:new-report:AMCR:2026</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <published>2026-11-01T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Materials"/>
+    <summary>Amcor now lists its 2026 report (previously 2025) - &quot;FY26 Sustainability Report&quot;. Indexed 2026-11-01. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Axon Enterprise (AXON): Responsibility Report 2026 (2026)</title>
+    <link href="https://a.storyblok.com/f/198504/x/5104563692/axon_responsibility_report_2026.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Axon%20Enterprise" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-01:new-report:AXON:2026</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <published>2026-11-01T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Industrials"/>
+    <summary>Axon Enterprise now lists its 2026 report (previously 2025) - &quot;Responsibility Report 2026&quot;. Indexed 2026-11-01. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Deckers Brands (DECK): FY26 Corporate Responsibility and Sustainability Report (2026)</title>
+    <link href="https://deckers.com/sites/default/files/2026-04/FY26_Deckers_CCR.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Deckers%20Brands" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-01:new-report:DECK:2026</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <published>2026-11-01T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Consumer Discretionary"/>
+    <summary>Deckers Brands now lists its 2026 report (previously 2025) - &quot;FY26 Corporate Responsibility and Sustainability Report&quot;. Indexed 2026-11-01. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Estée Lauder Companies (The) (EL): Social Impact and Sustainability Report (2026)</title>
+    <link href="https://media.elcompanies.com/files/e/estee-lauder-companies/global/our-impact/si-s26/sis-2026.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Est%C3%A9e%20Lauder%20Companies%20(The)" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-01:new-report:EL:2026</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <published>2026-11-01T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Consumer Staples"/>
+    <summary>Estée Lauder Companies (The) now lists its 2026 report (previously 2025) - &quot;Social Impact and Sustainability Report&quot;. Indexed 2026-11-01. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Global Payments (GPN): 2026 Global Responsibility Report (2026)</title>
+    <link href="https://d1io3yog0oux5.cloudfront.net/_3f7b74dcaf7d216f1ea56a0b12ac68df/globalpayments/files/pages/sustainability/2026_GPN_Responsibility_Report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Global%20Payments" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-01:new-report:GPN:2026</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <published>2026-11-01T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>Global Payments now lists its 2026 report (previously 2025) - &quot;2026 Global Responsibility Report&quot;. Indexed 2026-11-01. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Morgan Stanley (MS): 2025 Sustainability Report (2025)</title>
+    <link href="https://www.morganstanley.com/content/dam/msdotcom/en/assets/pdfs/Morgan_Stanley_2025_Sustainability_Report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Morgan%20Stanley" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-01:new-report:MS:2025</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <published>2026-11-01T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>Morgan Stanley now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Report&quot;. Indexed 2026-11-01. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Southern Company (SO): 2025 Statement of GHG Emissions (2025)</title>
+    <link href="https://www.southerncompany.com/content/dam/southerncompany/sustainability/pdfs/southern-company-2025-statement-of-ghg-emissions.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Southern%20Company" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-01:new-report:SO:2025</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <published>2026-11-01T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Utilities"/>
+    <summary>Southern Company now lists its 2025 report (previously 2024) - &quot;2025 Statement of GHG Emissions&quot;. Indexed 2026-11-01. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Honeywell (HON): 2026 Impact Report (2026)</title>
+    <link href="https://www.honeywell.com/content/dam/honcorp/us-en/company/impact-report/documents/hon-2026-impact-report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Honeywell" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-27:new-report:HON:2026</id>
+    <updated>2026-10-27T12:00:00Z</updated>
+    <published>2026-10-27T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Industrials"/>
+    <summary>Honeywell now lists its 2026 report (previously 2025) - &quot;2026 Impact Report&quot;. Indexed 2026-10-27. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Honeywell Aerospace (HONA): 2026 Impact Report (2026)</title>
+    <link href="https://www.honeywell.com/content/dam/honcorp/us-en/company/impact-report/documents/hon-2026-impact-report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Honeywell%20Aerospace" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-27:new-report:HONA:2026</id>
+    <updated>2026-10-27T12:00:00Z</updated>
+    <published>2026-10-27T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Industrials"/>
+    <summary>Honeywell Aerospace now lists its 2026 report (previously 2025) - &quot;2026 Impact Report&quot;. Indexed 2026-10-27. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Old Dominion (ODFL): 2025 Sustainability Data Supplement (2025)</title>
+    <link href="https://d1io3yog0oux5.cloudfront.net/_dc30681e72479d03c07ea9374463a5f2/odfl/db/515/4237/pdf/ODFL+2025+Sustainability+Data+Supplement+Report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Old%20Dominion" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-27:new-report:ODFL:2025</id>
+    <updated>2026-10-27T12:00:00Z</updated>
+    <published>2026-10-27T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Industrials"/>
+    <summary>Old Dominion now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Data Supplement&quot;. Indexed 2026-10-27. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Expedia Group (EXPE): 2025 Global Impact Report (2025)</title>
+    <link href="https://www.expediagroup.com/content/dam/unified/partner/documents/reports/2025-reports/expedia-group-global-impact-report-2025.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Expedia%20Group" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-26:new-report:EXPE:2025</id>
+    <updated>2026-10-26T12:00:00Z</updated>
+    <published>2026-10-26T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Consumer Discretionary"/>
+    <summary>Expedia Group now lists its 2025 report (previously 2024) - &quot;2025 Global Impact Report&quot;. Indexed 2026-10-26. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Hartford (The) (HIG): 2025 Sustainability Report (2025)</title>
+    <link href="https://assets.thehartford.com/image/upload/sustainability_highlight_report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Hartford%20(The)" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-26:new-report:HIG:2025</id>
+    <updated>2026-10-26T12:00:00Z</updated>
+    <published>2026-10-26T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>Hartford (The) now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Report&quot;. Indexed 2026-10-26. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Interactive Brokers (IBKR): 2025 Sustainability Report (2025)</title>
+    <link href="https://www.interactivebrokers.com/download/sustainability/IB25_SustainabilityReport_FINAL.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Interactive%20Brokers" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-26:new-report:IBKR:2025</id>
+    <updated>2026-10-26T12:00:00Z</updated>
+    <published>2026-10-26T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>Interactive Brokers now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Report&quot;. Indexed 2026-10-26. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>J.M. Smucker Company (The) (SJM): 2026 Corporate Impact Report (2026)</title>
+    <link href="https://www.jmsmucker.com/assets/jmsmucker/news-stories/corporate-publications/2026-corporate-impact-report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=J.M.%20Smucker%20Company%20(The)" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-26:new-report:SJM:2026</id>
+    <updated>2026-10-26T12:00:00Z</updated>
+    <published>2026-10-26T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Consumer Staples"/>
+    <summary>J.M. Smucker Company (The) now lists its 2026 report (previously 2025) - &quot;2026 Corporate Impact Report&quot;. Indexed 2026-10-26. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Leidos (LDOS): Advancing Environmental Sustainability (2026)</title>
+    <link href="https://leidos.widen.net/s/w2vclqtpvv/uk-sustainabity-report" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Leidos" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-26:new-report:LDOS:2026</id>
+    <updated>2026-10-26T12:00:00Z</updated>
+    <published>2026-10-26T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Industrials"/>
+    <summary>Leidos now lists its 2026 report (previously 2024) - &quot;Advancing Environmental Sustainability&quot;. Indexed 2026-10-26. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Mosaic Company (The) (MOS): 2025 Sustainability Disclosure (2025)</title>
+    <link href="https://mosaicco.com/fileLibrary/publicFiles/0-Mosaic-2025-Sustainability-Disclosure-and-GRI-Report_REV-1-FINAL2.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Mosaic%20Company%20(The)" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-26:new-report:MOS:2025</id>
+    <updated>2026-10-26T12:00:00Z</updated>
+    <published>2026-10-26T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Materials"/>
+    <summary>Mosaic Company (The) now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Disclosure&quot;. Indexed 2026-10-26. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Quest Diagnostics (DGX): 2025 TCFD Report (2025)</title>
+    <link href="https://www.questdiagnostics.com/content/dam/corporate/restricted/images/our-company/2025-corporate-responsibility-report/Quest-Diagnostics-2025-Corporate-Responsibility-Report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Quest%20Diagnostics" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-26:new-report:DGX:2025</id>
+    <updated>2026-10-26T12:00:00Z</updated>
+    <published>2026-10-26T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Health Care"/>
+    <summary>Quest Diagnostics now lists its 2025 report (previously 2022) - &quot;2025 TCFD Report&quot;. Indexed 2026-10-26. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Dover Corporation (DOV): 2025 Sustainability Highlights (2025)</title>
+    <link href="https://www.dovercorporation.com/docs/libraries/esg/dover-esg-highlights-2025_v3.pdf?Status=Master&amp;sfvrsn=d560aeae_10" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Dover%20Corporation" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-21:new-report:DOV:2025</id>
+    <updated>2026-10-21T12:00:00Z</updated>
+    <published>2026-10-21T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Industrials"/>
+    <summary>Dover Corporation now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Highlights&quot;. Indexed 2026-10-21. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Agilent Technologies (A): 2025 ESG Report (2025)</title>
+    <link href="https://www.agilent.com/about/esg/en/2025-agilent-esg-report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Agilent%20Technologies" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-17:new-report:A:2025</id>
+    <updated>2026-10-17T12:00:00Z</updated>
+    <published>2026-10-17T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Health Care"/>
+    <summary>Agilent Technologies now lists its 2025 report (previously 2024) - &quot;2025 ESG Report&quot;. Indexed 2026-10-17. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Crown Castle (CCI): 2025 Sustainability Report (2025)</title>
+    <link href="https://www.crowncastle.com/sustainability/resources/cc_2025-sustainabilityreport.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Crown%20Castle" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-17:new-report:CCI:2025</id>
+    <updated>2026-10-17T12:00:00Z</updated>
+    <published>2026-10-17T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Real Estate"/>
+    <summary>Crown Castle now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Report&quot;. Indexed 2026-10-17. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Hormel Foods (HRL): 2025 Global Impact Report (2025)</title>
+    <link href="https://www.hormelfoods.com/wp-content/uploads/Hormel-Foods-2025-Global-Impact-Report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Hormel%20Foods" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-17:new-report:HRL:2025</id>
+    <updated>2026-10-17T12:00:00Z</updated>
+    <published>2026-10-17T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Consumer Staples"/>
+    <summary>Hormel Foods now lists its 2025 report (previously 2024) - &quot;2025 Global Impact Report&quot;. Indexed 2026-10-17. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>JPMorgan Chase (JPM): Sustainability Report 2025 (2025)</title>
+    <link href="https://www.jpmorganchase.com/content/dam/jpmorganchase/documents/about/jpmc-sustainability-report-2025.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=JPMorgan%20Chase" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-17:new-report:JPM:2025</id>
+    <updated>2026-10-17T12:00:00Z</updated>
+    <published>2026-10-17T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>JPMorgan Chase now lists its 2025 report (previously 2024) - &quot;Sustainability Report 2025&quot;. Indexed 2026-10-17. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>TJX Companies (TJX): 2026 Global Corporate Responsibility Report (2026)</title>
+    <link href="https://www.tjx.com/docs/default-source/corporate-responsibility/tjx-2026-global-corporate-responsibility-report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=TJX%20Companies" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-17:new-report:TJX:2026</id>
+    <updated>2026-10-17T12:00:00Z</updated>
+    <published>2026-10-17T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Consumer Discretionary"/>
+    <summary>TJX Companies now lists its 2026 report (previously 2025) - &quot;2026 Global Corporate Responsibility Report&quot;. Indexed 2026-10-17. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>BNY Mellon (BNY): 2025 TCFD Report (2025)</title>
+    <link href="https://www.bny.com/assets/corporate/documents/pdf/about-us/climate-related-financial-disclosure-tcfd-2025.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=BNY%20Mellon" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-14:new-report:BNY:2025</id>
+    <updated>2026-10-14T12:00:00Z</updated>
+    <published>2026-10-14T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>BNY Mellon now lists its 2025 report (previously 2024) - &quot;2025 TCFD Report&quot;. Indexed 2026-10-14. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Diamondback Energy (FANG): Corporate Sustainability Report (2026)</title>
+    <link href="https://issuu.com/diamondback/docs/2026_corporate_sustainability_report?fr=sOTU3ZjkzMjUyMzc" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Diamondback%20Energy" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-10:new-report:FANG:2026</id>
+    <updated>2026-10-10T12:00:00Z</updated>
+    <published>2026-10-10T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Energy"/>
+    <summary>Diamondback Energy now lists its 2026 report (previously 2025) - &quot;Corporate Sustainability Report&quot;. Indexed 2026-10-10. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>FirstEnergy (FE): 2026 Corporate Responsibility Report (2026)</title>
+    <link href="https://www.firstenergycorp.com/content/dam/corporate/fecorporateresponsibility/files/reports-resources/crreport/2026-corporate-responsibility-report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=FirstEnergy" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-10:new-report:FE:2026</id>
+    <updated>2026-10-10T12:00:00Z</updated>
+    <published>2026-10-10T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Utilities"/>
+    <summary>FirstEnergy now lists its 2026 report (previously 2025) - &quot;2026 Corporate Responsibility Report&quot;. Indexed 2026-10-10. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>General Dynamics (GD): 2026 Sustainability Report (2026)</title>
+    <link href="https://www.gd.com/-/media/gd-corporate/pdf/gd-2026-sustainability-report.ashx" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=General%20Dynamics" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-10:new-report:GD:2026</id>
+    <updated>2026-10-10T12:00:00Z</updated>
+    <published>2026-10-10T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Industrials"/>
+    <summary>General Dynamics now lists its 2026 report (previously 2025) - &quot;2026 Sustainability Report&quot;. Indexed 2026-10-10. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Texas Pacific Land Corporation (TPL): Environment Performance Metrics (2025)</title>
+    <link href="https://www.texaspacific.com/esg/performance-data-indices" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Texas%20Pacific%20Land%20Corporation" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-10:new-report:TPL:2025</id>
+    <updated>2026-10-10T12:00:00Z</updated>
+    <published>2026-10-10T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Energy"/>
+    <summary>Texas Pacific Land Corporation now lists its 2025 report (previously 2024) - &quot;Environment Performance Metrics&quot;. Indexed 2026-10-10. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>United Rentals (URI): Corporate Responsibility Report 2025 (2025)</title>
+    <link href="https://www.unitedrentals.com/sites/default/files/press-releases/UnitedRentals2025CorporateResponsibilityReport.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=United%20Rentals" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-10:new-report:URI:2025</id>
+    <updated>2026-10-10T12:00:00Z</updated>
+    <published>2026-10-10T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Industrials"/>
+    <summary>United Rentals now lists its 2025 report (previously 2024) - &quot;Corporate Responsibility Report 2025&quot;. Indexed 2026-10-10. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Medtronic (MDT): FY26 Impact Report (2026)</title>
+    <link href="https://www.medtronic.com/content/dam/medtronic-wide/public/brand-corporate-assets/resources/2026-impact-report-corpmark-mdt.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Medtronic" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-07:new-report:MDT:2026</id>
+    <updated>2026-10-07T12:00:00Z</updated>
+    <published>2026-10-07T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Health Care"/>
+    <summary>Medtronic now lists its 2026 report (previously 2025) - &quot;FY26 Impact Report&quot;. Indexed 2026-10-07. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>NRG Energy (NRG): 2025 Year In Review (2025)</title>
+    <link href="https://www.nrg.com/content/dam/nrg/web/en/multimedia/documents/pdfs/archive-pdf/2025-sustainability-report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=NRG%20Energy" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-07:new-report:NRG:2025</id>
+    <updated>2026-10-07T12:00:00Z</updated>
+    <published>2026-10-07T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Utilities"/>
+    <summary>NRG Energy now lists its 2025 report (previously 2024) - &quot;2025 Year In Review&quot;. Indexed 2026-10-07. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Progressive Corporation (PGR): 2025 Corporate Sustainability Report (2025)</title>
+    <link href="https://s202.q4cdn.com/605347829/files/doc_downloads/2026/09/progressive_2025corporate-sustainability-report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Progressive%20Corporation" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-07:new-report:PGR:2025</id>
+    <updated>2026-10-07T12:00:00Z</updated>
+    <published>2026-10-07T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>Progressive Corporation now lists its 2025 report (previously 2024) - &quot;2025 Corporate Sustainability Report&quot;. Indexed 2026-10-07. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Roper Technologies (ROP): 2025 Sustainability Update (2025)</title>
+    <link href="https://www.ropertech.com/static-files/ca0d74f5-cba2-410b-bb66-3f06d041fa79" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Roper%20Technologies" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-07:new-report:ROP:2025</id>
+    <updated>2026-10-07T12:00:00Z</updated>
+    <published>2026-10-07T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Information Technology"/>
+    <summary>Roper Technologies now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Update&quot;. Indexed 2026-10-07. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Targa Resources (TRGP): 2025 Annual Sustainability Report (2025)</title>
+    <link href="https://www.targaresources.com/static-files/20982111-38d5-4ce4-a982-d44e85aa0dc5" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Targa%20Resources" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-07:new-report:TRGP:2025</id>
+    <updated>2026-10-07T12:00:00Z</updated>
+    <published>2026-10-07T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Energy"/>
+    <summary>Targa Resources now lists its 2025 report (previously 2024) - &quot;2025 Annual Sustainability Report&quot;. Indexed 2026-10-07. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Teledyne Technologies (TDY): Corporate Social Responsibility Report 2026 (2026)</title>
+    <link href="https://www.teledyne.com/en-us/About-Us/Documents/teledyne-technologies-incorporated-corporate-social-responsibility-2026.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Teledyne%20Technologies" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-07:new-report:TDY:2026</id>
+    <updated>2026-10-07T12:00:00Z</updated>
+    <published>2026-10-07T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Information Technology"/>
+    <summary>Teledyne Technologies now lists its 2026 report (previously 2024) - &quot;Corporate Social Responsibility Report 2026&quot;. Indexed 2026-10-07. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Bio-Techne (TECH): Sustainability Report 2026 (2026)</title>
+    <link href="https://resources.bio-techne.com/bio-techne-assets/docs/pdfs/2026-corporate-sustainability-report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Bio-Techne" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-06:new-report:TECH:2026</id>
+    <updated>2026-10-06T12:00:00Z</updated>
+    <published>2026-10-06T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Health Care"/>
+    <summary>Bio-Techne now lists its 2026 report (previously 2025) - &quot;Sustainability Report 2026&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Broadridge Financial Solutions (BR): Sustainability Report 2026 (2026)</title>
+    <link href="https://www.broadridge.com/_assets/pdf/broadridge-sustainability-report-2026.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Broadridge%20Financial%20Solutions" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-06:new-report:BR:2026</id>
+    <updated>2026-10-06T12:00:00Z</updated>
+    <published>2026-10-06T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Industrials"/>
+    <summary>Broadridge Financial Solutions now lists its 2026 report (previously 2025) - &quot;Sustainability Report 2026&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Cboe Global Markets (CBOE): 2026 Corporate Stewardship Report (2026)</title>
+    <link href="https://cdn.cboe.com/resources/aboutcboe/Cboe_CSR_Report_2025_2026.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Cboe%20Global%20Markets" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-06:new-report:CBOE:2026</id>
+    <updated>2026-10-06T12:00:00Z</updated>
+    <published>2026-10-06T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>Cboe Global Markets now lists its 2026 report (previously 2025) - &quot;2026 Corporate Stewardship Report&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Dexcom (DXCM): Sustainability Report (2025)</title>
+    <link href="https://s201.q4cdn.com/758408164/files/doc_downloads/2026/09/Sustainability-Report-2025_FINAL.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Dexcom" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-06:new-report:DXCM:2025</id>
+    <updated>2026-10-06T12:00:00Z</updated>
+    <published>2026-10-06T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Health Care"/>
+    <summary>Dexcom now lists its 2025 report (previously 2024) - &quot;Sustainability Report&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Fifth Third Bancorp (FITB): 2025 Sustainability Report (2025)</title>
+    <link href="https://s23.q4cdn.com/252949160/files/doc_downloads/2026/08/26/2025-Sustainability-Report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Fifth%20Third%20Bancorp" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-06:new-report:FITB:2025</id>
+    <updated>2026-10-06T12:00:00Z</updated>
+    <published>2026-10-06T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>Fifth Third Bancorp now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Report&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Omnicom Group (OMC): 2025 Environmental Overview (2025)</title>
+    <link href="https://www.omc.com/wp-content/uploads/2026/09/Omnicom-2025-Environmental-Overview-v2.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Omnicom%20Group" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-06:new-report:OMC:2025</id>
+    <updated>2026-10-06T12:00:00Z</updated>
+    <published>2026-10-06T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Communication Services"/>
+    <summary>Omnicom Group now lists its 2025 report (previously 2024) - &quot;2025 Environmental Overview&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Quanta Services (PWR): 2025 Sustainability Report (2025)</title>
+    <link href="https://sustainability.quantaservices.com/wp-content/uploads/2026/09/Quanta-Sustainability-Report-2025.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Quanta%20Services" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-06:new-report:PWR:2025</id>
+    <updated>2026-10-06T12:00:00Z</updated>
+    <published>2026-10-06T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Industrials"/>
+    <summary>Quanta Services now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Report&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Workday, Inc. (WDAY): 2026 Global Impact Report (2026)</title>
+    <link href="https://www.workday.com/content/dam/web/en-us/documents/other/workday-global-impact-report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Workday%2C%20Inc." rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-10-06:new-report:WDAY:2026</id>
+    <updated>2026-10-06T12:00:00Z</updated>
+    <published>2026-10-06T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Information Technology"/>
+    <summary>Workday, Inc. now lists its 2026 report (previously 2025) - &quot;2026 Global Impact Report&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>EOG Resources (EOG): 2025 Sustainability Performance Report (2025)</title>
+    <link href="https://eogresources.s3.us-east-2.amazonaws.com/EOG_2025_Sustainability_Performance_Report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=EOG%20Resources" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-09-30:new-report:EOG:2025</id>
+    <updated>2026-09-30T12:00:00Z</updated>
+    <published>2026-09-30T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Energy"/>
+    <summary>EOG Resources now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Performance Report&quot;. Indexed 2026-09-30. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Synchrony Financial (SYF): 2026 TCFD Report (2026)</title>
+    <link href="https://d1io3yog0oux5.cloudfront.net/_47e8d604914ba15a6ed456fca5ee809c/synchrony/db/3715/33384/file/Synchrony+TCFD+Report+%E2%80%93+April+29%2C+2026.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Synchrony%20Financial" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-09-30:new-report:SYF:2026</id>
+    <updated>2026-09-30T12:00:00Z</updated>
+    <published>2026-09-30T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>Synchrony Financial now lists its 2026 report (previously 2023) - &quot;2026 TCFD Report&quot;. Indexed 2026-09-30. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Lowe's (LOW): 2025 Corproate Responsibility Report (2025)</title>
+    <link href="https://corporate.lowes.com/sites/lowes-corp/files/2026-09/Lowes_2025_CRR_9.21.26.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Lowe's" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-09-27:new-report:LOW:2025</id>
+    <updated>2026-09-27T12:00:00Z</updated>
+    <published>2026-09-27T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Consumer Discretionary"/>
+    <summary>Lowe's now lists its 2025 report (previously 2024) - &quot;2025 Corproate Responsibility Report&quot;. Indexed 2026-09-27. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>News Corp (Class A) (NWSA): 2026 Social Impact Report (2026)</title>
+    <link href="https://newscorp.com/wp-content/uploads/2026/09/News-Corp-2026-Social-Impact-Report-1.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=News%20Corp%20(Class%20A)" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-09-27:new-report:NWSA:2026</id>
+    <updated>2026-09-27T12:00:00Z</updated>
+    <published>2026-09-27T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Communication Services"/>
+    <summary>News Corp (Class A) now lists its 2026 report (previously 2025) - &quot;2026 Social Impact Report&quot;. Indexed 2026-09-27. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+</feed>
