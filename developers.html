@@ -11,6 +11,78 @@
   <meta property="og:title" content="Data &amp; API | ORGEL Sustainability Report Index"/>
   <meta property="og:description" content="Free JSON and CSV access to the latest sustainability report from every S&amp;P 500 company, plus a feed of newly published reports."/>
   <meta property="og:image" content="https://reports.orgel.us/og-image.png"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "S&P 500 Sustainability Report Index",
+    "alternateName": [
+      "ORGEL Sustainability Report Index",
+      "S&P 500 sustainability reports dataset"
+    ],
+    "description": "The latest published sustainability report (also called an ESG, impact or corporate responsibility report) for each company in the S&P 500: company name, ticker, sector, report name, report year, a direct link to the report on the company's own website, and a link to the company's sustainability page. Companies that leave the S&P 500 stay in the index, so it lists more than 500 companies. Every link is traced to the company's own disclosure page, every entry is rechecked twice a week, and new reports are confirmed by hand before they are published. Free to reuse with no key or sign-up, as CSV, as JSON, or as a searchable table at reports.orgel.us.",
+    "url": "https://reports.orgel.us/developers",
+    "identifier": "https://reports.orgel.us/developers",
+    "keywords": [
+      "sustainability reports",
+      "ESG reports",
+      "corporate responsibility reports",
+      "impact reports",
+      "S&P 500",
+      "ESG disclosure",
+      "corporate sustainability reporting"
+    ],
+    "isAccessibleForFree": true,
+    "license": "https://reports.orgel.us/developers#terms",
+    "inLanguage": "en",
+    "creator": {
+      "@type": "Organization",
+      "name": "ORGEL",
+      "url": "https://www.orgel.us"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ORGEL",
+      "url": "https://www.orgel.us"
+    },
+    "spatialCoverage": {
+      "@type": "Place",
+      "name": "United States"
+    },
+    "temporalCoverage": "2022/..",
+    "measurementTechnique": "Automated readers check each company's own disclosure page twice a week; every new report is confirmed by a person before it is published.",
+    "variableMeasured": [
+      "Company",
+      "Ticker",
+      "Sector",
+      "Report name",
+      "Report year",
+      "Status",
+      "Report URL",
+      "Landing page URL"
+    ],
+    "distribution": [
+      {
+        "@type": "DataDownload",
+        "name": "CSV",
+        "encodingFormat": "text/csv",
+        "contentUrl": "https://reports.orgel.us/api/v1/reports?format=csv"
+      },
+      {
+        "@type": "DataDownload",
+        "name": "JSON API",
+        "encodingFormat": "application/json",
+        "contentUrl": "https://reports.orgel.us/api/v1/reports"
+      },
+      {
+        "@type": "DataDownload",
+        "name": "Raw JSON file",
+        "encodingFormat": "application/json",
+        "contentUrl": "https://reports.orgel.us/data.json"
+      }
+    ]
+  }
+  </script>
   <link rel="alternate" type="application/atom+xml" title="New sustainability reports (S&amp;P 500)" href="https://reports.orgel.us/feed.xml"/>
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"/>
@@ -59,6 +131,7 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
     pre code { background: none; padding: 0; }
     .fresh { margin: 26px 0 6px; }
     .fresh h2 { margin: 0 0 8px; }
+    .fresh p + h2 { margin-top: 26px; }
     .fresh p { margin: 0; }
     .cards { display: grid; grid-template-columns: 100px max-content minmax(0, 1fr); gap: 12px; margin: 22px 0 6px; }
     .card { border: 1px solid var(--rule); border-radius: 10px; grid-column: 1 / -1; display: grid; grid-template-columns: 100px max-content minmax(0, 1fr); grid-template-columns: subgrid; }
@@ -98,6 +171,8 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
   <div class="fresh">
     <h2 id="freshness">How current is it?</h2>
     <p>Every entry on the index is rechecked twice a week by automated readers that watch each company's own disclosure page, and new reports are confirmed by hand before they are published. Any change to the index reaches every address below within an hour. <code>/api/v1/meta</code> and <code>meta.json</code> carry the time of the last update.</p>
+    <h2 id="coverage">Which companies are included?</h2>
+    <p>Every company in the S&amp;P&nbsp;500, plus every company that has left the S&amp;P&nbsp;500 since the index began. A company is added when it joins and is never removed when it drops out, so the index lists more than 500 companies. Former members keep being checked like every other entry. The data does not mark which companies are current members.</p>
   </div>
 
   <div class="cards">
@@ -216,6 +291,6 @@ df = pd.read_csv("https://reports.orgel.us/api/v1/reports?format=csv")     # pan
 </main>
 
 <script>(function(){var cs=document.querySelector(".cards");if(!cs)return;cs.classList.add("js");function set(c,o){c.classList.toggle("open",o);var h=c.querySelector(".card-head");if(h)h.setAttribute("aria-expanded",o?"true":"false");}function head(t){return t&&t.closest?t.closest(".card-head"):null;}cs.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("a"))return;var h=head(e.target);if(!h)return;set(h.parentNode,!h.parentNode.classList.contains("open"));});cs.addEventListener("keydown",function(e){if(e.key!=="Enter"&&e.key!==" ")return;if(e.target.tagName==="A")return;var h=head(e.target);if(!h)return;e.preventDefault();set(h.parentNode,!h.parentNode.classList.contains("open"));});function fromHash(){try{var c=location.hash&&document.querySelector(location.hash);if(c&&c.classList.contains("card")){set(c,true);c.scrollIntoView();}}catch(e){}}fromHash();addEventListener("hashchange",fromHash);})();</script>
-<footer>ORGEL Sustainability Report Index &middot; <a href="https://reports.orgel.us/">Index</a> &middot; <a href="/developers">Data &amp; API</a> &middot; <a href="/feed.xml">Feed</a> &middot; <a href="https://www.orgel.us">orgel.us</a></footer>
+<footer>ORGEL Sustainability Report Index &middot; <a href="https://reports.orgel.us/">Index</a> &middot; <a href="/developers">Data &amp; API</a> &middot; <a href="https://www.orgel.us">orgel.us</a></footer>
 </body>
 </html>
