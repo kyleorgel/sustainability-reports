@@ -57,12 +57,29 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
     code { background: var(--code); padding: 2px 6px; border-radius: 4px; }
     pre { background: var(--code); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 8px 0 16px; line-height: 1.5; }
     pre code { background: none; padding: 0; }
-    .cards { display: grid; grid-template-columns: 100px max-content minmax(0, 1fr); gap: 12px; margin: 18px 0 6px; }
-    .card { border: 1px solid var(--rule); border-radius: 10px; padding: 16px 20px; grid-column: 1 / -1; display: grid; grid-template-columns: 100px max-content minmax(0, 1fr); grid-template-columns: subgrid; gap: 6px 22px; align-items: center; }
+    .fresh { margin: 26px 0 6px; }
+    .fresh h2 { margin: 0 0 8px; }
+    .fresh p { margin: 0; }
+    .cards { display: grid; grid-template-columns: 100px max-content minmax(0, 1fr); gap: 12px; margin: 22px 0 6px; }
+    .card { border: 1px solid var(--rule); border-radius: 10px; grid-column: 1 / -1; display: grid; grid-template-columns: 100px max-content minmax(0, 1fr); grid-template-columns: subgrid; }
+    .card-head { grid-column: 1 / -1; display: grid; grid-template-columns: 100px max-content minmax(0, 1fr); grid-template-columns: subgrid; gap: 6px 22px; align-items: center; padding: 16px 44px 16px 20px; cursor: pointer; position: relative; border-radius: 10px; }
+    .card-head:hover { background: #fafafa; }
+    .card.open .card-head { border-bottom: 1px solid var(--rule); border-radius: 10px 10px 0 0; }
+    .cards.js .card:not(.open) .card-body { display: none; }
+    .card-head:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
     .card .k { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
-    .card .u { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; white-space: nowrap; display: block; justify-self: start; margin: 0; }
-    .card p { font-size: 13.5px; color: var(--ink-muted); margin: 0; }
-    @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } .card { grid-template-columns: 1fr; gap: 6px; } .card .u { font-size: 12px; white-space: normal; overflow-wrap: anywhere; } }
+    .card .u { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; white-space: nowrap; display: block; justify-self: start; margin: 0; color: var(--red); border-bottom: 1px solid rgba(196,32,44,.35); }
+    .card .u:hover { border-bottom-color: var(--red); }
+    .card-head p { font-size: 13.5px; color: var(--ink-muted); margin: 0; }
+    .chev { position: absolute; right: 18px; top: 50%; width: 9px; height: 9px; margin-top: -7px; border-right: 2px solid #9ca3af; border-bottom: 2px solid #9ca3af; transform: rotate(45deg); transition: transform .15s; }
+    .card.open .chev { transform: rotate(225deg); margin-top: -3px; }
+    .card-body { grid-column: 1 / -1; padding: 6px 20px 18px; }
+    .card-body h3 { margin: 18px 0 6px; }
+    .card-body h3:first-child { margin-top: 12px; }
+    .card-body p, .card-body li { font-size: 14.5px; }
+    .card-body table { font-size: 13.5px; }
+    .card-body pre { margin: 6px 0 12px; }
+    @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } .card, .card-head { grid-template-columns: 1fr; } .card-head { gap: 6px; padding-right: 40px; } .card .u { font-size: 12px; white-space: normal; overflow-wrap: anywhere; } .card-body { padding: 4px 16px 16px; } }
     table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 18px; }
     th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
     th { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; }
@@ -78,18 +95,17 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
 <section class="orgel-band"><div class="ob-inner"><h1>Data &amp; API</h1><p>Everything on the Report Index is free to reuse. No key, no sign-up.</p></div></section>
 
 <main>
-  <div class="cards">
-    <div class="card"><div class="k">JSON</div><a class="u" href="/api/v1/reports">reports.orgel.us/api/v1/reports</a><p>Every company, filterable by sector, year, ticker, status or a search term.</p></div>
-    <div class="card"><div class="k">CSV</div><a class="u" href="/api/v1/reports?format=csv">reports.orgel.us/api/v1/reports?format=csv</a><p>The same data as a spreadsheet file. Works with Google Sheets, Excel, R and pandas.</p></div>
-    <div class="card"><div class="k">Feed</div><a class="u" href="/feed.xml">reports.orgel.us/feed.xml</a><p>Atom feed: one entry each time a company's latest report changes. Add it to any feed reader or automation tool.</p></div>
-    <div class="card"><div class="k">Raw file</div><a class="u" href="/data.json">reports.orgel.us/data.json</a><p>The exact file the index page renders from. Best for bulk or scheduled downloads.</p></div>
+  <div class="fresh">
+    <h2 id="freshness">How current is it?</h2>
+    <p>Every entry on the index is rechecked twice a week by automated readers that watch each company's own disclosure page, and new reports are confirmed by hand before they are published. Any change to the index reaches every address below within an hour. <code>/api/v1/meta</code> and <code>meta.json</code> carry the time of the last update.</p>
   </div>
 
-  <h2 id="freshness">How current is it?</h2>
-  <p>Every entry on the index is rechecked twice a week by automated readers that watch each company's own disclosure page, and new reports are confirmed by hand before they are published. Any change to the index reaches these endpoints within an hour. <code>/api/v1/meta</code> and <code>meta.json</code> carry the time of the last update.</p>
-
-  <h2 id="reports">GET /api/v1/reports</h2>
-  <p>Returns the companies that match your filters. With no parameters it returns the whole index.</p>
+  <div class="cards">
+    <div class="card" id="json">
+      <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="json-body"><span class="k">JSON</span><a class="u" href="/api/v1/reports">reports.orgel.us/api/v1/reports</a><p>Every company, filterable by sector, year, ticker, status or a search term.</p><span class="chev" aria-hidden="true"></span></div>
+      <div class="card-body" id="json-body">
+        <h3>GET /api/v1/reports</h3>
+        <p>Returns the companies that match your filters. With no parameters it returns the whole index.</p>
   <table>
     <thead><tr><th>Parameter</th><th>Example</th><th>Meaning</th></tr></thead>
     <tbody>
@@ -101,9 +117,8 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
       <tr><td><code>format</code></td><td><code>?format=csv</code></td><td><code>json</code> (default) or <code>csv</code>. Add <code>&amp;download=1</code> to receive the CSV as a file download.</td></tr>
     </tbody>
   </table>
-  <p>Filters combine with AND: <code>/api/v1/reports?sector=Utilities&amp;year_min=2025&amp;format=csv</code>.</p>
-
-  <h3>Response</h3>
+        <p>Filters combine with AND: <code>/api/v1/reports?sector=Utilities&amp;year_min=2025&amp;format=csv</code>.</p>
+        <h3>Response</h3>
 <pre><code>{
   "meta": {
     "source": "https://reports.orgel.us/",
@@ -126,23 +141,10 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
     }
   ]
 }</code></pre>
-  <p><code>reportUrl</code> and <code>landingPageUrl</code> are <code>null</code> when a company has not published one. <code>reportYear</code> is a number, or <code>null</code>. All fields are UTF-8 strings otherwise.</p>
-  <p>CSV columns, in order: Company, Ticker, Sector, Report Name, Report Year, Status, Report URL, Landing Page URL. The file is UTF-8 with a byte-order mark so Excel opens it correctly.</p>
-
-  <h2 id="meta">GET /api/v1/meta</h2>
-  <p>Last update time, the number of companies, how many have a published report, and the list of endpoints. Useful for a "last updated" label or to decide whether to re-download.</p>
-
-  <h2 id="feed">Feed of new reports</h2>
-  <p><a href="/feed.xml">feed.xml</a> is an Atom feed with one entry each time a company's latest report moves to a newer year on the index - roughly a handful a week during reporting season. Each entry links to the report itself and names the previous year it replaced. Subscribe in a feed reader, or point a tool such as Zapier, Make, n8n or IFTTT at it to get an email or a Slack message when a report you follow is published.</p>
-  <p>The same events are available as JSON at <a href="/changes.json">changes.json</a> (newest first, up to 1,000 kept), which is easier to process in code than the feed.</p>
-
-  <h2 id="examples">Examples</h2>
-  <h3>Google Sheets</h3>
-<pre><code>=IMPORTDATA("https://reports.orgel.us/api/v1/reports?format=csv")</code></pre>
-  <p>Add filters to the URL to import a slice, for example <code>?sector=Financials&amp;format=csv</code>. Google refreshes imported data about once an hour.</p>
-  <h3>Excel</h3>
-  <p>Data &rarr; Get Data &rarr; From Web, paste <code>https://reports.orgel.us/api/v1/reports?format=csv</code>, then Load. Refresh any time with Data &rarr; Refresh All. Or use the <strong>Download Excel</strong> button on the index page for a formatted workbook.</p>
-  <h3>Python</h3>
+        <p><code>reportUrl</code> and <code>landingPageUrl</code> are <code>null</code> when a company has not published one. <code>reportYear</code> is a number, or <code>null</code>. All fields are UTF-8 strings otherwise.</p>
+        <h3>GET /api/v1/meta</h3>
+        <p>Last update time, the number of companies, how many have a published report, and the list of endpoints. Useful for a "last updated" label or to decide whether to re-download.</p>
+        <h3>Python</h3>
 <pre><code>import requests
 r = requests.get("https://reports.orgel.us/api/v1/reports", params={"sector": "Energy"})
 for row in r.json()["reports"]:
@@ -151,12 +153,55 @@ for row in r.json()["reports"]:
 # or straight into pandas
 import pandas as pd
 df = pd.read_csv("https://reports.orgel.us/api/v1/reports?format=csv")</code></pre>
-  <h3>JavaScript</h3>
+        <h3>JavaScript</h3>
 <pre><code>const res = await fetch("https://reports.orgel.us/api/v1/reports?year_min=2026");
 const { meta, reports } = await res.json();
 console.log(meta.count, "reports from", meta.updatedAt);</code></pre>
-  <h3>Command line</h3>
+        <h3>Command line</h3>
 <pre><code>curl -s "https://reports.orgel.us/api/v1/reports?ticker=AAPL,MSFT" | jq '.reports[] | {company, reportYear, reportUrl}'</code></pre>
+      </div>
+    </div>
+
+    <div class="card" id="csv">
+      <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="csv-body"><span class="k">CSV</span><a class="u" href="/api/v1/reports?format=csv">reports.orgel.us/api/v1/reports?format=csv</a><p>The same data as a spreadsheet file. Works with Google Sheets, Excel, R and pandas.</p><span class="chev" aria-hidden="true"></span></div>
+      <div class="card-body" id="csv-body">
+        <h3>What you get</h3>
+        <p>The same endpoint as the JSON, so every filter listed under JSON works here too (<code>sector</code>, <code>year</code>, <code>ticker</code>, <code>status</code>, <code>q</code>). Columns, in order: Company, Ticker, Sector, Report Name, Report Year, Status, Report URL, Landing Page URL. The file is UTF-8 with a byte-order mark so Excel opens it correctly. Add <code>&amp;download=1</code> to receive it as a file download instead of in the browser.</p>
+        <h3>Google Sheets</h3>
+<pre><code>=IMPORTDATA("https://reports.orgel.us/api/v1/reports?format=csv")</code></pre>
+        <p>Add filters to the URL to import a slice, for example <code>?sector=Financials&amp;format=csv</code>. Google refreshes imported data about once an hour.</p>
+        <h3>Excel</h3>
+        <p>Data &rarr; Get Data &rarr; From Web, paste <code>https://reports.orgel.us/api/v1/reports?format=csv</code>, then Load. Refresh any time with Data &rarr; Refresh All. Or use the <strong>Download</strong> button on the index page for a formatted workbook of whatever is on screen.</p>
+        <h3>R and pandas</h3>
+<pre><code>df &lt;- read.csv("https://reports.orgel.us/api/v1/reports?format=csv")      # R
+df = pd.read_csv("https://reports.orgel.us/api/v1/reports?format=csv")     # pandas</code></pre>
+      </div>
+    </div>
+
+    <div class="card" id="feed">
+      <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="feed-body"><span class="k">Feed</span><a class="u" href="/feed.xml">reports.orgel.us/feed.xml</a><p>Atom feed: one entry each time a company's latest report changes. Add it to any feed reader or automation tool.</p><span class="chev" aria-hidden="true"></span></div>
+      <div class="card-body" id="feed-body">
+        <h3>How it works</h3>
+        <p><a href="/feed.xml">feed.xml</a> is an Atom feed with one entry each time a company's latest report moves to a newer year on the index - roughly a handful a week during reporting season. Each entry links to the report itself and names the previous year it replaced. Subscribe in a feed reader (Feedly, Inoreader, NetNewsWire, Outlook), or point a tool such as Zapier, Make, n8n or IFTTT at it to get an email or a Slack message when a report you follow is published.</p>
+        <p>The same events are available as JSON at <a href="/changes.json">changes.json</a> (newest first, up to 1,000 kept), which is easier to process in code than the feed.</p>
+      </div>
+    </div>
+
+    <div class="card" id="raw">
+      <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="raw-body"><span class="k">Raw file</span><a class="u" href="/data.json">reports.orgel.us/data.json</a><p>The exact file the index page renders from. Best for bulk or scheduled downloads.</p><span class="chev" aria-hidden="true"></span></div>
+      <div class="card-body" id="raw-body">
+        <h3>Format</h3>
+        <p>An array of records, one per company, each wrapped in a <code>fields</code> object that uses the index's own column names: <code>Company Name</code>, <code>Ticker</code>, <code>Sector / Industry</code>, <code>Report Name</code>, <code>Report Year</code>, <code>Report URL</code>, <code>Landing Page URL</code>. Values are strings; a company with no report has an empty or <code>None Published</code> value. About 220&nbsp;KB, cached for five minutes, cross-origin allowed.</p>
+<pre><code>[
+  { "fields": { "Company Name": "3M", "Ticker": "MMM", "Sector / Industry": "Industrials",
+                "Report Name": "2026 Global Impact Report", "Report Year": "2026",
+                "Report URL": "https://...", "Landing Page URL": "https://..." } },
+  ...
+]</code></pre>
+        <p>Use this for nightly mirrors or one-off bulk analysis instead of calling the API repeatedly. <a href="/meta.json">meta.json</a> carries the last update time, so you can skip the download when nothing has changed.</p>
+      </div>
+    </div>
+  </div>
 
   <h2 id="limits">Limits and fair use</h2>
   <ul>
@@ -170,6 +215,7 @@ console.log(meta.count, "reports from", meta.updatedAt);</code></pre>
   <p>The index itself - company, ticker, sector, report name, year and the links - is free for any use, commercial or not. A credit such as <em>"Source: ORGEL Sustainability Report Index, reports.orgel.us"</em> is appreciated. The reports the links point to belong to the companies that published them and stay on those companies' own websites; this index does not host or redistribute them. The data is offered as-is: it is checked carefully, but you should verify anything you rely on against the company's document.</p>
 </main>
 
+<script>(function(){var cs=document.querySelector(".cards");if(!cs)return;cs.classList.add("js");function set(c,o){c.classList.toggle("open",o);var h=c.querySelector(".card-head");if(h)h.setAttribute("aria-expanded",o?"true":"false");}function head(t){return t&&t.closest?t.closest(".card-head"):null;}cs.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("a"))return;var h=head(e.target);if(!h)return;set(h.parentNode,!h.parentNode.classList.contains("open"));});cs.addEventListener("keydown",function(e){if(e.key!=="Enter"&&e.key!==" ")return;if(e.target.tagName==="A")return;var h=head(e.target);if(!h)return;e.preventDefault();set(h.parentNode,!h.parentNode.classList.contains("open"));});function fromHash(){try{var c=location.hash&&document.querySelector(location.hash);if(c&&c.classList.contains("card")){set(c,true);c.scrollIntoView();}}catch(e){}}fromHash();addEventListener("hashchange",fromHash);})();</script>
 <footer>ORGEL Sustainability Report Index &middot; <a href="https://reports.orgel.us/">Index</a> &middot; <a href="/developers">Data &amp; API</a> &middot; <a href="/feed.xml">Feed</a> &middot; <a href="https://www.orgel.us">orgel.us</a></footer>
 </body>
 </html>
