@@ -166,28 +166,36 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
   });
 
   // ---- confirm (the link in the email ends in #c=<token>; a fragment never reaches a server log)
-  var m = /[#&]c=([A-Za-z0-9._-]{20,700})/.exec(location.hash || '');
-  if (m) {
-    var token = m[1];
+  var token = '';
+  var readHash = function () {
+    var m = /[#&]c=([A-Za-z0-9._-]{20,700})/.exec(location.hash || '');
+    if (!m) return;
+    token = m[1];
+    var btn = $('confirm-btn'); btn.disabled = false; btn.textContent = 'Confirm subscription'; $('confirm-msg').textContent = '';
     show('view-confirm');
-    $('confirm-btn').addEventListener('click', function () {
-      var btn = $('confirm-btn'), msg = $('confirm-msg');
-      btn.disabled = true; btn.textContent = 'Confirming...'; msg.textContent = '';
-      post('reports-confirm', { c: token }).then(function (res) {
-        if (res && res.ok) {
-          if (res.code === 'already') $('done-title').textContent = 'You are already subscribed';
-          try { history.replaceState(null, '', location.pathname); } catch (e) {}
-          show('view-done'); return;
-        }
-        btn.disabled = false; btn.textContent = 'Confirm subscription';
-        var code = (res && res.code) || '';
-        if (code === 'expired' || code === 'invalid') {
-          try { history.replaceState(null, '', location.pathname); } catch (e) {}
-          show('view-form'); $('sub-msg').textContent = SAY[code]; $('email').focus();
-        } else { msg.textContent = SAY[code] || SAY.other; }
-      });
+  };
+  $('confirm-btn').addEventListener('click', function () {
+    if (!token) return;
+    var btn = $('confirm-btn'), msg = $('confirm-msg');
+    btn.disabled = true; btn.textContent = 'Confirming...'; msg.textContent = '';
+    post('reports-confirm', { c: token }).then(function (res) {
+      if (res && res.ok) {
+        $('done-title').textContent = (res.code === 'already') ? 'You are already subscribed' : 'You are subscribed';
+        token = '';
+        try { history.replaceState(null, '', location.pathname); } catch (e) {}
+        show('view-done'); return;
+      }
+      btn.disabled = false; btn.textContent = 'Confirm subscription';
+      var code = (res && res.code) || '';
+      if (code === 'expired' || code === 'invalid') {
+        token = '';
+        try { history.replaceState(null, '', location.pathname); } catch (e) {}
+        show('view-form'); $('sub-msg').textContent = SAY[code]; $('email').focus();
+      } else { msg.textContent = SAY[code] || SAY.other; }
     });
-  }
+  });
+  readHash();
+  window.addEventListener('hashchange', readHash);   // the link pasted into a tab that already shows this page
 
   // ---- what recent emails would have contained
   fetch('/changes.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
