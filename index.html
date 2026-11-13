@@ -402,17 +402,12 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
 
   <button id="download-xlsx" class="download-btn" type="button" title="Download the rows shown below as an Excel workbook">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    <span>Download Excel</span>
+    <span>Download</span>
   </button>
 
   <a class="data-btn" href="/developers" title="JSON and CSV API, raw data, and how to use them">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
     <span>Data &amp; API</span>
-  </a>
-
-  <a class="data-btn" href="/feed.xml" title="Atom feed: one entry each time a company publishes a newer report">
-    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
-    <span>Feed</span>
   </a>
 
   <span class="record-count" id="record-count">Loading…</span>
@@ -778,7 +773,7 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
       applyFilters();
     } catch (err) {
       document.getElementById('table-body').innerHTML =
-        `<tr class="state-row"><td colspan="7">⚠️ Could not load data. Check your Airtable token and Base ID.<br><small>${err.message}</small></td></tr>`;
+        `<tr class="state-row"><td colspan="7">⚠️ The index could not be loaded right now. Please refresh in a minute.<br><small>${err.message}</small></td></tr>`;
       document.getElementById('record-count').textContent = 'Error';
     }
   })();

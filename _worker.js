@@ -1,8 +1,17 @@
 // reports.orgel.us - public read-only API (Cloudflare Pages advanced-mode worker, 2026-11-12)
 //
-// Only /api/* reaches this code (see _routes.json); every other path is a plain static
-// file served by Pages. The API has no credentials, no storage and no write path: it
-// reads the site's own data.json and meta.json, filters, and answers as JSON or CSV.
+// Only /api/* and /feed.xml reach this code (see _routes.json); every other path is a
+// plain static file served by Pages. The API has no credentials, no storage and no write
+// path: it reads the site's own data.json and meta.json, filters, and answers as JSON or
+// CSV. /feed.xml is passed straight through from the static files - it is routed here
+// only so the pull can be counted.
+//
+// Counting (2026-11-13): every GET of the API or the feed writes one anonymous data point
+// to Workers Analytics Engine (binding PULLS, dataset reports_pulls): what was pulled,
+// what kind of tool asked, a one-way hash of the caller's IP (to count distinct callers,
+// never to identify them) and the country. Our own watchdog (User-Agent "orgel-...") is
+// skipped. SR19 reads the totals for the Saturday email. Without the binding nothing is
+// written and nothing else changes.
 //
 //   GET /api/v1/reports            all companies            (?format=json|csv)
 //     ?sector=Energy               exact sector, case-insensitive
@@ -40,9 +49,11 @@ const COMMON = {
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    if (url.pathname === '/feed.xml') return feed(request, env);
     if (url.pathname !== '/api' && !url.pathname.startsWith('/api/')) return env.ASSETS.fetch(request);
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: { ...CORS, 'Cache-Control': 'public, max-age=86400' } });
     if (request.method !== 'GET' && request.method !== 'HEAD') return json({ error: 'Use GET.' }, 405, { 'Allow': 'GET, HEAD, OPTIONS' });
+    if (request.method === 'GET') record(request, env, kindOf(url));
 
     // Edge cache: same URL within five minutes never recomputes.
     const cache = caches.default;
@@ -185,6 +196,58 @@ async function meta(env) {
     }
   }, 200);
 }
+
+// ---------- feed pass-through
+
+async function feed(request, env) {
+  const res = await env.ASSETS.fetch(request);
+  if (request.method === 'GET') record(request, env, 'feed');
+  const h = new Headers(res.headers);
+  if (!h.has('Access-Control-Allow-Origin')) h.set('Access-Control-Allow-Origin', '*');
+  if (res.status === 200 && !/atom/i.test(h.get('Content-Type') || '')) h.set('Content-Type', 'application/atom+xml; charset=utf-8');
+  if (!h.has('Cache-Control')) h.set('Cache-Control', 'public, max-age=600');
+  return new Response(res.body, { status: res.status, statusText: res.statusText, headers: h });
+}
+
+// ---------- pull counting
+
+function kindOf(url) {
+  const path = url.pathname.replace(/\/+$/, '');
+  if (path === '/api/v1/reports') return (url.searchParams.get('format') || 'json').toLowerCase() === 'csv' ? 'csv' : 'json';
+  if (path === '/api/v1/meta') return 'meta';
+  return 'api-other';
+}
+
+function record(request, env, kind) {
+  try {
+    if (!env.PULLS || typeof env.PULLS.writeDataPoint !== 'function') return;
+    const ua = request.headers.get('User-Agent') || '';
+    if (/orgel-/i.test(ua)) return;                                        // our own checks (SR16)
+    const ip = request.headers.get('CF-Connecting-IP') || '';
+    const country = (request.cf && request.cf.country) || '';
+    env.PULLS.writeDataPoint({ indexes: [kind], blobs: [kind, uaClass(ua), fnv(ip + '|reports.orgel.us'), String(country), ua.slice(0, 160)], doubles: [1] });
+  } catch (e) {}
+}
+
+function uaClass(ua) {
+  const u = String(ua || '').toLowerCase();
+  if (!u) return 'unknown';
+  if (/googledocs|apps-spreadsheets|google-apps-script|google sheets/.test(u)) return 'google-sheets';
+  if (/microsoft\.data\.mashup|power ?query|powerbi|excel/.test(u)) return 'excel';
+  if (/python|aiohttp|httpx|urllib/.test(u)) return 'python';
+  if (/r-curl|\bhttr\b|^r \(|rstudio/.test(u)) return 'r';
+  if (/^curl\/|^wget/.test(u)) return 'curl';
+  if (/node-fetch|axios|undici|^node|got \(|bun\//.test(u)) return 'node';
+  if (/java\/|okhttp|apache-httpclient|go-http-client|powershell|dart|ruby|php/.test(u)) return 'script';
+  if (/slackbot|slack-imgproxy/.test(u)) return 'slack';
+  if (/feedly|inoreader|newsblur|feedbin|freshrss|miniflux|tiny tiny rss|ttrss|netnewswire|reeder|thunderbird|feedbro|akregator|bazqux|theoldreader|feeder|rss|feed/.test(u)) return 'feed-reader';
+  if (/zapier|make\.com|integromat|n8n|ifttt|pipedream/.test(u)) return 'automation';
+  if (/bot|crawl|spider|slurp|preview|fetcher/.test(u)) return 'bot';
+  if (/mozilla\/5\.0/.test(u)) return 'browser';
+  return 'other';
+}
+
+function fnv(s) { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16); }
 
 // ---------- helpers
 
