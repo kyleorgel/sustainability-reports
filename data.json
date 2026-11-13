@@ -5581,18 +5581,6 @@
  },
  {
   "fields": {
-   "Company Name": "UL",
-   "Ticker": "Unilever",
-   "Sector / Industry": "Consumer Staples",
-   "Report Name": "Annual Report And Accounts 2025",
-   "Report Year": "2025",
-   "Report URL": "https://www.unilever.com/files/unilever-annual-report-and-accounts-2025.pdf",
-   "Landing Page URL": "https://www.unilever.com/sustainability/responsible-business/",
-   "Status": ""
-  }
- },
- {
-  "fields": {
    "Company Name": "Ulta Beauty",
    "Ticker": "ULTA",
    "Sector / Industry": "Consumer Discretionary",
@@ -5600,6 +5588,18 @@
    "Report Year": "2025",
    "Report URL": "https://d1io3yog0oux5.cloudfront.net/_d051642c4375c5c91572b2ff43015cb3/ulta/db/1975/17667/description/ULTA-008_2025_CRR_Report_PDF_6_ADA_04.22.26.pdf",
    "Landing Page URL": "https://www.ulta.com/investor/corporate-responsibility",
+   "Status": ""
+  }
+ },
+ {
+  "fields": {
+   "Company Name": "Unilever",
+   "Ticker": "UL",
+   "Sector / Industry": "Consumer Staples",
+   "Report Name": "Annual Report And Accounts 2025",
+   "Report Year": "2025",
+   "Report URL": "https://www.unilever.com/files/unilever-annual-report-and-accounts-2025.pdf",
+   "Landing Page URL": "https://www.unilever.com/sustainability/responsible-business/",
    "Status": ""
   }
  },

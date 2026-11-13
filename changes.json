@@ -2,9 +2,21 @@
  "schemaVersion": 1,
  "source": "https://reports.orgel.us/",
  "docs": "https://reports.orgel.us/developers",
- "updatedAt": "2026-11-13T14:00:10.318Z",
- "count": 78,
+ "updatedAt": "2026-11-13T15:00:09.699Z",
+ "count": 79,
  "events": [
+  {
+   "date": "2026-11-13",
+   "type": "company-added",
+   "company": "Unilever",
+   "ticker": "UL",
+   "sector": "Consumer Staples",
+   "reportYear": null,
+   "previousYear": null,
+   "reportName": "Annual Report And Accounts 2025",
+   "reportUrl": "https://www.unilever.com/files/unilever-annual-report-and-accounts-2025.pdf",
+   "indexUrl": "https://reports.orgel.us/?q=Unilever"
+  },
   {
    "date": "2026-11-08",
    "type": "new-report",
