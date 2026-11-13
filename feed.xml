@@ -5,22 +5,11 @@
   <link href="https://reports.orgel.us/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://reports.orgel.us/" rel="alternate" type="text/html"/>
   <id>https://reports.orgel.us/feed.xml</id>
-  <updated>2026-11-13T12:00:00Z</updated>
+  <updated>2026-11-08T12:00:00Z</updated>
   <author><name>ORGEL</name><uri>https://www.orgel.us/</uri></author>
   <generator uri="https://reports.orgel.us/developers">ORGEL Report Index</generator>
   <entry>
-    <title>Unilever (UL) added to the index</title>
-    <link href="https://www.unilever.com/files/unilever-annual-report-and-accounts-2025.pdf" rel="alternate"/>
-    <link href="https://reports.orgel.us/?q=Unilever" rel="related" title="Listing on reports.orgel.us"/>
-    <id>tag:reports.orgel.us,2026-11-13:company-added:UL</id>
-    <updated>2026-11-13T12:00:00Z</updated>
-    <published>2026-11-13T12:00:00Z</published>
-    <category term="company-added"/>
-    <category term="Consumer Staples"/>
-    <summary>Unilever joined the S&amp;P 500 index and was added to the report index on 2026-11-13.</summary>
-  </entry>
-  <entry>
-    <title>ResMed (RMD): Sustainability Report 202 (2026)</title>
+    <title>ResMed (RMD): Sustainability Report 2026 (2026)</title>
     <link href="https://investor.resmed.com/_assets/_4cd4b18d36c978fea88fa67e6e83121c/resmed/files/pdfs/20261104/f29edfd3-5695-4a79-81a9-b4f800cac162.pdf" rel="alternate"/>
     <link href="https://reports.orgel.us/?q=ResMed" rel="related" title="Listing on reports.orgel.us"/>
     <id>tag:reports.orgel.us,2026-11-08:new-report:RMD:2026</id>
@@ -28,7 +17,7 @@
     <published>2026-11-08T12:00:00Z</published>
     <category term="new-report"/>
     <category term="Health Care"/>
-    <summary>ResMed now lists its 2026 report (previously 2025) - &quot;Sustainability Report 202&quot;. Indexed 2026-11-08. The link goes to the company’s own disclosure page.</summary>
+    <summary>ResMed now lists its 2026 report (previously 2025) - &quot;Sustainability Report 2026&quot;. Indexed 2026-11-08. The link goes to the company’s own disclosure page.</summary>
   </entry>
   <entry>
     <title>Franklin Resources (BEN): FY25 Corporate Social Responsibility Report (2025)</title>
@@ -42,7 +31,7 @@
     <summary>Franklin Resources now lists its 2025 report (previously 2024) - &quot;FY25 Corporate Social Responsibility Report&quot;. Indexed 2026-11-04. The link goes to the company’s own disclosure page.</summary>
   </entry>
   <entry>
-    <title>UDR, Inc. (UDR): 2026 Corporate Responsbility Report (2026)</title>
+    <title>UDR, Inc. (UDR): 2026 Corporate Responsibility Report (2026)</title>
     <link href="https://cflb.udr.com/globalassets/corporate/corporate-responsibility/2026_cr_report.pdf" rel="alternate"/>
     <link href="https://reports.orgel.us/?q=UDR%2C%20Inc." rel="related" title="Listing on reports.orgel.us"/>
     <id>tag:reports.orgel.us,2026-11-04:new-report:UDR:2026</id>
@@ -50,7 +39,7 @@
     <published>2026-11-04T12:00:00Z</published>
     <category term="new-report"/>
     <category term="Real Estate"/>
-    <summary>UDR, Inc. now lists its 2026 report (previously 2025) - &quot;2026 Corporate Responsbility Report&quot;. Indexed 2026-11-04. The link goes to the company’s own disclosure page.</summary>
+    <summary>UDR, Inc. now lists its 2026 report (previously 2025) - &quot;2026 Corporate Responsibility Report&quot;. Indexed 2026-11-04. The link goes to the company’s own disclosure page.</summary>
   </entry>
   <entry>
     <title>Amcor (AMCR): FY26 Sustainability Report (2026)</title>
@@ -307,7 +296,7 @@
   </entry>
   <entry>
     <title>BNY Mellon (BNY): 2025 TCFD Report (2025)</title>
-    <link href="https://www.bny.com/assets/corporate/documents/pdf/about-us/climate-related-financial-disclosure-tcfd-2025.pdf" rel="alternate"/>
+    <link href="https://www.bny.com/assets/corporate/documents/pdf/2025-bny-sustainability-report.pdf" rel="alternate"/>
     <link href="https://reports.orgel.us/?q=BNY%20Mellon" rel="related" title="Listing on reports.orgel.us"/>
     <id>tag:reports.orgel.us,2026-10-14:new-report:BNY:2025</id>
     <updated>2026-10-14T12:00:00Z</updated>
@@ -557,5 +546,16 @@
     <category term="new-report"/>
     <category term="Consumer Discretionary"/>
     <summary>Lowe's now lists its 2025 report (previously 2024) - &quot;2025 Corproate Responsibility Report&quot;. Indexed 2026-09-27. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>News Corp (Class A) (NWSA): 2026 Social Impact Report (2026)</title>
+    <link href="https://newscorp.com/wp-content/uploads/2026/09/News-Corp-2026-Social-Impact-Report-1.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=News%20Corp%20(Class%20A)" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-09-27:new-report:NWSA:2026</id>
+    <updated>2026-09-27T12:00:00Z</updated>
+    <published>2026-09-27T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Communication Services"/>
+    <summary>News Corp (Class A) now lists its 2026 report (previously 2025) - &quot;2026 Social Impact Report&quot;. Indexed 2026-09-27. The link goes to the company’s own disclosure page.</summary>
   </entry>
 </feed>

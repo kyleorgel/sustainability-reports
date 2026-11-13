@@ -257,7 +257,7 @@ df = pd.read_csv("https://reports.orgel.us/api/v1/reports?format=csv")     # pan
       <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="feed-body"><span class="k">Feed</span><a class="u" href="/feed.xml">reports.orgel.us/feed.xml</a><p>Atom feed: one entry each time a company's latest report changes. Add it to any feed reader or automation tool.</p><span class="chev" aria-hidden="true"></span></div>
       <div class="card-body" id="feed-body">
         <h3>How it works</h3>
-        <p><a href="/feed.xml">feed.xml</a> is an Atom feed with one entry each time a company's latest report moves to a newer year on the index - roughly a handful a week during reporting season. Each entry links to the report itself and names the previous year it replaced. Subscribe in a feed reader (Feedly, Inoreader, NetNewsWire, Outlook), or point a tool such as Zapier, Make, n8n or IFTTT at it to get an email or a Slack message when a report you follow is published.</p>
+        <p><a href="/feed.xml">feed.xml</a> is an Atom feed with one entry each time a company gets a new report on the index - a newer year, or its first - roughly a handful a week during reporting season. The same list goes out by <a href="/subscribe">email once a week</a>. Each entry links to the report itself and names the previous year it replaced. Subscribe in a feed reader (Feedly, Inoreader, NetNewsWire, Outlook), or point a tool such as Zapier, Make, n8n or IFTTT at it to get an email or a Slack message when a report you follow is published.</p>
         <p>The same events are available as JSON at <a href="/changes.json">changes.json</a> (newest first, up to 1,000 kept), which is easier to process in code than the feed.</p>
       </div>
     </div>
@@ -291,6 +291,6 @@ df = pd.read_csv("https://reports.orgel.us/api/v1/reports?format=csv")     # pan
 </main>
 
 <script>(function(){var cs=document.querySelector(".cards");if(!cs)return;cs.classList.add("js");function set(c,o){c.classList.toggle("open",o);var h=c.querySelector(".card-head");if(h)h.setAttribute("aria-expanded",o?"true":"false");}function head(t){return t&&t.closest?t.closest(".card-head"):null;}cs.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("a"))return;var h=head(e.target);if(!h)return;set(h.parentNode,!h.parentNode.classList.contains("open"));});cs.addEventListener("keydown",function(e){if(e.key!=="Enter"&&e.key!==" ")return;if(e.target.tagName==="A")return;var h=head(e.target);if(!h)return;e.preventDefault();set(h.parentNode,!h.parentNode.classList.contains("open"));});function fromHash(){try{var c=location.hash&&document.querySelector(location.hash);if(c&&c.classList.contains("card")){set(c,true);c.scrollIntoView();}}catch(e){}}fromHash();addEventListener("hashchange",fromHash);})();</script>
-<footer>ORGEL Sustainability Report Index &middot; <a href="https://reports.orgel.us/">Index</a> &middot; <a href="/developers">Data &amp; API</a> &middot; <a href="https://www.orgel.us">orgel.us</a></footer>
+<footer>ORGEL Sustainability Report Index &middot; <a href="https://reports.orgel.us/">Index</a> &middot; <a href="/developers">Data &amp; API</a> &middot; <a href="/subscribe">Email alerts</a> &middot; <a href="https://www.orgel.us">orgel.us</a></footer>
 </body>
 </html>

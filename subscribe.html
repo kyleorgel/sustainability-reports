@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Email alerts | ORGEL Sustainability Report Index</title>
   <meta name="description" content="One email a week listing the new sustainability reports published by S&amp;P 500 companies, each linked to the company's own document. Free, unsubscribe any time."/>
-  <meta name="robots" content="noindex"/>
   <link rel="canonical" href="https://reports.orgel.us/subscribe"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://reports.orgel.us/subscribe"/>
@@ -91,25 +90,13 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
       </div>
       <div class="hp" aria-hidden="true"><label>Company <input type="text" id="company" name="company" tabindex="-1" autocomplete="off"></label></div>
       <p class="msg" id="sub-msg" role="status" aria-live="polite"></p>
-      <p class="fine">You will get one email asking you to confirm. Your address is used only for this weekly email and is never shared. Every email has a one-click unsubscribe link.</p>
+      <p class="fine">Your address is used only for this weekly email and is never shared. Every email has an unsubscribe link.</p>
     </form>
-  </div>
-
-  <div class="panel" id="view-sent" hidden>
-    <h2>Check your inbox</h2>
-    <p>A confirmation link is on its way to <strong id="sent-to"></strong>. Click it to finish signing up. If it has not arrived in a minute or two, look in your spam or junk folder.</p>
-  </div>
-
-  <div class="panel" id="view-confirm" hidden>
-    <h2>Confirm your subscription</h2>
-    <p>One click and you are on the list for the weekly email of new sustainability reports.</p>
-    <p style="margin-top:16px"><button class="btn" id="confirm-btn" type="button">Confirm subscription</button></p>
-    <p class="msg" id="confirm-msg" role="status" aria-live="polite"></p>
   </div>
 
   <div class="panel" id="view-done" hidden>
     <h2 id="done-title">You are subscribed</h2>
-    <p>The next email goes out on a Monday morning after new reports have been added. <a href="/">Back to the index</a></p>
+    <p><strong id="done-to"></strong> is on the list. The next email goes out on a Monday morning after new reports have been added. <a href="/">Back to the index</a></p>
   </div>
 
   <h2>What you get</h2>
@@ -133,15 +120,14 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
   var API = 'https://website.orgel.us/webhook/';
   var shownAt = Date.now();
   var $ = function (id) { return document.getElementById(id); };
-  var VIEWS = ['view-form', 'view-sent', 'view-confirm', 'view-done'];
+  var VIEWS = ['view-form', 'view-done'];
   var show = function (id) { VIEWS.forEach(function (v) { $(v).hidden = (v !== id); }); };
   var SAY = {
     invalid_email: 'That does not look like an email address. Please check it and try again.',
     not_open: 'Email alerts are not open yet. Please check back soon.',
     slow_down: 'Too many attempts from this connection. Please try again in an hour.',
     busy: 'Sign-ups are paused for today. Please try again tomorrow.',
-    expired: 'This confirmation link has expired. Enter your address again and we will send a new one.',
-    invalid: 'This confirmation link is not valid. Enter your address again and we will send a new one.',
+    unsubscribed_before: 'This address unsubscribed earlier, so it has not been added again. To rejoin, email reports@orgel.us.',
     network: 'Could not reach the server. Check your connection and try again.',
     other: 'Something went wrong on our side. Please try again in a few minutes.'
   };
@@ -157,45 +143,13 @@ header.orgel-bar{background:#fff;border:0;padding:0;margin:0;color:#000;text-ali
     var email = $('email').value.trim(), msg = $('sub-msg'), btn = $('sub-btn');
     msg.textContent = '';
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) { msg.textContent = SAY.invalid_email; $('email').focus(); return; }
-    btn.disabled = true; btn.textContent = 'Sending...';
+    btn.disabled = true; btn.textContent = 'Subscribing...';
     post('reports-subscribe', { email: email, company: $('company').value, t: String(Date.now() - shownAt) }).then(function (res) {
       btn.disabled = false; btn.textContent = 'Subscribe';
-      if (res && res.ok) { $('sent-to').textContent = email; show('view-sent'); return; }
+      if (res && res.ok) { $('done-to').textContent = email; show('view-done'); return; }
       msg.textContent = SAY[(res && res.code) || ''] || SAY.other;
     });
   });
-
-  // ---- confirm (the link in the email ends in #c=<token>; a fragment never reaches a server log)
-  var token = '';
-  var readHash = function () {
-    var m = /[#&]c=([A-Za-z0-9._-]{20,700})/.exec(location.hash || '');
-    if (!m) return;
-    token = m[1];
-    var btn = $('confirm-btn'); btn.disabled = false; btn.textContent = 'Confirm subscription'; $('confirm-msg').textContent = '';
-    show('view-confirm');
-  };
-  $('confirm-btn').addEventListener('click', function () {
-    if (!token) return;
-    var btn = $('confirm-btn'), msg = $('confirm-msg');
-    btn.disabled = true; btn.textContent = 'Confirming...'; msg.textContent = '';
-    post('reports-confirm', { c: token }).then(function (res) {
-      if (res && res.ok) {
-        $('done-title').textContent = (res.code === 'already') ? 'You are already subscribed' : 'You are subscribed';
-        token = '';
-        try { history.replaceState(null, '', location.pathname); } catch (e) {}
-        show('view-done'); return;
-      }
-      btn.disabled = false; btn.textContent = 'Confirm subscription';
-      var code = (res && res.code) || '';
-      if (code === 'expired' || code === 'invalid') {
-        token = '';
-        try { history.replaceState(null, '', location.pathname); } catch (e) {}
-        show('view-form'); $('sub-msg').textContent = SAY[code]; $('email').focus();
-      } else { msg.textContent = SAY[code] || SAY.other; }
-    });
-  });
-  readHash();
-  window.addEventListener('hashchange', readHash);   // the link pasted into a tab that already shows this page
 
   // ---- what recent emails would have contained
   fetch('/changes.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
