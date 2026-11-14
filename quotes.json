@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T14:21:11.415Z",
+  "generatedAt": "2026-11-14T01:03:37.514Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -193,18 +193,10 @@
     {
       "company": "ResMed",
       "ticker": "RMD",
-      "report": "Sustainability Report 202",
+      "report": "Sustainability Report 2026",
       "year": "2026",
       "date": "2026-11-08",
       "url": "https://investor.resmed.com/_assets/_4cd4b18d36c978fea88fa67e6e83121c/resmed/files/pdfs/20261104/f29edfd3-5695-4a79-81a9-b4f800cac162.pdf"
-    },
-    {
-      "company": "UDR, Inc.",
-      "ticker": "UDR",
-      "report": "2026 Corporate Responsbility Report",
-      "year": "2026",
-      "date": "2026-11-04",
-      "url": "https://cflb.udr.com/globalassets/corporate/corporate-responsibility/2026_cr_report.pdf"
     },
     {
       "company": "Franklin Resources",
@@ -213,6 +205,14 @@
       "year": "2025",
       "date": "2026-11-04",
       "url": "https://franklintempletonprod.widen.net/s/trdkjtbnpc/franklin-templeton-csr-report#page=1"
+    },
+    {
+      "company": "UDR, Inc.",
+      "ticker": "UDR",
+      "report": "2026 Corporate Responsibility Report",
+      "year": "2026",
+      "date": "2026-11-04",
+      "url": "https://cflb.udr.com/globalassets/corporate/corporate-responsibility/2026_cr_report.pdf"
     }
   ],
   "errors": []
