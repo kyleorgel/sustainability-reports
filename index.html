@@ -109,7 +109,7 @@
     #search::placeholder { color: #9ca3af; }
 
     .filter-select {
-      padding: 0.7rem 1rem;
+      padding: 0.7rem 2.6rem 0.7rem 1rem;
       border: 1.5px solid var(--rule);
       border-radius: 8px;
       font-family: var(--font-body);
@@ -119,6 +119,14 @@
       cursor: pointer;
       outline: none;
       transition: border-color 0.2s;
+      /* our own arrow, set in from the edge (2026-11-14, Kyle: the browser's own sat against the border) */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%231c1c1c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 12px 8px;
     }
 
     .filter-select:focus { border-color: #C4202C; }
@@ -150,19 +158,20 @@
       justify-content: center;
       gap: 0.45rem;
       padding: 0.7rem 1rem;
-      border: 1.5px solid var(--rule);
+      border: 1.5px solid #1c1c1c;
       border-radius: 8px;
-      background: var(--white);
-      color: var(--ink);
+      background: #1c1c1c;
+      color: var(--white);
       font-family: var(--font-body);
       font-size: 0.9rem;
       font-weight: 500;
       text-decoration: none;
       white-space: nowrap;
-      transition: border-color 0.15s, color 0.15s;
+      transition: background 0.15s, border-color 0.15s;
     }
 
-    .data-btn:hover { border-color: #C4202C; color: #C4202C; }
+    /* same look as the Download button (2026-11-14, Kyle) */
+    .data-btn:hover { background: #C4202C; border-color: #C4202C; color: var(--white); }
 
     /* ── TABLE WRAPPER ── */
     .table-wrap {
@@ -801,7 +810,7 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
 <script>
 // ── EMAIL ALERTS (2026-11-14): the sign-up box in the header band. Posts to SR21 on n8n,
 // which checks the hidden field, the time on page and the Origin, then adds the address in
-// Resend. Same answers as /subscribe. No address is kept in the page.
+// Resend. No address is kept in the page.
 (function () {
   var API = 'https://website.orgel.us/webhook/reports-subscribe';
   var shownAt = Date.now();

@@ -1,0 +1,5 @@
+# Cloudflare Pages redirects.
+# /subscribe was the email sign-up page until 2026-11-14; sign-up now happens in the card at the
+# top of the index page, so old links (and anything bookmarked) land there.
+/subscribe       /   301
+/subscribe.html  /   301
