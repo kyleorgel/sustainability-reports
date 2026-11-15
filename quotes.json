@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T14:21:20.447Z",
+  "generatedAt": "2026-11-15T18:21:36.115Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -104,34 +104,34 @@
     {
       "key": "eia:carbonfree-share",
       "label": "Carbon-Free Share of US Power",
-      "value": 39,
+      "value": 44,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-11-14",
-      "decimals": 0,
-      "change": 2,
-      "changePct": null,
-      "changeFmt": "pt",
-      "changeDecimals": 0,
-      "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (37%)",
-      "source": "EIA Hourly Electric Grid Monitor (24h average)",
-      "manual": false
-    },
-    {
-      "key": "eia:carbonfree-share-tx",
-      "label": "Carbon-Free Share of Texas Power",
-      "value": 43,
-      "unit": "%",
-      "prefix": "",
-      "asOf": "2026-11-14",
+      "asOf": "2026-11-15",
       "decimals": 0,
       "change": 5,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (38%)",
+      "changeBasis": "vs the same 24 hours a week earlier (39%)",
+      "source": "EIA Hourly Electric Grid Monitor (24h average)",
+      "manual": false
+    },
+    {
+      "key": "eia:carbonfree-share-tx",
+      "label": "Carbon-Free Share of Texas Power",
+      "value": 55,
+      "unit": "%",
+      "prefix": "",
+      "asOf": "2026-11-15",
+      "decimals": 0,
+      "change": 29,
+      "changePct": null,
+      "changeFmt": "pt",
+      "changeDecimals": 0,
+      "changeLabel": "wk",
+      "changeBasis": "vs the same 24 hours a week earlier (26%)",
       "source": "EIA Hourly Electric Grid Monitor (ERCOT) (24h average)",
       "manual": false
     },
@@ -191,6 +191,14 @@
   ],
   "updates": [
     {
+      "company": "McKesson Corporation",
+      "ticker": "MCK",
+      "report": "FY26 Impact Report",
+      "year": "2026",
+      "date": "2026-11-15",
+      "url": "https://www.mckesson.com/siteassets/documents/commitments/our-impact/mckesson_fy26impact_070926_final.pdf"
+    },
+    {
       "company": "ResMed",
       "ticker": "RMD",
       "report": "Sustainability Report 2026",
@@ -205,14 +213,6 @@
       "year": "2025",
       "date": "2026-11-04",
       "url": "https://franklintempletonprod.widen.net/s/trdkjtbnpc/franklin-templeton-csr-report#page=1"
-    },
-    {
-      "company": "UDR, Inc.",
-      "ticker": "UDR",
-      "report": "2026 Corporate Responsibility Report",
-      "year": "2026",
-      "date": "2026-11-04",
-      "url": "https://cflb.udr.com/globalassets/corporate/corporate-responsibility/2026_cr_report.pdf"
     }
   ],
   "errors": []
