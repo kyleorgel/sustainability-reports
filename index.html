@@ -176,8 +176,10 @@
     /* ── TABLE WRAPPER ── */
     .table-wrap {
       max-width: 1200px;
-      margin: 0 auto 3rem;
-      padding: 0 2rem;
+      /* room for the table's shadow and rounded corners inside this box, which clips what is
+         outside it because it scrolls sideways (2026-11-15); the margins give the same room back */
+      margin: -14px auto 1.5rem;
+      padding: 14px 2rem 24px;
       overflow-x: auto;
     }
 
