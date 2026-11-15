@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-14T14:21:22.612Z",
+  "generatedAt": "2026-11-15T14:21:20.447Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -138,12 +138,12 @@
     {
       "key": "noaa:co2-mlo-weekly",
       "label": "Atmospheric CO₂",
-      "value": 428.64,
+      "value": 428.65,
       "unit": "ppm",
       "prefix": "",
       "asOf": "2026-11-08",
       "decimals": 1,
-      "change": 2.34,
+      "change": 2.35,
       "changePct": 0.55,
       "changeFmt": "abs",
       "changeUnit": "ppm",
