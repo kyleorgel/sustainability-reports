@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T14:21:04.785Z",
+  "generatedAt": "2026-11-16T22:21:02.733Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -174,18 +174,18 @@
     {
       "key": "cox:ev-share-us-monthly",
       "label": "EV Share of US Auto Sales",
-      "value": 6.5,
+      "value": 6.2,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-09-30",
+      "asOf": "2026-10-31",
       "decimals": 1,
-      "change": 0.8,
+      "change": -0.3,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 1,
       "changeLabel": "m/m",
-      "changeBasis": "vs August 2026 (5.7%)",
-      "source": "Cox Automotive EV Market Monitor, September 2026 (share of US new-vehicle sales, Cox Automotive estimate)",
+      "changeBasis": "vs September 2026 (6.5%)",
+      "source": "Cox Automotive EV Market Monitor, October 2026 (share of US new-vehicle sales, Cox Automotive estimate)",
       "manual": false
     }
   ],
