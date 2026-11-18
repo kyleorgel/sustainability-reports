@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T14:21:06.999Z",
+  "generatedAt": "2026-11-18T02:21:03.586Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,6 +191,14 @@
   ],
   "updates": [
     {
+      "company": "Cincinnati Financial",
+      "ticker": "CINF",
+      "report": "2025 Sustainability Report",
+      "year": "2025",
+      "date": "2026-11-18",
+      "url": "https://filecache.investorroom.com/mr5ir_cinfin/864/CINF%202025%20Sustainability%20Report%20FINAL.pdf"
+    },
+    {
       "company": "McKesson Corporation",
       "ticker": "MCK",
       "report": "FY26 Impact Report",
@@ -205,14 +213,6 @@
       "year": "2026",
       "date": "2026-11-08",
       "url": "https://investor.resmed.com/_assets/_4cd4b18d36c978fea88fa67e6e83121c/resmed/files/pdfs/20261104/f29edfd3-5695-4a79-81a9-b4f800cac162.pdf"
-    },
-    {
-      "company": "Franklin Resources",
-      "ticker": "BEN",
-      "report": "FY25 Corporate Social Responsibility Report",
-      "year": "2025",
-      "date": "2026-11-04",
-      "url": "https://franklintempletonprod.widen.net/s/trdkjtbnpc/franklin-templeton-csr-report#page=1"
     }
   ],
   "errors": []
