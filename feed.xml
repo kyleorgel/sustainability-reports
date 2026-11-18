@@ -5,9 +5,20 @@
   <link href="https://reports.orgel.us/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://reports.orgel.us/" rel="alternate" type="text/html"/>
   <id>https://reports.orgel.us/feed.xml</id>
-  <updated>2026-11-15T12:00:00Z</updated>
+  <updated>2026-11-18T12:00:00Z</updated>
   <author><name>ORGEL</name><uri>https://www.orgel.us/</uri></author>
   <generator uri="https://reports.orgel.us/developers">ORGEL Report Index</generator>
+  <entry>
+    <title>Cincinnati Financial (CINF): 2025 Sustainability Report (2025)</title>
+    <link href="https://filecache.investorroom.com/mr5ir_cinfin/864/CINF%202025%20Sustainability%20Report%20FINAL.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Cincinnati%20Financial" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-18:new-report:CINF:2025</id>
+    <updated>2026-11-18T12:00:00Z</updated>
+    <published>2026-11-18T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Financials"/>
+    <summary>Cincinnati Financial now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Report&quot;. Indexed 2026-11-18. The link goes to the company’s own disclosure page.</summary>
+  </entry>
   <entry>
     <title>McKesson Corporation (MCK): FY26 Impact Report (2026)</title>
     <link href="https://www.mckesson.com/siteassets/documents/commitments/our-impact/mckesson_fy26impact_070926_final.pdf" rel="alternate"/>
@@ -546,16 +557,5 @@
     <category term="new-report"/>
     <category term="Financials"/>
     <summary>Synchrony Financial now lists its 2026 report (previously 2023) - &quot;2026 TCFD Report&quot;. Indexed 2026-09-30. The link goes to the company’s own disclosure page.</summary>
-  </entry>
-  <entry>
-    <title>Lowe's (LOW): 2025 Corproate Responsibility Report (2025)</title>
-    <link href="https://corporate.lowes.com/sites/lowes-corp/files/2026-09/Lowes_2025_CRR_9.21.26.pdf" rel="alternate"/>
-    <link href="https://reports.orgel.us/?q=Lowe's" rel="related" title="Listing on reports.orgel.us"/>
-    <id>tag:reports.orgel.us,2026-09-27:new-report:LOW:2025</id>
-    <updated>2026-09-27T12:00:00Z</updated>
-    <published>2026-09-27T12:00:00Z</published>
-    <category term="new-report"/>
-    <category term="Consumer Discretionary"/>
-    <summary>Lowe's now lists its 2025 report (previously 2024) - &quot;2025 Corproate Responsibility Report&quot;. Indexed 2026-09-27. The link goes to the company’s own disclosure page.</summary>
   </entry>
 </feed>
