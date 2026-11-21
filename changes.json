@@ -2,8 +2,8 @@
  "schemaVersion": 1,
  "source": "https://reports.orgel.us/",
  "docs": "https://reports.orgel.us/developers",
- "updatedAt": "2026-11-21T19:00:09.851Z",
- "count": 86,
+ "updatedAt": "2026-11-21T20:00:08.830Z",
+ "count": 93,
  "events": [
   {
    "date": "2026-11-21",
@@ -32,6 +32,30 @@
   {
    "date": "2026-11-21",
    "type": "new-report",
+   "company": "Brown–Forman",
+   "ticker": "BF.B",
+   "sector": "Consumer Staples",
+   "reportYear": 2026,
+   "previousYear": 2023,
+   "reportName": "2026 Integrated Annual Report",
+   "reportUrl": "https://s28.q4cdn.com/657950427/files/doc_financials/2026/ar/BFB-010_2026-Integrated-AR_v4a_wLinks_ADA_sprds_10K.pdf",
+   "indexUrl": "https://reports.orgel.us/?q=Brown%E2%80%93Forman"
+  },
+  {
+   "date": "2026-11-21",
+   "type": "new-report",
+   "company": "CDW Corporation",
+   "ticker": "CDW",
+   "sector": "Information Technology",
+   "reportYear": 2025,
+   "previousYear": 2024,
+   "reportName": "2025 Business Resilience Report",
+   "reportUrl": "https://webobjects2.cdw.com/is/content/CDW/cdw/on-domain-ca/cdw-branded/cdwbrreport110626.pdf",
+   "indexUrl": "https://reports.orgel.us/?q=CDW%20Corporation"
+  },
+  {
+   "date": "2026-11-21",
+   "type": "new-report",
    "company": "CF Industries",
    "ticker": "CF",
    "sector": "Materials",
@@ -44,6 +68,18 @@
   {
    "date": "2026-11-21",
    "type": "new-report",
+   "company": "Coca-Cola Company (The)",
+   "ticker": "KO",
+   "sector": "Consumer Staples",
+   "reportYear": 2025,
+   "previousYear": 2024,
+   "reportName": "2025 Environmental Update",
+   "reportUrl": "https://www.coca-colacompany.com/content/dam/corporate/us/en/reports/2025-environmental-update/2025-environmental-update.pdf",
+   "indexUrl": "https://reports.orgel.us/?q=Coca-Cola%20Company%20(The)"
+  },
+  {
+   "date": "2026-11-21",
+   "type": "new-report",
    "company": "Flex Ltd.",
    "ticker": "FLEX",
    "sector": "Information Technology",
@@ -52,6 +88,18 @@
    "reportName": "2026 Sustainability Report",
    "reportUrl": "https://flex.com/downloads/2026-sustainability-report",
    "indexUrl": "https://reports.orgel.us/?q=Flex%20Ltd."
+  },
+  {
+   "date": "2026-11-21",
+   "type": "new-report",
+   "company": "IBM",
+   "ticker": "IBM",
+   "sector": "Information Technology",
+   "reportYear": 2025,
+   "previousYear": 2022,
+   "reportName": "2025 Environment Data and Policies",
+   "reportUrl": "https://www.ibm.com/responsibility/data-and-policies",
+   "indexUrl": "https://reports.orgel.us/?q=IBM"
   },
   {
    "date": "2026-11-21",
@@ -76,6 +124,42 @@
    "reportName": "2026 Sustainability Report",
    "reportUrl": "https://sustainability.atmeta.com/wp-content/uploads/2026/08/Meta-2026-Sustainability-Report.pdf",
    "indexUrl": "https://reports.orgel.us/?q=Meta%20Platforms"
+  },
+  {
+   "date": "2026-11-21",
+   "type": "new-report",
+   "company": "Mid-America Apartment Communities",
+   "ticker": "MAA",
+   "sector": "Real Estate",
+   "reportYear": 2025,
+   "previousYear": 2024,
+   "reportName": "2025 Corporate Sustainability Report",
+   "reportUrl": "https://s1.q4cdn.com/498755859/files/doc_downloads/sustainability/2025/MAA-2025-Corporate-Sustainability-Report.pdf",
+   "indexUrl": "https://reports.orgel.us/?q=Mid-America%20Apartment%20Communities"
+  },
+  {
+   "date": "2026-11-21",
+   "type": "new-report",
+   "company": "Oracle Corporation",
+   "ticker": "ORCL",
+   "sector": "Information Technology",
+   "reportYear": 2026,
+   "previousYear": 2024,
+   "reportName": "usiness Responsibility and Sustainability Report 2025-26",
+   "reportUrl": "https://www.oracle.com/a/ocom/docs/industries/financial-services/business-responsibility-report-2025-26.pdf",
+   "indexUrl": "https://reports.orgel.us/?q=Oracle%20Corporation"
+  },
+  {
+   "date": "2026-11-21",
+   "type": "new-report",
+   "company": "Zebra Technologies",
+   "ticker": "ZBRA",
+   "sector": "Information Technology",
+   "reportYear": 2025,
+   "previousYear": 2022,
+   "reportName": "2025 Sustainability Report",
+   "reportUrl": "https://www.zebra.com/content/dam/zebra_dam/en/reports/industry-report/sustainability-report-industry-esg-en-us.pdf",
+   "indexUrl": "https://reports.orgel.us/?q=Zebra%20Technologies"
   },
   {
    "date": "2026-11-18",
