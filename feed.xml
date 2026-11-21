@@ -5,9 +5,64 @@
   <link href="https://reports.orgel.us/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://reports.orgel.us/" rel="alternate" type="text/html"/>
   <id>https://reports.orgel.us/feed.xml</id>
-  <updated>2026-11-18T12:00:00Z</updated>
+  <updated>2026-11-21T12:00:00Z</updated>
   <author><name>ORGEL</name><uri>https://www.orgel.us/</uri></author>
   <generator uri="https://reports.orgel.us/developers">ORGEL Report Index</generator>
+  <entry>
+    <title>A. O. Smith (AOS): 2026 Sustainability Report (2026)</title>
+    <link href="https://www.aosmith.com/on/demandware.static/-/Sites-aosmith-Library/default/dw9faf4a3d/pdf/sustainability/AOSmith-2026SusReport.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=A.%20O.%20Smith" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-21:new-report:AOS:2026</id>
+    <updated>2026-11-21T12:00:00Z</updated>
+    <published>2026-11-21T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Industrials"/>
+    <summary>A. O. Smith now lists its 2026 report (previously 2024) - &quot;2026 Sustainability Report&quot;. Indexed 2026-11-21. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>CF Industries (CF): 2025 Corporate Stewardship Report (2025)</title>
+    <link href="https://www.cfindustries.com/globalassets/cf-industries/media/documents/reports/sustainability-reports/2025_cf-industries_cs-report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=CF%20Industries" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-21:new-report:CF:2025</id>
+    <updated>2026-11-21T12:00:00Z</updated>
+    <published>2026-11-21T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Materials"/>
+    <summary>CF Industries now lists its 2025 report (previously 2023) - &quot;2025 Corporate Stewardship Report&quot;. Indexed 2026-11-21. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Flex Ltd. (FLEX): 2026 Sustainability Report (2026)</title>
+    <link href="https://flex.com/downloads/2026-sustainability-report" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Flex%20Ltd." rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-21:new-report:FLEX:2026</id>
+    <updated>2026-11-21T12:00:00Z</updated>
+    <published>2026-11-21T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Information Technology"/>
+    <summary>Flex Ltd. now lists its 2026 report (previously 2025) - &quot;2026 Sustainability Report&quot;. Indexed 2026-11-21. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Marvell Technology (MRVL): Sustainability Report FY26 (2026)</title>
+    <link href="https://www.marvell.com/content/dam/marvell/en/company/assets/marvell-sustainability-report-fy26.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Marvell%20Technology" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-21:new-report:MRVL:2026</id>
+    <updated>2026-11-21T12:00:00Z</updated>
+    <published>2026-11-21T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Information Technology"/>
+    <summary>Marvell Technology now lists its 2026 report (previously 2025) - &quot;Sustainability Report FY26&quot;. Indexed 2026-11-21. The link goes to the company’s own disclosure page.</summary>
+  </entry>
+  <entry>
+    <title>Meta Platforms (META): 2026 Sustainability Report (2026)</title>
+    <link href="https://sustainability.atmeta.com/wp-content/uploads/2026/08/Meta-2026-Sustainability-Report.pdf" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Meta%20Platforms" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-21:new-report:META:2026</id>
+    <updated>2026-11-21T12:00:00Z</updated>
+    <published>2026-11-21T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Communication Services"/>
+    <summary>Meta Platforms now lists its 2026 report (previously 2025) - &quot;2026 Sustainability Report&quot;. Indexed 2026-11-21. The link goes to the company’s own disclosure page.</summary>
+  </entry>
   <entry>
     <title>Cincinnati Financial (CINF): 2025 Sustainability Report (2025)</title>
     <link href="https://filecache.investorroom.com/mr5ir_cinfin/864/CINF%202025%20Sustainability%20Report%20FINAL.pdf" rel="alternate"/>
@@ -502,60 +557,5 @@
     <category term="new-report"/>
     <category term="Financials"/>
     <summary>Fifth Third Bancorp now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Report&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
-  </entry>
-  <entry>
-    <title>Omnicom Group (OMC): 2025 Environmental Overview (2025)</title>
-    <link href="https://www.omc.com/wp-content/uploads/2026/09/Omnicom-2025-Environmental-Overview-v2.pdf" rel="alternate"/>
-    <link href="https://reports.orgel.us/?q=Omnicom%20Group" rel="related" title="Listing on reports.orgel.us"/>
-    <id>tag:reports.orgel.us,2026-10-06:new-report:OMC:2025</id>
-    <updated>2026-10-06T12:00:00Z</updated>
-    <published>2026-10-06T12:00:00Z</published>
-    <category term="new-report"/>
-    <category term="Communication Services"/>
-    <summary>Omnicom Group now lists its 2025 report (previously 2024) - &quot;2025 Environmental Overview&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
-  </entry>
-  <entry>
-    <title>Quanta Services (PWR): 2025 Sustainability Report (2025)</title>
-    <link href="https://sustainability.quantaservices.com/wp-content/uploads/2026/09/Quanta-Sustainability-Report-2025.pdf" rel="alternate"/>
-    <link href="https://reports.orgel.us/?q=Quanta%20Services" rel="related" title="Listing on reports.orgel.us"/>
-    <id>tag:reports.orgel.us,2026-10-06:new-report:PWR:2025</id>
-    <updated>2026-10-06T12:00:00Z</updated>
-    <published>2026-10-06T12:00:00Z</published>
-    <category term="new-report"/>
-    <category term="Industrials"/>
-    <summary>Quanta Services now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Report&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
-  </entry>
-  <entry>
-    <title>Workday, Inc. (WDAY): 2026 Global Impact Report (2026)</title>
-    <link href="https://www.workday.com/content/dam/web/en-us/documents/other/workday-global-impact-report.pdf" rel="alternate"/>
-    <link href="https://reports.orgel.us/?q=Workday%2C%20Inc." rel="related" title="Listing on reports.orgel.us"/>
-    <id>tag:reports.orgel.us,2026-10-06:new-report:WDAY:2026</id>
-    <updated>2026-10-06T12:00:00Z</updated>
-    <published>2026-10-06T12:00:00Z</published>
-    <category term="new-report"/>
-    <category term="Information Technology"/>
-    <summary>Workday, Inc. now lists its 2026 report (previously 2025) - &quot;2026 Global Impact Report&quot;. Indexed 2026-10-06. The link goes to the company’s own disclosure page.</summary>
-  </entry>
-  <entry>
-    <title>EOG Resources (EOG): 2025 Sustainability Performance Report (2025)</title>
-    <link href="https://eogresources.s3.us-east-2.amazonaws.com/EOG_2025_Sustainability_Performance_Report.pdf" rel="alternate"/>
-    <link href="https://reports.orgel.us/?q=EOG%20Resources" rel="related" title="Listing on reports.orgel.us"/>
-    <id>tag:reports.orgel.us,2026-09-30:new-report:EOG:2025</id>
-    <updated>2026-09-30T12:00:00Z</updated>
-    <published>2026-09-30T12:00:00Z</published>
-    <category term="new-report"/>
-    <category term="Energy"/>
-    <summary>EOG Resources now lists its 2025 report (previously 2024) - &quot;2025 Sustainability Performance Report&quot;. Indexed 2026-09-30. The link goes to the company’s own disclosure page.</summary>
-  </entry>
-  <entry>
-    <title>Synchrony Financial (SYF): 2026 TCFD Report (2026)</title>
-    <link href="https://d1io3yog0oux5.cloudfront.net/_47e8d604914ba15a6ed456fca5ee809c/synchrony/db/3715/33384/file/Synchrony+TCFD+Report+%E2%80%93+April+29%2C+2026.pdf" rel="alternate"/>
-    <link href="https://reports.orgel.us/?q=Synchrony%20Financial" rel="related" title="Listing on reports.orgel.us"/>
-    <id>tag:reports.orgel.us,2026-09-30:new-report:SYF:2026</id>
-    <updated>2026-09-30T12:00:00Z</updated>
-    <published>2026-09-30T12:00:00Z</published>
-    <category term="new-report"/>
-    <category term="Financials"/>
-    <summary>Synchrony Financial now lists its 2026 report (previously 2023) - &quot;2026 TCFD Report&quot;. Indexed 2026-09-30. The link goes to the company’s own disclosure page.</summary>
   </entry>
 </feed>
