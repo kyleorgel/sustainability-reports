@@ -558,6 +558,35 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
     }).join('');
   }
 
+  // ── SEARCH BY WEB ADDRESS (2026-11-21) ────────────────────────────────────
+  // People look a company up by the name they know it by: "google" for Alphabet. That name is
+  // often in the company's own web address (sustainability.google), so the search box also looks
+  // at it: the last part of the landing page's address that is not an ending like .com. It only
+  // counts when no other company shares it (several companies keep their pages with the same
+  // provider). The search on the orgel.us blog page uses the same rule - keep the two in step.
+  const NOT_A_NAME = ['com', 'org', 'net', 'co', 'us', 'uk', 'io', 'gov', 'edu', 'info', 'biz', 'ca', 'de', 'fr', 'ch', 'jp', 'au', 'ie', 'nl', 'eu', 'www'];
+  function nameInAddress(url) {
+    const m = /^https?:\/\/([^\/?#:]+)/i.exec(String(url || ''));
+    if (!m) return '';
+    const parts = m[1].toLowerCase().split('.').filter(Boolean);
+    let i = parts.length - 1;
+    while (i > 0 && NOT_A_NAME.includes(parts[i])) i -= 1;
+    return NOT_A_NAME.includes(parts[i]) ? '' : parts[i].replace(/[^a-z0-9]/g, '');
+  }
+  function tagSites(records) {
+    const owners = new Map();   // name in the address -> the companies whose landing page carries it
+    records.forEach(r => {
+      const f = r.fields || {};
+      r.site = nameInAddress(f['Landing Page URL'] ?? f['Landing Page']);
+      if (!r.site) return;
+      // two share classes of one company (Alphabet Class A and Class C) count as one company
+      const company = String(f['Company Name'] || '').replace(/\s*\(Class [A-Z]\)$/, '');
+      if (!owners.has(r.site)) owners.set(r.site, new Set());
+      owners.get(r.site).add(company);
+    });
+    records.forEach(r => { if (r.site && owners.get(r.site).size !== 1) r.site = ''; });
+  }
+
   // ── FILTER + SORT ─────────────────────────────────────────────────────────
   function applyFilters() {
     const query  = document.getElementById('search').value.toLowerCase();
@@ -569,7 +598,7 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
       const linkStatus = resolveReportLink(f) ? 'Active' : 'None';
       const haystack = [
         f['Company Name'], f['Ticker'], f['Sector / Industry'],
-        f['Report Name'], f['Notes'], linkStatus
+        f['Report Name'], f['Notes'], linkStatus, r.site
       ].join(' ').toLowerCase();
 
       const matchQuery  = !query  || haystack.includes(query);
@@ -796,6 +825,7 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
     try {
       const raw = await fetchAll();
       allRecords = raw;
+      try { tagSites(allRecords); } catch (e) { /* the search then works as before, without web-address names */ }
       buildSectorFilter(allRecords);
 
       // default sort by company name asc
