@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T18:21:04.211Z",
+  "generatedAt": "2026-11-21T22:21:02.626Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -199,20 +199,20 @@
       "url": "https://www.aosmith.com/on/demandware.static/-/Sites-aosmith-Library/default/dw9faf4a3d/pdf/sustainability/AOSmith-2026SusReport.pdf"
     },
     {
-      "company": "CF Industries",
-      "ticker": "CF",
-      "report": "2025 Corporate Stewardship Report",
-      "year": "2025",
+      "company": "Adobe Inc.",
+      "ticker": "ADBE",
+      "report": "Adobe Corporate Social Responsibility Report 2024",
+      "year": "2024",
       "date": "2026-11-21",
-      "url": "https://www.cfindustries.com/globalassets/cf-industries/media/documents/reports/sustainability-reports/2025_cf-industries_cs-report.pdf"
+      "url": "https://www.adobe.com/cc-shared/assets/pdf/corporate-responsibility/adobe-csr-report-2024.pdf"
     },
     {
-      "company": "Flex Ltd.",
-      "ticker": "FLEX",
-      "report": "2026 Sustainability Report",
+      "company": "Brown–Forman",
+      "ticker": "BF.B",
+      "report": "2026 Integrated Annual Report",
       "year": "2026",
       "date": "2026-11-21",
-      "url": "https://flex.com/downloads/2026-sustainability-report"
+      "url": "https://s28.q4cdn.com/657950427/files/doc_financials/2026/ar/BFB-010_2026-Integrated-AR_v4a_wLinks_ADA_sprds_10K.pdf"
     }
   ],
   "errors": []
