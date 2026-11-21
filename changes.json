@@ -2,8 +2,8 @@
  "schemaVersion": 1,
  "source": "https://reports.orgel.us/",
  "docs": "https://reports.orgel.us/developers",
- "updatedAt": "2026-11-21T17:00:09.864Z",
- "count": 85,
+ "updatedAt": "2026-11-21T19:00:09.851Z",
+ "count": 86,
  "events": [
   {
    "date": "2026-11-21",
@@ -16,6 +16,18 @@
    "reportName": "2026 Sustainability Report",
    "reportUrl": "https://www.aosmith.com/on/demandware.static/-/Sites-aosmith-Library/default/dw9faf4a3d/pdf/sustainability/AOSmith-2026SusReport.pdf",
    "indexUrl": "https://reports.orgel.us/?q=A.%20O.%20Smith"
+  },
+  {
+   "date": "2026-11-21",
+   "type": "new-report",
+   "company": "Adobe Inc.",
+   "ticker": "ADBE",
+   "sector": "Information Technology",
+   "reportYear": 2024,
+   "previousYear": 2023,
+   "reportName": "Adobe Corporate Social Responsibility Report 2024",
+   "reportUrl": "https://www.adobe.com/cc-shared/assets/pdf/corporate-responsibility/adobe-csr-report-2024.pdf",
+   "indexUrl": "https://reports.orgel.us/?q=Adobe%20Inc."
   },
   {
    "date": "2026-11-21",
