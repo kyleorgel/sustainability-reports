@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T14:21:02.205Z",
+  "generatedAt": "2026-11-21T18:21:04.211Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,28 +191,28 @@
   ],
   "updates": [
     {
-      "company": "Cincinnati Financial",
-      "ticker": "CINF",
-      "report": "2025 Sustainability Report",
+      "company": "A. O. Smith",
+      "ticker": "AOS",
+      "report": "2026 Sustainability Report",
+      "year": "2026",
+      "date": "2026-11-21",
+      "url": "https://www.aosmith.com/on/demandware.static/-/Sites-aosmith-Library/default/dw9faf4a3d/pdf/sustainability/AOSmith-2026SusReport.pdf"
+    },
+    {
+      "company": "CF Industries",
+      "ticker": "CF",
+      "report": "2025 Corporate Stewardship Report",
       "year": "2025",
-      "date": "2026-11-18",
-      "url": "https://filecache.investorroom.com/mr5ir_cinfin/864/CINF%202025%20Sustainability%20Report%20FINAL.pdf"
+      "date": "2026-11-21",
+      "url": "https://www.cfindustries.com/globalassets/cf-industries/media/documents/reports/sustainability-reports/2025_cf-industries_cs-report.pdf"
     },
     {
-      "company": "McKesson Corporation",
-      "ticker": "MCK",
-      "report": "FY26 Impact Report",
+      "company": "Flex Ltd.",
+      "ticker": "FLEX",
+      "report": "2026 Sustainability Report",
       "year": "2026",
-      "date": "2026-11-15",
-      "url": "https://www.mckesson.com/siteassets/documents/commitments/our-impact/mckesson_fy26impact_070926_final.pdf"
-    },
-    {
-      "company": "ResMed",
-      "ticker": "RMD",
-      "report": "Sustainability Report 2026",
-      "year": "2026",
-      "date": "2026-11-08",
-      "url": "https://investor.resmed.com/_assets/_4cd4b18d36c978fea88fa67e6e83121c/resmed/files/pdfs/20261104/f29edfd3-5695-4a79-81a9-b4f800cac162.pdf"
+      "date": "2026-11-21",
+      "url": "https://flex.com/downloads/2026-sustainability-report"
     }
   ],
   "errors": []
