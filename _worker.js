@@ -225,17 +225,9 @@ async function feed(request, env) {
 //   /relay/file  -> the file itself, status and type passed through (for SR5 to read the cover)
 // Only a link published in this site's own data.json is fetched (exact match), so these paths
 // can only ever reach the public reports the index already lists. Never cached, never counted.
-//
-// Second hop: Cloudflare tells the report's site the address of whoever called this worker
-// (CF-Connecting-IP), so a site that refuses the n8n server's address refused it here as well
-// (zebra.com answered 406 to the server and 200 to a browser, through this same code). The call
-// is therefore handed once more to this same worker under its pages.dev name; that second call
-// comes from Cloudflare itself. If the second hop does not answer, the link is fetched directly.
 
 const RELAY_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
 const NO_STORE = { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' };
-const HOP_HOST = 'sustainability-reports.pages.dev';     // this same site under its Cloudflare name
-const HOPPED = { 'X-Relay-Hop': '1' };                   // marks an answer that was made by the second hop
 
 async function relay(request, env, url) {
   if (request.method !== 'GET') return json({ error: 'Use GET.' }, 405, { ...NO_STORE, 'Allow': 'GET' });
@@ -249,22 +241,8 @@ async function relay(request, env, url) {
     listed = d.ok && (await d.text()).indexOf(JSON.stringify(target)) >= 0;
   } catch (e) { listed = false; }
   if (!listed) return json({ error: 'Only report links published on the index are fetched here.', status: 0, listed: false }, 403, NO_STORE);
-  const second = url.hostname === HOP_HOST;
-  if (!second && !url.searchParams.has('hop')) {
-    const answer = await hop(path, target);
-    if (answer) return answer;
-  }
-  if (path === '/relay/head') return json({ ...(await headOf(target)), hop: second }, 200, { ...NO_STORE, ...(second ? HOPPED : {}) });
-  return fileOf(target, second);
-}
-
-async function hop(path, target) {
-  try {
-    const r = await fetch('https://' + HOP_HOST + path + '?url=' + encodeURIComponent(target), {
-      headers: { 'User-Agent': 'orgel-relay-hop' }, signal: AbortSignal.timeout(path === '/relay/file' ? 115000 : 50000) });
-    if (r.headers.get('X-Relay-Hop') !== '1') { if (r.body) { try { await r.body.cancel(); } catch (e) {} } return null; }
-    return new Response(r.body, { status: r.status, headers: r.headers });
-  } catch (e) { return null; }
+  if (path === '/relay/head') return json(await headOf(target), 200, NO_STORE);
+  return fileOf(target);
 }
 
 function upstream(target, method, extra, ms) {
@@ -299,11 +277,11 @@ async function headOf(target) {
   return out;
 }
 
-async function fileOf(target, second) {
+async function fileOf(target) {
   let r;
   try { r = await upstream(target, 'GET', null, 110000); }
   catch (e) { return json({ error: 'The report could not be fetched: ' + errText(e) }, 502, NO_STORE); }
-  const h = new Headers({ ...NO_STORE, ...(second ? HOPPED : {}), 'X-Relay-Status': String(r.status) });
+  const h = new Headers({ ...NO_STORE, 'X-Relay-Status': String(r.status) });
   for (const k of ['content-type', 'content-length', 'last-modified', 'etag']) { const v = r.headers.get(k); if (v) h.set(k, v); }
   if (r.url) h.set('X-Relay-Final-Url', r.url);
   return new Response(r.body, { status: r.status, headers: h });
