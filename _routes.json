@@ -3,7 +3,9 @@
   "include": [
     "/api",
     "/api/*",
-    "/feed.xml"
+    "/feed.xml",
+    "/relay",
+    "/relay/*"
   ],
   "exclude": []
 }

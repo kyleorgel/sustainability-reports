@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 # The API is for people and their tools, not for crawlers - every call runs code.
 Disallow: /api/
+# The relay only re-reads report links for the index's own link check.
+Disallow: /relay/
 
 Sitemap: https://reports.orgel.us/sitemap.xml

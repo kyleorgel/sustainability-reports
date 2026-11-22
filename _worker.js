@@ -26,6 +26,10 @@
 // Responses carry Access-Control-Allow-Origin: * and are cached at the edge for five
 // minutes, so repeated identical calls never run this code twice. Data refreshes within
 // an hour of a change to the index (SR13 republishes data.json; meta.json carries the time).
+//
+// Report relay (2026-11-22), for SR5's twice-weekly link check - see relay() below:
+//   GET /relay/head?url=<a Report URL on the index>   status, size, date of the file, as JSON
+//   GET /relay/file?url=<a Report URL on the index>   the file itself, passed through unchanged
 
 const DOCS = 'https://reports.orgel.us/developers';
 const SOURCE = 'https://reports.orgel.us/';
@@ -50,6 +54,7 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname === '/feed.xml') return feed(request, env);
+    if (url.pathname === '/relay' || url.pathname.startsWith('/relay/')) return relay(request, env, url);
     if (url.pathname !== '/api' && !url.pathname.startsWith('/api/')) return env.ASSETS.fetch(request);
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: { ...CORS, 'Cache-Control': 'public, max-age=86400' } });
     if (request.method !== 'GET' && request.method !== 'HEAD') return json({ error: 'Use GET.' }, 405, { 'Allow': 'GET, HEAD, OPTIONS' });
@@ -207,6 +212,79 @@ async function feed(request, env) {
   if (res.status === 200 && !/atom/i.test(h.get('Content-Type') || '')) h.set('Content-Type', 'application/atom+xml; charset=utf-8');
   if (!h.has('Cache-Control')) h.set('Cache-Control', 'public, max-age=600');
   return new Response(res.body, { status: res.status, statusText: res.statusText, headers: h });
+}
+
+// ---------- report relay (2026-11-22)
+//
+// Some company sites refuse the address of the n8n server but answer Cloudflare. SR5 used to
+// ask the separate fetch-relay Worker, which can only say whether a link is alive: it passes no
+// size or date and turns files into text. So a new report put at the SAME link on such a site
+// went unnoticed (Zebra, 2026-11-16). These two paths read a report link from Cloudflare's edge:
+//   /relay/head  -> { status, size, lastModified, etag, contentType, finalUrl, via }
+//                   HEAD first; a first-byte GET when the server refuses HEAD or sends no size
+//   /relay/file  -> the file itself, status and type passed through (for SR5 to read the cover)
+// Only a link published in this site's own data.json is fetched (exact match), so these paths
+// can only ever reach the public reports the index already lists. Never cached, never counted.
+
+const RELAY_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
+const NO_STORE = { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' };
+
+async function relay(request, env, url) {
+  if (request.method !== 'GET') return json({ error: 'Use GET.' }, 405, { ...NO_STORE, 'Allow': 'GET' });
+  const path = url.pathname.replace(/\/+$/, '');
+  if (path !== '/relay/head' && path !== '/relay/file') return json({ error: 'No such path.' }, 404, NO_STORE);
+  const target = (url.searchParams.get('url') || '').trim();
+  if (!/^https?:\/\/\S+$/i.test(target) || target.length > 2000) return json({ error: 'url must be a report link from the index.', status: 0 }, 400, NO_STORE);
+  let listed = false;
+  try {
+    const d = await env.ASSETS.fetch(new Request(SOURCE + 'data.json'));
+    listed = d.ok && (await d.text()).indexOf(JSON.stringify(target)) >= 0;
+  } catch (e) { listed = false; }
+  if (!listed) return json({ error: 'Only report links published on the index are fetched here.', status: 0, listed: false }, 403, NO_STORE);
+  if (path === '/relay/head') return json(await headOf(target), 200, NO_STORE);
+  return fileOf(target);
+}
+
+function upstream(target, method, extra, ms) {
+  return fetch(target, { method, redirect: 'follow', signal: AbortSignal.timeout(ms), headers: {
+    'User-Agent': RELAY_UA, 'Accept': 'application/pdf,text/html;q=0.9,*/*;q=0.8', 'Accept-Language': 'en-US,en;q=0.9', ...(extra || {}) } });
+}
+
+function sizeOf(h) { const n = Number(h.get('content-length')); return isFinite(n) && n > 0 ? n : null; }
+function errText(e) { return String((e && e.message) || e).slice(0, 200); }
+
+async function headOf(target) {
+  const out = { status: 0, size: null, lastModified: null, etag: null, contentType: null, finalUrl: null, via: '' };
+  let r = null;
+  try { r = await upstream(target, 'HEAD', null, 20000); out.via = 'HEAD'; } catch (e) { out.error = errText(e); }
+  // Some servers refuse HEAD (403/405/501) or answer it without a size: ask for the first byte.
+  if (!r || r.status === 403 || r.status === 405 || r.status === 501 || (r.ok && !sizeOf(r.headers))) {
+    try {
+      const g = await upstream(target, 'GET', { 'Range': 'bytes=0-0' }, 20000);
+      if (g.body) { try { await g.body.cancel(); } catch (e) {} }
+      if (!r || g.status === 206 || g.ok) { r = g; out.via = 'GET bytes=0-0'; delete out.error; }
+    } catch (e) { if (!r) out.error = errText(e); }
+  }
+  if (!r) return out;
+  const h = r.headers;
+  const m = (h.get('content-range') || '').match(/\/(\d+)\s*$/);
+  out.status = r.status === 206 ? 200 : r.status;
+  out.size = m ? Number(m[1]) : (r.status === 206 ? null : sizeOf(h));
+  out.lastModified = h.get('last-modified');
+  out.etag = h.get('etag');
+  out.contentType = h.get('content-type');
+  out.finalUrl = r.url || target;
+  return out;
+}
+
+async function fileOf(target) {
+  let r;
+  try { r = await upstream(target, 'GET', null, 110000); }
+  catch (e) { return json({ error: 'The report could not be fetched: ' + errText(e) }, 502, NO_STORE); }
+  const h = new Headers({ ...NO_STORE, 'X-Relay-Status': String(r.status) });
+  for (const k of ['content-type', 'content-length', 'last-modified', 'etag']) { const v = r.headers.get(k); if (v) h.set(k, v); }
+  if (r.url) h.set('X-Relay-Final-Url', r.url);
+  return new Response(r.body, { status: r.status, headers: h });
 }
 
 // ---------- pull counting
