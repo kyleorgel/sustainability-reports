@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T14:21:03.409Z",
+  "generatedAt": "2026-11-22T18:21:04.100Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -191,6 +191,14 @@
   ],
   "updates": [
     {
+      "company": "Take-Two Interactive",
+      "ticker": "TTWO",
+      "report": "Impact Report 2026",
+      "year": "2026",
+      "date": "2026-11-22",
+      "url": "https://ir.take2games.com/static-files/04996804-76a5-48ac-b2d0-41c332f97035"
+    },
+    {
       "company": "A. O. Smith",
       "ticker": "AOS",
       "report": "2026 Sustainability Report",
@@ -205,14 +213,6 @@
       "year": "2024",
       "date": "2026-11-21",
       "url": "https://www.adobe.com/cc-shared/assets/pdf/corporate-responsibility/adobe-csr-report-2024.pdf"
-    },
-    {
-      "company": "Brown–Forman",
-      "ticker": "BF.B",
-      "report": "2026 Integrated Annual Report",
-      "year": "2026",
-      "date": "2026-11-21",
-      "url": "https://s28.q4cdn.com/657950427/files/doc_financials/2026/ar/BFB-010_2026-Integrated-AR_v4a_wLinks_ADA_sprds_10K.pdf"
     }
   ],
   "errors": []
