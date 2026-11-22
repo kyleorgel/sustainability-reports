@@ -2,9 +2,21 @@
  "schemaVersion": 1,
  "source": "https://reports.orgel.us/",
  "docs": "https://reports.orgel.us/developers",
- "updatedAt": "2026-11-22T05:00:10.125Z",
- "count": 93,
+ "updatedAt": "2026-11-22T15:00:08.245Z",
+ "count": 94,
  "events": [
+  {
+   "date": "2026-11-22",
+   "type": "new-report",
+   "company": "Take-Two Interactive",
+   "ticker": "TTWO",
+   "sector": "Communication Services",
+   "reportYear": 2026,
+   "previousYear": 2025,
+   "reportName": "Impact Report 2026",
+   "reportUrl": "https://ir.take2games.com/static-files/04996804-76a5-48ac-b2d0-41c332f97035",
+   "indexUrl": "https://reports.orgel.us/?q=Take-Two%20Interactive"
+  },
   {
    "date": "2026-11-21",
    "type": "new-report",

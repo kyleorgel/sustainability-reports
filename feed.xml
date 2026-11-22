@@ -5,9 +5,20 @@
   <link href="https://reports.orgel.us/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://reports.orgel.us/" rel="alternate" type="text/html"/>
   <id>https://reports.orgel.us/feed.xml</id>
-  <updated>2026-11-21T12:00:00Z</updated>
+  <updated>2026-11-22T12:00:00Z</updated>
   <author><name>ORGEL</name><uri>https://www.orgel.us/</uri></author>
   <generator uri="https://reports.orgel.us/developers">ORGEL Report Index</generator>
+  <entry>
+    <title>Take-Two Interactive (TTWO): Impact Report 2026 (2026)</title>
+    <link href="https://ir.take2games.com/static-files/04996804-76a5-48ac-b2d0-41c332f97035" rel="alternate"/>
+    <link href="https://reports.orgel.us/?q=Take-Two%20Interactive" rel="related" title="Listing on reports.orgel.us"/>
+    <id>tag:reports.orgel.us,2026-11-22:new-report:TTWO:2026</id>
+    <updated>2026-11-22T12:00:00Z</updated>
+    <published>2026-11-22T12:00:00Z</published>
+    <category term="new-report"/>
+    <category term="Communication Services"/>
+    <summary>Take-Two Interactive now lists its 2026 report (previously 2025) - &quot;Impact Report 2026&quot;. Indexed 2026-11-22. The link goes to the company’s own disclosure page.</summary>
+  </entry>
   <entry>
     <title>A. O. Smith (AOS): 2026 Sustainability Report (2026)</title>
     <link href="https://www.aosmith.com/on/demandware.static/-/Sites-aosmith-Library/default/dw9faf4a3d/pdf/sustainability/AOSmith-2026SusReport.pdf" rel="alternate"/>
@@ -546,16 +557,5 @@
     <category term="new-report"/>
     <category term="Utilities"/>
     <summary>NRG Energy now lists its 2025 report (previously 2024) - &quot;2025 Year In Review&quot;. Indexed 2026-10-07. The link goes to the company’s own disclosure page.</summary>
-  </entry>
-  <entry>
-    <title>Progressive Corporation (PGR): 2025 Corporate Sustainability Report (2025)</title>
-    <link href="https://s202.q4cdn.com/605347829/files/doc_downloads/2026/09/progressive_2025corporate-sustainability-report.pdf" rel="alternate"/>
-    <link href="https://reports.orgel.us/?q=Progressive%20Corporation" rel="related" title="Listing on reports.orgel.us"/>
-    <id>tag:reports.orgel.us,2026-10-07:new-report:PGR:2025</id>
-    <updated>2026-10-07T12:00:00Z</updated>
-    <published>2026-10-07T12:00:00Z</published>
-    <category term="new-report"/>
-    <category term="Financials"/>
-    <summary>Progressive Corporation now lists its 2025 report (previously 2024) - &quot;2025 Corporate Sustainability Report&quot;. Indexed 2026-10-07. The link goes to the company’s own disclosure page.</summary>
   </entry>
 </feed>

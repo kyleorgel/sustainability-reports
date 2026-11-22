@@ -2,10 +2,10 @@
  "schemaVersion": 1,
  "source": "https://reports.orgel.us/",
  "docs": "https://reports.orgel.us/developers",
- "updatedAt": "2026-11-22T05:00:10.125Z",
- "lastChange": "2026-11-21",
+ "updatedAt": "2026-11-22T15:00:08.245Z",
+ "lastChange": "2026-11-22",
  "companies": 514,
- "withReport": 501,
+ "withReport": 500,
  "endpoints": {
   "reports": "https://reports.orgel.us/api/v1/reports",
   "reportsCsv": "https://reports.orgel.us/api/v1/reports?format=csv",
