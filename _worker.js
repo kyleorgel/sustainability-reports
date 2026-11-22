@@ -221,7 +221,8 @@ async function feed(request, env) {
 // size or date and turns files into text. So a new report put at the SAME link on such a site
 // went unnoticed (Zebra, 2026-11-16). These two paths read a report link from Cloudflare's edge:
 //   /relay/head  -> { status, size, lastModified, etag, contentType, finalUrl, via }
-//                   HEAD first; a first-byte GET when the server refuses HEAD or sends no size
+//                   HEAD first; when the server refuses HEAD or sends no size, a GET the way a
+//                   browser opens the link, dropped as soon as the headers are in
 //   /relay/file  -> the file itself, status and type passed through (for SR5 to read the cover)
 // Only a link published in this site's own data.json is fetched (exact match), so these paths
 // can only ever reach the public reports the index already lists. Never cached, never counted.
@@ -245,9 +246,15 @@ async function relay(request, env, url) {
   return fileOf(target);
 }
 
-function upstream(target, method, extra, ms) {
+// The same request headers as the older fetch-relay Worker sends (a browser opening the link).
+// With a shorter set, 18 report sites that answer fetch-relay refused this relay (2026-11-22).
+function upstream(target, method, ms) {
   return fetch(target, { method, redirect: 'follow', signal: AbortSignal.timeout(ms), headers: {
-    'User-Agent': RELAY_UA, 'Accept': 'application/pdf,text/html;q=0.9,*/*;q=0.8', 'Accept-Language': 'en-US,en;q=0.9', ...(extra || {}) } });
+    'User-Agent': RELAY_UA,
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-User': '?1',
+    'Upgrade-Insecure-Requests': '1' } });
 }
 
 function sizeOf(h) { const n = Number(h.get('content-length')); return isFinite(n) && n > 0 ? n : null; }
@@ -256,20 +263,20 @@ function errText(e) { return String((e && e.message) || e).slice(0, 200); }
 async function headOf(target) {
   const out = { status: 0, size: null, lastModified: null, etag: null, contentType: null, finalUrl: null, via: '' };
   let r = null;
-  try { r = await upstream(target, 'HEAD', null, 20000); out.via = 'HEAD'; } catch (e) { out.error = errText(e); }
-  // Some servers refuse HEAD (403/405/501) or answer it without a size: ask for the first byte.
-  if (!r || r.status === 403 || r.status === 405 || r.status === 501 || (r.ok && !sizeOf(r.headers))) {
+  try { r = await upstream(target, 'HEAD', 20000); out.via = 'HEAD'; } catch (e) { out.error = errText(e); }
+  // A browser never sends HEAD, and many sites refuse it (403, 405, 406, 429, 501) or answer it
+  // without a size. Then ask the way a browser opens the link and stop reading once the headers are in.
+  if (!r || !r.ok || !sizeOf(r.headers)) {
     try {
-      const g = await upstream(target, 'GET', { 'Range': 'bytes=0-0' }, 20000);
+      const g = await upstream(target, 'GET', 25000);
       if (g.body) { try { await g.body.cancel(); } catch (e) {} }
-      if (!r || g.status === 206 || g.ok) { r = g; out.via = 'GET bytes=0-0'; delete out.error; }
+      if (!r || !r.ok || g.ok) { r = g; out.via = 'GET'; delete out.error; }
     } catch (e) { if (!r) out.error = errText(e); }
   }
   if (!r) return out;
   const h = r.headers;
-  const m = (h.get('content-range') || '').match(/\/(\d+)\s*$/);
-  out.status = r.status === 206 ? 200 : r.status;
-  out.size = m ? Number(m[1]) : (r.status === 206 ? null : sizeOf(h));
+  out.status = r.status;
+  out.size = sizeOf(h);
   out.lastModified = h.get('last-modified');
   out.etag = h.get('etag');
   out.contentType = h.get('content-type');
@@ -279,7 +286,7 @@ async function headOf(target) {
 
 async function fileOf(target) {
   let r;
-  try { r = await upstream(target, 'GET', null, 110000); }
+  try { r = await upstream(target, 'GET', 110000); }
   catch (e) { return json({ error: 'The report could not be fetched: ' + errText(e) }, 502, NO_STORE); }
   const h = new Headers({ ...NO_STORE, 'X-Relay-Status': String(r.status) });
   for (const k of ['content-type', 'content-length', 'last-modified', 'etag']) { const v = r.headers.get(k); if (v) h.set(k, v); }
