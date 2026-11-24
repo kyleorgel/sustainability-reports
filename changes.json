@@ -2,7 +2,7 @@
  "schemaVersion": 1,
  "source": "https://reports.orgel.us/",
  "docs": "https://reports.orgel.us/developers",
- "updatedAt": "2026-11-24T13:00:09.116Z",
+ "updatedAt": "2026-11-24T15:00:11.110Z",
  "count": 94,
  "events": [
   {
@@ -157,7 +157,7 @@
    "sector": "Information Technology",
    "reportYear": 2026,
    "previousYear": 2024,
-   "reportName": "usiness Responsibility and Sustainability Report 2025-26",
+   "reportName": "Business Responsibility and Sustainability Report 2025-26",
    "reportUrl": "https://www.oracle.com/a/ocom/docs/industries/financial-services/business-responsibility-report-2025-26.pdf",
    "indexUrl": "https://reports.orgel.us/?q=Oracle%20Corporation"
   },
