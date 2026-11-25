@@ -250,6 +250,12 @@
       white-space: nowrap;
     }
 
+    /* 2026-11-25: when the site is built, each name links to the company's own page */
+
+    a.company-name { text-decoration: none; }
+
+    a.company-name:hover { text-decoration: underline; text-decoration-color: #C4202C; text-underline-offset: 3px; }
+
     .ticker {
       font-size: 0.75rem;
       font-weight: 600;
@@ -520,6 +526,15 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
     });
   }
 
+  // ── COMPANY PAGES (2026-11-25) ────────────────────────────────────────────
+  // When the site is built (build.mjs) the table arrives with its rows already in the page,
+  // and each company name links to that company's own page. Those links are read here once,
+  // by ticker, so every later drawing of the table (search, filter, sort) keeps them.
+  // Without a build there are no such rows, and the names are plain text as before.
+  const pageOf = {};
+  document.querySelectorAll('#table-body a.company-name[data-t]').forEach(a => { pageOf[a.getAttribute('data-t')] = a.getAttribute('href'); });
+  const cameWithRows = Object.keys(pageOf).length > 0;
+
   // ── RENDER TABLE ──────────────────────────────────────────────────────────
   function renderTable(records) {
     const tbody = document.getElementById('table-body');
@@ -534,10 +549,12 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
       const link   = resolveReportLink(f);
       const status = link ? 'Active' : 'None';
       const slug   = status.toLowerCase();
+      const name   = esc(f['Company Name'] || '');
+      const page   = pageOf[f['Ticker']];
 
       return `
         <tr>
-          <td><span class="company-name">${esc(f['Company Name'] || '')}</span></td>
+          <td>${page ? `<a class="company-name" data-t="${esc(f['Ticker'] || '')}" href="${esc(page)}">${name}</a>` : `<span class="company-name">${name}</span>`}</td>
           <td><span class="ticker">${esc(f['Ticker'] || '')}</span></td>
           <td><span class="sector-tag">${esc(f['Sector / Industry'] || '')}</span></td>
           <td><span class="report-name">${esc(f['Report Name'] || '')}</span></td>
@@ -834,6 +851,7 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
 
       applyFilters();
     } catch (err) {
+      if (cameWithRows) return;   // the table that came with the page stays as it is
       document.getElementById('table-body').innerHTML =
         `<tr class="state-row"><td colspan="7">⚠️ The index could not be loaded right now. Please refresh in a minute.<br><small>${err.message}</small></td></tr>`;
     }

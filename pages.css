@@ -1,0 +1,44 @@
+/* ── Pages made by build.mjs: company pages, sector pages, the new-reports page, the 404 page.
+   Added after the index page's own styles (site.css = those styles + this file), so the header,
+   the title band, the table and the chips look exactly as they do on the index. ── */
+.orgel-band h1 { white-space: normal; }
+.pg-crumbs { font-family: "Wix Madefor Text", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 13px; letter-spacing: .2px; color: #6b7280; margin: 0 0 10px; }
+.orgel-band .pg-crumbs { font-size: 13px; line-height: 1.4; }
+.pg-crumbs a { color: #6b7280; text-decoration: none; border-bottom: 1px solid #d1d5db; }
+.pg-crumbs a:hover { color: #C4202C; border-bottom-color: #C4202C; }
+.pg-crumbs span { margin: 0 4px; color: #9ca3af; }
+.pg-main { max-width: 1200px; margin: 0 auto; padding: 28px 32px 56px; font-family: "Wix Madefor Text", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; color: #1c1c1c; }
+.pg-main h2 { font-family: Poppins, "Wix Madefor Text", system-ui, sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -.005em; margin: 36px 0 10px; }
+.pg-main p { font-size: 15.5px; line-height: 1.6; color: #333; max-width: 74ch; }
+.pg-main p a, .pg-list a, .pg-facts a { color: #C4202C; text-decoration: none; border-bottom: 1px solid rgba(196,32,44,.35); }
+.pg-main p a:hover, .pg-list a:hover, .pg-facts a:hover { border-bottom-color: #C4202C; }
+.pg-facts { width: 100%; max-width: 720px; font-size: 15px; box-shadow: none; border: 1px solid #e5e7eb; border-radius: 12px; border-collapse: separate; border-spacing: 0; }
+.pg-facts th { width: 190px; background: #F7F7F8; color: #6b7280; font-size: 13px; font-weight: 500; letter-spacing: .2px; text-transform: none; white-space: nowrap; cursor: default; padding: 12px 16px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+.pg-facts th:hover { color: #6b7280; }
+.pg-facts td { padding: 12px 16px; border-bottom: 1px solid #e5e7eb; overflow-wrap: anywhere; }
+.pg-facts tr:last-child th, .pg-facts tr:last-child td { border-bottom: 0; }
+.pg-facts tbody tr, .pg-facts tbody tr:hover { background: transparent; border-bottom: 0; }
+.pg-none { color: #aaa; }
+.pg-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 0; }
+.pg-main p.pg-actions a, .pg-btn { display: inline-flex; align-items: center; justify-content: center; padding: .7rem 1.1rem; border: 1.5px solid #1c1c1c; border-radius: 8px; background: #1c1c1c; color: #fff; font-family: 'Inter', system-ui, sans-serif; font-size: .9rem; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background .15s, border-color .15s, color .15s; }
+.pg-main p.pg-actions a:hover, .pg-btn:hover { background: #C4202C; border-color: #C4202C; color: #fff; }
+.pg-main p.pg-actions a.pg-btn-line { background: #fff; color: #1c1c1c; }
+.pg-main p.pg-actions a.pg-btn-line:hover { background: #C4202C; border-color: #C4202C; color: #fff; }
+.pg-list { list-style: none; margin: 0; padding: 0; max-width: 900px; }
+.pg-list li { font-size: 15px; line-height: 1.55; padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #333; }
+.pg-date { display: inline-block; min-width: 104px; color: #6b7280; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+.pg-note { color: #6b7280; font-size: 13.5px; margin-left: 6px; }
+.pg-new .ticker { margin: 0 6px 0 4px; }
+.pg-count { color: #6b7280; margin: 0 0 14px; }
+.pg-main p.pg-count { font-size: 14px; color: #6b7280; }
+.pg-table { overflow-x: auto; margin: 0 -2px; padding: 2px 2px 14px; }
+.pg-table th { cursor: default; }
+.pg-table th:hover { color: #b0b0b0; }
+.pg-more { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 34px 0 0; }
+.pg-main p.pg-more { max-width: none; font-size: 14.5px; }
+@media (max-width: 700px) {
+  .pg-main { padding: 20px 18px 44px; }
+  .pg-facts th { width: 128px; white-space: normal; padding: 10px 12px; }
+  .pg-facts td { padding: 10px 12px; }
+  .pg-date { min-width: 0; display: block; }
+}

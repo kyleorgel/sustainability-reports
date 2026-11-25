@@ -26,3 +26,9 @@
   Access-Control-Allow-Origin: *
   Content-Type: application/atom+xml; charset=utf-8
   Cache-Control: public, max-age=600, stale-while-revalidate=86400
+
+# data.csv (2026-11-25) is written by build.mjs on every deploy: the whole index as one plain
+# CSV file, for tools that want a file address rather than the API.
+/data.csv
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
