@@ -3,3 +3,18 @@
 # top of the index page, so old links (and anything bookmarked) land there.
 /subscribe       /   301
 /subscribe.html  /   301
+
+# The sector pages (/sector/<name>) were live for a few hours on 2026-11-25 and were removed on
+# 2026-11-26: a sector is now a filter on the index. Cloudflare Pages keeps a page it has served
+# answering for up to a week after a deploy removes it, so each old address is sent on here.
+/sector/communication-services /?sector=Communication%20Services 301
+/sector/consumer-discretionary /?sector=Consumer%20Discretionary 301
+/sector/consumer-staples /?sector=Consumer%20Staples 301
+/sector/energy /?sector=Energy 301
+/sector/financials /?sector=Financials 301
+/sector/health-care /?sector=Health%20Care 301
+/sector/industrials /?sector=Industrials 301
+/sector/information-technology /?sector=Information%20Technology 301
+/sector/materials /?sector=Materials 301
+/sector/real-estate /?sector=Real%20Estate 301
+/sector/utilities /?sector=Utilities 301
