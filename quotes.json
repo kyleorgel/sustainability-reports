@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T22:21:28.808Z",
+  "generatedAt": "2026-11-26T02:23:12.417Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -76,15 +76,15 @@
     {
       "key": "manual:California CCA",
       "label": "California CCA",
-      "value": 32.48,
+      "value": 32.88,
       "unit": "$/tonne",
       "prefix": "$",
-      "asOf": "2026-08-26",
-      "change": 3.67,
-      "changePct": 12.74,
+      "asOf": "2026-11-25",
+      "change": 0.4,
+      "changePct": 1.23,
       "changeLabel": "vs prior auction",
-      "changeBasis": "vs CARB Auction 47 ($28.81)",
-      "source": "CARB Auction 48",
+      "changeBasis": "vs CARB Auction 48 ($32.48)",
+      "source": "CARB Auction 49",
       "manual": true
     },
     {
