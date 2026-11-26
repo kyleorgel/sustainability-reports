@@ -1,3 +1,10 @@
+# TEMPORARY, 2026-11-26: tells a browser to drop its saved copies of this site. For a few hours on
+# 2026-11-26 the old /sector/<name> addresses were forwarded to the index. A browser that followed
+# such a forward keeps it and never asks the site again, so it never sees "Page not found".
+# Remove this block as soon as it has been used.
+/
+  Clear-Site-Data: "cache"
+
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
