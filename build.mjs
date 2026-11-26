@@ -87,7 +87,7 @@ function rawLink(f) {
   return null;
 }
 export function rowHtml(f, href) {
-  const link = rawLink(f), status = link ? 'Active' : 'None';
+  const link = rawLink(f);
   const name = esc(f['Company Name'] || '');
   return '<tr>'
     + '<td>' + (href ? '<a class="company-name" data-t="' + esc(f['Ticker'] || '') + '" href="' + esc(href) + '">' + name + '</a>' : '<span class="company-name">' + name + '</span>') + '</td>'
@@ -95,7 +95,6 @@ export function rowHtml(f, href) {
     + '<td><span class="sector-tag">' + esc(f['Sector / Industry'] || '') + '</span></td>'
     + '<td><span class="report-name">' + esc(f['Report Name'] || '') + '</span></td>'
     + '<td><span class="year-chip">' + esc(String(f['Report Year'] || '')) + '</span></td>'
-    + '<td><span class="status-badge status-' + status.toLowerCase() + '">' + status + '</span></td>'
     + '<td>' + (link ? '<a class="report-link" href="' + esc(link) + '" target="_blank" rel="noopener">' + FILE_ICON + ' View</a>' : '<span style="color:#aaa;font-size:0.8rem">\u2014</span>') + '</td>'
     + '</tr>';
 }
@@ -139,7 +138,8 @@ export function makeContext(rows, events) {
     pathOf: r => '/company/' + slugs.get(r.ticker), sectorLink: name => '/?sector=' + encodeURIComponent(name) };
 }
 
-// The frame of a page: the same header as the index, a title band, the page's own part, a footer.
+// The frame of a page: the same header as the index, a title band, the page's own part.
+// No footer (Kyle, 2026-11-26): the index page has none either, and the terms are on /developers.
 function shell(p) {
   return '<!DOCTYPE html>\n<html lang="en">\n<head>\n'
     + '  <meta charset="UTF-8"/>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n'
@@ -160,7 +160,6 @@ function shell(p) {
     + '<nav class="ob-nav"><a href="' + HOME + '">Home</a> <a href="' + HOME + '/blog">BLOG</a> <a href="/">Report Index</a> <a href="' + HOME + '">Contact Us</a></nav></div></header>\n'
     + '<section class="orgel-band"><div class="ob-inner">' + (p.crumbs ? '<p class="pg-crumbs">' + p.crumbs + '</p>' : '') + '<h1>' + esc(p.h1) + '</h1><p>' + p.lead + '</p></div></section>\n'
     + '<main class="pg-main">\n' + p.body + '\n</main>\n'
-    + '<footer><a href="/">ORGEL Sustainability Report Index</a> &middot; <a href="/new">New reports</a> &middot; <a href="/developers">Data &amp; API</a> &middot; <a href="' + HOME + '">orgel.us</a><br>Free for any use with credit (<a href="/developers#terms">CC BY 4.0</a>): Source: ORGEL Sustainability Report Index, reports.orgel.us</footer>\n'
     + '<script>(function(){var b=document.querySelector("header.orgel-bar");if(!b)return;var f=function(){b.classList.toggle("stuck",(window.scrollY||window.pageYOffset||0)>2)};window.addEventListener("scroll",f,{passive:true});f()})();</script>\n'
     + '</body>\n</html>\n';
 }
@@ -198,7 +197,6 @@ export function companyPage(r, ctx) {
     + fact('Latest Report', r.reportName ? (report ? outLink(report, esc(r.reportName)) : esc(r.reportName)) : (report ? outLink(report, 'Open the report') : none))
     + fact('Report Year', year || none)
     + fact('Sustainability Page', landing ? outLink(landing, esc(hostOf(landing) || 'Open')) : none)
-    + fact('Status', '<span class="status-badge status-' + (r.status === 'Active' ? 'active' : 'none') + '">' + (r.status === 'Active' ? 'Active' : 'None') + '</span>')
     + '</tbody></table>\n';
   const peers = (ctx.sectors.get(sector) || { rows: [] }).rows.length;
   const buttons = [
@@ -288,7 +286,7 @@ export function indexPage(indexHtml, records, ctx) {
 export function notFoundPage(ctx) {
   return shell({ title: 'Page not found | ORGEL', description: 'This page is not on the ORGEL Sustainability Report Index.', path: '/404', h1: 'Page not found', noindex: true,
     lead: 'There is nothing at this address. The company may be listed under another name.',
-    body: '<p class="pg-actions"><a class="pg-btn" href="/">Open the Report Index</a> <a class="pg-btn pg-btn-line" href="/new">New reports</a></p>' });
+    body: '<p class="pg-actions"><a class="pg-btn" href="/">Open the Report Index</a></p>' });
 }
 
 // ---------- the build ----------

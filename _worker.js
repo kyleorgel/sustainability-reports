@@ -53,6 +53,14 @@ const COMMON = {
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    // The sector pages (/sector/<name>) were live for a few hours on 2026-11-25 and were removed the
+    // next day (Kyle: no sector pages). Cloudflare Pages keeps a page it has served answering for up
+    // to a week after a deploy removes it, so these addresses are answered here, before the site's
+    // files are looked at: the site is asked for an address that has never existed, which gives its
+    // "Page not found" page with a 404. (_routes.json sends /sector and /sector/* to this worker.)
+    if (url.pathname === '/sector' || url.pathname.startsWith('/sector/')) {
+      return env.ASSETS.fetch(new Request(new URL('/page-not-found', url).toString(), { method: request.method === 'HEAD' ? 'HEAD' : 'GET' }));
+    }
     if (url.pathname === '/feed.xml') return feed(request, env);
     if (url.pathname === '/relay' || url.pathname.startsWith('/relay/')) return relay(request, env, url);
     if (url.pathname !== '/api' && !url.pathname.startsWith('/api/')) return env.ASSETS.fetch(request);

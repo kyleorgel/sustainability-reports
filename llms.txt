@@ -11,7 +11,7 @@
 
 ## Pages
 
-- [Report Index](https://reports.orgel.us/): the searchable table, with filters by sector and status.
+- [Report Index](https://reports.orgel.us/): the searchable table, with a filter by sector.
 - [Data & API](https://reports.orgel.us/developers): JSON, CSV and feed access, field descriptions, limits and terms.
 
 ## Data

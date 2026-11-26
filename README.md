@@ -30,7 +30,8 @@ The reports the links point to belong to the companies that published them.
 - `data.json`, `changes.json`, `meta.json`, `feed.xml` and `quotes.json` are written by ORGEL's own automation. Do not edit them by hand.
 - `index.html`, `developers.html` and the other pages in the top folder are written by hand.
 - `build.mjs` builds the published site into `dist/`: it copies everything, writes the table rows into the index page, and makes one page per company, the new-reports page, `sitemap.xml`, `data.csv` and `build.json`. It needs Node only, no packages.
-- A sector has no page of its own: `/?sector=Energy` opens the index with that sector chosen (the company pages link there).
+- A sector has no page of its own: `/?sector=Energy` opens the index with that sector chosen (the company pages link there). The addresses `/sector/<name>` existed for a few hours in November 2026; `_worker.js` answers them "not found".
+- No page is added to this site without Kyle's explicit approval of that page. The New Reports page (`/new`) is linked from the index page only.
 - Cloudflare Pages runs it on every commit. Settings: build command `node build.mjs`, build output directory `dist`.
 - If the build cannot read the data, it publishes the top folder as it is and writes `"ok": false` and the reason into `build.json`. A deploy never fails because of the build.
 

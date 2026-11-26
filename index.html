@@ -284,19 +284,6 @@
       border-bottom-color: var(--green-mid);
     }
 
-    .status-badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.55rem;
-      border-radius: 20px;
-    }
-
-    .status-active       { background: #e8f5e9; color: #2e7d32; }
-    .status-none         { background: #ffe5e5; color: #b02020; }
-
     .sector-tag {
       font-size: 0.75rem;
       color: var(--ink-muted);
@@ -437,11 +424,11 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
     <option value="">All Sectors</option>
   </select>
 
-  <select id="status-filter" class="filter-select">
-    <option value="">All Statuses</option>
-    <option value="Active">Active</option>
-    <option value="None">None</option>
-  </select>
+  <!-- 2026-11-26 (Kyle): the New Reports page is linked here, and only here, in the place of the second filter. -->
+  <a class="data-btn" href="/new" title="Sustainability reports added to the index, newest first">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+    <span>New Reports</span>
+  </a>
 
   <button id="download-xlsx" class="download-btn" type="button" title="Download the rows shown below as an Excel workbook">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -463,13 +450,12 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
         <th data-col="Sector / Industry">Sector<span class="sort-icon"></span></th>
         <th data-col="Report Name">Report Name<span class="sort-icon"></span></th>
         <th data-col="Report Year">Report Year<span class="sort-icon"></span></th>
-        <th data-col="Status">Status<span class="sort-icon"></span></th>
         <th>Report Link</th>
       </tr>
     </thead>
     <tbody id="table-body">
       <tr class="state-row">
-        <td colspan="7"><span class="spinner"></span> Loading reports…</td>
+        <td colspan="6"><span class="spinner"></span> Loading reports…</td>
       </tr>
     </tbody>
   </table>
@@ -541,15 +527,13 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
     const tbody = document.getElementById('table-body');
 
     if (!records.length) {
-      tbody.innerHTML = `<tr class="state-row"><td colspan="7">No reports match your search.</td></tr>`;
+      tbody.innerHTML = `<tr class="state-row"><td colspan="6">No reports match your search.</td></tr>`;
       return;
     }
 
     tbody.innerHTML = records.map(r => {
       const f      = r.fields;
       const link   = resolveReportLink(f);
-      const status = link ? 'Active' : 'None';
-      const slug   = status.toLowerCase();
       const name   = esc(f['Company Name'] || '');
       const page   = pageOf[f['Ticker']];
 
@@ -560,7 +544,6 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
           <td><span class="sector-tag">${esc(f['Sector / Industry'] || '')}</span></td>
           <td><span class="report-name">${esc(f['Report Name'] || '')}</span></td>
           <td><span class="year-chip">${esc(String(f['Report Year'] || ''))}</span></td>
-          <td><span class="status-badge status-${slug}">${esc(status)}</span></td>
           <td>
             ${link
               ? `<a class="report-link" href="${esc(link.url)}" target="_blank" rel="noopener">
@@ -609,32 +592,23 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
   function applyFilters() {
     const query  = document.getElementById('search').value.toLowerCase();
     const sector = document.getElementById('sector-filter').value;
-    const status = document.getElementById('status-filter').value;
 
     let filtered = allRecords.filter(r => {
       const f = r.fields;
-      const linkStatus = resolveReportLink(f) ? 'Active' : 'None';
       const haystack = [
         f['Company Name'], f['Ticker'], f['Sector / Industry'],
-        f['Report Name'], f['Notes'], linkStatus, r.site
+        f['Report Name'], f['Notes'], r.site
       ].join(' ').toLowerCase();
 
       const matchQuery  = !query  || haystack.includes(query);
       const matchSector = !sector || f['Sector / Industry'] === sector;
-      const matchStatus = !status || linkStatus === status;
-      return matchQuery && matchSector && matchStatus;
+      return matchQuery && matchSector;
     });
 
     // sort
     filtered.sort((a, b) => {
-      let av, bv;
-      if (sortCol === 'Status') {
-        av = resolveReportLink(a.fields) ? 'Active' : 'None';
-        bv = resolveReportLink(b.fields) ? 'Active' : 'None';
-      } else {
-        av = (a.fields[sortCol] || '');
-        bv = (b.fields[sortCol] || '');
-      }
+      let av = (a.fields[sortCol] || '');
+      let bv = (b.fields[sortCol] || '');
       if (typeof av === 'number' && typeof bv === 'number') {
         return sortDir === 'asc' ? av - bv : bv - av;
       }
@@ -666,7 +640,6 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
   // ── LIVE SEARCH + FILTERS ─────────────────────────────────────────────────
   document.getElementById('search').addEventListener('input', applyFilters);
   document.getElementById('sector-filter').addEventListener('change', applyFilters);
-  document.getElementById('status-filter').addEventListener('change', applyFilters);
 
   // ── DEEP LINK ─ /?q=<text> pre-fills the search; the banner's NEW items link here (2026-09-24) ──
   try {
@@ -675,7 +648,7 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
   } catch (e) {}
 
   // ── EXCEL EXPORT (2026-11-12) ─────────────────────────────────────────────
-  // Downloads whatever the table is showing - search, sector and status filters
+  // Downloads whatever the table is showing - the search and the sector filter
   // and the current sort all apply - as a formatted .xlsx. The workbook is built
   // in the browser from the rows already loaded, so it always matches the page.
   // ExcelJS (MIT) is fetched from a CDN only when the button is first clicked,
@@ -721,7 +694,6 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
       { header: 'Sector',           key: 'sector',     width: 24 },
       { header: 'Report Name',      key: 'report',     width: 44 },
       { header: 'Report Year',      key: 'year',       width: 12 },
-      { header: 'Status',           key: 'status',     width: 10 },
       { header: 'Report URL',       key: 'reportUrl',  width: 60 },
       { header: 'Landing Page URL', key: 'landingUrl', width: 52 }
     ];
@@ -743,14 +715,12 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
         sector:     f['Sector / Industry'] || '',
         report:     f['Report Name'] || '',
         year:       (yearRaw !== '' && yearRaw != null && isFinite(yearNum)) ? yearNum : (yearRaw || ''),
-        status:     resolveReportLink(f) ? 'Active' : 'None',
         reportUrl:  reportUrl,
         landingUrl: landingUrl
       });
       row.font = { name: 'Calibri', size: 11 };
       if (i % 2 === 1) row.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF6F6F6' } };
       row.getCell('year').alignment   = { horizontal: 'center' };
-      row.getCell('status').alignment = { horizontal: 'center' };
       [['reportUrl', reportUrl], ['landingUrl', landingUrl]].forEach(([key, url]) => {
         if (!url) return;
         const cell = row.getCell(key);
@@ -758,7 +728,7 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
         cell.font = LINK_FONT;
       });
     });
-    ws.autoFilter = { from: { row: 1, column: 1 }, to: { row: Math.max(1, records.length + 1), column: 8 } };
+    ws.autoFilter = { from: { row: 1, column: 1 }, to: { row: Math.max(1, records.length + 1), column: 7 } };
 
     const about = wb.addWorksheet('About');
     about.getColumn(1).width = 100;
@@ -767,7 +737,6 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
       ['Source: https://reports.orgel.us', { link: 'https://reports.orgel.us/' }],
       ['Exported: ' + info.exported],
       ['Rows: ' + records.length + ' of ' + info.total + (info.filters.length ? ' (' + info.filters.join('; ') + ')' : ' (no filters applied)')],
-      ['Status "Active" means a report link is published; "None" means the company has not published one.'],
       ['Every entry is traced to the company’s own disclosure page and rechecked twice a week. The newest version is always at reports.orgel.us.']
     ];
     lines.forEach(([text, opt], i) => {
@@ -790,10 +759,8 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
     const out = [];
     const q      = document.getElementById('search').value.trim();
     const sector = document.getElementById('sector-filter').value;
-    const status = document.getElementById('status-filter').value;
     if (q)      out.push('Search: "' + q + '"');
     if (sector) out.push('Sector: ' + sector);
-    if (status) out.push('Status: ' + status);
     return out;
   }
 
@@ -864,7 +831,7 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
     } catch (err) {
       if (cameWithRows) return;   // the table that came with the page stays as it is
       document.getElementById('table-body').innerHTML =
-        `<tr class="state-row"><td colspan="7">⚠️ The index could not be loaded right now. Please refresh in a minute.<br><small>${err.message}</small></td></tr>`;
+        `<tr class="state-row"><td colspan="6">⚠️ The index could not be loaded right now. Please refresh in a minute.<br><small>${err.message}</small></td></tr>`;
     }
   })();
 </script>

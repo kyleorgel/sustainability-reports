@@ -5,7 +5,9 @@
     "/api/*",
     "/feed.xml",
     "/relay",
-    "/relay/*"
+    "/relay/*",
+    "/sector",
+    "/sector/*"
   ],
   "exclude": []
 }
