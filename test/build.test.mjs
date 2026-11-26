@@ -144,40 +144,43 @@ const graph = html => ld(html).flatMap(j => j['@graph'] || [j]);
 
 test('company page: the title, the address and the heading name the company', () => {
   const h = B.companyPage(ROWS[0], CTX);
-  assert.match(h, /<title>Apple Inc\. \(AAPL\) sustainability report 2026 \| ORGEL<\/title>/);
+  assert.match(h, /<title>Apple Inc\. \(AAPL\) Sustainability Report 2026 \| ORGEL<\/title>/);
   assert.match(h, /<link rel="canonical" href="https:\/\/reports\.orgel\.us\/company\/apple"\/>/);
-  assert.match(h, /<h1>Apple Inc\. sustainability report<\/h1>/);
+  assert.match(h, /<h1>Apple Inc\. Sustainability Report<\/h1>/);      // capital S and R (Kyle, 2026-11-26)
 });
-test('company page: says in one plain sentence which report is the latest, with its year', () => {
-  assert.ok(text(B.companyPage(ROWS[0], CTX)).includes('The latest sustainability report from Apple Inc. (AAPL) is the 2026 Environmental Progress Report, report year 2026.'));
+test('company page: says in one plain sentence which report is the latest, and nothing more', () => {
+  const lead = /<h1>[^<]*<\/h1><p>([\s\S]*?)<\/p>/.exec(B.companyPage(ROWS[0], CTX))[1];
+  assert.equal(text(lead), 'The latest sustainability report from Apple Inc. (AAPL) is the 2026 Environmental Progress Report.');
 });
 test('company page: links straight to the report and to the sustainability page on the company’s own site', () => {
   const h = B.companyPage(ROWS[0], CTX);
   assert.match(h, /<a class="pg-btn" href="https:\/\/www\.apple\.com\/environment\/pdf\/Apple_Environmental_Progress_Report_2026\.pdf" target="_blank" rel="noopener">Open the report<\/a>/);
   assert.match(h, /href="https:\/\/www\.apple\.com\/environment\/" target="_blank" rel="noopener"/);
 });
-test('company page: shows ticker, sector (linked to the sector page) and status', () => {
+test('company page: shows ticker, sector (plain text) and status', () => {
   const h = B.companyPage(ROWS[0], CTX);
-  assert.match(h, /<a href="\/sector\/information-technology">Information Technology<\/a>/);
+  assert.match(h, /<th scope="row">Sector<\/th><td>Information Technology<\/td>/);
   assert.ok(text(h).includes('Ticker AAPL'));
   assert.ok(text(h).includes('Status Active'));
 });
 test('company page: uses the ordinary name for a company filed as "(The)"', () => {
   const h = B.companyPage(ROWS[1], CTX);
-  assert.match(h, /<h1>The Coca-Cola Company sustainability report<\/h1>/);
+  assert.match(h, /<h1>The Coca-Cola Company Sustainability Report<\/h1>/);
   assert.match(h, /href="https:\/\/reports\.orgel\.us\/company\/coca-cola-company"/);
-  assert.ok(text(h).includes('The latest sustainability report from The Coca-Cola Company (KO) is the 2025 Environmental Update, report year 2025.'));
+  assert.equal(text(/<h1>[^<]*<\/h1><p>([\s\S]*?)<\/p>/.exec(h)[1]), 'The latest sustainability report from The Coca-Cola Company (KO) is the 2025 Environmental Update.');
 });
 test('company page: a company with a sustainability page but no report file says so and links the page', () => {
   const h = B.companyPage(ROWS[2], CTX), t = text(h);
   assert.ok(t.includes('The index has no report file for Fair Isaac (FICO).'), t.slice(0, 600));
   assert.ok(!/class="pg-btn" href=[^>]*>Open the report/.test(h));
   assert.match(h, /href="https:\/\/www\.fico\.com\/en\/corporate-sustainability" target="_blank" rel="noopener"/);
-  assert.match(h, /<title>Fair Isaac \(FICO\) sustainability report \| ORGEL<\/title>/);
+  assert.match(h, /<title>Fair Isaac \(FICO\) Sustainability Report \| ORGEL<\/title>/);
+  assert.equal(text(/<h1>[^<]*<\/h1><p>([\s\S]*?)<\/p>/.exec(h)[1]), 'The index has no report file for Fair Isaac (FICO). Its sustainability page is linked below.');
+  assert.match(h, /<a class="pg-btn" href="https:\/\/www\.fico\.com\/en\/corporate-sustainability" target="_blank" rel="noopener">Sustainability page<\/a>/);      // its one outside link keeps a button
 });
 test('company page: a company with nothing published says so and has no outside link', () => {
   const h = B.companyPage(ROWS[3], CTX), t = text(h);
-  assert.ok(t.includes('ORGEL has not found a published sustainability report from Reddit (RDDT).'), t.slice(0, 600));
+  assert.equal(text(/<h1>[^<]*<\/h1><p>([\s\S]*?)<\/p>/.exec(h)[1]), 'ORGEL has not found a published sustainability report from Reddit (RDDT).');
   assert.ok(t.includes('Status None'));
   assert.equal((h.match(/target="_blank"/g) || []).length, 0);
 });
@@ -197,6 +200,7 @@ test('company page: the structured data says the same as the page', () => {
   assert.equal(page.mainEntity.name, '2026 Environmental Progress Report');
   assert.equal(page.mainEntity.url, ROWS[0].reportUrl);
   assert.deepEqual(crumbs.itemListElement.map(x => x.name), ['Sustainability Report Index', 'Information Technology', 'Apple Inc.']);
+  assert.equal(crumbs.itemListElement[1].item, 'https://reports.orgel.us/?sector=Information%20Technology');
   assert.equal(page.dateModified, '2026-11-22');
 });
 test('company page: no report, no Report in the structured data', () => {
@@ -213,18 +217,43 @@ test('company page: a link that is not http(s) is never written into the page', 
   const h = B.companyPage({ ...ROWS[0], reportUrl: 'javascript:alert(1)', landingPageUrl: 'data:text/html,x' }, CTX);
   assert.ok(!/javascript:|data:text/.test(h));
 });
-test('company page: says the link is the one the company publishes, not where the file is kept', () => {
-  const t = text(B.companyPage(ROWS[0], CTX));
-  assert.ok(t.includes('The link below is the one the company itself publishes.'), t.slice(0, 500));
-  assert.ok(!/on the company\u2019s own website/.test(t));          // some companies keep their files with a provider
-  assert.ok(t.includes('ORGEL does not host it'));
+// ---------- Kyle's changes to the company pages, 2026-11-26 ----------
+test('company page: the rows are named Latest Report, Report Year and Sustainability Page', () => {
+  const heads = [...B.companyPage(ROWS[0], CTX).matchAll(/<th scope="row">([^<]*)<\/th>/g)].map(m => m[1]);
+  assert.deepEqual(heads, ['Company', 'Ticker', 'Sector', 'Latest Report', 'Report Year', 'Sustainability Page', 'Status']);
 });
-test('company page: says nothing about a report file when there is none', () => {
-  assert.ok(!text(B.companyPage(ROWS[2], CTX)).includes('does not host'));
-  assert.ok(!text(B.companyPage(ROWS[3], CTX)).includes('does not host'));
+test('company page: the report\u2019s name is the link to the report, and there is no separate Report row', () => {
+  const h = B.companyPage(ROWS[0], CTX);
+  assert.match(h, /<th scope="row">Latest Report<\/th><td><a href="https:\/\/www\.apple\.com\/environment\/pdf\/Apple_Environmental_Progress_Report_2026\.pdf" target="_blank" rel="noopener">2026 Environmental Progress Report<\/a><\/td>/);
+  assert.ok(!/<th scope="row">Report<\/th>/.test(h));
+});
+test('company page: a report name without a report file is plain text, and a company with nothing shows a dash', () => {
+  assert.match(B.companyPage(ROWS[2], CTX), /<th scope="row">Latest Report<\/th><td>Corporate Sustainability<\/td>/);
+  assert.match(B.companyPage(ROWS[3], CTX), /<th scope="row">Latest Report<\/th><td><span class="pg-none">\u2014<\/span><\/td>/);
+});
+test('company page: the second button opens the index with the company\u2019s sector chosen', () => {
+  const h = B.companyPage(ROWS[0], CTX);
+  assert.match(h, /<a class="pg-btn pg-btn-line" href="\/\?sector=Information%20Technology">All 2 Information Technology companies<\/a>/);
+  assert.ok(!/class="pg-btn[^"]*"[^>]*>Sustainability page</.test(h), 'the sustainability page is in the table, not on a button');
+  assert.match(B.companyPage(ROWS[3], CTX), /<a class="pg-btn pg-btn-line" href="\/\?sector=Communication%20Services">All 1 Communication Services company<\/a>/);
+});
+test('company page: no page for a sector is linked anywhere', () => {
+  for (const r of ROWS) assert.ok(!B.companyPage(r, CTX).includes('/sector/'), r.company);
+});
+test('company page: there is no "How this page is kept right" part and no row of extra links', () => {
+  for (const r of ROWS) {
+    const h = B.companyPage(r, CTX), main = h.split('<main')[1].split('</main>')[0];
+    assert.ok(!/kept right|does not host|recheck/i.test(text(main)), r.company);
+    assert.ok(!main.includes('pg-more'), r.company);
+    assert.ok(!/All \d+ companies<|New reports by email|href="\/new"|href="\/#alerts"/.test(main), r.company);
+  }
+});
+test('there is no builder for sector pages any more', () => {
+  assert.equal(B.sectorPage, undefined);
 });
 test('company page: the trail above the title reads properly as plain text', () => {
   assert.ok(text(B.companyPage(ROWS[0], CTX)).includes('Report Index \u203a Information Technology'));
+  assert.match(B.companyPage(ROWS[0], CTX), /<p class="pg-crumbs"><a href="\/">Report Index<\/a> <span>\u203a<\/span> <a href="\/\?sector=Information%20Technology">Information Technology<\/a><\/p>/);
 });
 test('company page: carries the site header with its four links and nothing unfinished', () => {
   for (const r of ROWS) {
@@ -236,29 +265,6 @@ test('company page: carries the site header with its four links and nothing unfi
     assert.ok(!/undefined|\bnull\b|NaN|\[object/.test(text(h)), r.company);
     assert.ok(h.startsWith('<!DOCTYPE html>') && h.trimEnd().endsWith('</html>'));
   }
-});
-
-// ---------- a sector's page ----------
-test('sector page: lists every company of the sector with a link to its page, by name', () => {
-  const h = B.sectorPage('Information Technology', CTX);
-  assert.match(h, /<title>Information Technology sustainability reports \(S&amp;P 500\) \| ORGEL<\/title>/);
-  assert.match(h, /<link rel="canonical" href="https:\/\/reports\.orgel\.us\/sector\/information-technology"\/>/);
-  const a = h.indexOf('href="/company/apple"'), f = h.indexOf('href="/company/fair-isaac"');
-  assert.ok(a > 0 && f > a);
-  assert.ok(!h.includes('/company/reddit'));
-  assert.ok(text(h).includes('2 companies'));
-});
-test('sector page: each row carries the report name, the year and the link, or a dash', () => {
-  const h = B.sectorPage('Information Technology', CTX);
-  assert.ok(text(h).includes('Apple Inc. AAPL 2026 Environmental Progress Report 2026'));
-  assert.match(h, /<a class="report-link" href="https:\/\/www\.apple\.com\/environment\/pdf\/Apple_Environmental_Progress_Report_2026\.pdf" target="_blank" rel="noopener">/);
-  assert.match(h, /<a class="report-link" href="https:\/\/www\.fico\.com\/en\/corporate-sustainability"/);      // no report file: the sustainability page
-});
-test('sector page: links to the other sectors and back to the index', () => {
-  const h = B.sectorPage('Information Technology', CTX);
-  assert.match(h, /href="\/sector\/consumer-staples"/); assert.match(h, /href="\/sector\/communication-services"/);
-  assert.ok(!/<a href="\/sector\/information-technology">Information Technology<\/a>/.test(h.split('<main')[1]));   // not to itself
-  assert.ok(!/undefined|\bnull\b|NaN/.test(text(h)));
 });
 
 // ---------- the new-reports page ----------
@@ -281,12 +287,12 @@ test('new-reports page: with no changes it says so', () => {
 });
 
 // ---------- sitemap, CSV, styles, the index page ----------
-test('sitemap lists the index, the data page, the new-reports page, every sector and every company', () => {
+test('sitemap lists the index, the data page, the new-reports page and every company, and no sector page', () => {
   const x = B.sitemap(CTX, '2026-11-25');
   const locs = [...x.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
   assert.deepEqual(locs.slice(0, 3), ['https://reports.orgel.us/', 'https://reports.orgel.us/developers', 'https://reports.orgel.us/new']);
-  assert.equal(locs.length, 3 + 3 + 4);
-  assert.ok(locs.includes('https://reports.orgel.us/sector/consumer-staples') && locs.includes('https://reports.orgel.us/company/eli-lilly') === false);
+  assert.equal(locs.length, 3 + 4);
+  assert.ok(!locs.some(l => l.includes('/sector/')) && locs.includes('https://reports.orgel.us/company/eli-lilly') === false);
   assert.ok(locs.includes('https://reports.orgel.us/company/coca-cola-company'));
   assert.equal(new Set(locs).size, locs.length);
   assert.match(x, /<loc>https:\/\/reports\.orgel\.us\/company\/apple<\/loc><lastmod>2026-11-22<\/lastmod>/);
@@ -340,7 +346,7 @@ const DATA = JSON.parse(fs.readFileSync(path.join(ROOT, 'data.json'), 'utf8'));
 test('build: reports a good build and how much it made', () => {
   built();
   assert.equal(SUMMARY.ok, true, JSON.stringify(SUMMARY));
-  assert.equal(SUMMARY.companies, DATA.length); assert.equal(SUMMARY.companyPages, DATA.length); assert.equal(SUMMARY.sectorPages, 11); assert.deepEqual(SUMMARY.problems, []);
+  assert.equal(SUMMARY.companies, DATA.length); assert.equal(SUMMARY.companyPages, DATA.length); assert.equal('sectorPages' in SUMMARY, false); assert.deepEqual(SUMMARY.problems, []);
   assert.deepEqual(JSON.parse(fs.readFileSync(path.join(OUT, 'build.json'), 'utf8')), SUMMARY);
 });
 test('build: every published file of the repository is in the output, unchanged', () => {
@@ -356,13 +362,13 @@ test('build: nothing that is only for building is published', () => {
   const files = walk(built());
   for (const f of files) assert.ok(!/^(build\.mjs|pages\.css|README\.md|test\/|\.git)/.test(f), f);
 });
-test('build: one page per company, one per sector, the new-reports page, sitemap, csv and styles', () => {
+test('build: one page per company, the new-reports page, sitemap, csv and styles, and no sector pages', () => {
   const out = built(), files = walk(out);
   assert.equal(files.filter(f => /^company\/[a-z0-9-]+\.html$/.test(f)).length, DATA.length);
-  assert.equal(files.filter(f => /^sector\/[a-z0-9-]+\.html$/.test(f)).length, 11);
+  assert.equal(files.filter(f => /^sector\//.test(f)).length, 0);
   for (const f of ['new.html', 'sitemap.xml', 'data.csv', 'site.css', 'build.json', '404.html', 'llms.txt', 'index.html']) assert.ok(files.includes(f), f);
   assert.equal(fs.readFileSync(path.join(out, 'data.csv'), 'utf8').trimEnd().split('\n').length, DATA.length + 1);
-  assert.equal((fs.readFileSync(path.join(out, 'sitemap.xml'), 'utf8').match(/<loc>/g) || []).length, 3 + 11 + DATA.length);
+  assert.equal((fs.readFileSync(path.join(out, 'sitemap.xml'), 'utf8').match(/<loc>/g) || []).length, 3 + DATA.length);
   assert.ok(fs.readFileSync(path.join(out, 'site.css'), 'utf8').includes('.pg-main'));
 });
 test('build: the index page has every company in the table, linked, and keeps its own script', () => {
@@ -389,7 +395,7 @@ test('build: every link inside the site leads to a file that exists', () => {
 });
 test('build: every built page is whole, says nothing unfinished, and its structured data can be read', () => {
   const out = built();
-  for (const f of walk(out).filter(f => /^(company|sector)\//.test(f) || f === 'new.html' || f === '404.html')) {
+  for (const f of walk(out).filter(f => /^company\//.test(f) || f === 'new.html' || f === '404.html')) {
     const h = fs.readFileSync(path.join(out, f), 'utf8');
     assert.ok(h.startsWith('<!DOCTYPE html>') && h.trimEnd().endsWith('</html>'), f);
     assert.ok(!/undefined|\bnull\b|NaN|\[object/.test(text(h)), f + ': ' + (text(h).match(/.{40}(undefined|\bnull\b|NaN|\[object).{40}/) || [''])[0]);
@@ -451,7 +457,7 @@ test('terms: the data page says credit is required, names the licence, and its s
 });
 test('terms: every built page and the summary file say the same', () => {
   const out = built();
-  for (const f of ['company/3m.html', 'sector/energy.html', 'new.html']) {
+  for (const f of ['company/3m.html', 'company/reddit.html', 'new.html']) {
     const t = text(fs.readFileSync(path.join(out, f), 'utf8'));
     assert.ok(!/appreciated/i.test(t), f); assert.ok(t.includes('Free for any use with credit (CC BY 4.0): Source: ORGEL Sustainability Report Index, reports.orgel.us'), f);
   }

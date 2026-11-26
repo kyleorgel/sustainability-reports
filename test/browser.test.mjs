@@ -70,7 +70,7 @@ test('built index: a company name opens that company’s page', async () => {
   const page = await browser.newPage(); await page.goto(built.url + '/'); await loaded(page);
   await page.click('#table-body a.company-name[data-t="MMM"]');
   await page.waitForURL('**/company/3m');
-  assert.equal(await page.locator('h1').innerText(), '3M sustainability report');
+  assert.equal(await page.locator('h1').innerText(), '3M Sustainability Report');
   await page.close();
 });
 test('built index: if the data cannot be fetched, the table that came with the page stays', async () => {
@@ -89,11 +89,51 @@ test('plain index (no build): the table is drawn by the script, names are plain 
 });
 test('built pages: no page spills sideways on a phone, and an unknown address gets the not-found page', async () => {
   const ctx = await browser.newContext({ viewport: { width: 375, height: 800 } }), page = await ctx.newPage();
-  for (const p of ['/company/3m', '/company/coca-cola-company', '/company/reddit', '/sector/energy', '/new', '/company/no-such-company']) {
+  for (const p of ['/company/3m', '/company/coca-cola-company', '/company/reddit', '/new', '/sector/energy', '/company/no-such-company']) {
     const res = await page.goto(built.url + p);
-    assert.equal(res.status(), p.includes('no-such') ? 404 : 200, p);
+    assert.equal(res.status(), /no-such|\/sector\//.test(p) ? 404 : 200, p);          // sectors have no pages of their own (Kyle, 2026-11-26)
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth) <= 0, 'sideways scroll on ' + p);
   }
   assert.equal(await page.locator('h1').innerText(), 'Page not found');
   await ctx.close();
+});
+
+// ---------- Kyle's changes, 2026-11-26 ----------
+const SECTOR = name => DATA.filter(r => r.fields['Sector / Industry'] === name).length;
+test('built index: /?sector=Energy opens the table with that sector chosen', async () => {
+  const page = await browser.newPage(); await page.goto(built.url + '/?sector=Energy'); await loaded(page);
+  assert.equal(await page.inputValue('#sector-filter'), 'Energy');
+  assert.equal(await page.locator('#table-body tr').count(), SECTOR('Energy'));
+  assert.deepEqual([...new Set(await page.evaluate(() => [...document.querySelectorAll('#table-body .sector-tag')].map(x => x.innerText.trim())))], ['Energy']);
+  await page.close();
+});
+test('built index: the sector in the address may be in any letter case, and an unknown one shows every company', async () => {
+  const page = await browser.newPage();
+  await page.goto(built.url + '/?sector=information%20technology'); await loaded(page);
+  assert.equal(await page.inputValue('#sector-filter'), 'Information Technology');
+  assert.equal(await page.locator('#table-body tr').count(), SECTOR('Information Technology'));
+  await page.goto(built.url + '/?sector=Nonsense'); await loaded(page);
+  assert.equal(await page.inputValue('#sector-filter'), '');
+  assert.equal(await page.locator('#table-body tr').count(), DATA.length);
+  await page.close();
+});
+test('built index: a company name looks like a link (the site\u2019s red, underlined)', async () => {
+  const page = await browser.newPage(); await page.goto(built.url + '/'); await loaded(page);
+  const st = await page.evaluate(() => { const c = getComputedStyle(document.querySelector('#table-body a.company-name')); return { color: c.color, line: c.textDecorationLine }; });
+  assert.deepEqual(st, { color: 'rgb(196, 32, 44)', line: 'underline' });
+  await page.close();
+});
+test('company page: the second button opens the index with that sector chosen', async () => {
+  const page = await browser.newPage(); await page.goto(built.url + '/company/3m');
+  assert.equal(await page.locator('.pg-actions a.pg-btn-line').innerText(), 'All ' + SECTOR('Industrials') + ' Industrials companies');
+  await page.click('.pg-actions a.pg-btn-line'); await loaded(page);
+  assert.equal(new URL(page.url()).search, '?sector=Industrials');
+  assert.equal(await page.locator('#table-body tr').count(), SECTOR('Industrials'));
+  await page.close();
+});
+test('company page: the title sits clear of the trail above it', async () => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } }); await page.goto(built.url + '/company/3m');
+  const gap = await page.evaluate(() => document.querySelector('.orgel-band h1').getBoundingClientRect().top - document.querySelector('.pg-crumbs').getBoundingClientRect().bottom);
+  assert.ok(gap >= 20, 'gap between the trail and the title: ' + gap + 'px');
+  await page.close();
 });
