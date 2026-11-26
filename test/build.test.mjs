@@ -480,3 +480,22 @@ test('company page: says when the company was added to the index', () => {
   assert.ok(t.includes('Nov 20, 2026 Added to the index when the company joined the S&P 500.'), t);
   assert.ok(!t.includes('first report listed')); assert.ok(!/\breport added\b/.test(t));
 });
+
+// ---------- the old sector addresses (2026-11-26) ----------
+// The sector pages were live for a few hours on 2026-11-25. Cloudflare Pages keeps a page it has
+// served answering for up to a week after a deploy removes it, so each old address is sent on
+// to the index with that sector chosen instead.
+test('old sector addresses: each one is sent to the index with that sector chosen', () => {
+  const lines = fs.readFileSync(path.join(ROOT, '_redirects'), 'utf8').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#'));
+  const sectors = [...new Set(DATA.map(r => String(r.fields['Sector / Industry'] || '').trim()).filter(Boolean))];
+  assert.equal(sectors.length, 11);
+  for (const s of sectors) {
+    const slug = s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    assert.ok(lines.includes('/sector/' + slug + ' /?sector=' + encodeURIComponent(s) + ' 301'), s + ' in ' + JSON.stringify(lines));
+  }
+  assert.equal(lines.filter(l => l.startsWith('/sector/')).length, 11);
+  assert.ok(lines.some(l => /^\/subscribe\s+\/\s+301$/.test(l)), 'the older /subscribe rule is still there');
+});
+test('build: the redirects file is published as it is', () => {
+  assert.ok(fs.readFileSync(path.join(ROOT, '_redirects')).equals(fs.readFileSync(path.join(built(), '_redirects'))));
+});

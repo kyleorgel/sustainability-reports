@@ -91,7 +91,7 @@ test('built pages: no page spills sideways on a phone, and an unknown address ge
   const ctx = await browser.newContext({ viewport: { width: 375, height: 800 } }), page = await ctx.newPage();
   for (const p of ['/company/3m', '/company/coca-cola-company', '/company/reddit', '/new', '/sector/energy', '/company/no-such-company']) {
     const res = await page.goto(built.url + p);
-    assert.equal(res.status(), /no-such|\/sector\//.test(p) ? 404 : 200, p);          // sectors have no pages of their own (Kyle, 2026-11-26)
+    assert.equal(res.status(), /no-such|\/sector\//.test(p) ? 404 : 200, p);          // sectors have no pages of their own (Kyle, 2026-11-26); on Cloudflare _redirects sends the old addresses to /?sector=<name>
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth) <= 0, 'sideways scroll on ' + p);
   }
   assert.equal(await page.locator('h1').innerText(), 'Page not found');
