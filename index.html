@@ -250,11 +250,12 @@
       white-space: nowrap;
     }
 
-    /* 2026-11-25: when the site is built, each name links to the company's own page */
+    /* 2026-11-25: when the site is built, each name links to the company's own page.
+       2026-11-26: the name looks like a link - the site's red, underlined - so it is plain that it can be clicked. */
 
-    a.company-name { text-decoration: none; }
+    a.company-name { color: #C4202C; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 
-    a.company-name:hover { text-decoration: underline; text-decoration-color: #C4202C; text-underline-offset: 3px; }
+    a.company-name:hover { color: #9c1822; text-decoration-thickness: 2px; }
 
     .ticker {
       font-size: 0.75rem;
@@ -844,6 +845,16 @@ header.orgel-bar.stuck{box-shadow:0 1px 0 #E8E8E8,0 6px 16px rgba(0,0,0,.05)}
       allRecords = raw;
       try { tagSites(allRecords); } catch (e) { /* the search then works as before, without web-address names */ }
       buildSectorFilter(allRecords);
+
+      // DEEP LINK - /?sector=<name> opens the table with that sector chosen; the company pages
+      // link here ("All 80 Industrials companies"). Letter case does not matter; a name that is
+      // not a sector on the index changes nothing. (2026-11-26)
+      try {
+        const s0 = (new URLSearchParams(location.search).get('sector') || '').trim().toLowerCase();
+        const sel = document.getElementById('sector-filter');
+        const hit = s0 && [...sel.options].find(o => o.value && o.value.toLowerCase() === s0);
+        if (hit) sel.value = hit.value;
+      } catch (e) {}
 
       // default sort by company name asc
       const firstTh = document.querySelector('th[data-col="Company Name"]');

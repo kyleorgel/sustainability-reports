@@ -4,7 +4,6 @@
 // changes.json, ...). This script copies them and adds what is worked out from the data:
 //   /                   the index page with its rows already in the HTML (and a link on each company)
 //   /company/<name>     one page per company
-//   /sector/<name>      one page per sector
 //   /new                the reports added lately
 //   /sitemap.xml, /data.csv, /build.json
 // No packages are needed: Node's own modules only.
@@ -112,7 +111,6 @@ export function injectRows(indexHtml, rowsHtml) {
 // ---------- shared by every built page ----------
 export const SITE = 'https://reports.orgel.us';
 const HOME = 'https://www.orgel.us';
-const kebab = s => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 const httpOnly = u => (typeof u === 'string' && /^https?:\/\//i.test(u.trim())) ? u.trim() : null;
 const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } };
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -124,12 +122,13 @@ export function prettyDate(iso) {                       // 2026-11-22 -> Nov 22,
 const ldScript = obj => '<script type="application/ld+json">' + JSON.stringify(obj).replace(/</g, '\\u003c') + '</script>';
 
 // Everything the pages need to know about each other: each company's address, the sectors, the changes.
+// A sector has no page of its own: its link opens the index with that sector chosen (/?sector=Energy).
 export function makeContext(rows, events) {
   const slugs = assignSlugs(rows);
   const sectors = new Map();
   rows.forEach(r => {
     const name = r.sector || 'Other';
-    if (!sectors.has(name)) sectors.set(name, { name, slug: kebab(name), rows: [] });
+    if (!sectors.has(name)) sectors.set(name, { name, rows: [] });
     sectors.get(name).rows.push(r);
   });
   const evs = (Array.isArray(events) ? events : []).filter(e => e && e.ticker && /^\d{4}-\d{2}-\d{2}/.test(String(e.date || '')))
@@ -137,7 +136,7 @@ export function makeContext(rows, events) {
   const byTicker = new Map();
   evs.forEach(e => { if (!byTicker.has(e.ticker)) byTicker.set(e.ticker, []); byTicker.get(e.ticker).push(e); });
   return { rows, slugs, sectors, events: evs, byTicker, total: rows.length,
-    pathOf: r => '/company/' + slugs.get(r.ticker), sectorPath: name => '/sector/' + kebab(name || 'Other') };
+    pathOf: r => '/company/' + slugs.get(r.ticker), sectorLink: name => '/?sector=' + encodeURIComponent(name) };
 }
 
 // The frame of a page: the same header as the index, a title band, the page's own part, a footer.
@@ -166,27 +165,28 @@ function shell(p) {
     + '</body>\n</html>\n';
 }
 const outLink = (url, label, cls) => '<a' + (cls ? ' class="' + cls + '"' : '') + ' href="' + esc(url) + '" target="_blank" rel="noopener">' + label + '</a>';
-const CHECKS = 'Every link on the index is traced to the company&rsquo;s own disclosure page. Automated readers recheck every entry twice a week, and a person confirms each new report before it is published.';
 
 // ---------- a company's own page ----------
+// Laid out as Kyle asked on 2026-11-26: one plain sentence, the report's name is the link to the
+// report, and the second button opens the index with the company's sector chosen.
 export function companyPage(r, ctx) {
   const name = displayName(r.company), who = name + (r.ticker ? ' (' + r.ticker + ')' : '');
   const report = httpOnly(r.reportUrl), landing = httpOnly(r.landingPageUrl);
-  const path = ctx.pathOf(r), sector = r.sector || 'Other', sectorPath = ctx.sectorPath(sector);
+  const path = ctx.pathOf(r), sector = r.sector || 'Other', sectorLink = r.sector ? ctx.sectorLink(r.sector) : '';
   const hist = ctx.byTicker.get(r.ticker) || [];
   const year = r.reportYear ? String(r.reportYear) : '';
   let lead, description;
   if (report && r.reportName) {
-    lead = 'The latest sustainability report from ' + esc(who) + ' is the <b>' + esc(r.reportName) + '</b>' + (year ? ', report year ' + year : '') + '. The link below is the one the company itself publishes.';
+    lead = 'The latest sustainability report from ' + esc(who) + ' is the <b>' + esc(r.reportName) + '</b>.';
     description = 'Latest sustainability report from ' + who + ': ' + r.reportName + '. Direct link to the report as the company publishes it, rechecked twice a week.';
   } else if (report) {
-    lead = 'The latest sustainability report from ' + esc(who) + (year ? ' is for report year ' + year : ' is linked below') + '. The link is the one the company itself publishes.';
+    lead = 'The latest sustainability report from ' + esc(who) + (year ? ' is for report year ' + year + '.' : ' is linked below.');
     description = 'Latest sustainability report from ' + who + '. Direct link to the report as the company publishes it, rechecked twice a week.';
   } else if (landing) {
-    lead = 'The index has no report file for ' + esc(who) + '. ' + (r.reportName ? 'What the company publishes, <b>' + esc(r.reportName) + '</b>, is on its sustainability page, linked below.' : 'Its sustainability page is linked below.');
+    lead = 'The index has no report file for ' + esc(who) + '. Its sustainability page is linked below.';
     description = 'Sustainability page of ' + who + '. The index has no report file for this company; it is rechecked twice a week.';
   } else {
-    lead = 'ORGEL has not found a published sustainability report from ' + esc(who) + '. The company is rechecked twice a week, and this page changes when a report appears.';
+    lead = 'ORGEL has not found a published sustainability report from ' + esc(who) + '.';
     description = 'ORGEL has not found a published sustainability report from ' + who + '. The company is rechecked twice a week.';
   }
   const fact = (k, v) => '<tr><th scope="row">' + k + '</th><td>' + v + '</td></tr>';
@@ -194,63 +194,38 @@ export function companyPage(r, ctx) {
   let body = '<table class="pg-facts"><tbody>'
     + fact('Company', esc(name))
     + fact('Ticker', r.ticker ? '<span class="ticker">' + esc(r.ticker) + '</span>' : none)
-    + fact('Sector', '<a href="' + esc(sectorPath) + '">' + esc(sector) + '</a>')
-    + fact('Latest report', r.reportName ? esc(r.reportName) : none)
-    + fact('Report year', year || none)
-    + fact('Report', report ? outLink(report, esc(hostOf(report) || 'Open')) : none)
-    + fact('Sustainability page', landing ? outLink(landing, esc(hostOf(landing) || 'Open')) : none)
+    + fact('Sector', esc(sector))
+    + fact('Latest Report', r.reportName ? (report ? outLink(report, esc(r.reportName)) : esc(r.reportName)) : (report ? outLink(report, 'Open the report') : none))
+    + fact('Report Year', year || none)
+    + fact('Sustainability Page', landing ? outLink(landing, esc(hostOf(landing) || 'Open')) : none)
     + fact('Status', '<span class="status-badge status-' + (r.status === 'Active' ? 'active' : 'none') + '">' + (r.status === 'Active' ? 'Active' : 'None') + '</span>')
     + '</tbody></table>\n';
-  if (report || landing) body += '<p class="pg-actions">' + [report ? outLink(report, 'Open the report', 'pg-btn') : '', landing ? outLink(landing, 'Sustainability page', 'pg-btn pg-btn-line') : ''].filter(Boolean).join(' ') + '</p>\n';
+  const peers = (ctx.sectors.get(sector) || { rows: [] }).rows.length;
+  const buttons = [
+    report ? outLink(report, 'Open the report', 'pg-btn') : (landing ? outLink(landing, 'Sustainability page', 'pg-btn') : ''),
+    sectorLink ? '<a class="pg-btn pg-btn-line" href="' + esc(sectorLink) + '">All ' + peers + ' ' + esc(sector) + ' compan' + (peers === 1 ? 'y' : 'ies') + '</a>' : ''
+  ].filter(Boolean);
+  if (buttons.length) body += '<p class="pg-actions">' + buttons.join(' ') + '</p>\n';
   if (hist.length) {
     body += '<h2>Changes on the index</h2>\n<ul class="pg-list">'
       + hist.map(e => '<li><span class="pg-date">' + esc(prettyDate(e.date)) + '</span> ' + (e.type === 'company-added' ? 'Added to the index when the company joined the S&amp;P&nbsp;500.'
         : esc(e.reportName || (e.reportYear ? e.reportYear + ' report' : 'A report')) + ' added' + (e.previousYear ? '; it replaced the ' + esc(e.previousYear) + ' report.' : ', the first report listed for this company.')) + '</li>').join('') + '</ul>\n';
   }
-  body += '<h2>How this page is kept right</h2>\n<p>' + CHECKS + (report ? ' The report itself stays where the company published it; ORGEL does not host it.' : '') + '</p>\n';
-  const peers = (ctx.sectors.get(sector) || { rows: [] }).rows.length;
-  body += '<p class="pg-more"><a href="' + esc(sectorPath) + '">All ' + peers + ' ' + esc(sector) + ' compan' + (peers === 1 ? 'y' : 'ies') + '</a> <a href="/">All ' + ctx.total + ' companies</a> <a href="/new">New reports</a> <a href="/#alerts">New reports by email on Mondays</a></p>';
   const corp = { '@type': 'Corporation', name: name, ...(r.ticker ? { tickerSymbol: r.ticker } : {}) };
-  const title = who + ' sustainability report' + (report && year ? ' ' + year : '') + ' | ORGEL';
+  const title = who + ' Sustainability Report' + (report && year ? ' ' + year : '') + ' | ORGEL';
   const page = { '@type': 'WebPage', '@id': SITE + path, url: SITE + path, name: title.replace(/ \| ORGEL$/, ''), description,
     isPartOf: { '@type': 'WebSite', name: 'ORGEL Sustainability Report Index', url: SITE + '/' },
     publisher: { '@type': 'Organization', name: 'ORGEL', url: HOME }, about: corp };
-  if (report) page.mainEntity = { '@type': 'Report', name: r.reportName || (name + ' sustainability report'), url: report, publisher: corp };
+  if (report) page.mainEntity = { '@type': 'Report', name: r.reportName || (name + ' Sustainability Report'), url: report, publisher: corp };
   if (hist.length) page.dateModified = String(hist[0].date).slice(0, 10);
-  const crumbs = { '@type': 'BreadcrumbList', itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Sustainability Report Index', item: SITE + '/' },
-    { '@type': 'ListItem', position: 2, name: sector, item: SITE + sectorPath },
-    { '@type': 'ListItem', position: 3, name: name }] };
-  return shell({ title, description, path, h1: name + ' sustainability report', lead, body,
-    crumbs: '<a href="/">Report Index</a> <span>\u203a</span> <a href="' + esc(sectorPath) + '">' + esc(sector) + '</a>',
+  const trail = [{ name: 'Sustainability Report Index', item: SITE + '/' }].concat(sectorLink ? [{ name: sector, item: SITE + sectorLink }] : [], [{ name: name }]);
+  const crumbs = { '@type': 'BreadcrumbList', itemListElement: trail.map((x, i) => ({ '@type': 'ListItem', position: i + 1, ...x })) };
+  return shell({ title, description, path, h1: name + ' Sustainability Report', lead, body,
+    crumbs: '<a href="/">Report Index</a>' + (sectorLink ? ' <span>\u203a</span> <a href="' + esc(sectorLink) + '">' + esc(sector) + '</a>' : ''),
     jsonld: { '@context': 'https://schema.org', '@graph': [crumbs, page] } });
 }
 
 const byName = (a, b) => String(a.company || '').toLowerCase().localeCompare(String(b.company || '').toLowerCase(), 'en');
-const viewLink = r => { const u = httpOnly(r.reportUrl) || httpOnly(r.landingPageUrl); return u ? outLink(u, FILE_ICON + ' View', 'report-link') : '<span class="pg-none">\u2014</span>'; };
-
-// ---------- a sector's page ----------
-export function sectorPage(name, ctx) {
-  const sec = ctx.sectors.get(name), rows = sec.rows.slice().sort(byName), path = ctx.sectorPath(name);
-  const active = rows.filter(r => r.status === 'Active').length;
-  const title = name + ' sustainability reports (S&P 500) | ORGEL';
-  const description = 'The latest sustainability report from each of the ' + rows.length + ' ' + name + ' companies on the ORGEL index of the S&P 500, with a direct link to every report.';
-  let body = '<p class="pg-count">' + rows.length + ' compan' + (rows.length === 1 ? 'y' : 'ies') + ' &middot; ' + active + ' with a report or a sustainability page</p>\n'
-    + '<div class="pg-table"><table><thead><tr><th>Company</th><th>Ticker</th><th>Report Name</th><th>Report Year</th><th>Report Link</th></tr></thead><tbody>\n'
-    + rows.map(r => '<tr><td><a class="company-name" href="' + esc(ctx.pathOf(r)) + '">' + esc(r.company) + '</a></td><td><span class="ticker">' + esc(r.ticker) + '</span></td>'
-      + '<td><span class="report-name">' + esc(r.reportName || '') + '</span></td><td><span class="year-chip">' + esc(r.reportYear || '') + '</span></td><td>' + viewLink(r) + '</td></tr>').join('\n')
-    + '\n</tbody></table></div>\n<h2>Other sectors</h2>\n<p class="pg-more">'
-    + [...ctx.sectors.values()].filter(x => x.name !== name).sort((a, b) => a.name.localeCompare(b.name, 'en')).map(x => '<a href="/sector/' + esc(x.slug) + '">' + esc(x.name) + ' (' + x.rows.length + ')</a>').join(' ')
-    + ' <a href="/">All ' + ctx.total + ' companies</a></p>';
-  const jsonld = { '@context': 'https://schema.org', '@graph': [
-    { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Sustainability Report Index', item: SITE + '/' }, { '@type': 'ListItem', position: 2, name: name }] },
-    { '@type': 'CollectionPage', '@id': SITE + path, url: SITE + path, name: title.replace(/ \| ORGEL$/, ''), description,
-      isPartOf: { '@type': 'WebSite', name: 'ORGEL Sustainability Report Index', url: SITE + '/' }, publisher: { '@type': 'Organization', name: 'ORGEL', url: HOME } }] };
-  return shell({ title, description, path, h1: name + ' sustainability reports', body, jsonld,
-    lead: 'The latest sustainability report from each ' + esc(name) + ' company on the index: S&amp;P&nbsp;500 members, and companies that have left it since the index began.',
-    crumbs: '<a href="/">Report Index</a> <span>\u203a</span> Sectors' });
-}
-
 // ---------- the new-reports page ----------
 export function newPage(ctx) {
   // The change log also notes when a company joins the index; this page lists the reports only.
@@ -286,7 +261,6 @@ export function sitemap(ctx, today) {
   const u = (p, lastmod) => '  <url><loc>' + esc(SITE + p) + '</loc>' + (lastmod ? '<lastmod>' + esc(lastmod) + '</lastmod>' : '') + '</url>';
   const newest = ctx.events.length ? String(ctx.events[0].date).slice(0, 10) : today;
   const lines = [u('/', today), u('/developers'), u('/new', newest)];
-  [...ctx.sectors.values()].sort((a, b) => a.name.localeCompare(b.name, 'en')).forEach(s => lines.push(u('/sector/' + s.slug)));
   ctx.rows.slice().sort(byName).forEach(r => { const h = ctx.byTicker.get(r.ticker); lines.push(u(ctx.pathOf(r), h ? String(h[0].date).slice(0, 10) : '')); });
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + lines.join('\n') + '\n</urlset>\n';
 }
@@ -339,7 +313,7 @@ function copyTree(src, dst, skip) {
 // what gets published - the index page then draws its table with its own script, as it always did -
 // and build.json says ok: false with the reason. The build itself never fails a deploy.
 export function build({ root, out, now = new Date() }) {
-  const summary = { ok: false, builtAt: now.toISOString(), companies: 0, companyPages: 0, sectorPages: 0, problems: [] };
+  const summary = { ok: false, builtAt: now.toISOString(), companies: 0, companyPages: 0, problems: [] };
   const outAbs = path.resolve(out);
   fs.rmSync(outAbs, { recursive: true, force: true });
   copyTree(root, outAbs, (name, full) => name.startsWith('.') || NOT_PUBLISHED.has(name) || path.resolve(full) === outAbs);
@@ -362,7 +336,6 @@ export function build({ root, out, now = new Date() }) {
       try { files.set('company/' + ctx.slugs.get(r.ticker) + '.html', companyPage(r, ctx)); summary.companyPages++; }
       catch (e) { summary.problems.push('no page for ' + r.company + ': ' + e.message); }
     }
-    for (const s of ctx.sectors.values()) { files.set('sector/' + s.slug + '.html', sectorPage(s.name, ctx)); summary.sectorPages++; }
     files.set('new.html', newPage(ctx));
     files.set('404.html', notFoundPage(ctx));
     files.set('sitemap.xml', sitemap(ctx, now.toISOString().slice(0, 10)));

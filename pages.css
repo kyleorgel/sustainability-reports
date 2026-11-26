@@ -1,9 +1,9 @@
-/* ── Pages made by build.mjs: company pages, sector pages, the new-reports page, the 404 page.
+/* ── Pages made by build.mjs: company pages, the new-reports page, the 404 page.
    Added after the index page's own styles (site.css = those styles + this file), so the header,
    the title band, the table and the chips look exactly as they do on the index. ── */
 .orgel-band h1 { white-space: normal; }
 .pg-crumbs { font-family: "Wix Madefor Text", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 13px; letter-spacing: .2px; color: #6b7280; margin: 0 0 10px; }
-.orgel-band .pg-crumbs { font-size: 13px; line-height: 1.4; }
+.orgel-band .pg-crumbs { font-size: 13px; line-height: 1.4; margin: 0 0 22px; }      /* room between the trail and the title */
 .pg-crumbs a { color: #6b7280; text-decoration: none; border-bottom: 1px solid #d1d5db; }
 .pg-crumbs a:hover { color: #C4202C; border-bottom-color: #C4202C; }
 .pg-crumbs span { margin: 0 4px; color: #9ca3af; }
@@ -31,9 +31,6 @@
 .pg-new .ticker { margin: 0 6px 0 4px; }
 .pg-count { color: #6b7280; margin: 0 0 14px; }
 .pg-main p.pg-count { font-size: 14px; color: #6b7280; }
-.pg-table { overflow-x: auto; margin: 0 -2px; padding: 2px 2px 14px; }
-.pg-table th { cursor: default; }
-.pg-table th:hover { color: #b0b0b0; }
 .pg-more { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 34px 0 0; }
 .pg-main p.pg-more { max-width: none; font-size: 14.5px; }
 @media (max-width: 700px) {
