@@ -138,9 +138,21 @@ export function makeContext(rows, events) {
     pathOf: r => '/company/' + slugs.get(r.ticker), sectorLink: name => '/?sector=' + encodeURIComponent(name) };
 }
 
+// The index page's sign-up box for the Monday email, and its script, as index.html has them.
+// Kyle, 2026-11-26: "on the new reports page and each company page I want a subscribe box just like the
+// one on the report index page." They are copied at every build, so they can never differ from the index's.
+export function signupBox(indexHtml) {
+  const box = /<!-- sign-up box[^>]*-->([\s\S]*?)<!-- \/sign-up box -->/.exec(indexHtml);
+  if (!box || !box[1].trim()) throw new Error('index.html: the marked sign-up box (<!-- sign-up box ... --> ... <!-- /sign-up box -->) was not found, so the company pages and the new-reports page have no sign-up box');
+  const script = /<script>\s*\/\/[^\n]*EMAIL ALERTS[\s\S]*?<\/script>/.exec(indexHtml);
+  if (!script) throw new Error('index.html: the script of the sign-up box (EMAIL ALERTS) was not found, so the company pages and the new-reports page have no sign-up box');
+  return { box: box[1].trim(), script: script[0] };
+}
+
 // The frame of a page: the same header as the index, a title band, the page's own part.
 // No footer (Kyle, 2026-11-26): the index page has none either, and the terms are on /developers.
 function shell(p) {
+  const head = '<h1>' + esc(p.h1) + '</h1><p>' + p.lead + '</p>';
   return '<!DOCTYPE html>\n<html lang="en">\n<head>\n'
     + '  <meta charset="UTF-8"/>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n'
     + '  <title>' + esc(p.title) + '</title>\n'
@@ -158,8 +170,10 @@ function shell(p) {
     + '</head>\n<body class="pg">\n'
     + '<header class="orgel-bar"><div class="ob-inner"><a class="ob-brand" href="' + HOME + '" aria-label="ORGEL home"><img src="/logo.png" alt="ORGEL" width="525" height="108"></a>'
     + '<nav class="ob-nav"><a href="' + HOME + '">Home</a> <a href="' + HOME + '/blog">BLOG</a> <a href="/">Report Index</a> <a href="' + HOME + '">Contact Us</a></nav></div></header>\n'
-    + '<section class="orgel-band"><div class="ob-inner">' + (p.crumbs ? '<p class="pg-crumbs">' + p.crumbs + '</p>' : '') + '<h1>' + esc(p.h1) + '</h1><p>' + p.lead + '</p></div></section>\n'
+    + '<section class="orgel-band"><div class="ob-inner">' + (p.crumbs ? '<p class="pg-crumbs">' + p.crumbs + '</p>' : '')
+    + (p.signup ? '<div class="ob-split"><div class="ob-text">' + head + '</div>' + p.signup.box + '</div>' : head) + '</div></section>\n'
     + '<main class="pg-main">\n' + p.body + '\n</main>\n'
+    + (p.signup ? p.signup.script + '\n' : '')
     + '<script>(function(){var b=document.querySelector("header.orgel-bar");if(!b)return;var f=function(){b.classList.toggle("stuck",(window.scrollY||window.pageYOffset||0)>2)};window.addEventListener("scroll",f,{passive:true});f()})();</script>\n'
     + '</body>\n</html>\n';
 }
@@ -218,7 +232,7 @@ export function companyPage(r, ctx) {
   if (hist.length) page.dateModified = String(hist[0].date).slice(0, 10);
   const trail = [{ name: 'Sustainability Report Index', item: SITE + '/' }].concat(sectorLink ? [{ name: sector, item: SITE + sectorLink }] : [], [{ name: name }]);
   const crumbs = { '@type': 'BreadcrumbList', itemListElement: trail.map((x, i) => ({ '@type': 'ListItem', position: i + 1, ...x })) };
-  return shell({ title, description, path, h1: name + ' Sustainability Report', lead, body,
+  return shell({ title, description, path, h1: name + ' Sustainability Report', lead, body, signup: ctx.signup,
     crumbs: '<a href="/">Report Index</a>' + (sectorLink ? ' <span>\u203a</span> <a href="' + esc(sectorLink) + '">' + esc(sector) + '</a>' : ''),
     jsonld: { '@context': 'https://schema.org', '@graph': [crumbs, page] } });
 }
@@ -249,8 +263,8 @@ export function newPage(ctx) {
     { '@type': 'CollectionPage', '@id': SITE + '/new', url: SITE + '/new', name: title.replace(/ \| ORGEL$/, ''), description,
       isPartOf: { '@type': 'WebSite', name: 'ORGEL Sustainability Report Index', url: SITE + '/' }, publisher: { '@type': 'Organization', name: 'ORGEL', url: HOME },
       ...(evs.length ? { dateModified: String(evs[0].date).slice(0, 10) } : {}) }] };
-  return shell({ title, description, path: '/new', h1: 'New sustainability reports', body, jsonld,
-    lead: 'Reports added to the index, newest first. Each one was found on the company&rsquo;s own website and confirmed by a person before it was listed.',
+  return shell({ title, description, path: '/new', h1: 'New sustainability reports', body, jsonld, signup: ctx.signup,
+    lead: 'Reports added to the index, newest first. Each one was traced to the company&rsquo;s own disclosure page and confirmed by a person before it was listed.',
     crumbs: '<a href="/">Report Index</a>' });
 }
 
@@ -326,6 +340,7 @@ export function build({ root, out, now = new Date() }) {
     let events = [];
     try { events = JSON.parse(read('changes.json')).events || []; } catch (e) { summary.problems.push('changes.json could not be read, pages built without the list of changes: ' + e.message); }
     const ctx = makeContext(rows, events), indexHtml = read('index.html');
+    try { ctx.signup = signupBox(indexHtml); } catch (e) { summary.problems.push(e.message); }
     // Everything is worked out before anything is written, so a failure leaves the plain copy whole.
     const files = new Map();
     files.set('index.html', indexPage(indexHtml, records, ctx));

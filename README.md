@@ -32,6 +32,7 @@ The reports the links point to belong to the companies that published them.
 - `build.mjs` builds the published site into `dist/`: it copies everything, writes the table rows into the index page, and makes one page per company, the new-reports page, `sitemap.xml`, `data.csv` and `build.json`. It needs Node only, no packages.
 - A sector has no page of its own: `/?sector=Energy` opens the index with that sector chosen (the company pages link there). The addresses `/sector/<name>` existed for a few hours in November 2026; `_worker.js` answers them "not found".
 - No page is added to this site without Kyle's explicit approval of that page. The New Reports page (`/new`) is linked from the index page only.
+- Every company page and the New Reports page carry the index page's sign-up box for the Monday email. `build.mjs` copies the box (marked `<!-- sign-up box ... -->` in `index.html`) and its script at every build, so it is always the index's own box; if it cannot find them, the pages are built without it and `build.json` says so.
 - Cloudflare Pages runs it on every commit. Settings: build command `node build.mjs`, build output directory `dist`.
 - If the build cannot read the data, it publishes the top folder as it is and writes `"ok": false` and the reason into `build.json`. A deploy never fails because of the build.
 
