@@ -541,3 +541,78 @@ test('the data keeps its Status column: the CSV file and the API are unchanged',
   assert.match(fs.readFileSync(path.join(ROOT, '_worker.js'), 'utf8'), /\['status', 'Status'\]/);
   assert.equal(B.normalize(DATA[0]).status === 'Active' || B.normalize(DATA[0]).status === 'None', true);
 });
+
+// ---------- the sign-up box on the new-reports page and on every company page (Kyle, 2026-11-26) ----------
+// "on the new reports page and each company page I want a subscribe box just like the one on the report
+// index page. they should be able to subscribe to the index email updates from any of these pages."
+// The box and its script are copied out of index.html at every build, so they cannot differ from the index's.
+// Read when a test asks for it, so a missing signupBox fails each test on its own instead of the whole file.
+const boxOf = (() => { let v; return () => (v = v || B.signupBox(INDEX_SRC)); })();
+const BOX = new Proxy({}, { get: (o, k) => boxOf()[k] });
+const ctxBox = () => Object.assign(B.makeContext(ROWS, EVENTS), { signup: boxOf() });
+const bandOf = h => h.split('<section class="orgel-band">')[1].split('</section>')[0];
+test('signupBox takes the sign-up box and its script out of index.html exactly as they are there', () => {
+  assert.ok(BOX.box.startsWith('<div class="ob-alerts" id="alerts"'), BOX.box.slice(0, 80));
+  assert.ok(BOX.box.endsWith('</div>'));
+  assert.ok(INDEX_SRC.includes(BOX.box) && INDEX_SRC.includes(BOX.script));
+  assert.equal((BOX.box.match(/<div\b/g) || []).length, (BOX.box.match(/<\/div>/g) || []).length, 'the box is whole');
+  assert.ok(BOX.box.includes('<p class="oa-note" id="oa-note">New Reports in your Inbox on Mondays</p>'));
+  assert.ok(BOX.box.includes('<button id="oa-btn" type="submit">Subscribe</button>'));
+  assert.ok(BOX.box.includes('You&rsquo;re now subscribed.'));
+  assert.match(BOX.script, /^<script>[\s\S]*'https:\/\/website\.orgel\.us\/webhook\/reports-subscribe'[\s\S]*<\/script>$/);
+  assert.equal((BOX.script.match(/<script>/g) || []).length, 1, 'one script only');
+});
+test('signupBox says what is missing when index.html has no box or no script for it', () => {
+  assert.throws(() => B.signupBox(INDEX_SRC.replace(/<!-- sign-up box[\s\S]*?<!-- \/sign-up box -->/, '')), /sign-up box/);
+  assert.throws(() => B.signupBox(INDEX_SRC.replace(/<script>\s*\/\/[^\n]*EMAIL ALERTS[\s\S]*?<\/script>/, '')), /script/);
+});
+test('company page: the sign-up box sits beside the title, below the trail, exactly as on the index, and its script is there once', () => {
+  for (const r of ROWS) {
+    const h = B.companyPage(r, ctxBox());
+    assert.match(bandOf(h), /^<div class="ob-inner"><p class="pg-crumbs">[\s\S]*?<\/p><div class="ob-split"><div class="ob-text"><h1>[^<]*<\/h1><p>[\s\S]*?<\/p><\/div><div class="ob-alerts" id="alerts"/, r.company);
+    assert.ok(bandOf(h).includes(BOX.box), r.company);
+    assert.equal(h.split(BOX.script).length - 1, 1, r.company);
+    assert.equal((h.match(/id="oa-form"/g) || []).length, 1);
+    assert.ok(h.indexOf(BOX.script) > h.indexOf('</main>'), 'the script comes after the page itself');
+  }
+});
+test('new-reports page: carries the same sign-up box and script', () => {
+  const h = B.newPage(ctxBox());
+  assert.ok(bandOf(h).includes(BOX.box)); assert.equal(h.split(BOX.script).length - 1, 1);
+  assert.match(bandOf(h), /<div class="ob-split"><div class="ob-text"><h1>New sustainability reports<\/h1>/);
+});
+test('the not-found page has no sign-up box', () => {
+  const h = B.notFoundPage(ctxBox());
+  assert.ok(!h.includes('oa-form') && !h.includes('reports-subscribe') && !h.includes('ob-split'));
+});
+test('without a box (index.html has none) the pages are built as before', () => {
+  for (const h of [B.companyPage(ROWS[0], CTX), B.newPage(CTX)]) assert.ok(!h.includes('oa-form') && !h.includes('ob-split'));
+});
+test('build: every company page and the new-reports page carry the box and script exactly as the index has them; the not-found page does not', () => {
+  const out = built(), box = B.signupBox(fs.readFileSync(path.join(out, 'index.html'), 'utf8'));
+  const pages = walk(out).filter(f => /^company\//.test(f)).concat(['new.html']);
+  assert.equal(pages.length, DATA.length + 1);
+  for (const f of pages) { const h = fs.readFileSync(path.join(out, f), 'utf8'); assert.ok(h.includes(box.box) && h.includes(box.script), f); }
+  assert.ok(!fs.readFileSync(path.join(out, '404.html'), 'utf8').includes('oa-form'));
+});
+test('build: without a sign-up box in index.html the pages are still built, and build.json says the box is missing', () => {
+  const root = tmp('nobox'), out = tmp('nobox-out');
+  for (const f of ['pages.css', 'changes.json']) fs.copyFileSync(path.join(ROOT, f), path.join(root, f));
+  fs.writeFileSync(path.join(root, 'index.html'), INDEX_SRC.replace(/<!-- sign-up box[\s\S]*?<!-- \/sign-up box -->/, ''));
+  fs.writeFileSync(path.join(root, 'data.json'), JSON.stringify(DATA.slice(0, 3)));
+  const s = B.build({ root, out, now: new Date('2026-11-25T16:00:00Z') });
+  assert.equal(s.ok, true); assert.equal(s.companyPages, 3);
+  assert.match(s.problems.join(' '), /sign-up box/);
+  assert.ok(!fs.readFileSync(path.join(out, 'new.html'), 'utf8').includes('oa-form'));
+});
+
+// ---------- where the reports are: never "on the company's own website" (Kyle, 2026-11-26: "yes reword it") ----------
+// Some companies keep the file with a provider, so the pages say where the link goes, not whose website it is on.
+test('no page or summary file says a report is on the company’s own website', () => {
+  const out = built();
+  for (const f of ['new.html', 'developers.html', 'llms.txt', 'index.html', 'company/3m.html']) {
+    const t = fs.readFileSync(path.join(out, f), 'utf8');
+    assert.ok(!/own web ?sites?\b/i.test(t), f + ': ' + (t.match(/.{80}own web ?sites?.{20}/i) || [''])[0]);
+  }
+  assert.ok(text(B.newPage(CTX)).includes('Each one was traced to the company’s own disclosure page and confirmed by a person before it was listed.'));
+});

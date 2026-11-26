@@ -170,3 +170,76 @@ test('built pages: no footer, and no link to the new-reports page except on the 
   assert.deepEqual(await page.evaluate(() => [...document.querySelectorAll('.pg-facts th')].map(th => th.textContent)), ['Company', 'Ticker', 'Sector', 'Latest Report', 'Report Year', 'Sustainability Page']);
   await page.close();
 });
+
+// ---------- the sign-up box on the new-reports page and on every company page (Kyle, 2026-11-26) ----------
+// Every request to n8n is answered inside the test: these tests never reach the real sign-up.
+const SIGNUP = 'https://website.orgel.us/webhook/reports-subscribe';
+async function answerSignups(page, answer) {
+  const seen = [];
+  await page.route('https://website.orgel.us/**', async route => {
+    const q = route.request(); seen.push({ url: q.url(), method: q.method(), body: q.postData() || '' });
+    await route.fulfill({ status: 200, contentType: 'application/json', headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify(answer) });
+  });
+  return seen;
+}
+const boxLook = page => page.evaluate(() => {
+  const b = document.querySelector('.ob-alerts'), r = b.getBoundingClientRect(), c = getComputedStyle(b);
+  const inner = document.querySelector('.orgel-band .ob-inner').getBoundingClientRect(), h1 = document.querySelector('.orgel-band h1').getBoundingClientRect();
+  return { width: Math.round(r.width), height: Math.round(r.height), background: c.backgroundColor, border: c.borderTopWidth + ' ' + c.borderTopStyle + ' ' + c.borderTopColor, radius: c.borderTopLeftRadius,
+    fromRight: Math.round(inner.right - r.right), topLessTitleTop: Math.round(r.top - h1.top), note: document.querySelector('#oa-note').innerText, button: document.querySelector('#oa-btn').innerText,
+    input: [document.querySelector('#oa-email').placeholder, Math.round(document.querySelector('#oa-email').getBoundingClientRect().height)].join(' ') };
+});
+test('company pages and the new-reports page: the sign-up box sits on the title’s line at the right, exactly as on the index', async () => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  await page.goto(built.url + '/'); await loaded(page); const index = await boxLook(page);
+  assert.equal(index.note, 'New Reports in your Inbox on Mondays');
+  for (const p of ['/company/3m', '/company/reddit', '/company/alphabet-class-a', '/new']) {
+    await page.goto(built.url + p);
+    assert.deepEqual(await boxLook(page), index, p);
+    assert.equal(await page.locator('.ob-alerts').count(), 1, p);
+  }
+  await page.close();
+});
+test('on a phone the box sits under the title, as wide as on the index, and nothing spills sideways', async () => {
+  const ctx = await browser.newContext({ viewport: { width: 375, height: 800 } }), page = await ctx.newPage();
+  const geo = () => page.evaluate(() => { const b = document.querySelector('.ob-alerts').getBoundingClientRect(), t = document.querySelector('.orgel-band .ob-text').getBoundingClientRect();
+    return { under: b.top >= t.bottom, width: Math.round(b.width), sideways: document.documentElement.scrollWidth - document.documentElement.clientWidth }; });
+  await page.goto(built.url + '/'); const index = await geo();
+  assert.equal(index.under, true);
+  for (const p of ['/company/3m', '/company/international-flavors-fragrances', '/new']) { await page.goto(built.url + p); assert.deepEqual(await geo(), index, p); }
+  await ctx.close();
+});
+test('signing up from a company page or the new-reports page sends what the index sends, and shows the green check', async () => {
+  const sent = {};
+  for (const p of ['/', '/company/3m', '/new']) {
+    const page = await browser.newPage(), seen = await answerSignups(page, { ok: true, code: 'subscribed' });
+    await page.goto(built.url + p);
+    await page.fill('#oa-email', 'reader@example.com'); await page.click('#oa-btn');
+    await page.waitForSelector('#oa-done:not([hidden])');
+    assert.equal(await page.locator('#oa-done-b').innerText(), 'You’re now subscribed.', p);
+    assert.equal(await page.locator('#oa-form').isHidden(), true, p);
+    assert.equal(seen.length, 1, p); assert.equal(seen[0].url, SIGNUP); assert.equal(seen[0].method, 'POST');
+    const q = new URLSearchParams(seen[0].body);
+    assert.equal(q.get('email'), 'reader@example.com'); assert.equal(q.get('company'), ''); assert.ok(Number(q.get('t')) >= 0, p);
+    sent[p] = [...q.keys()].join(',');
+    await page.close();
+  }
+  assert.equal(sent['/company/3m'], sent['/']); assert.equal(sent['/new'], sent['/']);
+});
+test('an address already on the list is told so, and a wrong address is caught before anything is sent', async () => {
+  let page = await browser.newPage(); let seen = await answerSignups(page, { ok: true, code: 'already_subscribed' });
+  await page.goto(built.url + '/company/reddit'); await page.fill('#oa-email', 'reader@example.com'); await page.click('#oa-btn');
+  await page.waitForSelector('#oa-done:not([hidden])');
+  assert.equal(await page.locator('#oa-done-b').innerText(), 'You’re already subscribed.');
+  await page.close();
+  page = await browser.newPage(); seen = await answerSignups(page, { ok: true, code: 'subscribed' });
+  await page.goto(built.url + '/new'); await page.fill('#oa-email', 'not-an-address'); await page.click('#oa-btn');
+  assert.equal(await page.locator('#oa-note').innerText(), 'Please enter a valid email address.');
+  assert.equal(seen.length, 0);
+  await page.close();
+});
+test('the not-found page has no sign-up box', async () => {
+  const page = await browser.newPage(); await page.goto(built.url + '/company/no-such-company');
+  assert.equal(await page.locator('.ob-alerts').count(), 0);
+  await page.close();
+});
