@@ -85,11 +85,11 @@ test('normalize: a landing page alone still counts as Active', () => {
 // ---------- the index page: one table row, as the page's own script draws it ----------
 const F = { 'Company Name': '3M', 'Ticker': 'MMM', 'Sector / Industry': 'Industrials', 'Report Name': '2026 Global Impact Report', 'Report Year': '2026', 'Report URL': 'https://multimedia.3m.com/r.pdf?a=1&b=2', 'Landing Page URL': 'https://www.3m.com/s', 'Status': 'Active' };
 const cells = html => [...html.matchAll(/<td>([\s\S]*?)<\/td>/g)].map(m => m[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
-test('rowHtml: seven cells with the company, ticker, sector, report, year, status and the View link', () => {
+test('rowHtml: six cells with the company, ticker, sector, report, year and the View link - no status (Kyle, 2026-11-26)', () => {
   const h = B.rowHtml(F, '/company/3m');
-  assert.deepEqual(cells(h), ['3M', 'MMM', 'Industrials', '2026 Global Impact Report', '2026', 'Active', 'View']);
+  assert.deepEqual(cells(h), ['3M', 'MMM', 'Industrials', '2026 Global Impact Report', '2026', 'View']);
   assert.match(h, /<a class="report-link" href="https:\/\/multimedia\.3m\.com\/r\.pdf\?a=1&amp;b=2" target="_blank" rel="noopener">/);
-  assert.match(h, /<span class="status-badge status-active">Active<\/span>/);
+  assert.ok(!/status/i.test(h));
 });
 test('rowHtml: the company name is a link to its page and carries the ticker', () => {
   assert.match(B.rowHtml(F, '/company/3m'), /<td><a class="company-name" data-t="MMM" href="\/company\/3m">3M<\/a><\/td>/);
@@ -97,12 +97,12 @@ test('rowHtml: the company name is a link to its page and carries the ticker', (
 test('rowHtml: without a page address the name is plain text, as before', () => {
   assert.match(B.rowHtml(F, ''), /<td><span class="company-name">3M<\/span><\/td>/);
 });
-test('rowHtml: falls back to the landing page, and shows a dash and None when there is no link at all', () => {
+test('rowHtml: falls back to the landing page, and shows a dash when there is no link at all', () => {
   const lp = B.rowHtml({ ...F, 'Report URL': 'None Published' }, '/company/3m');
-  assert.match(lp, /href="https:\/\/www\.3m\.com\/s"/); assert.match(lp, /status-active/);
+  assert.match(lp, /href="https:\/\/www\.3m\.com\/s"/);
   const none = B.rowHtml({ ...F, 'Report URL': '', 'Landing Page URL': 'None Published', 'Report Name': '', 'Report Year': '' }, '/company/3m');
-  assert.deepEqual(cells(none), ['3M', 'MMM', 'Industrials', '', '', 'None', '—']);
-  assert.match(none, /<span class="status-badge status-none">None<\/span>/);
+  assert.deepEqual(cells(none), ['3M', 'MMM', 'Industrials', '', '', '—']);
+  assert.ok(!/status/i.test(lp + none));
 });
 test('rowHtml: text from the sheet cannot break out of the page', () => {
   const h = B.rowHtml({ ...F, 'Company Name': 'A <b>&</b> "Co"', 'Report Name': '<script>x</script>' }, '/company/a');
@@ -157,11 +157,11 @@ test('company page: links straight to the report and to the sustainability page 
   assert.match(h, /<a class="pg-btn" href="https:\/\/www\.apple\.com\/environment\/pdf\/Apple_Environmental_Progress_Report_2026\.pdf" target="_blank" rel="noopener">Open the report<\/a>/);
   assert.match(h, /href="https:\/\/www\.apple\.com\/environment\/" target="_blank" rel="noopener"/);
 });
-test('company page: shows ticker, sector (plain text) and status', () => {
+test('company page: shows ticker and sector (plain text), and no status', () => {
   const h = B.companyPage(ROWS[0], CTX);
   assert.match(h, /<th scope="row">Sector<\/th><td>Information Technology<\/td>/);
   assert.ok(text(h).includes('Ticker AAPL'));
-  assert.ok(text(h).includes('Status Active'));
+  for (const r of ROWS) assert.ok(!/status/i.test(B.companyPage(r, CTX).split('<main')[1]), r.company);
 });
 test('company page: uses the ordinary name for a company filed as "(The)"', () => {
   const h = B.companyPage(ROWS[1], CTX);
@@ -181,7 +181,6 @@ test('company page: a company with a sustainability page but no report file says
 test('company page: a company with nothing published says so and has no outside link', () => {
   const h = B.companyPage(ROWS[3], CTX), t = text(h);
   assert.equal(text(/<h1>[^<]*<\/h1><p>([\s\S]*?)<\/p>/.exec(h)[1]), 'ORGEL has not found a published sustainability report from Reddit (RDDT).');
-  assert.ok(t.includes('Status None'));
   assert.equal((h.match(/target="_blank"/g) || []).length, 0);
 });
 test('company page: lists what changed on the index for this company, newest first', () => {
@@ -218,9 +217,9 @@ test('company page: a link that is not http(s) is never written into the page', 
   assert.ok(!/javascript:|data:text/.test(h));
 });
 // ---------- Kyle's changes to the company pages, 2026-11-26 ----------
-test('company page: the rows are named Latest Report, Report Year and Sustainability Page', () => {
+test('company page: the rows are named Latest Report, Report Year and Sustainability Page, and Status is not one of them', () => {
   const heads = [...B.companyPage(ROWS[0], CTX).matchAll(/<th scope="row">([^<]*)<\/th>/g)].map(m => m[1]);
-  assert.deepEqual(heads, ['Company', 'Ticker', 'Sector', 'Latest Report', 'Report Year', 'Sustainability Page', 'Status']);
+  assert.deepEqual(heads, ['Company', 'Ticker', 'Sector', 'Latest Report', 'Report Year', 'Sustainability Page']);
 });
 test('company page: the report\u2019s name is the link to the report, and there is no separate Report row', () => {
   const h = B.companyPage(ROWS[0], CTX);
@@ -247,6 +246,15 @@ test('company page: there is no "How this page is kept right" part and no row of
     assert.ok(!main.includes('pg-more'), r.company);
     assert.ok(!/All \d+ companies<|New reports by email|href="\/new"|href="\/#alerts"/.test(main), r.company);
   }
+});
+test('built pages have no footer block (Kyle, 2026-11-26)', () => {
+  for (const h of ROWS.map(r => B.companyPage(r, CTX)).concat([B.newPage(CTX), B.notFoundPage(CTX)])) {
+    assert.ok(!/<footer/.test(h)); assert.ok(!h.includes('Free for any use with credit')); assert.ok(!/Data &amp; API<\/a>/.test(h));
+  }
+});
+test('the new-reports page is linked from the index page only: not from a company page, the not-found page or itself', () => {
+  for (const h of ROWS.map(r => B.companyPage(r, CTX)).concat([B.newPage(CTX), B.notFoundPage(CTX)])) assert.ok(!/<a [^>]*href="\/new"/.test(h));
+  assert.match(B.notFoundPage(CTX), /<a class="pg-btn" href="\/">Open the Report Index<\/a>/);
 });
 test('there is no builder for sector pages any more', () => {
   assert.equal(B.sectorPage, undefined);
@@ -411,7 +419,7 @@ test('build: each company page says what the index says about that company', () 
     if (r.reportName) assert.ok(h.includes(B.esc(r.reportName)), r.company + ': report name');
     if (r.reportUrl) assert.ok(h.includes('href="' + B.esc(r.reportUrl) + '"'), r.company + ': report link');
     if (r.landingPageUrl) assert.ok(h.includes('href="' + B.esc(r.landingPageUrl) + '"'), r.company + ': landing link');
-    assert.ok(t.includes('Status ' + r.status), r.company + ': status');
+    assert.ok(!/\bStatus\b/.test(t), r.company + ': no status on the page');
   }
 });
 test('build: the 404 page is a real "not found" page with a way back', () => {
@@ -455,12 +463,8 @@ test('terms: the data page says credit is required, names the licence, and its s
   assert.match(h, /href="https:\/\/creativecommons\.org\/licenses\/by\/4\.0\/"/);
   assert.equal(ld(h).find(x => x['@type'] === 'Dataset').license, 'https://creativecommons.org/licenses/by/4.0/');
 });
-test('terms: every built page and the summary file say the same', () => {
+test('terms: the summary file says the same as the data page', () => {
   const out = built();
-  for (const f of ['company/3m.html', 'company/reddit.html', 'new.html']) {
-    const t = text(fs.readFileSync(path.join(out, f), 'utf8'));
-    assert.ok(!/appreciated/i.test(t), f); assert.ok(t.includes('Free for any use with credit (CC BY 4.0): Source: ORGEL Sustainability Report Index, reports.orgel.us'), f);
-  }
   const l = fs.readFileSync(path.join(out, 'llms.txt'), 'utf8');
   assert.ok(!/appreciated/i.test(l)); assert.ok(l.includes('CC BY 4.0') && l.includes('Credit is required'));
 });
@@ -482,20 +486,58 @@ test('company page: says when the company was added to the index', () => {
 });
 
 // ---------- the old sector addresses (2026-11-26) ----------
-// The sector pages were live for a few hours on 2026-11-25. Cloudflare Pages keeps a page it has
-// served answering for up to a week after a deploy removes it, so each old address is sent on
-// to the index with that sector chosen instead.
-test('old sector addresses: each one is sent to the index with that sector chosen', () => {
+// The sector pages were live for a few hours on 2026-11-25 and Kyle had them removed. Cloudflare
+// Pages keeps a page it has served answering for up to a week after a deploy removes it, so the
+// worker answers every /sector address itself, first: not found. Nothing is forwarded.
+test('old sector addresses: none is forwarded anywhere', () => {
   const lines = fs.readFileSync(path.join(ROOT, '_redirects'), 'utf8').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#'));
-  const sectors = [...new Set(DATA.map(r => String(r.fields['Sector / Industry'] || '').trim()).filter(Boolean))];
-  assert.equal(sectors.length, 11);
-  for (const s of sectors) {
-    const slug = s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-    assert.ok(lines.includes('/sector/' + slug + ' /?sector=' + encodeURIComponent(s) + ' 301'), s + ' in ' + JSON.stringify(lines));
-  }
-  assert.equal(lines.filter(l => l.startsWith('/sector/')).length, 11);
+  assert.equal(lines.filter(l => /sector/i.test(l)).length, 0, JSON.stringify(lines));
   assert.ok(lines.some(l => /^\/subscribe\s+\/\s+301$/.test(l)), 'the older /subscribe rule is still there');
+});
+test('old sector addresses: the worker is given them', () => {
+  const routes = JSON.parse(fs.readFileSync(path.join(ROOT, '_routes.json'), 'utf8'));
+  assert.ok(routes.include.includes('/sector') && routes.include.includes('/sector/*'), JSON.stringify(routes.include));
+  for (const p of ['/api', '/api/*', '/feed.xml', '/relay', '/relay/*']) assert.ok(routes.include.includes(p), p);
+});
+test('old sector addresses: the worker answers "not found" without ever asking for the kept page', async () => {
+  const W = (await import('../_worker.js')).default;
+  for (const p of ['/sector/industrials', '/sector/industrials/', '/sector/energy', '/sector', '/sector/', '/sector/a/b', '/sector/industrials.html']) {
+    const asked = [];
+    const env = { ASSETS: { fetch: async req => { asked.push(new URL(req.url).pathname); return new Response('<h1>Page not found</h1>', { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } }); } } };
+    const r = await W.fetch(new Request('https://reports.orgel.us' + p + '?x=1'), env, { waitUntil() {} });
+    assert.equal(r.status, 404, p); assert.ok((await r.text()).includes('Page not found'), p);
+    assert.equal(asked.length, 1, p); assert.ok(!/^\/sector/.test(asked[0]), p + ' asked the site for ' + asked[0]);
+  }
+});
+test('the worker still hands every other page address to the site untouched', async () => {
+  const W = (await import('../_worker.js')).default;
+  for (const p of ['/', '/company/3m', '/new', '/sectors', '/sector-x']) {
+    const asked = [];
+    const env = { ASSETS: { fetch: async req => { asked.push(new URL(req.url).pathname); return new Response('ok'); } } };
+    const r = await W.fetch(new Request('https://reports.orgel.us' + p), env, { waitUntil() {} });
+    assert.equal(r.status, 200, p); assert.deepEqual(asked, [p]);
+  }
 });
 test('build: the redirects file is published as it is', () => {
   assert.ok(fs.readFileSync(path.join(ROOT, '_redirects')).equals(fs.readFileSync(path.join(built(), '_redirects'))));
+});
+
+// ---------- the index page without Status, with the New Reports link (Kyle, 2026-11-26) ----------
+const INDEX_SRC = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+test('index page: nothing about status is left in it - no column, no filter, no Excel column', () => {
+  assert.ok(!/status/i.test(INDEX_SRC), (INDEX_SRC.match(/.{60}status.{40}/i) || [''])[0]);
+  assert.ok(!/colspan="7"/.test(INDEX_SRC)); assert.equal((INDEX_SRC.match(/colspan="6"/g) || []).length, 3);
+  assert.deepEqual([...INDEX_SRC.matchAll(/<th(?: data-col="[^"]*")?>([^<]+)/g)].map(m => m[1]), ['Company', 'Ticker', 'Sector', 'Report Name', 'Report Year', 'Report Link']);
+  assert.deepEqual([...INDEX_SRC.matchAll(/\{ header: '([^']+)'/g)].map(m => m[1]), ['Company', 'Ticker', 'Sector', 'Report Name', 'Report Year', 'Report URL', 'Landing Page URL']);
+});
+test('index page: a New Reports link sits where the status filter was, between the sector filter and Download', () => {
+  const link = INDEX_SRC.search(/<a class="data-btn" href="\/new"[^>]*>[\s\S]{0,600}?<span>New Reports<\/span>/);
+  assert.ok(link > 0, 'the link is there');
+  assert.ok(INDEX_SRC.indexOf('id="sector-filter"') < link && link < INDEX_SRC.indexOf('id="download-xlsx"'));
+  assert.equal((INDEX_SRC.match(/href="\/new"/g) || []).length, 1);
+});
+test('the data keeps its Status column: the CSV file and the API are unchanged', () => {
+  assert.ok(B.csv([ROWS[0]]).startsWith('Company,Ticker,Sector,Report Name,Report Year,Status,Report URL,Landing Page URL\n'));
+  assert.match(fs.readFileSync(path.join(ROOT, '_worker.js'), 'utf8'), /\['status', 'Status'\]/);
+  assert.equal(B.normalize(DATA[0]).status === 'Active' || B.normalize(DATA[0]).status === 'None', true);
 });

@@ -91,7 +91,7 @@ test('built pages: no page spills sideways on a phone, and an unknown address ge
   const ctx = await browser.newContext({ viewport: { width: 375, height: 800 } }), page = await ctx.newPage();
   for (const p of ['/company/3m', '/company/coca-cola-company', '/company/reddit', '/new', '/sector/energy', '/company/no-such-company']) {
     const res = await page.goto(built.url + p);
-    assert.equal(res.status(), /no-such|\/sector\//.test(p) ? 404 : 200, p);          // sectors have no pages of their own (Kyle, 2026-11-26); on Cloudflare _redirects sends the old addresses to /?sector=<name>
+    assert.equal(res.status(), /no-such|\/sector\//.test(p) ? 404 : 200, p);          // sectors have no pages of their own (Kyle, 2026-11-26); on Cloudflare the worker answers these itself
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth) <= 0, 'sideways scroll on ' + p);
   }
   assert.equal(await page.locator('h1').innerText(), 'Page not found');
@@ -135,5 +135,38 @@ test('company page: the title sits clear of the trail above it', async () => {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } }); await page.goto(built.url + '/company/3m');
   const gap = await page.evaluate(() => document.querySelector('.orgel-band h1').getBoundingClientRect().top - document.querySelector('.pg-crumbs').getBoundingClientRect().bottom);
   assert.ok(gap >= 20, 'gap between the trail and the title: ' + gap + 'px');
+  await page.close();
+});
+
+// ---------- Kyle, 2026-11-26 (second round): no Status, no footer, New Reports linked from the index only ----------
+test('built index: six columns, no Status, no status filter', async () => {
+  const page = await browser.newPage(); await page.goto(built.url + '/'); await loaded(page);
+  assert.deepEqual(await page.evaluate(() => [...document.querySelectorAll('#main-table thead th')].map(th => th.textContent.trim())), ['Company', 'Ticker', 'Sector', 'Report Name', 'Report Year', 'Report Link']);
+  assert.equal(await page.evaluate(() => Math.max(...[...document.querySelectorAll('#table-body tr')].map(tr => tr.children.length))), 6);
+  assert.equal(await page.locator('#status-filter').count(), 0);
+  assert.equal(await page.locator('.status-badge').count(), 0);
+  await page.fill('#search', 'active');          // used to match 500 rows through a status nobody could see
+  assert.ok(await page.locator('#table-body tr').count() < 60, 'rows for "active": ' + await page.locator('#table-body tr').count());
+  await page.close();
+});
+test('built index: New Reports sits between the sector filter and Download, looks like the other buttons, and opens the new-reports page', async () => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } }); await page.goto(built.url + '/'); await loaded(page);
+  assert.deepEqual(await page.evaluate(() => [...document.querySelector('.controls').children].map(el => el.id || el.getAttribute('href') || el.className)), ['search-wrap', 'sector-filter', '/new', 'download-xlsx', '/developers']);
+  const look = await page.evaluate(() => { const css = el => { const c = getComputedStyle(el), r = el.getBoundingClientRect(); return [c.backgroundColor, c.color, Math.round(r.height), Math.round(r.top)].join(' '); }; return [css(document.querySelector('.controls a[href="/new"]')), css(document.querySelector('.controls a[href="/developers"]'))]; });
+  assert.equal(look[0], look[1], 'same colours, height and line as Data & API');
+  assert.equal(await page.locator('.controls a[href="/new"]').innerText(), 'New Reports');
+  await page.click('.controls a[href="/new"]'); await page.waitForURL('**/new');
+  assert.equal(await page.locator('h1').innerText(), 'New sustainability reports');
+  await page.close();
+});
+test('built pages: no footer, and no link to the new-reports page except on the index', async () => {
+  const page = await browser.newPage();
+  for (const p of ['/company/3m', '/company/reddit', '/company/fair-isaac', '/new', '/company/no-such-company']) {
+    await page.goto(built.url + p);
+    assert.equal(await page.locator('footer').count(), 0, p);
+    assert.equal(await page.locator('a[href="/new"]').count(), 0, p);
+  }
+  await page.goto(built.url + '/company/3m');
+  assert.deepEqual(await page.evaluate(() => [...document.querySelectorAll('.pg-facts th')].map(th => th.textContent)), ['Company', 'Ticker', 'Sector', 'Latest Report', 'Report Year', 'Sustainability Page']);
   await page.close();
 });
