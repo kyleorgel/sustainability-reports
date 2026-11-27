@@ -257,7 +257,7 @@ export function newPage(ctx) {
           + (e.previousYear ? ' <span class="pg-note">replaced the ' + esc(e.previousYear) + ' report</span>' : ' <span class="pg-note">first report listed</span>') + '</li>';
       }).join('\n') + '\n</ul>';
   }
-  body += '\n<p class="pg-more"><a href="/#alerts">Get these by email on Mondays</a> <a href="/feed.xml">Feed</a> <a href="/">All ' + ctx.total + ' companies</a></p>';
+  // No row of links under the list (Kyle, 2026-11-27): the sign-up box is at the top of the page, and the feed is listed on /developers.
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Sustainability Report Index', item: SITE + '/' }, { '@type': 'ListItem', position: 2, name: 'New reports' }] },
     { '@type': 'CollectionPage', '@id': SITE + '/new', url: SITE + '/new', name: title.replace(/ \| ORGEL$/, ''), description,

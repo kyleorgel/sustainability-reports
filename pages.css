@@ -31,8 +31,6 @@
 .pg-new .ticker { margin: 0 6px 0 4px; }
 .pg-count { color: #6b7280; margin: 0 0 14px; }
 .pg-main p.pg-count { font-size: 14px; color: #6b7280; }
-.pg-more { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 34px 0 0; }
-.pg-main p.pg-more { max-width: none; font-size: 14.5px; }
 @media (max-width: 700px) {
   .pg-main { padding: 20px 18px 44px; }
   .pg-facts th { width: 128px; white-space: normal; padding: 10px 12px; }
