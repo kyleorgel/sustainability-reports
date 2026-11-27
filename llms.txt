@@ -26,6 +26,8 @@
 
 The index itself (company, ticker, sector, report name, year and the links) is free for any use, commercial or not, under the Creative Commons Attribution 4.0 license (CC BY 4.0). Credit is required: use a line such as "Source: ORGEL Sustainability Report Index, reports.orgel.us". The reports the links point to belong to the companies that published them. The data is offered as-is; verify anything you rely on against the company's document.
 
+To cite it in a paper: https://doi.org/10.5281/zenodo.24602352
+
 ## Publisher
 
 - [ORGEL](https://www.orgel.us/): sustainability research and advisory, Dallas, Texas.
