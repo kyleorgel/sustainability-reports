@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T10:23:26.171Z",
+  "generatedAt": "2026-11-27T18:21:03.697Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -104,34 +104,34 @@
     {
       "key": "eia:carbonfree-share",
       "label": "Carbon-Free Share of US Power",
-      "value": 36,
+      "value": 41,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-11-25",
+      "asOf": "2026-11-27",
       "decimals": 0,
-      "change": -8,
+      "change": -2,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (44%)",
+      "changeBasis": "vs the same 24 hours a week earlier (43%)",
       "source": "EIA Hourly Electric Grid Monitor (24h average)",
       "manual": false
     },
     {
       "key": "eia:carbonfree-share-tx",
       "label": "Carbon-Free Share of Texas Power",
-      "value": 32,
+      "value": 37,
       "unit": "%",
       "prefix": "",
-      "asOf": "2026-11-25",
+      "asOf": "2026-11-27",
       "decimals": 0,
-      "change": -12,
+      "change": -8,
       "changePct": null,
       "changeFmt": "pt",
       "changeDecimals": 0,
       "changeLabel": "wk",
-      "changeBasis": "vs the same 24 hours a week earlier (44%)",
+      "changeBasis": "vs the same 24 hours a week earlier (45%)",
       "source": "EIA Hourly Electric Grid Monitor (ERCOT) (24h average)",
       "manual": false
     },
@@ -215,8 +215,5 @@
       "url": "https://www.adobe.com/cc-shared/assets/pdf/corporate-responsibility/adobe-csr-report-2024.pdf"
     }
   ],
-  "errors": [
-    "EIA Carbon-Free Share of US Power: EIA did not answer (timeout of 45000ms exceeded) - still showing the reading from 2026-11-26 10:22 UTC",
-    "EIA Carbon-Free Share of Texas Power: EIA did not answer (timeout of 45000ms exceeded) - still showing the reading from 2026-11-26 10:22 UTC"
-  ]
+  "errors": []
 }
