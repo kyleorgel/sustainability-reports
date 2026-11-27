@@ -293,6 +293,15 @@ test('new-reports page: a change for a company that is no longer in the data is 
 test('new-reports page: with no changes it says so', () => {
   assert.ok(text(B.newPage(B.makeContext(ROWS, []))).includes('No reports have been added yet.'));
 });
+test('new-reports page: no row of links at the bottom (Kyle, 2026-11-27); feed readers still find the feed', () => {
+  for (const ctx of [CTX, B.makeContext(ROWS, [])]) {
+    const h = B.newPage(ctx), main = h.split('<main')[1].split('</main>')[0];
+    assert.ok(!main.includes('pg-more'));
+    assert.ok(!/Get these by email|All \d+ compan/.test(text(main)), text(main).slice(-200));
+    assert.ok(!/<a [^>]*href="\/(#alerts|feed\.xml)?"/.test(main));
+    assert.match(h, /<link rel="alternate" type="application\/atom\+xml"[^>]* href="https:\/\/reports\.orgel\.us\/feed\.xml"\/>/);
+  }
+});
 
 // ---------- sitemap, CSV, styles, the index page ----------
 test('sitemap lists the index, the data page, the new-reports page and every company, and no sector page', () => {
