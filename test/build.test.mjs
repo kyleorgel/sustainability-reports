@@ -489,6 +489,18 @@ test('terms: the data page says credit is required, names the licence, and its s
   assert.match(h, /href="https:\/\/creativecommons\.org\/licenses\/by\/4\.0\/"/);
   assert.equal(ld(h).find(x => x['@type'] === 'Dataset').license, 'https://creativecommons.org/licenses/by/4.0/');
 });
+// ---------- the dataset's DOI on Zenodo (Kyle approved publishing it, 2026-11-27) ----------
+test('data page: the dataset markup carries the Zenodo DOI and names its copies on Zenodo, Hugging Face and Kaggle', () => {
+  const d = ld(fs.readFileSync(path.join(ROOT, 'developers.html'), 'utf8')).find(x => x['@type'] === 'Dataset');
+  const ids = [].concat(d.identifier);
+  assert.equal(ids[0], 'https://doi.org/10.5281/zenodo.24602352', 'the DOI that always points to the newest version comes first');
+  assert.ok(ids.includes('https://reports.orgel.us/developers'), 'the old identifier is kept');
+  assert.deepEqual([].concat(d.sameAs), [
+    'https://doi.org/10.5281/zenodo.24602352',
+    'https://huggingface.co/datasets/kyleorgel/sp500-sustainability-report-index',
+    'https://www.kaggle.com/datasets/kyleorgel/s-and-p-500-sustainability-report-index-orgel',
+  ]);
+});
 test('terms: the summary file says the same as the data page', () => {
   const out = built();
   const l = fs.readFileSync(path.join(out, 'llms.txt'), 'utf8');
