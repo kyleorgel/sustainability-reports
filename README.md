@@ -33,6 +33,8 @@ The reports the links point to belong to the companies that published them.
 - A sector has no page of its own: `/?sector=Energy` opens the index with that sector chosen (the company pages link there). The addresses `/sector/<name>` existed for a few hours in November 2026; `_worker.js` answers them "not found".
 - No page is added to this site without Kyle's explicit approval of that page. The New Reports page (`/new`) is linked from the index page only.
 - Every company page and the New Reports page carry the index page's sign-up box for the Monday email. `build.mjs` copies the box (marked `<!-- sign-up box ... -->` in `index.html`) and its script at every build, so it is always the index's own box; if it cannot find them, the pages are built without it and `build.json` says so.
+- `b8ac4b05f2d136bd72204a6aca745fb6.txt` is the IndexNow key (a file, not a page). ORGEL's automation (SR29) uses it to tell Bing and the other IndexNow search engines which pages changed. Do not rename, edit or delete it.
+- `sitemap.xml` dates the index page by `meta.json`'s `updatedAt` (the last time the data changed), not by the day of the build.
 - Cloudflare Pages runs it on every commit. Settings: build command `node build.mjs`, build output directory `dist`.
 - If the build cannot read the data, it publishes the top folder as it is and writes `"ok": false` and the reason into `build.json`. A deploy never fails because of the build.
 

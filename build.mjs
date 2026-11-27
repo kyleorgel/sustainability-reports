@@ -272,7 +272,7 @@ export function newPage(ctx) {
 export function sitemap(ctx, today) {
   const u = (p, lastmod) => '  <url><loc>' + esc(SITE + p) + '</loc>' + (lastmod ? '<lastmod>' + esc(lastmod) + '</lastmod>' : '') + '</url>';
   const newest = ctx.events.length ? String(ctx.events[0].date).slice(0, 10) : today;
-  const lines = [u('/', today), u('/developers'), u('/new', newest)];
+  const lines = [u('/', ctx.dataUpdated || today), u('/developers'), u('/new', newest)];
   ctx.rows.slice().sort(byName).forEach(r => { const h = ctx.byTicker.get(r.ticker); lines.push(u(ctx.pathOf(r), h ? String(h[0].date).slice(0, 10) : '')); });
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + lines.join('\n') + '\n</urlset>\n';
 }
@@ -340,6 +340,8 @@ export function build({ root, out, now = new Date() }) {
     let events = [];
     try { events = JSON.parse(read('changes.json')).events || []; } catch (e) { summary.problems.push('changes.json could not be read, pages built without the list of changes: ' + e.message); }
     const ctx = makeContext(rows, events), indexHtml = read('index.html');
+    // SR13 writes meta.json only when it publishes new data, so its date is when the index's rows last changed.
+    try { const d = String(JSON.parse(read('meta.json')).updatedAt || '').slice(0, 10); if (/^\d{4}-\d{2}-\d{2}$/.test(d)) ctx.dataUpdated = d; } catch (e) { /* no meta.json: the sitemap dates the index with the build day */ }
     try { ctx.signup = signupBox(indexHtml); } catch (e) { summary.problems.push(e.message); }
     // Everything is worked out before anything is written, so a failure leaves the plain copy whole.
     const files = new Map();
