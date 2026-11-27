@@ -501,6 +501,14 @@ test('data page: the dataset markup carries the Zenodo DOI and names its copies 
     'https://www.kaggle.com/datasets/kyleorgel/s-and-p-500-sustainability-report-index-orgel',
   ]);
 });
+test('terms: the data page and the summary file give the DOI to cite in papers (Kyle, 2026-11-27)', () => {
+  const LINE = 'To cite it in a paper: https://doi.org/10.5281/zenodo.24602352';
+  const terms = /<h2 id="terms">[\s\S]*?<\/main>/.exec(fs.readFileSync(path.join(ROOT, 'developers.html'), 'utf8'))[0];
+  assert.ok(text(terms).includes(LINE), 'the line is in the Terms section');
+  assert.match(terms, /<a href="https:\/\/doi\.org\/10\.5281\/zenodo\.24602352">/, 'the DOI is a link');
+  const l = fs.readFileSync(path.join(ROOT, 'llms.txt'), 'utf8');
+  assert.ok(/## Terms\n([\s\S]*?)(?=\n## )/.exec(l)[1].includes(LINE), 'the same line under Terms in llms.txt');
+});
 test('terms: the summary file says the same as the data page', () => {
   const out = built();
   const l = fs.readFileSync(path.join(out, 'llms.txt'), 'utf8');
