@@ -316,6 +316,13 @@ test('sitemap lists the index, the data page, the new-reports page and every com
   assert.match(x, /<loc>https:\/\/reports\.orgel\.us\/<\/loc><lastmod>2026-11-25<\/lastmod>/);
   assert.ok(x.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));
 });
+// Bing (2025-07-31): lastmod "should reflect the true last modification time of the page content".
+// The index's rows change only when SR13 publishes new data, and SR13 writes meta.json only then.
+test('sitemap: the index is dated by its last data change, not by the day of the build', () => {
+  const x = B.sitemap({ ...CTX, dataUpdated: '2026-11-22' }, '2026-11-27');
+  assert.match(x, /<loc>https:\/\/reports\.orgel\.us\/<\/loc><lastmod>2026-11-22<\/lastmod>/);
+  assert.ok(!x.includes('2026-11-27'));
+});
 test('csv has the API’s columns, one line per company, quoted where needed', () => {
   const c = B.csv([ROWS[0], { ...ROWS[3], company: 'Block, Inc.', reportName: 'He said "hi"' }]);
   const lines = c.trimEnd().split('\n');
@@ -378,6 +385,16 @@ test('build: every published file of the repository is in the output, unchanged'
 test('build: nothing that is only for building is published', () => {
   const files = walk(built());
   for (const f of files) assert.ok(!/^(build\.mjs|pages\.css|README\.md|test\/|\.git)/.test(f), f);
+});
+test('build: the sitemap dates the index with meta.json’s last update', () => {
+  const meta = JSON.parse(fs.readFileSync(path.join(ROOT, 'meta.json'), 'utf8')), day = String(meta.updatedAt).slice(0, 10);
+  assert.match(day, /^\d{4}-\d{2}-\d{2}$/);
+  assert.ok(fs.readFileSync(path.join(built(), 'sitemap.xml'), 'utf8').includes('<loc>https://reports.orgel.us/</loc><lastmod>' + day + '</lastmod>'));
+});
+test('build: the IndexNow key file is published at the site root and holds exactly its own name', () => {
+  const keys = fs.readdirSync(ROOT).filter(f => /^[0-9a-f]{32}\.txt$/.test(f));
+  assert.equal(keys.length, 1, 'exactly one IndexNow key file at the repository root');
+  assert.equal(fs.readFileSync(path.join(built(), keys[0]), 'utf8'), keys[0].slice(0, -4));
 });
 test('build: one page per company, the new-reports page, sitemap, csv and styles, and no sector pages', () => {
   const out = built(), files = walk(out);
