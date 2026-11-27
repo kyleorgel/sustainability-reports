@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T02:23:12.417Z",
+  "generatedAt": "2026-11-27T10:23:26.171Z",
   "tradingview": [
     {
       "proName": "NASDAQ:AMZN",
@@ -215,5 +215,8 @@
       "url": "https://www.adobe.com/cc-shared/assets/pdf/corporate-responsibility/adobe-csr-report-2024.pdf"
     }
   ],
-  "errors": []
+  "errors": [
+    "EIA Carbon-Free Share of US Power: EIA did not answer (timeout of 45000ms exceeded) - still showing the reading from 2026-11-26 10:22 UTC",
+    "EIA Carbon-Free Share of Texas Power: EIA did not answer (timeout of 45000ms exceeded) - still showing the reading from 2026-11-26 10:22 UTC"
+  ]
 }
